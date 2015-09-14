@@ -1346,22 +1346,71 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="BDays" type="Int32" size="4" expression="BUSINESSSDAYS(StartDate, EndDate)" />
+            <FormulaField field="BDays" type="Int32" size="4" expression="BUSINESSDAYS(StartDate, EndDate)" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>BDays=BUSINESSSDAYS(StartDate, EndDate)</DefaultAnnotationText>
+          <DefaultAnnotationText>BDays=BUSINESSDAYS(StartDate, EndDate)</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="294" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[BusinessDays]!=[BDays]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[BusinessDays]!=[BDays]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="426" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Empty</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Empty</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
   </Nodes>
   <Connections>
     <Connection>
       <Origin ToolID="1" Connection="Output" />
       <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="3" Connection="True" />
+      <Destination ToolID="4" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
