@@ -46,8 +46,8 @@
     <Name>BUSINESSDAYS</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Date</Category>
-    <InsertText>BUSINESSSDAYS(StartDate, EndDate)</InsertText>
+    <InsertText>BUSINESSDAYS(StartDate, EndDate)</InsertText>
     <Description>Number of business days (M-F) between two dates.</Description>
-    <Formula>IIF(P1>P2,-BUSINESSDAYS(P2,P1), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
+    <Formula>IIF(P1>P2,NULL(), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
   </Function>
 </FormulaAddIn>
