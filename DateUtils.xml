@@ -3,25 +3,49 @@
 <!-- Is Culture Specific as Uses names opf weekdays -->
 <FormulaAddIn>
   <Function>
+    <Name>YEAR</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>YEAR(Date)</InsertText>
+    <Description>Get year of Date</Description>
+    <Formula>ToNumber(DateTimeFormat(P1, "%Y"))</Formula>
+  </Function>
+  <Function>
+    <Name>MONTH</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>MONTH(Date)</InsertText>
+    <Description>Get month (1-12) of Date</Description>
+    <Formula>ToNumber(DateTimeFormat(P1, "%m"))</Formula>
+  </Function>
+  <Function>
+    <Name>DAY</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>Day(Date)</InsertText>
+    <Description>Get day of month (1-31) of Date</Description>
+    <Formula>ToNumber(DateTimeFormat(P1, "%d"))</Formula>
+  </Function>
+  <Function>
     <Name>WEEKDAY</Name>
     <NumParams variable="false">1</NumParams>
-    <Category>DateTime</Category>
+    <Category>Date</Category>
     <InsertText>WEEKDAY(Date)</InsertText>
-    <Description>COnvert a date to day of week (0 Sundaty - 6 Saturday)</Description>
+    <Description>Convert a date to day of week (0 Sundaty - 6 Saturday)</Description>
     <Formula>Switch(DateTimeFormat(P1,"%a"),NULL(),"Sun",0,"Mon",1,"Tue",2,"Wed",3,"Thu",4,"Fri",5,"Sat",6)</Formula>
   </Function>
   <Function>
     <Name>QUARTER</Name>
     <NumParams variable="false">1</NumParams>
-    <Category>String</Category>
+    <Category>Date</Category>
     <InsertText>QUARTER(Date)</InsertText>
     <Description>Convert date to quarter</Description>
-    <Formula>INT((MONTH(P1)+2)/3)</Formula>
+    <Formula>FLOOR((MONTH(P1)+2)/3)</Formula>
   </Function>
   <Function>
     <Name>BUSINESSDAYS</Name>
     <NumParams variable="false">2</NumParams>
-    <Category>String</Category>
+    <Category>Date</Category>
     <InsertText>BUSINESSSDAYS(StartDate, EndDate)</InsertText>
     <Description>Number of business days (M-F) between two dates.</Description>
     <Formula>IIF(P1>P2,-BUSINESSDAYS(P2,P1), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
