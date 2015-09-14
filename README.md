@@ -9,7 +9,8 @@ Set of test workflows checking the formula addin.
 Currently have:
 
 ## StringUtils
-Some basic string functions I needed (e.g. StartsWith, EndsWith). Ned has incorporated these into the v10 code base so not needed there.
+Some basic string functions I needed (e.g. StartsWith, EndsWith). 
+*Ned has incorporated these into the v10 code base so not needed there.*
 
 ## DateUtils
 Some useful date functions
