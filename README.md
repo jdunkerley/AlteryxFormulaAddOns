@@ -1,14 +1,19 @@
 # Alteryx Formula AddOns
 Set of Xml Based Formula AddOns for Alteryx
-- For version 9: put into %Program Files%\Alteryx\bin\RuntimeData\FormulaAddIn (or wherever you installed Alteryx)
-- For version 10: put into %LocalAppData%\Alteryx\bin\RuntimeData\FormulaAddIn
+
+Assuming admin installed then put into %Program Files%\Alteryx\bin\RuntimeData\FormulaAddIn (or wherever you installed Alteryx)
+There is an install.bat script which should promote via UAC and install to this directory. If Alteryx installed elsewhere than manuall copy xml files to appropriate subdirectory there.
+
+Set of test workflows checking the formula addin.
 
 Currently have:
+
 ## StringUtils
 Some basic string functions I needed (e.g. StartsWith, EndsWith). Ned has incorporated these into the v10 code base so not needed there.
 
-## TrigFunctions
-A couple of basic functions for working with trigonometry stuff
-
 ## DateUtils
 Some useful date functions
+- Day, Month, Year - extract part of the date
+- WeekDay - 0 Sunday through to 6 Saturday
+- Quarter - 1-4 for quarter
+- BusinessDays - Number of weekdays between two dates [Untested at moment]
