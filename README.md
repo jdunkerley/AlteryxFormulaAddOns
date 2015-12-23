@@ -27,4 +27,8 @@ Some useful date functions
 - YearStart - Get First Day of Year
 - YearEnd - Get Last Day of Year
 - QuarterStart - Get First Day of Quarter
-- QuarterEnd - Get Last Day of Quarter
+- QuarterEnd - Get Last Day of Quarter 
+
+##MathUtils
+Other Randpm Math Stuff
+- Modulo - General version of MOD function for doubles
