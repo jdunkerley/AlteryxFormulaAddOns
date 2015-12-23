@@ -63,7 +63,7 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>MONTHSTART(Date)</InsertText>
-    <Description>Create the first of month</Description>
+    <Description>Create the first day of the month</Description>
     <Formula>LEFT(P1,8) + "01"</Formula>
   </Function>
   <Function>
@@ -71,7 +71,7 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>MONTHEND(Date)</InsertText>
-    <Description>Create the first of month</Description>
+    <Description>Create the last day of the month</Description>
     <Formula>DATETIMEADD(DATETIMEADD(LEFT(P1,8) + "01", 1, "Months"), -1, "Days")</Formula>
   </Function>
   <Function>
@@ -79,7 +79,7 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>YEARSTART(Date)</InsertText>
-    <Description>Create the first of year</Description>
+    <Description>Create the first day of the year</Description>
     <Formula>LEFT(P1,5) + "01-01"</Formula>
   </Function>
   <Function>
@@ -87,7 +87,23 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>YEAREND(Date)</InsertText>
-    <Description>Create the end of yea</Description>
+    <Description>Create the last day of the year</Description>
     <Formula>LEFT(P1,5) + "12-31"</Formula>
+  </Function>
+  <Function>
+    <Name>QUARTERSTART</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>QUARTERSTART(Date)</InsertText>
+    <Description>Create the first day of the quarter</Description>
+    <Formula>LEFT(P1,5) + RIGHT("00" + TOSTRING(QUARTER(P1) * 3 - 2, 0), 2) + "-01"</Formula>
+  </Function>
+  <Function>
+    <Name>QUARTEREND</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>QUARTEREND(Date)</InsertText>
+    <Description>Create the last day of the quarter</Description>
+    <Formula>MONTHEND(LEFT(P1,5) + RIGHT("00" + TOSTRING(QUARTER(P1) * 3, 0), 2) + "-01")</Formula>
   </Function>
 </FormulaAddIn>
