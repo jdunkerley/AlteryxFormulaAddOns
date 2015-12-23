@@ -11,6 +11,9 @@ Currently have:
 ## StringUtils
 Some basic string functions I needed (e.g. StartsWith, EndsWith). 
 *Ned has incorporated these into the v10 code base so not needed there.*
+- StartsWith - Does a string start with another
+- EndsWith - Does a string end with another
+- Contains - Is a string in another
 
 ## DateUtils
 Some useful date functions
