@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="246" y="90" />
+        <Position x="210" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -11,13 +11,16 @@
             <FormulaField field="Qtr" type="Int16" size="2" expression="Quarter([myDate])" />
             <FormulaField field="Year" type="Int16" size="2" expression="Year([mydate])" />
             <FormulaField field="Last" type="Date" size="10" expression="MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))" />
+            <FormulaField field="QtrEnd" type="Date" size="10" expression="QUARTEREND([MyDate])" />
+            <FormulaField field="QtrStart" type="Date" size="10" expression="QUARTERSTART([myDate])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
           <DefaultAnnotationText>Qtr=Quarter([myDate])
 Year=Year([mydate])
-Last=MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))</DefaultAnnotationText>
+Last=MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))
+...</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -25,7 +28,7 @@ Last=MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))</DefaultAnnotationText>
     </Node>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="66" y="78" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -41,9 +44,6 @@ Last=MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))</DefaultAnnotationText>
 Table=`Sheet1$`</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="myDate" source="File: C:\Downloads\quarter of date.xlsx|`Sheet1$`" type="Date" />
@@ -56,11 +56,11 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="342" y="90" />
+        <Position x="342" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\jdunk\AppData\Local\Temp\Engine_3100_732b82dc1cdd4f06a80d97f0829262ac_\Engine_9940_6df28864fcdb4604bc631c2babea0a31_.yxdb</TempFile>
+          <TempFile>C:\Users\jdunk\AppData\Local\Temp\Engine_7964_2c69b9ef554f4dc9a92b32c03f75fe1a_\Engine_5960_ccf3b88e466b48b48a38eb1485d91fd9_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>
