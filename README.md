@@ -18,3 +18,8 @@ Some useful date functions
 - WeekDay - 0 Sunday through to 6 Saturday
 - Quarter - 1-4 for quarter
 - BusinessDays - Number of weekdays between two dates [Untested at moment]
+- MakeDate - Create a new date from Year, Month, Day
+- MonthStart - Get First of Month
+- MonthEnd - Get Last of Month
+- YearStart - Get First Day of Year
+- YearEnd - Get Last Day of Year
