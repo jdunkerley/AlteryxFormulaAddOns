@@ -50,4 +50,44 @@
     <Description>Number of business days (M-F) between two dates.</Description>
     <Formula>IIF(P1>P2,NULL(), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
   </Function>
+  <Function>
+    <Name>MAKEDATE</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Date</Category>
+    <InsertText>MAKEDATE(Year, Month, Day)</InsertText>
+    <Description>Create a Date</Description>
+    <Formula>TOSTRING(P1, 0) + "-" + RIGHT("00" + TOSTRING(P2, 0), 2) + "-" + RIGHT("00" + TOSTRING(P3, 0), 2)</Formula>
+  </Function>
+  <Function>
+    <Name>MONTHSTART</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>MONTHSTART(Date)</InsertText>
+    <Description>Create the first of month</Description>
+    <Formula>LEFT(P1,8) + "01"</Formula>
+  </Function>
+  <Function>
+    <Name>MONTHEND</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>MONTHSTART(Date)</InsertText>
+    <Description>Create the first of month</Description>
+    <Formula>DATETIMEADD(DATETIMEADD(LEFT(P1,8) + "01", 1, "Months"), -1, "Days")</Formula>
+  </Function>
+  <Function>
+    <Name>YEARSTART</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>MONTHSTART(Date)</InsertText>
+    <Description>Create the first of year</Description>
+    <Formula>LEFT(P1,5) + "01-01"</Formula>
+  </Function>
+  <Function>
+    <Name>MONTHEND</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>MONTHSTART(Date)</InsertText>
+    <Description>Create the end of yea</Description>
+    <Formula>LEFT(P1,5) + "12-31"</Formula>
+  </Function>
 </FormulaAddIn>
