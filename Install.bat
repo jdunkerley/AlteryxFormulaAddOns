@@ -17,6 +17,7 @@ if '%errorlevel%' NEQ '0' (
 	pushd "%~dp0" 
 	:: 	xcopy StringUtils.xml "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
 	xcopy DateUtils.xml "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
+    xcopy MathUtils.xml "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
 	popd
 	pause
 :-------------------------------------- 

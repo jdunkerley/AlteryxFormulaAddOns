@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file along with its dll needs to be installed to ...InstallDir...\RuntimeData\FormulaAddIn to run. -->
+<!-- Is Culture Specific as Uses names opf weekdays -->
+<FormulaAddIn>
+  <Function>
+    <Name>MODULO</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>MODULO(Dividend, Divisor)</InsertText>
+    <Description>Get Remainder of Division</Description>
+    <Formula>(P1/P2 - FLOOR(P1/P2)) * P2</Formula>
+  </Function>
+</FormulaAddIn>
