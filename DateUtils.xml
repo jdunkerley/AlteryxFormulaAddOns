@@ -70,7 +70,7 @@
     <Name>MONTHEND</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
-    <InsertText>MONTHSTART(Date)</InsertText>
+    <InsertText>MONTHEND(Date)</InsertText>
     <Description>Create the first of month</Description>
     <Formula>DATETIMEADD(DATETIMEADD(LEFT(P1,8) + "01", 1, "Months"), -1, "Days")</Formula>
   </Function>
@@ -78,15 +78,15 @@
     <Name>YEARSTART</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
-    <InsertText>MONTHSTART(Date)</InsertText>
+    <InsertText>YEARSTART(Date)</InsertText>
     <Description>Create the first of year</Description>
     <Formula>LEFT(P1,5) + "01-01"</Formula>
   </Function>
   <Function>
-    <Name>MONTHEND</Name>
+    <Name>YEAREND</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
-    <InsertText>MONTHSTART(Date)</InsertText>
+    <InsertText>YEAREND(Date)</InsertText>
     <Description>Create the end of yea</Description>
     <Formula>LEFT(P1,5) + "12-31"</Formula>
   </Function>
