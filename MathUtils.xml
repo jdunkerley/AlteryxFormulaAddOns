@@ -10,4 +10,46 @@
     <Description>Get Remainder of Division</Description>
     <Formula>(P1/P2 - FLOOR(P1/P2)) * P2</Formula>
   </Function>
+  <Function>
+    <Name>HEXBINX</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Spatial</Category>
+    <InsertText>HEXBINX(X, Y, R)</InsertText>
+    <Description>Get HexBin X Co-Ordindate of Point</Description>
+    <Formula>
+IF 
+        ABS(Round(P1/(P3 * 1.5),1)) * 3 &gt; 1
+    AND
+        (POW((P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0))-(Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)),2)+POW((P1/(P3 * 1.5))-Round(P1/(P3 * 1.5),1),2)
+    &gt;
+        POW((P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0))-((Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)) + iif(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0) &lt;(Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)),-0.5,0.5)),2)+POW((P1/(P3 * 1.5))-(Round(P1/(P3 * 1.5),1) + iif(P1/(P3 * 1.5) &lt; Round(P1/(P3 * 1.5),1),-1,1)),2))
+THEN
+	Round(P1/(P3 * 1.5),1) + iif(P1/(P3 * 1.5) &lt; Round(P1/(P3 * 1.5),1),-1,1)
+ELSE
+	Round(P1/(P3 * 1.5),1)
+ENDIF
+* (P3 * 1.5)
+    </Formula>
+  </Function>
+  <Function>
+    <Name>HEXBINY</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Spatial</Category>
+    <InsertText>HEXBINY(X, Y, R)</InsertText>
+    <Description>Get HexBin Y Co-Ordindate of Point</Description>
+    <Formula>
+IF 
+        ABS(Round(P1/(P3 * 1.5),1)) * 3 &gt; 1
+    AND
+        (POW((P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0))-(Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)),2)+POW((P1/(P3 * 1.5))-Round(P1/(P3 * 1.5),1),2)
+    &gt;
+        POW((P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0))-((Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)) + iif(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0) &lt; (Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)),-0.5,0.5)),2)+POW((P1/(P3 * 1.5))-(Round(P1/(P3 * 1.5),1) + iif(P1/(P3 * 1.5) &lt; Round(P1/(P3 * 1.5),1),-1,1)),2))
+THEN
+	(((Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)) + iif(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0) &lt; (Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1)),-0.5,0.5))+IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, -0.5) + iif(BinaryAnd(Round(P1/(P3 * 1.5),1) + iif(P1/(P3 * 1.5) &lt; Round(P1/(P3 * 1.5),1),-1,1), 1) == 1, 0.5, 0))
+ELSE
+	(Round(P2/(P3 * 2 * Sin(pi() / 3)) - IIF(BinaryAnd(Round(P1/(P3 * 1.5),1),1) == 1, 0.5, 0),1) + iif(BinaryAnd(Round(P1/(P3 * 1.5),1), 1) == 1, 0.5, 0))
+ENDIF
+* (P3 * 2 * Sin(pi() / 3))
+    </Formula>
+  </Function>  
 </FormulaAddIn>
