@@ -19,8 +19,12 @@ Some useful date functions
 - Day, Month, Year - extract part of the date
 - WeekDay - 0 Sunday through to 6 Saturday
 - Quarter - 1-4 for quarter
-- BusinessDays - Number of weekdays between two dates [Untested at moment]
+- BusinessDays - Number of weekdays between two dates
+- OrdinalDay - Day of the year
+- IsLeapYear - Is a year a leap year (takes a year not a date as an input use IsLearYear(Year([Date]))
 - MakeDate - Create a new date from Year, Month, Day
+- WeekStart - Get first Sunday before or equal to date
+- WeekEnd - Get first Saturday after or equak to date
 - MonthStart - Get First Day of Month
 - MonthEnd - Get Last Day of Month
 - YearStart - Get First Day of Year
