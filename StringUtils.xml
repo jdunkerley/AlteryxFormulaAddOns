@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file along with its dll needs to be installed to ...InstallDir...\RuntimeData\FormulaAddIn to run. -->
 <FormulaAddIn>
+<!--
   <Function>
     <Name>STARTSWITH</Name>
     <NumParams variable="false">2</NumParams>
@@ -25,4 +26,5 @@
     <Description>Does A String Contain Another.</Description>
     <Formula>FINDSTRING(P1,P2)!=-1</Formula>
   </Function>
+//-->
 </FormulaAddIn>
