@@ -2,65 +2,74 @@
 <AlteryxDocument yxmdVer="10.0">
   <Nodes>
     <Node ToolID="1">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="210" y="54" />
+      <GuiSettings>
+        <Position x="390" y="78" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <FormulaFields>
-            <FormulaField field="Qtr" type="Int16" size="2" expression="Quarter([myDate])" />
-            <FormulaField field="Year" type="Int16" size="2" expression="Year([mydate])" />
-            <FormulaField field="Last" type="Date" size="10" expression="MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))" />
-            <FormulaField field="QtrEnd" type="Date" size="10" expression="QUARTEREND([MyDate])" />
-            <FormulaField field="QtrStart" type="Date" size="10" expression="QUARTERSTART([myDate])" />
-          </FormulaFields>
+          <Value name="Drop Down (18)">FullPath</Value>
+          <Value name="Radio Button (20)">True</Value>
+          <Value name="Radio Button (21)">False</Value>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Qtr=Quarter([myDate])
-Year=Year([mydate])
-Last=MONTHEND(MAKEDATE([Year], 3 * [Qtr], 1))
-...</DefaultAnnotationText>
+          <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+      <EngineSettings Macro="CReW_ListRunner.yxmc" />
     </Node>
     <Node ToolID="2">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="54" />
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
+        <Position x="162" y="78" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Passwords />
-          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Downloads\quarter of date.xlsx|`Sheet1$`</File>
-          <FormatSpecificOptions>
-            <FirstRowData>False</FirstRowData>
-          </FormatSpecificOptions>
+          <Directory>C:\Repos\AlteryxFormulaAddOns</Directory>
+          <FileSpec>*.yxmd</FileSpec>
+          <IncludeSubDirs value="True" />
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>quarter of date.xlsx
-Table=`Sheet1$`</DefaultAnnotationText>
+          <DefaultAnnotationText>dir C:\Repos\AlteryxFormulaAddOns\*.yxmd</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="myDate" source="File: C:\Downloads\quarter of date.xlsx|`Sheet1$`" type="Date" />
-            <Field name="Expected Q" source="File: C:\Downloads\quarter of date.xlsx|`Sheet1$`" type="Double" />
-            <Field name="Expected Last day of Q" source="File: C:\Downloads\quarter of date.xlsx|`Sheet1$`" type="Date" />
-          </RecordInfo>
-        </MetaInfo>
       </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
     </Node>
     <Node ToolID="3">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="342" y="54" />
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="282" y="78" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\jdunk\AppData\Local\Temp\Engine_7964_2c69b9ef554f4dc9a92b32c03f75fe1a_\Engine_5960_ccf3b88e466b48b48a38eb1485d91fd9_.yxdb</TempFile>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Field>Directory</Field>
+            <Operator>Contains</Operator>
+            <Operands>
+              <Operand>.Test\</Operand>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Contains([Directory],".Test\")</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="486" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\jdunk\AppData\Local\Temp\Engine_28484_b9366c0026f8409cbd6da2570f1d1525_\Engine_32784_48ad623d05a0477d92014991200fc260_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>
@@ -80,12 +89,16 @@ Table=`Sheet1$`</DefaultAnnotationText>
   </Nodes>
   <Connections>
     <Connection>
-      <Origin ToolID="1" Connection="Output" />
-      <Destination ToolID="3" Connection="Input" />
+      <Origin ToolID="1" Connection="Output16" />
+      <Destination ToolID="4" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="2" Connection="Output" />
-      <Destination ToolID="1" Connection="Input" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="True" />
+      <Destination ToolID="1" Connection="Input15" />
     </Connection>
   </Connections>
   <Properties>
@@ -106,7 +119,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>Date Demos</Name>
+      <Name>RunUnitTests</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
