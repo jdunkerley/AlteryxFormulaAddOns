@@ -1,20 +1,22 @@
 # Alteryx Formula AddOns
 Set of Xml Based Formula AddOns for Alteryx. Suggestions of extra useful functions welcome!!
 
+## Installation
 Assuming admin installed then put into %Program Files%\Alteryx\bin\RuntimeData\FormulaAddIn (or wherever you installed Alteryx)
-There is an install.bat script which should promote via UAC and install to this directory. If Alteryx installed elsewhere than manuall copy xml files to appropriate subdirectory there.
+There is an `install.bat` script which should promote via UAC and install to this directory. If Alteryx installed elsewhere than manuall copy xml files to appropriate subdirectory there.
 
-Set of test workflows checking the formula addin.
+## Testing
+Assuming you have the CReW Runner macro, there is a workflow `RunUnitTest.yxmd` which will run all the test workflows checking the formula addins.
 
-Currently have:
+## Currently functions:
 
-## MathUtils
+### MathUtils
 General functions that I havent got a better home for!
 - Modulo = General Double Based Modulo function
 - HexBinX - Given an X,Y point and HexBin radius get X co-ordinate of bin (aiming to reproduce Tableau function)
 - HexBinY - Given an X,Y point and HexBin radius get Y co-ordinate of bin (aiming to reproduce Tableau function) 
 
-## DateUtils
+### DateUtils
 Some useful date functions
 - Day, Month, Year - extract part of the date
 - WeekDay - 0 Sunday through to 6 Saturday
@@ -32,7 +34,7 @@ Some useful date functions
 - QuarterStart - Get First Day of Quarter
 - QuarterEnd - Get Last Day of Quarter 
 
-## StringUtils
+### StringUtils
 Some basic string functions I needed (e.g. StartsWith, EndsWith). 
 *Ned has incorporated these into the v10 code base so not needed there.*
 - StartsWith - Does a string start with another
