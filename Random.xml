@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file along with its dll needs to be installed to ...InstallDir...\RuntimeData\FormulaAddIn to run. -->
+<!-- Is Culture Specific as Uses names opf weekdays -->
+<FormulaAddIn>
+  <Function>
+    <Name>RAND_TRIANGULAR</Name>
+    <NumParams variable="false">4</NumParams>
+    <Category>Math</Category>
+    <InsertText>RAND_TRIANGULAR(UniformRand, Min, Mode, Max)</InsertText>
+    <Description>Get A Triangular Distributed Random Number</Description>
+    <Formula>
+        IIF(P1 &lt;= ((P3 - P2) / (P4 - P2)), 
+            P2 + SQRT(P1 * (P4 - P2) * (P3 - P2)), 
+            P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3)))
+    </Formula>
+  </Function>
+</FormulaAddIn>
