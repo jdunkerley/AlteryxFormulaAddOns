@@ -1,1 +1,8 @@
 *.bak
+.vs
+Debug
+Release
+x64
+*.user
+ipch
+*.VC.db

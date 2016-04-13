@@ -27,4 +27,20 @@
     <Formula>FINDSTRING(P1,P2)!=-1</Formula>
   </Function>
 //-->
+  <Function>
+    <Name>LEFTPART</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>String</Category>
+    <InsertText>LEFTPART(String, Separator)</InsertText>
+    <Description>Get The Left Part Upto A Separator</Description>
+    <Formula>IIF(FINDSTRING(P1,P2) == -1, P1, LEFT(P1, FINDSTRING(P1,P2))</Formula>
+  </Function>
+  <Function>
+    <Name>RIGHTPART</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>String</Category>
+    <InsertText>RIGHTPART(String, Separator)</InsertText>
+    <Description>Get The Rest Of The String After First Separator</Description>
+    <Formula>IIF(FINDSTRING(P1,P2) == -1, NULL(), SUBSTRING(P1, FINDSTRING(P1,P2) + LENGTH(P2))</Formula>
+  </Function>
 </FormulaAddIn>
