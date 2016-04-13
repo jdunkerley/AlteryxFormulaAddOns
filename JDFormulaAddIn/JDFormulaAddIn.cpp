@@ -12,13 +12,25 @@ void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString)
 	pReturnValue->nVarType = 2;
 }
 
+void ResetIsNull(int nNumArgs, FormulaAddInData *pArgs)
+{
+	for (int x = 0; x < nNumArgs; x++)
+	{
+		pArgs[x].isNull = 0;
+	}
+}
+
 // this sample takes a variable number of numbers and simply sums them together, returning a number
 extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
+	pReturnValue->nVarType = pArgs[0].nVarType;
+	pReturnValue->isNull = 1;
+
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		if (pArgs[x].isNull == 0)
 		{
+			pReturnValue->isNull = 0;
 			if (pArgs[x].nVarType == 1) {
 				pReturnValue->nVarType = 1;
 				pReturnValue->dVal = pArgs[x].dVal;
@@ -26,12 +38,10 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 			else {
 				SetString(pReturnValue, pArgs[x].pVal);
 			}
-
-			return 1;
+			break;
 		}
 	}
 
-	pReturnValue->nVarType = pArgs[0].nVarType;
-	pReturnValue->isNull = 1;
+	ResetIsNull(nNumArgs, pArgs);
 	return 1;
 }

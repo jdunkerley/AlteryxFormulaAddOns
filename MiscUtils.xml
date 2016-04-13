@@ -4,7 +4,7 @@
   <Function>
     <Name>IFNULL</Name>
     <NumParams variable="false">2</NumParams>
-    <Category>String</Category>
+    <Category>Specialized</Category>
     <InsertText>IFNULL(Val1, Val2)</InsertText>
     <Description>Val1 if not null or Val2</Description>
     <Formula>IIF(ISNULL(P1),P2,P1)</Formula>
@@ -12,7 +12,7 @@
   <Function>
     <Name>COALESCE</Name>
     <NumParams variable="true">2</NumParams>
-    <Category>String</Category>
+    <Category>Specialized</Category>
     <InsertText>COALESCE(Val1, Val, ... )</InsertText>
     <Description>First not null value</Description>
     <Dll>
