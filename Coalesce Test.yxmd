@@ -135,73 +135,7 @@ First5=COALESCE(A, B, C, D, E)</DefaultAnnotationText>
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_33316_aa104cdd524543f4a23f41cbc7bee876_\Engine_24788_a7318dd7f7b14b0e91bd9d29879b16eb_.yxdb</TempFile>
-          <Layout>
-            <View1>
-              <Hints>
-                <Table />
-              </Hints>
-            </View1>
-          </Layout>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
-    </Node>
-    <Node ToolID="4">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="54" y="270" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <NumRows value="1" />
-          <Fields>
-            <Field name="Field1" />
-          </Fields>
-          <Data>
-            <r>
-              <c>Hello World James</c>
-            </r>
-          </Data>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
-    </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="150" y="258" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField field="LEft" type="V_WString" size="64" expression="LEftPart([Field1],' World ')" />
-            <FormulaField field="Right" type="V_WString" size="64" expression="RightPart([Field1],' World ')" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>LEft=LEftPart([Field1],' World ')
-Right=RightPart([Field1],' World ')</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
-    <Node ToolID="6">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="246" y="258" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_29836_b37188a7f3584d529ef3b73376cef8f7_\Engine_19548_6d2ed85d0b724a5baed46519353c5539_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>
@@ -227,14 +161,6 @@ Right=RightPart([Field1],' World ')</DefaultAnnotationText>
     <Connection>
       <Origin ToolID="2" Connection="Output" />
       <Destination ToolID="1" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="4" Connection="Output" />
-      <Destination ToolID="5" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="5" Connection="Output" />
-      <Destination ToolID="6" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
