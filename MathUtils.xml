@@ -44,4 +44,39 @@
             P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3)))
     </Formula>
   </Function>
+    <Function>
+    <Name>AVG</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>AVG(Val1, Val, ... )</InsertText>
+    <Description>Average Ignoring Nulls</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>Average</EntryPoint>
+    </Dll>
+  </Function>
+  </Function>
+    <Function>
+    <Name>SUM</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>SUM(Val1, Val, ... )</InsertText>
+    <Description>Sum Ignoring Nulls</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>Sum</EntryPoint>
+    </Dll>
+  </Function>
+  </Function>
+    <Function>
+    <Name>COUNT</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>COUNT(Val1, Val, ... )</InsertText>
+    <Description>Count not null values</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>COUNT</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>

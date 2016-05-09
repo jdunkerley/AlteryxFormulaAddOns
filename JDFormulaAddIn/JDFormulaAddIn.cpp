@@ -46,6 +46,83 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 	return 1;
 }
 
+// this sample takes a variable number of inputs and returns the first non-null
+extern "C" long _declspec(dllexport) _stdcall Count(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 1;
+	pReturnValue->isNull = 0;
+
+	int count = 0;
+	for (int x = 0; x < nNumArgs; x++)
+	{
+		if (pArgs[x].isNull == 0)
+		{
+			count++;
+		}
+	}
+
+	pReturnValue->dVal = count;
+	ResetIsNull(nNumArgs, pArgs);
+	return 1;
+}
+
+// this sample takes a variable number of inputs and returns the first non-null
+extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 1;
+	pReturnValue->isNull = 0;
+
+	double sum = 0;
+	for (int x = 0; x < nNumArgs; x++)
+	{
+		if (pArgs[x].nVarType != 1) {
+			pReturnValue->isNull = 1;
+			return 0;
+		}
+
+		if (pArgs[x].isNull == 0)
+		{
+			sum += pArgs[x].dVal;
+		}
+	}
+
+	pReturnValue->dVal = sum;
+	ResetIsNull(nNumArgs, pArgs);
+	return 1;
+}
+
+// this sample takes a variable number of inputs and returns the first non-null
+extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 1;
+	pReturnValue->isNull = 0;
+
+	double sum = 0;
+	int count = 0;
+	for (int x = 0; x < nNumArgs; x++)
+	{
+		if (pArgs[x].nVarType != 1) {
+			pReturnValue->isNull = 1;
+			return 0;
+		}
+
+		if (pArgs[x].isNull == 0)
+		{
+			sum += pArgs[x].dVal;
+			count++;
+		}
+	}
+
+	if (count == 0) {
+		pReturnValue->isNull = 1;
+	}
+	else {
+		pReturnValue->dVal = sum / count;
+	}
+	ResetIsNull(nNumArgs, pArgs);
+	return 1;
+}
+
 // Need String, String (char), Integer
 extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
