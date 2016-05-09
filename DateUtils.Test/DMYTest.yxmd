@@ -199,7 +199,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Empty</Name>
+              <Name>Date Year</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -209,7 +209,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Empty</DefaultAnnotationText>
+          <DefaultAnnotationText>Date Year</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
