@@ -29,16 +29,18 @@ if '%errorlevel%' NEQ '0' (
     powershell -Command "gci . | Unblock-File"
 
     if "%alteryxPath%" NEQ "" (
-     	xcopy MiscUtils.xml "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
      	xcopy JDFormulaAddIn.dll "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
+     	xcopy MiscUtils.xml "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
      	xcopy StringUtils.xml "%ProgramFiles%\Alteryx\bin\RuntimeData\FormulaAddIn\"
 	    xcopy DateUtils.xml "%alteryxPath%\RuntimeData\FormulaAddIn\"
         xcopy MathUtils.xml "%alteryxPath%\RuntimeData\FormulaAddIn\"
-        xcopy Random.xml "%alteryxPath%\RuntimeData\FormulaAddIn\"
-        
+        rem xcopy Random.xml "%alteryxPath%\RuntimeData\FormulaAddIn\"
+        del %alteryxPath%\RuntimeData\FormulaAddIn\Random.xml"
+
         echo FormulaAddIns installed to %alteryxPath%\RuntimeData\FormulaAddIn\
     ) else (
         echo Please copy "%cd$\*.xml" to <AlteryxInstallDir>\RuntimeData\FormulaAddIn\
+        echo If present please delete Random.xml from that directory (previous version)
     )
 
     popd

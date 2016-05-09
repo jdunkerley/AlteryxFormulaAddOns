@@ -22,7 +22,7 @@
     <Name>DAY</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
-    <InsertText>Day(Date)</InsertText>
+    <InsertText>DAY(Date)</InsertText>
     <Description>Get day of month (1-31) of Date</Description>
     <Formula>ToNumber(DateTimeFormat(P1, "%d"))</Formula>
   </Function>
@@ -51,30 +51,6 @@
     <Formula>IIF(P1>P2,NULL(), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
   </Function>
   <Function>
-    <Name>MAKEDATE</Name>
-    <NumParams variable="false">3</NumParams>
-    <Category>Date</Category>
-    <InsertText>MAKEDATE(Year, Month, Day)</InsertText>
-    <Description>Create a Date</Description>
-    <Formula>TOSTRING(P1, 0) + "-" + RIGHT("00" + TOSTRING(P2, 0), 2) + "-" + RIGHT("00" + TOSTRING(P3, 0), 2)</Formula>
-  </Function>
-  <Function>
-    <Name>WEEKSTART</Name>
-    <NumParams variable="false">1</NumParams>
-    <Category>Date</Category>
-    <InsertText>WEEKSTART(Date)</InsertText>
-    <Description>Move to First day of the week (Sunday)</Description>
-    <Formula>DateTimeAdd(P1, -WEEKDAY(P1), "days")</Formula>
-  </Function>
-  <Function>
-    <Name>WEEKEND</Name>
-    <NumParams variable="false">1</NumParams>
-    <Category>Date</Category>
-    <InsertText>WEEKDAY(Date)</InsertText>
-    <Description>Move to Last day of the week (Saturday)</Description>
-    <Formula>DateTimeAdd(P1, 6 - WEEKDAY(P1), "days")</Formula>
-  </Function>
-  <Function>
     <Name>ISLEAPYEAR</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
@@ -89,6 +65,74 @@
     <InsertText>ORDINALDAY(Date)</InsertText>
     <Description>The position within the year</Description>
     <Formula>ToNumber(DateTimeFormat(P1, "%j"))</Formula>
+  </Function>
+  
+  <Function>
+    <Name>MAKEDATE</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Date</Category>
+    <InsertText>MAKEDATE(Year, Month, Day)</InsertText>
+    <Description>Create a Date</Description>
+    <Formula>TOSTRING(P1, 0) + "-" + RIGHT("00" + TOSTRING(P2, 0), 2) + "-" + RIGHT("00" + TOSTRING(P3, 0), 2)</Formula>
+  </Function>
+  <Function>
+    <Name>MAKETIME</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Time</Category>
+    <InsertText>MAKETIME(Hour, Min, Second)</InsertText>
+    <Description>Create a Date</Description>
+    <Formula>RIGHT("00" + TOSTRING(P1, 0), 2) + ":" + RIGHT("00" + TOSTRING(P2, 0), 2) + ":" + RIGHT("00" + TOSTRING(P3, 0), 2)</Formula>
+  </Function>
+  <Function>
+    <Name>MAKEDATETIME</Name>
+    <NumParams variable="false">6</NumParams>
+    <Category>DateTime</Category>
+    <InsertText>MAKEDATETIME(Year, Month, Day, Hour, Min, Second)</InsertText>
+    <Description>Create a DateTime</Description>
+    <Formula>MAKEDATE(P1,P2,P3) + ' ' + MAKETIME(P4,P5,P6)</Formula>
+  </Function>
+
+  <Function>
+    <Name>TODATE</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>TODATE(DateTime)</InsertText>
+    <Description>Truncates a datetime and returns as a Date</Description>
+    <Formula>IIF(LENGTH(p1) = 10, P1, IIF(LENGTH(P1) = 19, LEFT(p1, 10), NULL())</Formula>
+  </Function>
+  <Function>
+    <Name>TODATETIME</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>TODATETIME(Date)</InsertText>
+    <Description>Appends midnight to a date and returns a datetime</Description>
+    <Formula>IIF(LENGTH(p1) = 19, P1, IIF(LENGTH(P1) = 10, p1 + ' 00:00:00', NULL())</Formula>
+  </Function>
+  
+  <Function>
+    <Name>DATEADD</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Date</Category>
+    <InsertText>DATEADD(dt,i,u)</InsertText>
+    <Description>Add a specific interval to a date/time and returns as a Date.  DateAdd([Date], -3, "days")</Description>
+    <Formula>Left(DateTimeAdd(P1, P2, P3), 10)</Formula>
+  </Function>
+
+  <Function>
+    <Name>WEEKSTART</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>WEEKSTART(Date)</InsertText>
+    <Description>Move to First day of the week (Sunday)</Description>
+    <Formula>Left(DateTimeAdd(P1, -WEEKDAY(P1), "days"), 10)</Formula>
+  </Function>
+  <Function>
+    <Name>WEEKEND</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>WEEKDAY(Date)</InsertText>
+    <Description>Move to Last day of the week (Saturday)</Description>
+    <Formula>Left(DateTimeAdd(P1, 6 - WEEKDAY(P1), "days"), 10)</Formula>
   </Function>
   <Function>
     <Name>MONTHSTART</Name>
@@ -107,22 +151,6 @@
     <Formula>DATETIMEADD(DATETIMEADD(LEFT(P1,8) + "01", 1, "Months"), -1, "Days")</Formula>
   </Function>
   <Function>
-    <Name>YEARSTART</Name>
-    <NumParams variable="false">1</NumParams>
-    <Category>Date</Category>
-    <InsertText>YEARSTART(Date)</InsertText>
-    <Description>Create the first day of the year</Description>
-    <Formula>LEFT(P1,5) + "01-01"</Formula>
-  </Function>
-  <Function>
-    <Name>YEAREND</Name>
-    <NumParams variable="false">1</NumParams>
-    <Category>Date</Category>
-    <InsertText>YEAREND(Date)</InsertText>
-    <Description>Create the last day of the year</Description>
-    <Formula>LEFT(P1,5) + "12-31"</Formula>
-  </Function>
-  <Function>
     <Name>QUARTERSTART</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
@@ -137,5 +165,21 @@
     <InsertText>QUARTEREND(Date)</InsertText>
     <Description>Create the last day of the quarter</Description>
     <Formula>MONTHEND(LEFT(P1,5) + RIGHT("00" + TOSTRING(QUARTER(P1) * 3, 0), 2) + "-01")</Formula>
+  </Function>
+  <Function>
+    <Name>YEARSTART</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>YEARSTART(Date)</InsertText>
+    <Description>Create the first day of the year</Description>
+    <Formula>LEFT(P1,5) + "01-01"</Formula>
+  </Function>
+  <Function>
+    <Name>YEAREND</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>YEAREND(Date)</InsertText>
+    <Description>Create the last day of the year</Description>
+    <Formula>LEFT(P1,5) + "12-31"</Formula>
   </Function>
 </FormulaAddIn>
