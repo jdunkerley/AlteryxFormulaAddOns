@@ -39,7 +39,7 @@ Math based functions that I havent got a better home for!
 
 Some useful date functions. 
 
-** Date Time Creation Functions (Currently Just Concatenation) **
+#### Date Time Creation Functions (Currently Just Concatenation)
 
 - `MakeDate`: Create a new date from Year, Month, Day
 - `MakeTime`: Create a new time from Hour, Minute, Second
@@ -47,7 +47,7 @@ Some useful date functions.
 - `ToDate`: Truncate a `DateTime` to a `Date`
 - `ToDateTime`: Appends midnight to a `Date` to create a `DateTime`
 
-** Date Part Functions (returns numbers) **
+#### Date Part Functions (returns numbers)
 
 - `Day`: Get the day of the Month [1-31]
 - `Month`: Gets the month number [1-12]
@@ -56,7 +56,7 @@ Some useful date functions.
 - `Quarter`: Gets the quarter of the date [1-4]
 - `OrdinalDay`: Gets the day of the year [1-366]
 
-** Period Start and End **
+#### Period Start and End
 
 - `WeekStart`: Get first Sunday before or equal to date
 - `WeekEnd`: Get first Saturday after or equal to date
@@ -67,7 +67,7 @@ Some useful date functions.
 - `YearStart`: Get First Day of Year
 - `YearEnd`: Get Last Day of Year
 
-** Other Date Functions **
+#### Other Date Functions
 
 - `DateAdd`: Equivalent to [DateTimeAdd](http://downloads.alteryx.com/Alteryx8.6.2/WebHelp/Reference/DateTimeFunctions.htm) but returning a Date
 - `BusinessDays`: Number of weekdays between two dates
@@ -81,7 +81,7 @@ String manipulation
 - `RightPart`: Gets the text after the first instance of a separator
 - `Split`: Splits a string into tokens and then returns the specified instance *(C++)*
 
-** Retired Functions **
+#### Retired Functions
 
 *Alteryx has incorporated these into the v10 code base so not needed there.
 If running in older versions un-comment the Xml*
