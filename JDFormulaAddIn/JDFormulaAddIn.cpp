@@ -131,9 +131,15 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	// Check Input Parameters
 	if (nNumArgs != 3 ||
 		pArgs[0].isNull || pArgs[0].nVarType != 2 ||
-		pArgs[1].isNull || pArgs[1].nVarType != 2 ||
+		pArgs[1].nVarType != 2 ||
 		pArgs[2].isNull || pArgs[2].nVarType != 1 || pArgs[2].dVal < 0) {
 		pReturnValue->isNull = 1;
+		ResetIsNull(nNumArgs, pArgs);
+		return 1;
+	}
+
+	if (pArgs[1].isNull || wcslen(pArgs[1].pVal) == 0) {
+		SetString(pReturnValue, pArgs[0].pVal);
 		ResetIsNull(nNumArgs, pArgs);
 		return 1;
 	}

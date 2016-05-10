@@ -19,16 +19,13 @@
 Table=`Sheet1$`</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="Row Count" source="File: C:\Repos\AlteryxFormulaAddOns\HexBinData.xlsx|`Sheet1$`" type="Double" />
-            <Field name="Point X" source="File: C:\Repos\AlteryxFormulaAddOns\HexBinData.xlsx|`Sheet1$`" type="Double" />
-            <Field name="Point Y" source="File: C:\Repos\AlteryxFormulaAddOns\HexBinData.xlsx|`Sheet1$`" type="Double" />
-            <Field name="HexX" source="File: C:\Repos\AlteryxFormulaAddOns\HexBinData.xlsx|`Sheet1$`" type="Double" />
-            <Field name="HexY" source="File: C:\Repos\AlteryxFormulaAddOns\HexBinData.xlsx|`Sheet1$`" type="Double" />
+            <Field name="Row Count" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\HexBinData.xlsx|`Sheet1$`" type="Double" />
+            <Field name="Point X" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\HexBinData.xlsx|`Sheet1$`" type="Double" />
+            <Field name="Point Y" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\HexBinData.xlsx|`Sheet1$`" type="Double" />
+            <Field name="HexX" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\HexBinData.xlsx|`Sheet1$`" type="Double" />
+            <Field name="HexY" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\HexBinData.xlsx|`Sheet1$`" type="Double" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -62,7 +59,7 @@ Abs([HexY]-[HexBinY])>1e-3 ]]></DefaultAnnotationText>
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_23120_53e001a98542404c953048e76c61bea1_\Engine_22064_260b2946201d4c0aa3c3b20481a52400_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9472_1b1528bc88fa4b82bf7816daffe5c5dc_\Engine_9420_d7333028595c4df5b318441adba6a5ff_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>
@@ -85,7 +82,7 @@ Abs([HexY]-[HexBinY])>1e-3 ]]></DefaultAnnotationText>
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_23120_53e001a98542404c953048e76c61bea1_\Engine_22064_d5b5646a9f8f4187ae07b624afc838c0_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9472_1b1528bc88fa4b82bf7816daffe5c5dc_\Engine_9420_a8152a958e2a47ad8e565095722c332c_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>

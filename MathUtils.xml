@@ -44,7 +44,7 @@
             P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3)))
     </Formula>
   </Function>
-    <Function>
+  <Function>
     <Name>AVG</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
@@ -55,8 +55,7 @@
       <EntryPoint>Average</EntryPoint>
     </Dll>
   </Function>
-  </Function>
-    <Function>
+  <Function>
     <Name>SUM</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
@@ -67,8 +66,7 @@
       <EntryPoint>Sum</EntryPoint>
     </Dll>
   </Function>
-  </Function>
-    <Function>
+  <Function>
     <Name>COUNT</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
