@@ -42,7 +42,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateText" selected="True" rename="Date" type="V_WString" size="255" />
-            <SelectField field="Weekday" selected="True" rename="Expected" />
+            <SelectField field="Month" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -61,12 +61,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="weekday([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="month([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=weekday([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=month([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -88,6 +88,31 @@
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Month</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Month</AnnotationText>
+          <DefaultAnnotationText>Year</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
@@ -133,8 +158,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Day" selected="False" rename="Expected" />
-            <SelectField field="Weekday" selected="True" rename="Expected" />
+            <SelectField field="Month" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -153,12 +177,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="weekday([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="month([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=weekday([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=month([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -189,7 +213,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>WeekDay DateTime</Name>
+              <Name>Month DateTime</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -199,31 +223,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>WeekDay DateTime</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
-    </Node>
-    <Node ToolID="11">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="510" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>WeekDay</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>0</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>WeekDay</DefaultAnnotationText>
+          <DefaultAnnotationText>Month DateTime</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -245,7 +245,7 @@
     </Connection>
     <Connection name="#1">
       <Origin ToolID="4" Connection="True" />
-      <Destination ToolID="11" Connection="Input" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="6" Connection="Output" />
@@ -282,7 +282,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>WeekDayTest</Name>
+      <Name>MonthTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

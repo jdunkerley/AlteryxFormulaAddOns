@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="54" />
+        <Position x="66" y="66" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -18,6 +18,9 @@
           <DefaultAnnotationText>DateReference.xlsx</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="DateText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
@@ -35,14 +38,14 @@
     </Node>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="162" y="54" />
+        <Position x="174" y="66" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateText" selected="True" rename="Date" type="V_WString" size="255" />
-            <SelectField field="Weekday" selected="True" rename="Expected" />
+            <SelectField field="Year" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -56,17 +59,17 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="270" y="54" />
+        <Position x="282" y="66" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="weekday([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="year([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=weekday([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=year([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -74,7 +77,7 @@
     </Node>
     <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="390" y="54" />
+        <Position x="402" y="66" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -89,9 +92,33 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
     </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="522" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Year</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Year</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="162" />
+        <Position x="66" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -106,6 +133,9 @@
           <DefaultAnnotationText>DateTimeReference.xlsx</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="DateTimeText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
@@ -126,15 +156,14 @@
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="162" y="162" />
+        <Position x="174" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Day" selected="False" rename="Expected" />
-            <SelectField field="Weekday" selected="True" rename="Expected" />
+            <SelectField field="Year" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -148,17 +177,17 @@
     </Node>
     <Node ToolID="8">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="270" y="162" />
+        <Position x="282" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="weekday([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="year([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=weekday([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=year([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -166,7 +195,7 @@
     </Node>
     <Node ToolID="9">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="390" y="162" />
+        <Position x="402" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -183,13 +212,13 @@
     </Node>
     <Node ToolID="10">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="510" y="162" />
+        <Position x="522" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Tests>
             <Test>
-              <Name>WeekDay DateTime</Name>
+              <Name>Year DateTime</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -199,31 +228,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>WeekDay DateTime</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
-    </Node>
-    <Node ToolID="11">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="510" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>WeekDay</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>0</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>WeekDay</DefaultAnnotationText>
+          <DefaultAnnotationText>Year DateTime</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -245,7 +250,7 @@
     </Connection>
     <Connection name="#1">
       <Origin ToolID="4" Connection="True" />
-      <Destination ToolID="11" Connection="Input" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="6" Connection="Output" />
@@ -282,7 +287,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>WeekDayTest</Name>
+      <Name>YearTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

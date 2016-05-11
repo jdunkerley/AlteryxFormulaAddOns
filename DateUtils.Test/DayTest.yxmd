@@ -42,7 +42,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateText" selected="True" rename="Date" type="V_WString" size="255" />
-            <SelectField field="Weekday" selected="True" rename="Expected" />
+            <SelectField field="Day" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -61,12 +61,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="weekday([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="day([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=weekday([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=day([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -133,8 +133,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Day" selected="False" rename="Expected" />
-            <SelectField field="Weekday" selected="True" rename="Expected" />
+            <SelectField field="Day" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -153,12 +152,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="weekday([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="day([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=weekday([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=day([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -189,7 +188,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>WeekDay DateTime</Name>
+              <Name>Day DateTime</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -199,7 +198,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>WeekDay DateTime</DefaultAnnotationText>
+          <DefaultAnnotationText>Day DateTime</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -213,7 +212,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>WeekDay</Name>
+              <Name>Day</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -223,7 +222,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>WeekDay</DefaultAnnotationText>
+          <DefaultAnnotationText>Day</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -282,7 +281,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>WeekDayTest</Name>
+      <Name>DayTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file along with its dll needs to be installed to ...InstallDir...\RuntimeData\FormulaAddIn to run. -->
-<!-- Is Culture Specific as Uses names opf weekdays -->
 <FormulaAddIn>
   <Function>
     <Name>MODULO</Name>

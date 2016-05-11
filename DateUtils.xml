@@ -43,14 +43,6 @@
     <Formula>FLOOR((MONTH(P1)+2)/3)</Formula>
   </Function>
   <Function>
-    <Name>BUSINESSDAYS</Name>
-    <NumParams variable="false">2</NumParams>
-    <Category>Date</Category>
-    <InsertText>BUSINESSDAYS(StartDate, EndDate)</InsertText>
-    <Description>Number of business days (M-F) between two dates.</Description>
-    <Formula>IIF(P1>P2,NULL(), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
-  </Function>
-  <Function>
     <Name>ISLEAPYEAR</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
@@ -118,6 +110,15 @@
     <Formula>Left(DateTimeAdd(P1, P2, P3), 10)</Formula>
   </Function>
 
+  <Function>
+    <Name>BUSINESSDAYS</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Date</Category>
+    <InsertText>BUSINESSDAYS(StartDate, EndDate)</InsertText>
+    <Description>Number of business days (M-F) between two dates.</Description>
+    <Formula>IIF(P1>P2,NULL(), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
+  </Function>
+  
   <Function>
     <Name>WEEKSTART</Name>
     <NumParams variable="false">1</NumParams>
