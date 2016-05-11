@@ -36,12 +36,13 @@
     <Name>RAND_TRIANGULAR</Name>
     <NumParams variable="false">4</NumParams>
     <Category>Math</Category>
-    <InsertText>RAND_TRIANGULAR(UniformRand, Min, Mode, Max)</InsertText>
+    <InsertText>RAND_TRIANGULAR(Prob, Min, Mode, Max)</InsertText>
     <Description>Get A Triangular Distributed Random Number</Description>
     <Formula>
+        IIF(P1 &lt; 0 OR P1 &gt; 1, NULL(),
         IIF(P1 &lt;= ((P3 - P2) / (P4 - P2)), 
             P2 + SQRT(P1 * (P4 - P2) * (P3 - P2)), 
-            P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3)))
+            P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3))))
     </Formula>
   </Function>
   <Function>
