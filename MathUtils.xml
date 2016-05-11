@@ -8,7 +8,7 @@
     <Category>Math</Category>
     <InsertText>MODULO(Dividend, Divisor)</InsertText>
     <Description>Get Remainder of Division</Description>
-    <Formula>(P1/P2 - FLOOR(P1/P2)) * P2</Formula>
+    <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),(P1/P2 - FLOOR(P1/P2)) * P2)</Formula>
   </Function>
   <Function>
     <Name>HEXBINX</Name>
@@ -74,7 +74,7 @@
     <Description>Count not null values</Description>
     <Dll>
       <Name>JDFormulaAddIn.dll</Name>
-      <EntryPoint>COUNT</EntryPoint>
+      <EntryPoint>Count</EntryPoint>
     </Dll>
   </Function>
 </FormulaAddIn>

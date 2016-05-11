@@ -53,55 +53,9 @@ Abs([HexY]-[HexBinY])>1e-3 ]]></DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
     </Node>
-    <Node ToolID="4">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="486" y="114" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9472_1b1528bc88fa4b82bf7816daffe5c5dc_\Engine_9420_d7333028595c4df5b318441adba6a5ff_.yxdb</TempFile>
-          <Layout>
-            <View1>
-              <Hints>
-                <Table />
-              </Hints>
-            </View1>
-          </Layout>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
-    </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="486" y="186" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9472_1b1528bc88fa4b82bf7816daffe5c5dc_\Engine_9420_a8152a958e2a47ad8e565095722c332c_.yxdb</TempFile>
-          <Layout>
-            <View1>
-              <Hints>
-                <Table />
-              </Hints>
-            </View1>
-          </Layout>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
-    </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="486" y="54" />
+        <Position x="474" y="126" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -149,14 +103,6 @@ HexBinY=HEXBINY([Point X], [Point Y], 1)</DefaultAnnotationText>
       <Origin ToolID="2" Connection="Output" />
       <Destination ToolID="7" Connection="Input" />
     </Connection>
-    <Connection>
-      <Origin ToolID="3" Connection="True" />
-      <Destination ToolID="4" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="3" Connection="False" />
-      <Destination ToolID="5" Connection="Input" />
-    </Connection>
     <Connection name="#1">
       <Origin ToolID="3" Connection="True" />
       <Destination ToolID="6" Connection="Input" />
@@ -184,7 +130,7 @@ HexBinY=HEXBINY([Point X], [Point Y], 1)</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>HexBin</Name>
+      <Name>HexBinTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

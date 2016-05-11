@@ -337,7 +337,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>LeftPart</Name>
+      <Name>LeftPartTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
