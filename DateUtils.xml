@@ -31,7 +31,7 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>WEEKDAY(Date)</InsertText>
-    <Description>Convert a date to day of week (0 Sundaty - 6 Saturday)</Description>
+    <Description>Convert a date to day of week (0 Sunday - 6 Saturday)</Description>
     <Formula>Switch(DateTimeFormat(P1,"%a"),NULL(),"Sun",0,"Mon",1,"Tue",2,"Wed",3,"Thu",4,"Fri",5,"Sat",6)</Formula>
   </Function>
   <Function>
@@ -125,7 +125,7 @@
     <Category>Date</Category>
     <InsertText>WEEKSTART(Date)</InsertText>
     <Description>Move to First day of the week (Sunday)</Description>
-    <Formula>Left(DateTimeAdd(P1, -WEEKDAY(P1), "days"), 10)</Formula>
+    <Formula>DateAdd(P1, 0 - WEEKDAY(P1), "days")</Formula>
   </Function>
   <Function>
     <Name>WEEKEND</Name>
@@ -133,7 +133,7 @@
     <Category>Date</Category>
     <InsertText>WEEKDAY(Date)</InsertText>
     <Description>Move to Last day of the week (Saturday)</Description>
-    <Formula>Left(DateTimeAdd(P1, 6 - WEEKDAY(P1), "days"), 10)</Formula>
+    <Formula>DateAdd(P1, 6 - WEEKDAY(P1), "days")</Formula>
   </Function>
   <Function>
     <Name>MONTHSTART</Name>
@@ -149,7 +149,7 @@
     <Category>Date</Category>
     <InsertText>MONTHEND(Date)</InsertText>
     <Description>Create the last day of the month</Description>
-    <Formula>DATETIMEADD(DATETIMEADD(LEFT(P1,8) + "01", 1, "Months"), -1, "Days")</Formula>
+    <Formula>DATEADD(DATEADD(LEFT(P1,8) + "01", 1, "Months"), -1, "Days")</Formula>
   </Function>
   <Function>
     <Name>QUARTERSTART</Name>

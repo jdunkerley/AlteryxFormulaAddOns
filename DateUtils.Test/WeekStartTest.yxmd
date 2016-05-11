@@ -1,0 +1,420 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="10.5">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\DateReference.xlsx</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DateReference.xlsx</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="DateText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="Year" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="Month" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="Day" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="Weekday" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="Quarter" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="IsLeapYear" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Bool" />
+            <Field name="OrdinalDay" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="WeekStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="WeekEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="MonthStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="MonthEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="QuarterStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="QuarterEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="YearStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+            <Field name="YearEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="162" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <SelectFields>
+            <SelectField field="DateText" selected="True" rename="Date" type="Date" size="10" />
+            <SelectField field="Year" selected="False" type="Int64" size="8" />
+            <SelectField field="WeekStart" selected="True" rename="Expected" type="Date" size="10" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField field="Actual" type="Date" size="10" expression="weekstart([Date])" />
+            <FormulaField field="Actual Text" type="V_WString" size="64" expression="weekstart([Date])" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual=weekstart([Date])
+Actual Text=weekstart([Date])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="390" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Actual] != [Expected]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Actual] != [Expected]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>WeekStart</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>WeekStart</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\DateTimeReference.xlsx</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DateTimeReference.xlsx</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="DateTimeText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="Year" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Month" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Day" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Weekday" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Quarter" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="IsLeapYear" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Bool" />
+            <Field name="OrdinalDay" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Hour" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Minute" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="Second" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
+            <Field name="WeekStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="WeekEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="MonthStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="MonthEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="QuarterStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="QuarterEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="YearStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+            <Field name="YearEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="162" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <SelectFields>
+            <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
+            <SelectField field="Year" selected="False" type="Int64" size="8" />
+            <SelectField field="WeekStart" selected="True" rename="Expected" type="Date" size="10" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="390" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Actual Text] != [Expected]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Actual Text] != [Expected]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>WeekStart Text</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>WeekStart Text</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField field="Actual" type="Date" size="10" expression="weekstart([Date])" />
+            <FormulaField field="Actual Text" type="V_WString" size="64" expression="weekstart([Date])" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual=weekstart([Date])
+Actual Text=weekstart([Date])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="390" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Actual] != [Expected]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Actual] != [Expected]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>WeekStart DateTime</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>WeekStart DateTime</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="390" y="342" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Actual Text] != [Expected]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Actual Text] != [Expected]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="342" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>WeekStart DateTime Text</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>WeekStart DateTime Text</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="11" Connection="True" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="14" Connection="True" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="16" Connection="True" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>WeekStartTest</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
