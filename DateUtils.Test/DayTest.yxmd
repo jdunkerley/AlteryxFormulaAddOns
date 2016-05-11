@@ -41,8 +41,8 @@
         <Configuration>
           <OrderChanged value="False" />
           <SelectFields>
-            <SelectField field="DateText" selected="True" rename="Date" type="V_WString" size="255" />
-            <SelectField field="Day" selected="True" rename="Expected" />
+            <SelectField field="DateText" selected="True" rename="Date" type="Date" size="10" />
+            <SelectField field="Day" selected="True" rename="Expected" type="Int64" size="8" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -133,7 +133,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Day" selected="True" rename="Expected" />
+            <SelectField field="Day" selected="True" rename="Expected" type="Int64" size="8" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>

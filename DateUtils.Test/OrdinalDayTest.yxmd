@@ -42,7 +42,8 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateText" selected="True" rename="Date" type="Date" size="10" />
-            <SelectField field="Quarter" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="Day" selected="False" rename="Expected" />
+            <SelectField field="OrdinalDay" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -61,12 +62,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="quarter([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="ordinalday([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=quarter([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=ordinalday([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -133,7 +134,8 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Quarter" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="Day" selected="False" rename="Expected" />
+            <SelectField field="OrdinalDay" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -152,12 +154,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="quarter([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="ordinalday([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=quarter([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=ordinalday([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -188,7 +190,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Quarter DateTime</Name>
+              <Name>OrdinalDay DateTime</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -198,7 +200,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Quarter DateTime</DefaultAnnotationText>
+          <DefaultAnnotationText>OrdinalDay DateTime</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -212,7 +214,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Quarter</Name>
+              <Name>OrdinalDay</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -222,7 +224,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Quarter</DefaultAnnotationText>
+          <DefaultAnnotationText>OrdinalDay</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -281,7 +283,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>QuarterTest</Name>
+      <Name>OrdinalDayTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

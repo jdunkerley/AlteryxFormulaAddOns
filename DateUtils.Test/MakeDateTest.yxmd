@@ -41,8 +41,10 @@
         <Configuration>
           <OrderChanged value="False" />
           <SelectFields>
-            <SelectField field="DateText" selected="True" rename="Date" type="Date" size="10" />
-            <SelectField field="Quarter" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="DateText" selected="True" rename="Expected" type="Date" size="10" />
+            <SelectField field="Year" selected="True" type="Int64" size="8" />
+            <SelectField field="Month" selected="True" type="Int64" size="8" />
+            <SelectField field="Day" selected="True" type="Int64" size="8" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -61,12 +63,14 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="quarter([Date])" />
+            <FormulaField field="Actual" type="Date" size="10" expression="makedate([year],[month],[day])" />
+            <FormulaField field="ActualText" type="V_WString" size="64" expression="makedate([year],[month],[day])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=quarter([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=makedate([year],[month],[day])
+ActualText=makedate([year],[month],[day])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -89,122 +93,7 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
     </Node>
-    <Node ToolID="6">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="162" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Passwords />
-          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\DateTimeReference.xlsx</File>
-          <FormatSpecificOptions>
-            <FirstRowData>False</FirstRowData>
-          </FormatSpecificOptions>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>DateTimeReference.xlsx</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="DateTimeText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
-            <Field name="Year" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Month" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Day" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Weekday" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Quarter" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="IsLeapYear" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Bool" />
-            <Field name="OrdinalDay" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Hour" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Minute" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-            <Field name="Second" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="Double" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
-    </Node>
-    <Node ToolID="7">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="162" y="162" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OrderChanged value="False" />
-          <SelectFields>
-            <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Quarter" selected="True" rename="Expected" type="Int64" size="8" />
-            <SelectField field="*Unknown" selected="False" />
-          </SelectFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
-    </Node>
-    <Node ToolID="8">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="270" y="162" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="quarter([Date])" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Actual=quarter([Date])</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
-    <Node ToolID="9">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="390" y="162" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression>[Actual] != [Expected]</Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>[Actual] != [Expected]</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="10">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="510" y="162" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>Quarter DateTime</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>0</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Quarter DateTime</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
-    </Node>
-    <Node ToolID="11">
+    <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
         <Position x="510" y="54" />
       </GuiSettings>
@@ -212,7 +101,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Quarter</Name>
+              <Name>MakeDate</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -222,7 +111,48 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Quarter</DefaultAnnotationText>
+          <DefaultAnnotationText>MakeDate</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="390" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[ActualText] != [Expected]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[ActualText] != [Expected]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>MakeDate Text</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>MakeDate Text</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -242,25 +172,17 @@
       <Origin ToolID="3" Connection="Output" />
       <Destination ToolID="4" Connection="Input" />
     </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
     <Connection name="#1">
       <Origin ToolID="4" Connection="True" />
-      <Destination ToolID="11" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="6" Connection="Output" />
-      <Destination ToolID="7" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="7" Connection="Output" />
-      <Destination ToolID="8" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="8" Connection="Output" />
-      <Destination ToolID="9" Connection="Input" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection name="#1">
-      <Origin ToolID="9" Connection="True" />
-      <Destination ToolID="10" Connection="Input" />
+      <Origin ToolID="6" Connection="True" />
+      <Destination ToolID="7" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
@@ -281,7 +203,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>QuarterTest</Name>
+      <Name>MakeDateTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

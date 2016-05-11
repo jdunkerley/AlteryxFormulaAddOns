@@ -48,7 +48,7 @@
     <Category>Date</Category>
     <InsertText>ISLEAPYEAR(Year)</InsertText>
     <Description>Is a year a leap year</Description>
-    <Formula>(P1 % 4 == 0) AND (P1 % 100 != 0 OR P1 % 400 == 0)</Formula>
+    <Formula>(MOD(P1, 4) == 0) AND (MOD(P1, 100) != 0 OR MOD(P1, 400) == 0)</Formula>
   </Function>
   <Function>
     <Name>ORDINALDAY</Name>
