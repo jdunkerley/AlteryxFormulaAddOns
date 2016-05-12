@@ -90,7 +90,7 @@
     <Category>Date</Category>
     <InsertText>TODATE(DateTime)</InsertText>
     <Description>Truncates a datetime and returns as a Date</Description>
-    <Formula>IIF(LENGTH(p1) = 10, P1, IIF(LENGTH(P1) = 19, LEFT(p1, 10), NULL())</Formula>
+    <Formula>IIF(LENGTH(P1) = 10, P1, IIF(LENGTH(P1) = 19, LEFT(P1, 10), NULL()))</Formula>
   </Function>
   <Function>
     <Name>TODATETIME</Name>
@@ -98,7 +98,7 @@
     <Category>Date</Category>
     <InsertText>TODATETIME(Date)</InsertText>
     <Description>Appends midnight to a date and returns a datetime</Description>
-    <Formula>IIF(LENGTH(p1) = 19, P1, IIF(LENGTH(P1) = 10, p1 + ' 00:00:00', NULL())</Formula>
+    <Formula>IIF(LENGTH(P1) = 19, P1, IIF(LENGTH(P1) = 10, P1 + ' 00:00:00', NULL()))</Formula>
   </Function>
   
   <Function>
