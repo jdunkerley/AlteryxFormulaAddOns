@@ -42,7 +42,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateText" selected="True" rename="Date" type="Date" size="10" />
-            <SelectField field="Quarter" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="Year" selected="True" rename="Expected" type="Int64" size="8" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -61,12 +61,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="quarter([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="year([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=quarter([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=year([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -88,6 +88,30 @@
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Year</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Year</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
@@ -133,7 +157,7 @@
           <OrderChanged value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Quarter" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="Year" selected="True" rename="Expected" type="Int64" size="8" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -152,12 +176,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Int32" size="4" expression="quarter([Date])" />
+            <FormulaField field="Actual" type="Int32" size="4" expression="year([Date])" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=quarter([Date])</DefaultAnnotationText>
+          <DefaultAnnotationText>Actual=year([Date])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -188,7 +212,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Quarter DateTime</Name>
+              <Name>Year DateTime</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -198,31 +222,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Quarter DateTime</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
-    </Node>
-    <Node ToolID="11">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="510" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>Quarter</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>0</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Quarter</DefaultAnnotationText>
+          <DefaultAnnotationText>Year DateTime</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -244,7 +244,7 @@
     </Connection>
     <Connection name="#1">
       <Origin ToolID="4" Connection="True" />
-      <Destination ToolID="11" Connection="Input" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="6" Connection="Output" />
@@ -281,7 +281,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>QuarterTest</Name>
+      <Name>YearTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

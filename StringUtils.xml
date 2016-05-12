@@ -41,7 +41,7 @@
     <Category>String</Category>
     <InsertText>RIGHTPART(String, Separator)</InsertText>
     <Description>Get The Rest Of The String After First Separator</Description>
-    <Formula>IIF(FINDSTRING(P1,P2) == -1, NULL(), SUBSTRING(P1, FINDSTRING(P1,P2) + LENGTH(P2)))</Formula>
+    <Formula>IIF(FINDSTRING(P1,P2) == -1, P1, SUBSTRING(P1, FINDSTRING(P1,P2) + LENGTH(P2)))</Formula>
   </Function>
   <Function>
     <Name>SPLIT</Name>

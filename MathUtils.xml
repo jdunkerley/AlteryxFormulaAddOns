@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file along with its dll needs to be installed to ...InstallDir...\RuntimeData\FormulaAddIn to run. -->
-<!-- Is Culture Specific as Uses names opf weekdays -->
 <FormulaAddIn>
   <Function>
     <Name>MODULO</Name>
@@ -8,7 +7,7 @@
     <Category>Math</Category>
     <InsertText>MODULO(Dividend, Divisor)</InsertText>
     <Description>Get Remainder of Division</Description>
-    <Formula>(P1/P2 - FLOOR(P1/P2)) * P2</Formula>
+    <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),(P1/P2 - FLOOR(P1/P2)) * P2)</Formula>
   </Function>
   <Function>
     <Name>HEXBINX</Name>
@@ -36,15 +35,16 @@
     <Name>RAND_TRIANGULAR</Name>
     <NumParams variable="false">4</NumParams>
     <Category>Math</Category>
-    <InsertText>RAND_TRIANGULAR(UniformRand, Min, Mode, Max)</InsertText>
+    <InsertText>RAND_TRIANGULAR(Prob, Min, Mode, Max)</InsertText>
     <Description>Get A Triangular Distributed Random Number</Description>
     <Formula>
+        IIF(P1 &lt; 0 OR P1 &gt; 1, NULL(),
         IIF(P1 &lt;= ((P3 - P2) / (P4 - P2)), 
             P2 + SQRT(P1 * (P4 - P2) * (P3 - P2)), 
-            P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3)))
+            P4 - SQRT((1 - P1) * (P4 - P2) * (P4 - P3))))
     </Formula>
   </Function>
-    <Function>
+  <Function>
     <Name>AVG</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
@@ -55,8 +55,7 @@
       <EntryPoint>Average</EntryPoint>
     </Dll>
   </Function>
-  </Function>
-    <Function>
+  <Function>
     <Name>SUM</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
@@ -67,8 +66,7 @@
       <EntryPoint>Sum</EntryPoint>
     </Dll>
   </Function>
-  </Function>
-    <Function>
+  <Function>
     <Name>COUNT</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
@@ -76,7 +74,7 @@
     <Description>Count not null values</Description>
     <Dll>
       <Name>JDFormulaAddIn.dll</Name>
-      <EntryPoint>COUNT</EntryPoint>
+      <EntryPoint>Count</EntryPoint>
     </Dll>
   </Function>
 </FormulaAddIn>

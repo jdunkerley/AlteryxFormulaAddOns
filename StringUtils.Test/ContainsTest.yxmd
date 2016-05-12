@@ -16,7 +16,7 @@
               <c>Hello World</c>
             </r>
             <r>
-              <c>Goodbye Cruel World</c>
+              <c>Goodbye Everyone</c>
             </r>
           </Data>
         </Configuration>
@@ -34,12 +34,12 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Expression>STARTSWITH([Field1], "Hello")</Expression>
+          <Expression>CONTAINS([Field1], "World")</Expression>
           <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>STARTSWITH([Field1], "Hello")</DefaultAnnotationText>
+          <DefaultAnnotationText>CONTAINS([Field1], "World")</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -53,7 +53,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>StartsWith Matches 1 Row</Name>
+              <Name>Contains Matches 1 Row</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>1</Value>
@@ -63,7 +63,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>StartsWith Matches 1 Row</DefaultAnnotationText>
+          <DefaultAnnotationText>Contains Matches 1 Row</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -77,7 +77,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>StartsWith Does Not Match 1 Row</Name>
+              <Name>Contains Does Not Match 1 Row</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>1</Value>
@@ -87,7 +87,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>StartsWith Does Not Match 1 Row</DefaultAnnotationText>
+          <DefaultAnnotationText>Contains Does Not Match 1 Row</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -126,7 +126,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>StartsWithTest</Name>
+      <Name>ContainsTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

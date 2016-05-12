@@ -3,20 +3,83 @@
   <Nodes>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="54" y="90" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <NumRows value="2" />
+          <NumRows value="11" />
           <Fields>
-            <Field name="Field1" />
+            <Field name="FIeld1" />
+            <Field name="Word" />
+            <Field name="Expected" />
+            <Field name="Char" />
           </Fields>
           <Data>
             <r>
-              <c>Hello World</c>
+              <c />
+              <c>1</c>
+              <c />
+              <c><![CDATA[ ]]></c>
             </r>
             <r>
-              <c>Goodbye Cruel World</c>
+              <c>Hello</c>
+              <c>1</c>
+              <c>Hello</c>
+              <c><![CDATA[ ]]></c>
+            </r>
+            <r>
+              <c>Hello World</c>
+              <c>1</c>
+              <c>Hello</c>
+              <c><![CDATA[ ]]></c>
+            </r>
+            <r>
+              <c>Another Hello World</c>
+              <c>1</c>
+              <c>Another</c>
+              <c><![CDATA[ ]]></c>
+            </r>
+            <r>
+              <c>Hello</c>
+              <c>2</c>
+              <c />
+              <c><![CDATA[ ]]></c>
+            </r>
+            <r>
+              <c>Hello World</c>
+              <c>2</c>
+              <c>World</c>
+              <c><![CDATA[ ]]></c>
+            </r>
+            <r>
+              <c>Alpha,Beta</c>
+              <c>1</c>
+              <c>Alpha</c>
+              <c>,</c>
+            </r>
+            <r>
+              <c>Two,Different|Delimeters</c>
+              <c>1</c>
+              <c>Two</c>
+              <c>,|</c>
+            </r>
+            <r>
+              <c>Two,Different|Delimeters</c>
+              <c>2</c>
+              <c>Different</c>
+              <c>,|</c>
+            </r>
+            <r>
+              <c>Two,Different|Delimeters</c>
+              <c>3</c>
+              <c>Delimeters</c>
+              <c>,|</c>
+            </r>
+            <r>
+              <c>Hello World</c>
+              <c>1</c>
+              <c>Hello World</c>
+              <c />
             </r>
           </Data>
         </Configuration>
@@ -29,17 +92,35 @@
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
     </Node>
     <Node ToolID="3">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="162" y="90" />
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="174" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Expression>STARTSWITH([Field1], "Hello")</Expression>
+          <FormulaFields>
+            <FormulaField field="Split" type="V_WString" size="64" expression="Split([Field1],[Char], [Word])" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Split=Split([Field1],[Char], [Word])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="294" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Split] != [Expected]</Expression>
           <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>STARTSWITH([Field1], "Hello")</DefaultAnnotationText>
+          <DefaultAnnotationText>[Split] != [Expected]</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -47,47 +128,23 @@
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="306" y="54" />
+        <Position x="402" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Tests>
             <Test>
-              <Name>StartsWith Matches 1 Row</Name>
+              <Name>Split</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
-              <Value>1</Value>
+              <Value>0</Value>
             </Test>
           </Tests>
           <DontReportSubsequent value="True" />
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>StartsWith Matches 1 Row</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
-    </Node>
-    <Node ToolID="8">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="306" y="150" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>StartsWith Does Not Match 1 Row</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>1</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>StartsWith Does Not Match 1 Row</DefaultAnnotationText>
+          <DefaultAnnotationText>Split</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -99,13 +156,13 @@
       <Origin ToolID="2" Connection="Output" />
       <Destination ToolID="3" Connection="Input" />
     </Connection>
-    <Connection name="#1">
-      <Origin ToolID="3" Connection="True" />
-      <Destination ToolID="6" Connection="Input" />
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection name="#1">
-      <Origin ToolID="3" Connection="False" />
-      <Destination ToolID="8" Connection="Input" />
+      <Origin ToolID="5" Connection="True" />
+      <Destination ToolID="6" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
@@ -126,7 +183,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>StartsWithTest</Name>
+      <Name>SplitTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
