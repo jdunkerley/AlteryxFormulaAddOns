@@ -16,12 +16,12 @@ You will need to copy all the `XML` and `DLL` files.
 
 ## Current functions
 
-### MiscUtils
+### [MiscUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29)
 
 General functions
 
-- `IfNull`: If first value is null return second
-- `Coalesce`: Given list of values return first non null value *(C++)*
+- [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29#ifnull): If first value is null return second
+- [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29#coalesce): Given list of values return first non null value *(C++)*
 
 ### MathUtils
 
@@ -73,22 +73,22 @@ Some useful date functions.
 - `BusinessDays`: Number of weekdays between two dates
 - `IsLeapYear`: Is a year a leap year *(takes a year not a date as an input use `IsLearYear(Year([Date])`)*
 
-### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils)
+### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29)
 
 String manipulation
 
-- [LeftPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#leftpart): Gets the text before the first instance of a separator
-- [RightPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#rightpart): Gets the text after the first instance of a separator
-- [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#split): Splits a string into tokens and then returns the specified instance *(C++)*
+- [LeftPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29#leftpart): Gets the text before the first instance of a separator
+- [RightPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29#rightpart): Gets the text after the first instance of a separator
+- [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29#split): Splits a string into tokens and then returns the specified instance *(C++)*
 
 #### Retired Functions
 
 *Alteryx has incorporated these into the v10 code base so not needed there.
 If running in older versions un-comment the Xml*
 
-- [StartsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#startswith): Does a string start with another
-- [EndsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#endswith): Does a string end with another
-- [Contains](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#contains): Is a string in another
+- [StartsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29#startswith): Does a string start with another
+- [EndsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29#endswith): Does a string end with another
+- [Contains](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29#contains): Is a string in another
 
 ## Testing
 
