@@ -73,22 +73,22 @@ Some useful date functions.
 - `BusinessDays`: Number of weekdays between two dates
 - `IsLeapYear`: Is a year a leap year *(takes a year not a date as an input use `IsLearYear(Year([Date])`)*
 
-### StringUtils
+### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils)
 
 String manipulation
 
-- `LeftPart`: Gets the text before the first instance of a separator
-- `RightPart`: Gets the text after the first instance of a separator
-- `Split`: Splits a string into tokens and then returns the specified instance *(C++)*
+- [LeftPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#leftpart): Gets the text before the first instance of a separator
+- [RightPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#rightpart): Gets the text after the first instance of a separator
+- [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#split): Splits a string into tokens and then returns the specified instance *(C++)*
 
 #### Retired Functions
 
 *Alteryx has incorporated these into the v10 code base so not needed there.
 If running in older versions un-comment the Xml*
 
-- `StartsWith`: Does a string start with another
-- `EndsWith`: Does a string end with another
-- `Contains`: Is a string in another
+- [StartsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#startswith): Does a string start with another
+- [EndsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#endswith): Does a string end with another
+- [Contains](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/StringUtils#contains): Is a string in another
 
 ## Testing
 
