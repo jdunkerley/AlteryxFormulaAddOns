@@ -38,7 +38,7 @@ if '%errorlevel%' NEQ '0' (
 
         echo FormulaAddIns installed to %alteryxPath%\RuntimeData\FormulaAddIn\
     ) else (
-        echo Please copy "%cd$\*.xml" to <AlteryxInstallDir>\RuntimeData\FormulaAddIn\
+        echo Please copy "%~dp0*.xml" to $AlteryxInstallDir$\RuntimeData\FormulaAddIn\
         echo If present please delete Random.xml from that directory (previous version)
     )
 
