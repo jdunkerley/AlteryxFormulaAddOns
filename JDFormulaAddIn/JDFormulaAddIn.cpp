@@ -1,9 +1,9 @@
 ﻿// AlteryxAddIn.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
 #include "JDFormulaAddIn.h"
+#include <boost\math\distributions\normal.hpp>
 
-//#include <boost/math/distributions/normal.hpp>
-//using boost::math::normal;
+using boost::math::normal;
 
 void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString)
 {
@@ -291,36 +291,19 @@ extern "C" long _declspec(dllexport) _stdcall HexBinY(int nNumArgs, FormulaAddIn
 
 	return 1;
 }
-//
-//extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
-//{
-//	int returnCode = 1;
-//	pReturnValue->nVarType = 1;
-//
-//	normal s;
-//	if (nNumArgs == 1 && pArgs[0].nVarType == 1) {
-//		if (pArgs[0].isNull) {
-//			pReturnValue->isNull = 1;
-//		}
-//		else {
-//			pReturnValue->isNull = 0;
-//			pReturnValue->dVal = pdf(s, pArgs[0].dVal);
-//		}
-//	}
-//	else if (nNumArgs == 3) {
-//		if (pArgs[0].isNull || pArgs[1].isNull || pArgs[2].isNull || pArgs[2].dVal == 0) {
-//			pReturnValue->isNull = 1;
-//		}
-//		else {
-//			pReturnValue->isNull = 0;
-//			pReturnValue->dVal = pdf(s, (pArgs[0].dVal - pArgs[1].dVal) / pArgs[2].dVal);
-//		}
-//	}
-//	else {
-//		// Invalid Input
-//		returnCode = 0;
-//	}
-//
-//	ResetIsNull(nNumArgs, pArgs);
-//	return returnCode;
-//}
+
+extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 1;
+
+	if (nNumArgs < 1 || pArgs[0].nVarType != 1) {
+		const wchar_t* errorMessage = L"NormDist: Needs Numeric First Argument x.";
+		SetString(pReturnValue, errorMessage);
+		pReturnValue->isNull = 1;
+		return 0;
+	}
+
+	normal s;
+	pReturnValue->dVal = pdf(s, pArgs[0].dVal);
+	return 1;
+}
