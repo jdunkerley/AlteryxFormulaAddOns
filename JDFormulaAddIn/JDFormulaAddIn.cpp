@@ -1,5 +1,4 @@
 ﻿// AlteryxAddIn.cpp : Defines the exported functions for the DLL application.
-//
 #include "stdafx.h"
 #include "JDFormulaAddIn.h"
 
@@ -28,11 +27,18 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 
 	for (int x = 0; x < nNumArgs; x++)
 	{
+		if (pArgs[x].nVarType != pArgs[0].nVarType) {
+
+			const wchar_t* errorMessage = L"Mismatched argument types, all must be same general type as first parameter.";
+			SetString(pReturnValue, errorMessage);
+			ResetIsNull(nNumArgs, pArgs);
+			return 0;
+		}
+
 		if (pArgs[x].isNull == 0)
 		{
 			pReturnValue->isNull = 0;
-			if (pArgs[x].nVarType == 1) {
-				pReturnValue->nVarType = 1;
+			if (pArgs[0].nVarType == 1) {
 				pReturnValue->dVal = pArgs[x].dVal;
 			}
 			else {
@@ -76,6 +82,8 @@ extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		if (pArgs[x].nVarType != 1) {
+			const wchar_t* errorMessage = L"Non-numeric argument, all must be numbers.";
+			SetString(pReturnValue, errorMessage);
 			pReturnValue->isNull = 1;
 			return 0;
 		}
@@ -102,6 +110,8 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		if (pArgs[x].nVarType != 1) {
+			const wchar_t* errorMessage = L"Non-numeric argument, all must be numbers.";
+			SetString(pReturnValue, errorMessage);
 			pReturnValue->isNull = 1;
 			return 0;
 		}
@@ -119,6 +129,7 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 	else {
 		pReturnValue->dVal = sum / count;
 	}
+
 	ResetIsNull(nNumArgs, pArgs);
 	return 1;
 }
@@ -130,15 +141,17 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 
 	// Check Input Parameters
 	if (nNumArgs != 3 ||
-		pArgs[0].isNull || pArgs[0].nVarType != 2 ||
+		pArgs[0].nVarType != 2 ||
 		pArgs[1].nVarType != 2 ||
-		pArgs[2].isNull || pArgs[2].nVarType != 1 || pArgs[2].dVal < 0) {
+		pArgs[2].nVarType != 1) {
+		const wchar_t* errorMessage = L"Syntax: Syntax, Delimiter, Token Number.";
+		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 1;
+		return 0;
 	}
 
-	if (pArgs[1].isNull || wcslen(pArgs[1].pVal) == 0) {
+	// Check for Nulls
+	if (pArgs[0].isNull || pArgs[2].isNull || pArgs[2].dVal < 0 || pArgs[1].isNull || wcslen(pArgs[1].pVal) == 0) {
 		SetString(pReturnValue, pArgs[0].pVal);
 		ResetIsNull(nNumArgs, pArgs);
 		return 1;
