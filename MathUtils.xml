@@ -98,10 +98,21 @@
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
     <InsertText>NORMDIST(X, Mean, StDev, Cuml)</InsertText>
-    <Description>Normal Distribution PDF Value</Description>
+    <Description>Normal Distribution PDF or CDF Value</Description>
     <Dll>
       <Name>JDFormulaAddIn.dll</Name>
       <EntryPoint>NormDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>NORMINV</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>NORMINV(X, Mean, StDev)</InsertText>
+    <Description>Normal Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>NormInv</EntryPoint>
     </Dll>
   </Function>
 </FormulaAddIn>

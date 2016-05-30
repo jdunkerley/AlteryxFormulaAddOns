@@ -329,83 +329,20 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
     </Node>
-    <Node ToolID="2">
+    <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
         <Position x="162" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Norm" type="Double" size="8" expression="normdist(X)" />
+            <FormulaField field="XVal" type="Double" size="8" expression="norminv(CDF,NULL(),NULL())" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <AnnotationText>Standard PDF</AnnotationText>
-          <DefaultAnnotationText>Norm=normdist(X)</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
-    <Node ToolID="4">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="282" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression><![CDATA[Abs([Norm]-[PDF])>1e-3 
-]]></Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <AnnotationText>Verify versus Excel Ref Set</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Abs([Norm]-[PDF])>1e-3 
-]]></DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="426" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>No Rows</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>0</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>No Rows</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
-    </Node>
-    <Node ToolID="6">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="162" y="162" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField field="Norm" type="Double" size="8" expression="normdist(X,NULL(),NULL(),1)" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <AnnotationText>Standard CDF</AnnotationText>
-          <DefaultAnnotationText>Norm=normdist(X,NULL(),NULL(),1)</DefaultAnnotationText>
+          <AnnotationText>Inverse CDF function</AnnotationText>
+          <DefaultAnnotationText>XVal=norminv(CDF,NULL(),NULL())</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -413,18 +350,18 @@
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="282" y="162" />
+        <Position x="282" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Expression><![CDATA[Abs([Norm]-[CDF])>1e-3 
+          <Expression><![CDATA[Abs([XVal]-[X])>1e-3 
 ]]></Expression>
           <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
           <AnnotationText>Verify versus Excel Ref Set</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Abs([Norm]-[CDF])>1e-3 
+          <DefaultAnnotationText><![CDATA[Abs([XVal]-[X])>1e-3 
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -433,7 +370,7 @@
     </Node>
     <Node ToolID="8">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="426" y="162" />
+        <Position x="426" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -459,19 +396,7 @@
   <Connections>
     <Connection>
       <Origin ToolID="1" Connection="Output" />
-      <Destination ToolID="2" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="1" Connection="Output" />
       <Destination ToolID="6" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="2" Connection="Output" />
-      <Destination ToolID="4" Connection="Input" />
-    </Connection>
-    <Connection name="#1">
-      <Origin ToolID="4" Connection="True" />
-      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="6" Connection="Output" />
@@ -500,7 +425,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>NormDistTest</Name>
+      <Name>NormInvTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

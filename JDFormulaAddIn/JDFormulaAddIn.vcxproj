@@ -150,7 +150,10 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HexBins.cpp" />
     <ClCompile Include="JDFormulaAddIn.cpp" />
+    <ClCompile Include="LogNormalDistribution.cpp" />
+    <ClCompile Include="NormalDistribution.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
