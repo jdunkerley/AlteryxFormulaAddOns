@@ -115,4 +115,26 @@
       <EntryPoint>NormInv</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>LOGNORMDIST</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>LOGNORMDIST(X, Location, Scale, Cuml)</InsertText>
+    <Description>Log Normal Distribution PDF or CDF Value</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>LogNormDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>LOGNORMINV</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>LOGNORMINV(X, Location, Scale)</InsertText>
+    <Description>Log Normal Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>LogNormInv</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>

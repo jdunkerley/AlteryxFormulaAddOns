@@ -40,13 +40,13 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		pReturnValue->isNull = 1;
 	}
 	else {
-		lognormal s;
-		double mean = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
-		double stDev = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
+		double location = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
+		double scale = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
 		bool cuml = nNumArgs == 4 && !pArgs[3].isNull && pArgs[3].dVal;
-		double x = (pArgs[0].dVal - mean) / stDev;
+		double x = pArgs[0].dVal;
 
 		pReturnValue->isNull = 0;
+		lognormal s(location, scale);
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
@@ -89,14 +89,15 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		pReturnValue->isNull = 1;
 	}
 	else {
-		lognormal s;
-		double mean = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
-		double stDev = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
+		double location = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
+		double scale = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
 		double p = pArgs[0].dVal;
+
+		lognormal s(location, scale);
 		double x = quantile(s, p);
 
 		pReturnValue->isNull = 0;
-		pReturnValue->dVal = x * stDev + mean;
+		pReturnValue->dVal = x;
 	}
 
 	ResetIsNull(nNumArgs, pArgs);
