@@ -5,16 +5,16 @@
     <Name>PHI</Name>
     <NumParams variable="false">0</NumParams>
     <Category>Math</Category>
-    <InsertText>PHI()</InsertText>
     <Description>The Golden Ratio</Description>
+    <InsertText>PHI()</InsertText>
     <Formula>(1 + SQRT(5)) / 2</Formula>
   </Function>
   <Function>
     <Name>IFNULL</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>IFNULL(Val1, Val2)</InsertText>
-    <Description>Val1 if not null or Val2</Description>
+    <Description>If the first parameter is null replace with the second</Description>
+    <InsertText>IFNULL(Value, ValueIfNull)</InsertText>
     <Formula>IIF(ISNULL(P1),P2,P1)</Formula>
   </Function>
 </FormulaAddIn>
