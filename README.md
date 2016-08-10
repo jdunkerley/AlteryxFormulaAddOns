@@ -5,14 +5,13 @@ Set of XML and C++ Based Formula Add Ons for Alteryx.
 
 ## Installation
 
-There is an [install.bat](./install.bat) script which should promote via UAC, and install the necessary files
-into the Formula Add Ins directory.
+There is an [install.bat](./install.bat) script which should promote via UAC, and install the necessary files into the Formula Add Ins directory.
+
+You can uninstall the functions using [uninstall.bat](./uninstall.bat) script, which again should promote via UAC, and remove the necessary files from the directory.
 
 ### Manual Installation
 
-If the installer script fails, you can manually install it to 
-`%AlteryxBinDirectory%\RuntimeData\FormulaAddIn`.
-You will need to copy all the `XML` and `DLL` files.
+If the installer script fails, you can manually install it to `%AlteryxBinDirectory%\RuntimeData\FormulaAddIn`. You will need to copy all the `XML` and `DLL` files.
 
 ## Current functions
 

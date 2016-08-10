@@ -144,7 +144,7 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 		pArgs[0].nVarType != 2 ||
 		pArgs[1].nVarType != 2 ||
 		pArgs[2].nVarType != 1) {
-		const wchar_t* errorMessage = L"Syntax: Syntax, Delimiter, Token Number.";
+		const wchar_t* errorMessage = L"Syntax: String, Delimiter, Token Number.";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
 		return 0;
@@ -186,3 +186,33 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	delete input;
 	return 1;
 }
+
+
+// Need String, String (char), Integer
+extern "C" long _declspec(dllexport) _stdcall CharMatch(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 1;
+
+	// Check Input Parameters
+	if (nNumArgs != 2 ||
+		pArgs[0].nVarType != 2 ||
+		pArgs[1].nVarType != 2) {
+		const wchar_t* errorMessage = L"Syntax: Left, Right.";
+		SetString(pReturnValue, errorMessage);
+		pReturnValue->isNull = 1;
+		return 0;
+	}
+
+	// Check for Nulls
+	if (pArgs[0].isNull || pArgs[1].isNull) {
+		pReturnValue->dVal = 0;
+		pReturnValue->isNull = true;
+		ResetIsNull(nNumArgs, pArgs);
+		return 1;
+	}
+
+
+
+	return 1;
+}
+
