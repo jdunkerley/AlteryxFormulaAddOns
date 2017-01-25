@@ -29,5 +29,10 @@ struct FormulaAddInData
 //		Again, the string MUST be allocated with GlobalAlloc
 typedef long(_stdcall * FormulaAddInPlugin)(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue);
 
+// Function To Set A String On A Return (inc GlobalAlloc)
+void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString);
+
+// Correct NULL bug prior to v10.5
+void ResetIsNull(int nNumArgs, FormulaAddInData *pArgs);
 
 #endif

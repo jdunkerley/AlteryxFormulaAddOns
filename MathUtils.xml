@@ -77,4 +77,64 @@
       <EntryPoint>Count</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>DEG</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>DEG(Radians)</InsertText>
+    <Description>Get Radians in Degrees</Description>
+    <Formula>P1*180/PI()</Formula>
+  </Function>
+  <Function>
+    <Name>RAD</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>RAD(Degrees)</InsertText>
+    <Description>Get Degrees in Radians</Description>
+    <Formula>P1/180*PI()</Formula>
+  </Function>
+  <Function>
+    <Name>NORMDIST</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>NORMDIST(X, Mean, StDev, Cuml)</InsertText>
+    <Description>Normal Distribution PDF or CDF Value</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>NormDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>NORMINV</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>NORMINV(X, Mean, StDev)</InsertText>
+    <Description>Normal Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>NormInv</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>LOGNORMDIST</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>LOGNORMDIST(X, Location, Scale, Cuml)</InsertText>
+    <Description>Log Normal Distribution PDF or CDF Value</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>LogNormDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>LOGNORMINV</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>LOGNORMINV(X, Location, Scale)</InsertText>
+    <Description>Log Normal Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>LogNormInv</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>
