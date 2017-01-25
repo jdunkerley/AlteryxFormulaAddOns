@@ -1,0 +1,439 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="10.5">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="60" />
+          <Fields>
+            <Field name="X" />
+            <Field name="PDF" />
+            <Field name="CDF" />
+          </Fields>
+          <Data>
+            <r>
+              <c>0.1</c>
+              <c>0.281590189</c>
+              <c>0.010651099</c>
+            </r>
+            <r>
+              <c>0.2</c>
+              <c>0.546267871</c>
+              <c>0.05376031</c>
+            </r>
+            <r>
+              <c>0.3</c>
+              <c>0.644203257</c>
+              <c>0.114300045</c>
+            </r>
+            <r>
+              <c>0.4</c>
+              <c>0.655444168</c>
+              <c>0.179757214</c>
+            </r>
+            <r>
+              <c>0.5</c>
+              <c>0.627496077</c>
+              <c>0.244108596</c>
+            </r>
+            <r>
+              <c>0.6</c>
+              <c>0.583573823</c>
+              <c>0.304736583</c>
+            </r>
+            <r>
+              <c>0.7</c>
+              <c>0.534794832</c>
+              <c>0.360667583</c>
+            </r>
+            <r>
+              <c>0.8</c>
+              <c>0.486415781</c>
+              <c>0.411711892</c>
+            </r>
+            <r>
+              <c>0.9</c>
+              <c>0.440815686</c>
+              <c>0.458044873</c>
+            </r>
+            <r>
+              <c>1</c>
+              <c>0.39894228</c>
+              <c>0.5</c>
+            </r>
+            <r>
+              <c>1.1</c>
+              <c>0.361031261</c>
+              <c>0.537965771</c>
+            </r>
+            <r>
+              <c>1.2</c>
+              <c>0.326972024</c>
+              <c>0.572334809</c>
+            </r>
+            <r>
+              <c>1.3</c>
+              <c>0.296496371</c>
+              <c>0.60347969</c>
+            </r>
+            <r>
+              <c>1.4</c>
+              <c>0.269276229</c>
+              <c>0.631742608</c>
+            </r>
+            <r>
+              <c>1.5</c>
+              <c>0.244973652</c>
+              <c>0.657432169</c>
+            </r>
+            <r>
+              <c>1.6</c>
+              <c>0.223265447</c>
+              <c>0.680823788</c>
+            </r>
+            <r>
+              <c>1.7</c>
+              <c>0.203854259</c>
+              <c>0.702161793</c>
+            </r>
+            <r>
+              <c>1.8</c>
+              <c>0.186472449</c>
+              <c>0.721662252</c>
+            </r>
+            <r>
+              <c>1.9</c>
+              <c>0.170882238</c>
+              <c>0.739515971</c>
+            </r>
+            <r>
+              <c>2</c>
+              <c>0.156874019</c>
+              <c>0.755891404</c>
+            </r>
+            <r>
+              <c>2.1</c>
+              <c>0.144263846</c>
+              <c>0.770937351</c>
+            </r>
+            <r>
+              <c>2.2</c>
+              <c>0.132890686</c>
+              <c>0.784785385</c>
+            </r>
+            <r>
+              <c>2.3</c>
+              <c>0.122613707</c>
+              <c>0.797552008</c>
+            </r>
+            <r>
+              <c>2.4</c>
+              <c>0.113309754</c>
+              <c>0.809340543</c>
+            </r>
+            <r>
+              <c>2.5</c>
+              <c>0.104871067</c>
+              <c>0.820242786</c>
+            </r>
+            <r>
+              <c>2.6</c>
+              <c>0.097203259</c>
+              <c>0.83034044</c>
+            </r>
+            <r>
+              <c>2.7</c>
+              <c>0.090223546</c>
+              <c>0.839706363</c>
+            </r>
+            <r>
+              <c>2.8</c>
+              <c>0.083859205</c>
+              <c>0.848405652</c>
+            </r>
+            <r>
+              <c>2.9</c>
+              <c>0.078046245</c>
+              <c>0.856496575</c>
+            </r>
+            <r>
+              <c>3</c>
+              <c>0.072728256</c>
+              <c>0.864031392</c>
+            </r>
+            <r>
+              <c>3.1</c>
+              <c>0.06785542</c>
+              <c>0.871057058</c>
+            </r>
+            <r>
+              <c>3.2</c>
+              <c>0.063383656</c>
+              <c>0.87761584</c>
+            </r>
+            <r>
+              <c>3.3</c>
+              <c>0.059273887</c>
+              <c>0.883745851</c>
+            </r>
+            <r>
+              <c>3.4</c>
+              <c>0.055491406</c>
+              <c>0.889481523</c>
+            </r>
+            <r>
+              <c>3.5</c>
+              <c>0.052005332</c>
+              <c>0.894854009</c>
+            </r>
+            <r>
+              <c>3.6</c>
+              <c>0.048788135</c>
+              <c>0.899891548</c>
+            </r>
+            <r>
+              <c>3.7</c>
+              <c>0.045815229</c>
+              <c>0.904619776</c>
+            </r>
+            <r>
+              <c>3.8</c>
+              <c>0.043064619</c>
+              <c>0.909062001</c>
+            </r>
+            <r>
+              <c>3.9</c>
+              <c>0.040516593</c>
+              <c>0.91323945</c>
+            </r>
+            <r>
+              <c>4</c>
+              <c>0.038153457</c>
+              <c>0.917171481</c>
+            </r>
+            <r>
+              <c>4.1</c>
+              <c>0.035959297</c>
+              <c>0.920875773</c>
+            </r>
+            <r>
+              <c>4.2</c>
+              <c>0.033919783</c>
+              <c>0.924368494</c>
+            </r>
+            <r>
+              <c>4.3</c>
+              <c>0.032021989</c>
+              <c>0.927664452</c>
+            </r>
+            <r>
+              <c>4.4</c>
+              <c>0.030254236</c>
+              <c>0.930777225</c>
+            </r>
+            <r>
+              <c>4.5</c>
+              <c>0.028605956</c>
+              <c>0.93371928</c>
+            </r>
+            <r>
+              <c>4.6</c>
+              <c>0.027067575</c>
+              <c>0.936502078</c>
+            </r>
+            <r>
+              <c>4.7</c>
+              <c>0.025630406</c>
+              <c>0.939136168</c>
+            </r>
+            <r>
+              <c>4.8</c>
+              <c>0.024286554</c>
+              <c>0.941631269</c>
+            </r>
+            <r>
+              <c>4.9</c>
+              <c>0.023028838</c>
+              <c>0.943996349</c>
+            </r>
+            <r>
+              <c>5</c>
+              <c>0.021850715</c>
+              <c>0.94623969</c>
+            </r>
+            <r>
+              <c>5.1</c>
+              <c>0.020746215</c>
+              <c>0.948368946</c>
+            </r>
+            <r>
+              <c>5.2</c>
+              <c>0.019709889</c>
+              <c>0.950391205</c>
+            </r>
+            <r>
+              <c>5.3</c>
+              <c>0.018736751</c>
+              <c>0.95231303</c>
+            </r>
+            <r>
+              <c>5.4</c>
+              <c>0.017822239</c>
+              <c>0.954140509</c>
+            </r>
+            <r>
+              <c>5.5</c>
+              <c>0.016962171</c>
+              <c>0.955879292</c>
+            </r>
+            <r>
+              <c>5.6</c>
+              <c>0.016152709</c>
+              <c>0.957534629</c>
+            </r>
+            <r>
+              <c>5.7</c>
+              <c>0.015390329</c>
+              <c>0.959111403</c>
+            </r>
+            <r>
+              <c>5.8</c>
+              <c>0.01467179</c>
+              <c>0.960614156</c>
+            </r>
+            <r>
+              <c>5.9</c>
+              <c>0.013994109</c>
+              <c>0.962047122</c>
+            </r>
+            <r>
+              <c>6</c>
+              <c>0.013354538</c>
+              <c>0.963414248</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="162" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField field="XVal" type="Double" size="8" expression="lognorminv(CDF,NULL(),NULL())" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Inverse CDF function</AnnotationText>
+          <DefaultAnnotationText>XVal=lognorminv(CDF,NULL(),NULL())</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="282" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression><![CDATA[Abs([XVal]-[X])>1e-3 
+]]></Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Verify versus Excel Ref Set</AnnotationText>
+          <DefaultAnnotationText><![CDATA[Abs([XVal]-[X])>1e-3 
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="426" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>No Rows</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>No Rows</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="7" Connection="True" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>LogNormInvTest</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
