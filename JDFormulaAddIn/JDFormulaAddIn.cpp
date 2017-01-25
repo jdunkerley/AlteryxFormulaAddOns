@@ -6,7 +6,7 @@ void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString)
 {
 	size_t nLen = wcslen(pString);
 	wchar_t *pStringRet = (wchar_t *)GlobalAlloc(GMEM_FIXED, (nLen + 1) * sizeof(wchar_t));
-	wcscpy(pStringRet, pString);
+	wcscpy_s(pStringRet, nLen + 1, pString);
 	pReturnValue->pVal = pStringRet;
 	pReturnValue->nVarType = 2;
 }
@@ -153,6 +153,7 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	// Check for Nulls
 	if (pArgs[0].isNull || pArgs[2].isNull || pArgs[2].dVal < 0 || pArgs[1].isNull || wcslen(pArgs[1].pVal) == 0) {
 		SetString(pReturnValue, pArgs[0].pVal);
+		pReturnValue->isNull = pArgs[0].isNull;
 		ResetIsNull(nNumArgs, pArgs);
 		return 1;
 	}
@@ -165,7 +166,7 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	}
 
 	wchar_t *input = new wchar_t[nLen + 1];
-	wcscpy(input, pArgs[0].pVal);
+	wcscpy_s(input, nLen + 1, pArgs[0].pVal);
 
 	// Split the String
 	wchar_t* buffer = NULL;

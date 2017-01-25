@@ -27,7 +27,7 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 		}
 		break;
 	default:
-		const wchar_t* errorMessage = L"NormDist: Syntax x, Mean = 0, StDev = 1, Cumulative = 0 (x required other default)";
+		const wchar_t* errorMessage = L"NormDist: Syntax x, Mean (= 0), StDev (= 1), Cumulative (= 0) (x required, others optional)";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
 		ResetIsNull(nNumArgs, pArgs);
