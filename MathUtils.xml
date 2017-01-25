@@ -45,6 +45,20 @@
     </Formula>
   </Function>
   <Function>
+    <NumParams variable="false">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>DEG(Radians)</InsertText>
+    <Description>Get Radians in Degrees</Description>
+    <Formula>P1*180/PI()</Formula>
+  </Function>
+  <Function>
+    <NumParams variable="false">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>RAD(Degrees)</InsertText>
+    <Description>Get Degrees in Radians</Description>
+    <Formula>P1/180*PI()</Formula>
+  </Function>
+  <Function>
     <Name>AVG</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
@@ -77,4 +91,15 @@
       <EntryPoint>Count</EntryPoint>
     </Dll>
   </Function>
+  <FunctionX>
+    <Name>NORMDIST</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>NORMDIST(x, mean, stddev)</InsertText>
+    <Description>Normal Distribution p Value</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>NormDist</EntryPoint>
+    </Dll>
+  </FunctionX>
 </FormulaAddIn>
