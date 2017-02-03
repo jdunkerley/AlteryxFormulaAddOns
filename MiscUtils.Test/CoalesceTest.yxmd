@@ -57,7 +57,7 @@
           </SortInfo>
         </MetaInfo>
       </Properties>
-      <EngineSettings Macro="C:\Repos\AlteryxFormulaAddOns\CreateSet.yxmc" />
+      <EngineSettings Macro="..\CreateSet.yxmc" />
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
@@ -242,7 +242,7 @@
           </SortInfo>
         </MetaInfo>
       </Properties>
-      <EngineSettings Macro="C:\Repos\AlteryxFormulaAddOns\CreateSet.yxmc" />
+      <EngineSettings Macro="..\CreateSet.yxmc" />
     </Node>
     <Node ToolID="13">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
@@ -435,7 +435,7 @@
           </SortInfo>
         </MetaInfo>
       </Properties>
-      <EngineSettings Macro="C:\Repos\AlteryxFormulaAddOns\CreateSet.yxmc" />
+      <EngineSettings Macro="..\CreateSet.yxmc" />
     </Node>
     <Node ToolID="21">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
