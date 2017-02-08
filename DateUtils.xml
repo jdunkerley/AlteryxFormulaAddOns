@@ -189,7 +189,7 @@
     <Category>Date</Category>
     <InsertText>DATEFROMMDY(MDY)</InsertText>
     <Description>Parse a M/D/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
-    <Formula>DATETIMEPARSE(Trim(REGEX_Replace(" " + P1,"([ -\\\/\.])(\d)(?=[ -\\\/\.])","${1}0$2")), "%m/%d/" + IIF(REGEX_Match(P1,".*[ -\\\/\.]\d{1,2}$"), "%y", "%Y"))</Formula>
+    <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%m/%d/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
   </Function>
   <Function>
     <Name>DATEFROMDMY</Name>
@@ -197,6 +197,6 @@
     <Category>Date</Category>
     <InsertText>DATEFROMDMY(DMY)</InsertText>
     <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
-    <Formula>DATETIMEPARSE(Trim(REGEX_Replace(" " + P1,"([ -\\\/\.])(\d)(?=[ -\\\/\.])","${1}0$2")), "%d/%m/" + IIF(REGEX_Match(P1,".*[ -\\\/\.]\d{1,2}$"), "%y", "%Y"))</Formula>
+    <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%d/%m/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
   </Function>
 </FormulaAddIn>

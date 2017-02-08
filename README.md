@@ -46,6 +46,11 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [ToDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todate): Truncate a `DateTime` to a `Date`
 - [ToDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todatetime): Appends midnight to a `Date` to create a `DateTime`
 
+#### Date Time Parse Functions
+
+- [DateFromMDY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datefrommdy): Parse a string in Month Day Year format to a Date (copes without leading 0s and different separators)
+- [DateFromDMY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datefromdmy): Parse a string in Day Month Year format to a Date (copes without leading 0s and different separators)
+
 #### Date Part Functions (returns numbers)
 
 - [Day](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#day): Get the day of the Month [1-31]

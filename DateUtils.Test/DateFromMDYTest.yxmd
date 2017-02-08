@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="150" y="54" />
+        <Position x="366" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -21,22 +21,16 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="258" y="54" />
+        <Position x="462" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Mode>Simple</Mode>
-          <Simple>
-            <Field>Date</Field>
-            <Operator>!=</Operator>
-            <Operands>
-              <Operand>2015-01-02</Operand>
-            </Operands>
-          </Simple>
+          <Expression>[Date] != Expected</Expression>
+          <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>[Date] != "2015-01-02"</DefaultAnnotationText>
+          <DefaultAnnotationText>[Date] != Expected</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -44,7 +38,7 @@
     </Node>
     <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="390" y="54" />
+        <Position x="558" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -68,32 +62,55 @@
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="42" y="54" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <NumRows value="6" />
+          <NumRows value="10" />
           <Fields>
             <Field name="Field1" />
+            <Field name="Expected" />
           </Fields>
           <Data>
             <r>
               <c>1/2/2015</c>
+              <c>2015-01-02</c>
             </r>
             <r>
               <c>01/2/2015</c>
+              <c>2015-01-02</c>
             </r>
             <r>
               <c>1/02/2015</c>
+              <c>2015-01-02</c>
             </r>
             <r>
               <c>1/2/15</c>
+              <c>2015-01-02</c>
             </r>
             <r>
               <c>1/02/15</c>
+              <c>2015-01-02</c>
             </r>
             <r>
               <c>01/2/15</c>
+              <c>2015-01-02</c>
+            </r>
+            <r>
+              <c>1/2/2013</c>
+              <c>2013-01-02</c>
+            </r>
+            <r>
+              <c>01/5/1993</c>
+              <c>1993-01-05</c>
+            </r>
+            <r>
+              <c>3/04/1912</c>
+              <c>1912-03-04</c>
+            </r>
+            <r>
+              <c>7/12/12</c>
+              <c>2012-07-12</c>
             </r>
           </Data>
         </Configuration>
@@ -104,6 +121,81 @@
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
+        <Position x="174" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <CartesianMode>Error</CartesianMode>
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="54" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="4" />
+          <Fields>
+            <Field name="Seperator" />
+          </Fields>
+          <Data>
+            <r>
+              <c>.</c>
+            </r>
+            <r>
+              <c><![CDATA[ ]]></c>
+            </r>
+            <r>
+              <c>\</c>
+            </r>
+            <r>
+              <c>/</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="270" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField field="Field1" type="String" size="9" expression="REPLACE([Field1],'/',[Seperator])" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Field1=REPLACE([Field1],'/',[Seperator])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
     </Node>
   </Nodes>
   <Connections>
@@ -117,6 +209,18 @@
     </Connection>
     <Connection>
       <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Targets" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="6" Connection="Source" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
       <Destination ToolID="2" Connection="Input" />
     </Connection>
   </Connections>
