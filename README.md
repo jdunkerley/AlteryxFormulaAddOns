@@ -1,28 +1,28 @@
-# Alteryx Formula Add Ons
+# Alteryx Formula Add Ons #
 
 Set of XML and C++ Based Formula Add Ons for Alteryx.
 ***Suggestions of extra useful functions welcome!!***
 
-## Installation
+## Installation ##
 
 There is an [install.bat](./install.bat) script which should promote via UAC, and install the necessary files into the Formula Add Ins directory.
 
 You can uninstall the functions using [uninstall.bat](./uninstall.bat) script, which again should promote via UAC, and remove the necessary files from the directory.
 
-### Manual Installation
+### Manual Installation ###
 
 If the installer script fails, you can manually install it to `%AlteryxBinDirectory%\RuntimeData\FormulaAddIn`. You will need to copy all the `XML` and `DLL` files.
 
-## Current functions
+## Current functions ##
 
-### [MiscUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29)
+### [MiscUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29) ###
 
 A few additional general methods for data preparation.
 
 - [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29#ifnull): If first value is null return second
 - [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29#coalesce): Given list of values return first non null value *(C++)*
 
-### [MathUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml))
+### [MathUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)) ###
 
 Math based functions that I havent got a better home for!
 
@@ -34,11 +34,11 @@ Math based functions that I havent got a better home for!
 - [Count](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#count): Count of a list of values ignoring `NULL`
 - [Sum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sum): Sum of a list of values ignoring `NULL`
 
-### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml))
+### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 
 Some additional functions for working with Dates and to a certain extent Times.
 
-#### Date Time Creation Functions (Currently Just Concatenation)
+#### Date Time Creation Functions (Currently Just Concatenation) ####
 
 - [MakeDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#makedate): Create a new date from Year, Month, Day
 - [MakeTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#maketime): Create a new time from Hour, Minute, Second
@@ -46,12 +46,12 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [ToDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todate): Truncate a `DateTime` to a `Date`
 - [ToDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todatetime): Appends midnight to a `Date` to create a `DateTime`
 
-#### Date Time Parse Functions
+#### Date Time Parse Functions ####
 
 - [DateFromMDY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datefrommdy): Parse a string in Month Day Year format to a Date (copes without leading 0s and different separators)
 - [DateFromDMY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datefromdmy): Parse a string in Day Month Year format to a Date (copes without leading 0s and different separators)
 
-#### Date Part Functions (returns numbers)
+#### Date Part Functions (returns numbers) ####
 
 - [Day](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#day): Get the day of the Month [1-31]
 - [Month](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#month): Gets the month number [1-12]
@@ -60,7 +60,7 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [Quarter](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#quarter): Gets the quarter of the date [1-4]
 - [OrdinalDay](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#ordinalday): Gets the day of the year [1-366]
 
-#### Period Start and End
+#### Period Start and End ####
 
 - [WeekStart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weekstart): Get first Sunday before or equal to date
 - [WeekEnd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weekend): Get first Saturday after or equal to date
@@ -71,13 +71,13 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [YearStart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#yearstart): Get First Day of Year
 - [YearEnd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#yearend): Get Last Day of Year
 
-#### Other Date Functions
+#### Other Date Functions ####
 
 - [DateAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#dateadd): Equivalent to [DateTimeAdd](http://downloads.alteryx.com/Alteryx8.6.2/WebHelp/Reference/DateTimeFunctions.htm) but returning a Date
 - [BusinessDays](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#businessdays): Number of weekdays between two dates
 - [IsLeapYear](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#isleapyear): Is a year a leap year *(takes a year not a date as an input use `IsLearYear(Year([Date])`)*
 
-### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29)
+### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-%28StringUtils.xml%29) ###
 
 A few extension methods for working with strings.
 
@@ -85,13 +85,13 @@ A few extension methods for working with strings.
 - [RightPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#rightpart): Gets the text after the first instance of a separator
 - [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#split): Splits a string into tokens and then returns the specified instance
 
-#### Retired Functions
+#### Retired Functions ####
 
 - [StartsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#startswith): Does a string start with another
 - [EndsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#endswith): Does a string end with another
 - [Contains](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#contains): Is a string in another
 
-## Testing
+## Testing ##
 
 Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](./RunUnitTest.yxmd) which will run all 
 the test workflows checking the formula add ins.
