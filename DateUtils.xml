@@ -183,4 +183,20 @@
     <Description>Create the last day of the year</Description>
     <Formula>LEFT(P1,5) + "12-31"</Formula>
   </Function>
+  <Function>
+    <Name>DATEFROMMDY</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>DATEFROMMDY(MDY)</InsertText>
+    <Description>Parse a M/D/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
+    <Formula>DATETIMEPARSE(Trim(REGEX_Replace(" " + P1,"([ -\\\/\.])(\d)(?=[ -\\\/\.])","${1}0$2")), "%m/%d/" + IIF(REGEX_Match(P1,".*[ -\\\/\.]\d{1,2}$"), "%y", "%Y"))</Formula>
+  </Function>
+  <Function>
+    <Name>DATEFROMDMY</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>DATEFROMDMY(DMY)</InsertText>
+    <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
+    <Formula>DATETIMEPARSE(Trim(REGEX_Replace(" " + P1,"([ -\\\/\.])(\d)(?=[ -\\\/\.])","${1}0$2")), "%d/%m/" + IIF(REGEX_Match(P1,".*[ -\\\/\.]\d{1,2}$"), "%y", "%Y"))</Formula>
+  </Function>
 </FormulaAddIn>
