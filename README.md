@@ -1,6 +1,7 @@
 # Alteryx Formula Add Ons #
 
 Set of XML and C++ Based Formula Add Ons for Alteryx.
+
 ***Suggestions of extra useful functions welcome!!***
 
 ## Installation ##
@@ -93,5 +94,4 @@ A few extension methods for working with strings.
 
 ## Testing ##
 
-Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](./RunUnitTest.yxmd) which will run all 
-the test workflows checking the formula add ins.
+Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](./RunUnitTest.yxmd) which will run all the test workflows checking the formula add ins.

@@ -8,7 +8,7 @@
     <Category>Date</Category>
     <InsertText>YEAR(Date)</InsertText>
     <Description>Get year of Date</Description>
-    <Formula>ToNumber(DateTimeFormat(P1, "%Y"))</Formula>
+    <Formula>ToNumber(Left(P1, 4))</Formula>
   </Function>
   <Function>
     <Name>MONTH</Name>
@@ -16,7 +16,7 @@
     <Category>Date</Category>
     <InsertText>MONTH(Date)</InsertText>
     <Description>Get month (1-12) of Date</Description>
-    <Formula>ToNumber(DateTimeFormat(P1, "%m"))</Formula>
+    <Formula>ToNumber(Substring(P1, 5, 2))</Formula>
   </Function>
   <Function>
     <Name>DAY</Name>
@@ -24,7 +24,7 @@
     <Category>Date</Category>
     <InsertText>DAY(Date)</InsertText>
     <Description>Get day of month (1-31) of Date</Description>
-    <Formula>ToNumber(DateTimeFormat(P1, "%d"))</Formula>
+    <Formula>ToNumber(Substring(P1, 8, 2))</Formula>
   </Function>
   <Function>
     <Name>WEEKDAY</Name>
@@ -196,6 +196,14 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>DATEFROMDMY(DMY)</InsertText>
+    <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
+    <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%d/%m/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
+  </Function>
+  <Function>
+    <Name>DATEH</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>DATEH(DMY)</InsertText>
     <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
     <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%d/%m/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
   </Function>
