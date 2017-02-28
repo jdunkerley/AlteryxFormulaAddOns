@@ -8,7 +8,7 @@ FOR /F "usebackq tokens=2,* skip=2" %%L IN (
 ) DO SET alteryxPath=%%M
 
 if "%alteryxPath%" NEQ "" (
-    .\InstallAlteryxAbacus.exe "%~dp0\JDFormulaAddIn\x64\Debug\*.dll" %~dp0\*.xml" "%alteryxPath%\RuntimeData\FormulaAddIn"
+    .\InstallAlteryxAbacus.exe %1 %2 "%alteryxPath%\RuntimeData\FormulaAddIn"
     echo FormulaAddIns installed to %alteryxPath%\RuntimeData\FormulaAddIn\
 )
 
@@ -17,7 +17,7 @@ FOR /F "usebackq tokens=2,* skip=2" %%L IN (
 ) DO SET alteryxUserPath=%%M
 
 if "%alteryxUserPath%" NEQ "" (
-    .\InstallAlteryxAbacus.exe "%~dp0\JDFormulaAddIn\x64\Debug\*.dll" "%~dp0\*.xml" "%alteryxUserPath%\RuntimeData\FormulaAddIn"
+    .\InstallAlteryxAbacus.exe %1 %2 "%alteryxUserPath%\RuntimeData\FormulaAddIn"
     echo FormulaAddIns installed to %alteryxUserPath%\RuntimeData\FormulaAddIn\
 )
 

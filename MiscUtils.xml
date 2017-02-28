@@ -20,4 +20,15 @@
       <EntryPoint>Coalesce</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>ERROR</Name>
+    <NumParams variable="true">0</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>ERROR(Condition, Message)</InsertText>
+    <Description>Return an Error with a specified message</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>Error</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>

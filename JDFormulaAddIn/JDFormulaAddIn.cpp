@@ -19,6 +19,32 @@ void ResetIsNull(int nNumArgs, FormulaAddInData *pArgs)
 	}
 }
 
+
+//// easy way to error a function
+extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	bool active = (nNumArgs > 0 && pArgs[0].nVarType == 1 && pArgs[0].isNull == 0 && pArgs[0].dVal != 0);
+
+	pReturnValue->nVarType = nNumArgs > 2 ? pArgs[2].nVarType : 1;
+
+	if (active) {
+		pReturnValue->isNull = 1;
+		if (nNumArgs < 2 || pArgs[1].nVarType == 1) {
+			const wchar_t* errorMessage = L"Warning: Reporting!";
+			SetString(pReturnValue, errorMessage);
+		}
+		else {
+			SetString(pReturnValue, pArgs[1].pVal);
+		}
+	}
+	else {
+
+	}
+
+	ResetIsNull(nNumArgs, pArgs);
+	return active ? 0 : 1;
+}
+
 //// this sample takes a variable number of inputs and returns the first non-null
 extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
