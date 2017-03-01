@@ -21,14 +21,14 @@
     </Dll>
   </Function>
   <Function>
-    <Name>ERROR</Name>
+    <Name>REPORTERROR</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>ERROR(Condition, Message)</InsertText>
-    <Description>Return an Error with a specified message</Description>
+    <InsertText>ERROR(Condition, Message, ReturnValue)</InsertText>
+    <Description>Raise an error with a specified message if Condition is true, otherwise return ReturnValue</Description>
     <Dll>
       <Name>JDFormulaAddIn.dll</Name>
-      <EntryPoint>Error</EntryPoint>
+      <EntryPoint>ReportError</EntryPoint>
     </Dll>
   </Function>
 </FormulaAddIn>

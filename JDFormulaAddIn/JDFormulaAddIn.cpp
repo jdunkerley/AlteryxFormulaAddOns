@@ -23,14 +23,14 @@ void ResetIsNull(int nNumArgs, FormulaAddInData *pArgs)
 //// easy way to error a function
 extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
-	bool active = (nNumArgs > 0 && pArgs[0].nVarType == 1 && pArgs[0].isNull == 0 && pArgs[0].dVal != 0);
+	bool active = nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 04;
 
 	pReturnValue->nVarType = nNumArgs > 2 ? pArgs[2].nVarType : 1;
 
 	if (active) {
 		pReturnValue->isNull = 1;
 		if (nNumArgs < 2 || pArgs[1].nVarType == 1) {
-			const wchar_t* errorMessage = L"Warning: Reporting!";
+			const wchar_t* errorMessage = L"Reporting An Error!";
 			SetString(pReturnValue, errorMessage);
 		}
 		else {
@@ -38,7 +38,17 @@ extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaA
 		}
 	}
 	else {
-
+		if (nNumArgs < 2 || pArgs[2].isNull == 1) {
+			pReturnValue->isNull = 1;
+		}
+		else {
+			if (pArgs[2].nVarType == 1) {
+				pReturnValue->dVal = pArgs[2].dVal;
+			}
+			else {
+				SetString(pReturnValue, pArgs[2].pVal);
+			}
+		}
 	}
 
 	ResetIsNull(nNumArgs, pArgs);

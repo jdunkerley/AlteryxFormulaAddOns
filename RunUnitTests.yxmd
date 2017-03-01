@@ -73,11 +73,11 @@
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1542" y="246" />
+        <Position x="1566" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9260_cab55ffd39a347f6a4b994d24a67c914_\Engine_17584_f7a6d6219dd3474da2e58f5d92514e2b_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_21068_41faa799d0544a13938cb804a52c4c8d_\Engine_17584_2eee713ca66a471c8136a8de690d037b_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -139,11 +139,11 @@
     </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1542" y="6" />
+        <Position x="1566" y="6" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9260_cab55ffd39a347f6a4b994d24a67c914_\Engine_17584_2d73b7a9fa0e4447a174270b5a21cc76_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_21068_41faa799d0544a13938cb804a52c4c8d_\Engine_17584_1486ec270558485cbd2d4757d085454d_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -168,7 +168,7 @@
     </Node>
     <Node ToolID="13">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="1446" y="90" />
+        <Position x="1446" y="102" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -183,13 +183,13 @@
               <OrderChanged value="False" />
               <SelectFields>
                 <SelectField field="Right_Module" selected="False" rename="Right_Module" />
-                <SelectField field="Right_Result" selected="False" rename="Right_Result" />
+                <SelectField field="Right_Time" selected="False" rename="Right_Time" />
+                <SelectField field="Right_ModuleFullPath" selected="False" rename="Right_ModuleFullPath" />
                 <SelectField field="Right_Errors" selected="False" rename="Right_Errors" />
+                <SelectField field="Right_Result" selected="False" rename="Right_Result" />
                 <SelectField field="Right_FieldConversionErrors" selected="False" rename="Right_FieldConversionErrors" />
                 <SelectField field="Right_Warnings" selected="False" rename="Right_Warnings" />
-                <SelectField field="Right_Time" selected="False" rename="Right_Time" />
                 <SelectField field="Right_Log" selected="False" rename="Right_Log" />
-                <SelectField field="Right_ModuleFullPath" selected="False" rename="Right_ModuleFullPath" />
                 <SelectField field="*Unknown" selected="True" />
               </SelectFields>
             </Configuration>
@@ -205,11 +205,11 @@
     </Node>
     <Node ToolID="14">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1542" y="162" />
+        <Position x="1566" y="186" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_9260_cab55ffd39a347f6a4b994d24a67c914_\Engine_17584_e0ffbd77f70246e4aaec5ecf96611e74_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_21068_41faa799d0544a13938cb804a52c4c8d_\Engine_17584_54255eefffd14d9ab0398db717f22817_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -234,7 +234,7 @@
     </Node>
     <Node ToolID="15">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="1638" y="90" />
+        <Position x="1566" y="102" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -411,7 +411,7 @@
     </Node>
     <Node ToolID="29">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1362" y="246" />
+        <Position x="1446" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -432,7 +432,7 @@
     </Node>
     <Node ToolID="36">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="1278" y="330" />
+        <Position x="1566" y="366" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -456,7 +456,7 @@
     </Node>
     <Node ToolID="37">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1158" y="330" />
+        <Position x="1446" y="366" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -670,6 +670,25 @@
         </Node>
       </ChildNodes>
     </Node>
+    <Node ToolID="44">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="1266" y="366" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Ignore</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
@@ -744,9 +763,13 @@
       <Origin ToolID="26" Connection="True" />
       <Destination ToolID="27" Connection="Input" />
     </Connection>
-    <Connection>
+    <Connection name="#1">
       <Origin ToolID="25" Connection="Right" />
-      <Destination ToolID="37" Connection="Input" />
+      <Destination ToolID="44" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="26" Connection="True" />
+      <Destination ToolID="44" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="27" Connection="Output" />
@@ -783,6 +806,10 @@
     <Connection>
       <Origin ToolID="43" Connection="True" />
       <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="44" Connection="Output" />
+      <Destination ToolID="37" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
