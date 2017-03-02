@@ -199,12 +199,4 @@
     <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
     <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%d/%m/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
   </Function>
-  <Function>
-    <Name>DATEH</Name>
-    <NumParams variable="false">1</NumParams>
-    <Category>Date</Category>
-    <InsertText>DATEH(DMY)</InsertText>
-    <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
-    <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%d/%m/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
-  </Function>
 </FormulaAddIn>

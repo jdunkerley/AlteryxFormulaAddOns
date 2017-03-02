@@ -9,14 +9,20 @@
         <Configuration>
           <NumRows value="2" />
           <Fields>
-            <Field name="Field1" />
+            <Field name="A" />
+            <Field name="B" />
+            <Field name="Expected" />
           </Fields>
           <Data>
             <r>
               <c>0</c>
+              <c>2</c>
+              <c>2</c>
             </r>
             <r>
               <c>1</c>
+              <c>4</c>
+              <c>5</c>
             </r>
           </Data>
         </Configuration>
@@ -35,46 +41,59 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="ReportError()" field="Field1" size="1" type="Byte" />
+            <FormulaField expression="A + B" field="Actual" size="2" type="Int16" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <AnnotationText>ERROR: .*Reporting An Error!.*</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Field1 = ReportError()
+          <AnnotationText />
+          <DefaultAnnotationText><![CDATA[Actual = A + B
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
     </Node>
-    <Node ToolID="3">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="270" y="54" />
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="282" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_23348_05e05fd1ebad4b97b943abe2ed55f649_\Engine_17584_d21f04af3478421ab1a57dcf9daf92c2_.yxdb</TempFile>
-          <TempFileDataProfiling />
-          <Layout>
-            <ViewMode>Single</ViewMode>
-            <ViewSize value="100" />
-            <View1>
-              <DefaultTab>Profile</DefaultTab>
-              <Hints>
-                <Table />
-              </Hints>
-            </View1>
-            <View2 />
-          </Layout>
+          <Expression>[Actual] != [Expected]</Expression>
+          <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText />
+          <DefaultAnnotationText>[Actual] != [Expected]</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="438" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>NoRows</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>NoRows</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
   </Nodes>
   <Connections>
@@ -84,7 +103,11 @@
     </Connection>
     <Connection>
       <Origin ToolID="2" Connection="Output" />
-      <Destination ToolID="3" Connection="Input" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
@@ -105,7 +128,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>ReportErrorTest</Name>
+      <Name>AdditionTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
