@@ -65,4 +65,15 @@
       <EntryPoint>ToRoman</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>FROMROMAN</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>String</Category>
+    <InsertText>FromRoman(Value)</InsertText>
+    <Description>Given a Roman Numeral Get Number</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>FromRoman</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>
