@@ -21,8 +21,7 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 				const wchar_t* errorMessage = L"NormDist: Non-numeric argument";
 				SetString(pReturnValue, errorMessage);
 				pReturnValue->isNull = 1;
-				ResetIsNull(nNumArgs, pArgs);
-				return 0;
+				return ReturnAndResetNull(false, nNumArgs, pArgs);
 			}
 		}
 		break;
@@ -30,9 +29,7 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 		const wchar_t* errorMessage = L"NormDist: Syntax x, Mean (= 0), StDev (= 1), Cumulative (= 0) (x required, others optional)";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 0;
-		break;
+		return ReturnAndResetNull(false, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -50,8 +47,7 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // Syntax: P, Mean, StDev
@@ -70,8 +66,7 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 				const wchar_t* errorMessage = L"NormInv: Non-numeric argument";
 				SetString(pReturnValue, errorMessage);
 				pReturnValue->isNull = 1;
-				ResetIsNull(nNumArgs, pArgs);
-				return 0;
+				return ReturnAndResetNull(false, nNumArgs, pArgs);
 			}
 		}
 		break;
@@ -79,9 +74,7 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		const wchar_t* errorMessage = L"NormInv: Syntax p, Mean = 0, StDev = 1";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 0;
-		break;
+		return ReturnAndResetNull(false, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -99,6 +92,5 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = x * stDev + mean;
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }

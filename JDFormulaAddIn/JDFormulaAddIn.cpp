@@ -1,6 +1,7 @@
 ﻿// AlteryxAddIn.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
 #include "JDFormulaAddIn.h"
+#include <string>
 
 void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString)
 {
@@ -11,19 +12,19 @@ void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString)
 	pReturnValue->nVarType = 2;
 }
 
-void ResetIsNull(int nNumArgs, FormulaAddInData *pArgs)
-{
+long ReturnAndResetNull(bool success, int nNumArgs, FormulaAddInData *pArgs) {
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		pArgs[x].isNull = 0;
 	}
-}
 
+	return success ? 1 : 0;
+}
 
 //// easy way to error a function
 extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
-	bool active = nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 04;
+	bool active = nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 0;
 
 	pReturnValue->nVarType = nNumArgs > 2 ? pArgs[2].nVarType : 1;
 
@@ -51,8 +52,7 @@ extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaA
 		}
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return active ? 0 : 1;
+	return ReturnAndResetNull(!active, nNumArgs, pArgs);
 }
 
 //// this sample takes a variable number of inputs and returns the first non-null
@@ -67,8 +67,7 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 
 			const wchar_t* errorMessage = L"Mismatched argument types, all must be same general type as first parameter.";
 			SetString(pReturnValue, errorMessage);
-			ResetIsNull(nNumArgs, pArgs);
-			return 0;
+			return ReturnAndResetNull(false, nNumArgs, pArgs);
 		}
 
 		if (pArgs[x].isNull == 0)
@@ -84,8 +83,7 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 		}
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -104,8 +102,7 @@ extern "C" long _declspec(dllexport) _stdcall Count(int nNumArgs, FormulaAddInDa
 	}
 
 	pReturnValue->dVal = count;
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -131,8 +128,7 @@ extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData
 	}
 
 	pReturnValue->dVal = sum;
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -145,7 +141,8 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 	int count = 0;
 	for (int x = 0; x < nNumArgs; x++)
 	{
-		if (pArgs[x].nVarType != 1) {
+		if (pArgs[x].nVarType != 1)
+		{
 			const wchar_t* errorMessage = L"Non-numeric argument, all must be numbers.";
 			SetString(pReturnValue, errorMessage);
 			pReturnValue->isNull = 1;
@@ -166,8 +163,7 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = sum / count;
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // Need String, String (char), Integer
@@ -190,8 +186,7 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	if (pArgs[0].isNull || pArgs[2].isNull || pArgs[2].dVal < 0 || pArgs[1].isNull || wcslen(pArgs[1].pVal) == 0) {
 		SetString(pReturnValue, pArgs[0].pVal);
 		pReturnValue->isNull = pArgs[0].isNull;
-		ResetIsNull(nNumArgs, pArgs);
-		return 1;
+		return ReturnAndResetNull(true, nNumArgs, pArgs);
 	}
 
 	// Copy the string
@@ -216,7 +211,8 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 
 	if (token == NULL) {
 		pReturnValue->isNull = true;
-	} else {
+	}
+	else {
 		SetString(pReturnValue, token);
 	}
 

@@ -54,4 +54,15 @@
       <EntryPoint>Split</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>TOROMAN</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>String</Category>
+    <InsertText>ToRoman(Value)</InsertText>
+    <Description>Get a Roman Numeral Version of a Number</Description>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>ToRoman</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>

@@ -12,8 +12,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinX(int nNumArgs, FormulaAddIn
 		pArgs[1].isNull || pArgs[1].nVarType != 1 ||
 		(nNumArgs == 3 && pArgs[2].nVarType != 1)) {
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 1;
+		return ReturnAndResetNull(true, nNumArgs, pArgs);
 	}
 
 	double r = (pArgs[2].isNull ? 1.0 : pArgs[2].dVal);
@@ -48,7 +47,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinX(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = pi * dx;
 	}
 
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // Need Double X, Double Y, Double R
@@ -62,8 +61,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinY(int nNumArgs, FormulaAddIn
 		pArgs[1].isNull || pArgs[1].nVarType != 1 ||
 		(nNumArgs == 3 && pArgs[2].nVarType != 1)) {
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 1;
+		return ReturnAndResetNull(true, nNumArgs, pArgs);
 	}
 
 	double r = (pArgs[2].isNull ? 1.0 : pArgs[2].dVal);
@@ -100,5 +98,5 @@ extern "C" long _declspec(dllexport) _stdcall HexBinY(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = (pj + (mod2 ? 0.5 : 0)) * dy;
 	}
 
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }

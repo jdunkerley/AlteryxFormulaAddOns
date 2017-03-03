@@ -21,8 +21,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 				const wchar_t* errorMessage = L"LogNormDist: Non-numeric argument";
 				SetString(pReturnValue, errorMessage);
 				pReturnValue->isNull = 1;
-				ResetIsNull(nNumArgs, pArgs);
-				return 0;
+				return ReturnAndResetNull(false, nNumArgs, pArgs);
 			}
 		}
 		break;
@@ -30,9 +29,8 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		const wchar_t* errorMessage = L"LogNormDist: Syntax x, Mean = 0, StDev = 1, Cumulative = 0 (x required other default)";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 0;
-		break;
+		return ReturnAndResetNull(false, nNumArgs, pArgs);
+
 	}
 
 	// Do Calculation
@@ -50,8 +48,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }
 
 // Syntax: P, Mean, StDev
@@ -70,8 +67,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 				const wchar_t* errorMessage = L"LogNormInv: Non-numeric argument";
 				SetString(pReturnValue, errorMessage);
 				pReturnValue->isNull = 1;
-				ResetIsNull(nNumArgs, pArgs);
-				return 0;
+				return ReturnAndResetNull(false, nNumArgs, pArgs);
 			}
 		}
 		break;
@@ -79,9 +75,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		const wchar_t* errorMessage = L"LogNormInv: Syntax p, Mean = 0, StDev = 1";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = 1;
-		ResetIsNull(nNumArgs, pArgs);
-		return 0;
-		break;
+		return ReturnAndResetNull(false, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -100,6 +94,5 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		pReturnValue->dVal = x;
 	}
 
-	ResetIsNull(nNumArgs, pArgs);
-	return 1;
+	return ReturnAndResetNull(true, nNumArgs, pArgs);
 }

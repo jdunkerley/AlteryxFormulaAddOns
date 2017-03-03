@@ -20,6 +20,7 @@ If the installer script fails, you can manually install it to `%AlteryxBinDirect
 
 A few additional general methods for data preparation.
 
+- [Version](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#version): Gets the major and minor version of the Alteryx Engine as a number
 - [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#ifnull): If first value is null return second
 - [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#coalesce): Given list of values return first non null value *(C++)*
 - [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#ReportError): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
