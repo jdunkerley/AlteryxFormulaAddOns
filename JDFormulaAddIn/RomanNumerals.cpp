@@ -12,7 +12,7 @@ extern "C" long _declspec(dllexport) _stdcall ToRoman(int nNumArgs, FormulaAddIn
 	pReturnValue->nVarType = 2;
 
 	if (nNumArgs != 1 || pArgs[0].nVarType != 1) {
-		const wchar_t* errorMessage = L"ToRoman: Require one numerical argument.";
+		const wchar_t* errorMessage = L"ToRoman: Requires one numerical argument.";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = true;
 		return ReturnAndResetNull(false, nNumArgs, pArgs);
@@ -50,7 +50,7 @@ extern "C" long _declspec(dllexport) _stdcall FromRoman(int nNumArgs, FormulaAdd
 	pReturnValue->nVarType = 1;
 
 	if (nNumArgs != 1 || pArgs[0].nVarType != 2) {
-		SetString(pReturnValue, L"FromRoman: Require one text argument.");
+		SetString(pReturnValue, L"FromRoman: Requires one text argument.");
 		pReturnValue->isNull = true;
 		return ReturnAndResetNull(false, nNumArgs, pArgs);
 	}

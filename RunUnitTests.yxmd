@@ -3,11 +3,11 @@
   <Nodes>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1698" y="258" />
+        <Position x="1747" y="312" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_22240_af8acce8ba65462a99dadb4a84689b1b_\Engine_17584_8de99c8a806c4c90a964d31e8ce39be3_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_17124_bd8ad1a494c24f278c96a4a2b20e529d_\Engine_2860_c043dfa74f9b40558bb86f601fec27e2_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -32,11 +32,11 @@
     </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1698" y="0" />
+        <Position x="1747" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_22240_af8acce8ba65462a99dadb4a84689b1b_\Engine_17584_05733fa4bbcb4cb6ad21fe935c46212d_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_17124_bd8ad1a494c24f278c96a4a2b20e529d_\Engine_2860_b9702c051a2046b78f38b529e9558737_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -61,7 +61,7 @@
     </Node>
     <Node ToolID="13">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="1566" y="12" />
+        <Position x="1615" y="66" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -91,11 +91,11 @@
     </Node>
     <Node ToolID="14">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1698" y="78" />
+        <Position x="1747" y="132" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_22240_af8acce8ba65462a99dadb4a84689b1b_\Engine_17584_f0f488b83988420fbcadeb8b3f998aa8_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_17124_bd8ad1a494c24f278c96a4a2b20e529d_\Engine_2860_b4b1b934a532448ba1db2331b3ae4655_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -120,7 +120,7 @@
     </Node>
     <Node ToolID="15">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="1698" y="162" />
+        <Position x="1747" y="216" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -144,7 +144,7 @@
     </Node>
     <Node ToolID="25">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="1062" y="78" />
+        <Position x="1111" y="132" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -194,7 +194,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="26">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1182" y="78" />
+        <Position x="1231" y="132" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -211,7 +211,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="27">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-        <Position x="1362" y="6" />
+        <Position x="1411" y="60" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -230,7 +230,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="28">
       <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
-        <Position x="1470" y="6" />
+        <Position x="1519" y="60" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -254,7 +254,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="36">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="1698" y="354" />
+        <Position x="1747" y="408" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -278,7 +278,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="37">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1566" y="258" />
+        <Position x="1615" y="312" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -297,64 +297,9 @@ Errors</AnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
     </Node>
-    <Node ToolID="46">
-      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="5" y="22" width="273" height="173" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Caption>Find Test Workflows</Caption>
-          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
-          <Disabled value="False" />
-          <Folded value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <ChildNodes>
-        <Node ToolID="2">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-            <Position x="30" y="66.00001" />
-          </GuiSettings>
-          <Properties>
-            <Configuration>
-              <Directory>Sample.Test</Directory>
-              <FileSpec>*.yxmd</FileSpec>
-              <IncludeSubDirs value="True" />
-            </Configuration>
-            <Annotation DisplayMode="0">
-              <Name />
-              <DefaultAnnotationText>dir Sample.Test\*.yxmd</DefaultAnnotationText>
-              <Left value="False" />
-            </Annotation>
-          </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
-        </Node>
-        <Node ToolID="3">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="150" y="66" />
-          </GuiSettings>
-          <Properties>
-            <Configuration>
-              <Expression>Contains([Directory],".Test\")</Expression>
-              <Mode>Custom</Mode>
-            </Configuration>
-            <Annotation DisplayMode="0">
-              <Name />
-              <DefaultAnnotationText>Contains([Directory],".Test\")</DefaultAnnotationText>
-              <Left value="False" />
-            </Annotation>
-          </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-        </Node>
-      </ChildNodes>
-    </Node>
     <Node ToolID="47">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="1182" y="186" />
+        <Position x="1231" y="240" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -372,7 +317,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="48">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="1182" y="6" />
+        <Position x="1231" y="60" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -402,7 +347,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="49">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="1254" y="186" />
+        <Position x="1303" y="240" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -421,9 +366,64 @@ Errors</AnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
     </Node>
+    <Node ToolID="46">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="76" width="273" height="173" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Find Test Workflows</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
+            <Position x="79" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Directory>Sample.Test\..</Directory>
+              <FileSpec>*.yxmd</FileSpec>
+              <IncludeSubDirs value="True" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>dir Sample.Test\..\*.yxmd</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
+        </Node>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="199" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>Contains([Directory],".Test\")</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Contains([Directory],".Test\")</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+      </ChildNodes>
+    </Node>
     <Node ToolID="38">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="306" y="245.9999" width="684" height="188.0001" />
+        <Position x="355" y="300" width="684" height="188" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -441,7 +441,7 @@ Errors</AnnotationText>
       <ChildNodes>
         <Node ToolID="16">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DynamicInput.DynamicInput">
-            <Position x="331" y="289.9999" />
+            <Position x="380" y="344" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -471,15 +471,12 @@ Errors</AnnotationText>
               <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDynamicInput" />
         </Node>
         <Node ToolID="21">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="906" y="294" />
+            <Position x="955" y="348" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -502,7 +499,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="32">
           <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
-            <Position x="414.9999" y="290.0002" />
+            <Position x="463.9999" y="344.0003" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -525,7 +522,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="40">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-            <Position x="511" y="290.0001" />
+            <Position x="560" y="344.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -558,7 +555,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="41">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-            <Position x="619" y="290" />
+            <Position x="668" y="344" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -596,7 +593,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="43">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="739" y="290" />
+            <Position x="788" y="344" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -618,7 +615,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="45">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="305" y="21.9999" width="681" height="203.0001" />
+        <Position x="354" y="75.99992" width="681" height="203.0001" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -636,7 +633,7 @@ Errors</AnnotationText>
       <ChildNodes>
         <Node ToolID="1">
           <GuiSettings>
-            <Position x="330" y="65.9999" />
+            <Position x="379" y="119.9999" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -654,7 +651,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="5">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="414" y="65.99998" />
+            <Position x="463" y="120" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -671,7 +668,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="7">
           <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
-            <Position x="522" y="65.99998" />
+            <Position x="571" y="120" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -690,7 +687,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="8">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="618" y="66" />
+            <Position x="667" y="120" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -708,7 +705,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="17">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-            <Position x="738" y="66" />
+            <Position x="787" y="120" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -746,7 +743,7 @@ Errors</AnnotationText>
         </Node>
         <Node ToolID="23">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="858" y="66" />
+            <Position x="907" y="120" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -828,6 +825,10 @@ Errors</AnnotationText>
       <Destination ToolID="6" Connection="Input" />
     </Connection>
     <Connection>
+      <Origin ToolID="47" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection>
       <Origin ToolID="2" Connection="Output" />
       <Destination ToolID="3" Connection="Input" />
     </Connection>
@@ -838,10 +839,6 @@ Errors</AnnotationText>
     <Connection>
       <Origin ToolID="3" Connection="True" />
       <Destination ToolID="1" Connection="Input15" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="47" Connection="Output" />
-      <Destination ToolID="49" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="16" Connection="Output" />

@@ -20030,12 +20030,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="ToRoman([Value])" field="Roman" size="1073741823" type="V_WString" />
+            <FormulaField expression="FromRoman([RomanNumeral])" field="FromRoman" size="4" type="Int32" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Roman = ToRoman([Value])
+          <DefaultAnnotationText><![CDATA[FromRoman = FromRoman([RomanNumeral])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -20048,13 +20048,13 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Expression>[Roman] != [RomanNumeral]</Expression>
+          <Expression>[Value] != [FromRoman]</Expression>
           <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
           <AnnotationText>Verify versus Excel Ref Set</AnnotationText>
-          <DefaultAnnotationText>[Roman] != [RomanNumeral]</DefaultAnnotationText>
+          <DefaultAnnotationText>[Value] != [FromRoman]</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -20091,13 +20091,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="ToRoman(-1)" field="Norm" size="8" type="Double" />
+            <FormulaField expression="FromRoman(&quot;A&quot;)" field="Norm" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <AnnotationText>ERROR: .*ToRoman: Outside Range of 0 to 5000.*</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Norm = ToRoman(-1)
+          <AnnotationText>ERROR: .*FromRoman: Invalid Roman Numeral.*</AnnotationText>
+          <DefaultAnnotationText><![CDATA[Norm = FromRoman("A")
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -20134,7 +20134,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_12624_3277369eefb64f3eb344c05c43555cb1_\Engine_2860_0a6631af3e9f4e1a8d40f0592bccd951_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_21532_373a1de5bfb94e5689e6544d7df545b7_\Engine_2860_39d58589411d420dba9ad2f53a575d59_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>
@@ -20158,13 +20158,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="ToRoman(&quot;DIE&quot;)" field="Norm" size="8" type="Double" />
+            <FormulaField expression="FromRoman(1)" field="Norm" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <AnnotationText>ERROR: .*ToRoman: Require one numerical argument.*</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Norm = ToRoman("DIE")
+          <AnnotationText>ERROR: .*FromRoman: Require one text argument.*</AnnotationText>
+          <DefaultAnnotationText><![CDATA[Norm = FromRoman(1)
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -20177,7 +20177,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_12624_3277369eefb64f3eb344c05c43555cb1_\Engine_2860_797e4920c8e147119645a3446c71121f_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_21532_373a1de5bfb94e5689e6544d7df545b7_\Engine_2860_e649b81eafa74351bc1d7c6d58eb8f2c_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>
@@ -20243,7 +20243,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>ToRomanTest</Name>
+      <Name>FromRomanTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
