@@ -4,7 +4,7 @@
 #include <sstream>
 
 int numericalValues[] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-char characterValues[] = { 'M', '?', 'D', 0, 'C', '?', 'L', 0, 'X', '?', 'V', 0, 'I' };
+std::wstring characterValues[] = { L"M", L"CM", L"D", L"CD", L"C", L"XC", L"L", L"XL", L"X", L"IX", L"V", L"IV", L"I" };
 
 // Syntax: X, Mean, StDev, Cumulative
 extern "C" long _declspec(dllexport) _stdcall ToRoman(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
@@ -24,7 +24,7 @@ extern "C" long _declspec(dllexport) _stdcall ToRoman(int nNumArgs, FormulaAddIn
 	}
 
 	double value = pArgs[0].dVal;
-	if (value > 5000 || value < 1) {
+	if (value > 5000) {
 		const wchar_t* errorMessage = L"ToRoman: Outside Range of 1 to 5000.";
 		SetString(pReturnValue, errorMessage);
 		pReturnValue->isNull = true;
@@ -34,24 +34,10 @@ extern "C" long _declspec(dllexport) _stdcall ToRoman(int nNumArgs, FormulaAddIn
 	int integerValue = (int)value;
 	std::wstringstream output;
 
-	while (integerValue != 0) {
-		for (int i = 0; i < sizeof(numericalValues); i++)
-		{
-			if (integerValue >= numericalValues[i]) {
-				switch (characterValues[i]) {
-				case '?':
-					output << characterValues[i + 3] << characterValues[i - 1];
-					break;
-				case 0:
-					output << characterValues[i + 1] << characterValues[i - 1];
-					break;
-				default:
-					output << characterValues[i];
-				}
-
-				integerValue -= numericalValues[i];
-				break;
-			}
+	for (int i = 0; i < 13; i++) {
+		while (integerValue >= numericalValues[i]) {
+			output << characterValues[i];
+			integerValue -= numericalValues[i];
 		}
 	}
 
