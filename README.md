@@ -1,6 +1,7 @@
 # Alteryx Formula Add Ons #
 
 Set of XML and C++ Based Formula Add Ons for Alteryx.
+
 ***Suggestions of extra useful functions welcome!!***
 
 ## Installation ##
@@ -19,8 +20,10 @@ If the installer script fails, you can manually install it to `%AlteryxBinDirect
 
 A few additional general methods for data preparation.
 
-- [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29#ifnull): If first value is null return second
-- [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29#coalesce): Given list of values return first non null value *(C++)*
+- [Version](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#version): Gets the major and minor version of the Alteryx Engine as a number
+- [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#ifnull): If first value is null return second
+- [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#coalesce): Given list of values return first non null value *(C++)*
+- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml#ReportError): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
 
 ### [MathUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)) ###
 
@@ -30,9 +33,9 @@ Math based functions that I havent got a better home for!
 - [HexBinX](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbinx): Given an X,Y point and optional radius, get X co-ordinate of hexagonal bin's centre
 - [HexBinY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbiny): Given an X,Y point and optional radius get Y co-ordinate of hexagonal bin's centre 
 - [Rand_Triangular](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#rand_triangular): Given a uniform random number transform into a triangular distributed random
-- [Avg](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#avg): Average of a list of values ignoring `NULL`
-- [Count](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#count): Count of a list of values ignoring `NULL`
-- [Sum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sum): Sum of a list of values ignoring `NULL`
+- [Avg](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#avg): Average of a list of values ignoring `NULL` *(C++)*
+- [Count](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#count): Count of a list of values ignoring `NULL` *(C++)*
+- [Sum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sum): Sum of a list of values ignoring `NULL` *(C++)*
 
 ### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 
@@ -83,7 +86,9 @@ A few extension methods for working with strings.
 
 - [LeftPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#leftpart): Gets the text before the first instance of a separator
 - [RightPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#rightpart): Gets the text after the first instance of a separator
-- [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#split): Splits a string into tokens and then returns the specified instance
+- [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#split): Splits a string into tokens and then returns the specified instance *(C++)*
+- [ToRoman](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#toroman): Given a number between 0 and 5000, convert to Roman numerals *(C++)*
+- [FromRoman](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#fromroman): Given Roman numeral convert to a number *(C++)*
 
 #### Retired Functions ####
 
@@ -93,5 +98,4 @@ A few extension methods for working with strings.
 
 ## Testing ##
 
-Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](./RunUnitTest.yxmd) which will run all 
-the test workflows checking the formula add ins.
+Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](./RunUnitTest.yxmd) which will run all the test workflows checking the formula add ins.

@@ -336,13 +336,14 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Norm" type="Double" size="8" expression="normdist(X)" />
+            <FormulaField expression="normdist(X)" field="Norm" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
           <AnnotationText>Standard PDF</AnnotationText>
-          <DefaultAnnotationText>Norm=normdist(X)</DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[Norm = normdist(X)
+]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -511,6 +512,10 @@
       <Company />
       <Copyright />
       <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
     </MetaInfo>
     <Events>
       <Enabled value="True" />

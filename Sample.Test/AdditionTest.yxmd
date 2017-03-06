@@ -1,85 +1,28 @@
 <?xml version="1.0"?>
 <AlteryxDocument yxmdVer="10.5">
   <Nodes>
-    <Node ToolID="2">
+    <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
         <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <NumRows value="11" />
+          <NumRows value="2" />
           <Fields>
-            <Field name="FIeld1" />
-            <Field name="Word" />
+            <Field name="A" />
+            <Field name="B" />
             <Field name="Expected" />
-            <Field name="Char" />
           </Fields>
           <Data>
             <r>
-              <c />
-              <c>1</c>
-              <c />
-              <c><![CDATA[ ]]></c>
-            </r>
-            <r>
-              <c>Hello</c>
-              <c>1</c>
-              <c>Hello</c>
-              <c><![CDATA[ ]]></c>
-            </r>
-            <r>
-              <c>Hello World</c>
-              <c>1</c>
-              <c>Hello</c>
-              <c><![CDATA[ ]]></c>
-            </r>
-            <r>
-              <c>Another Hello World</c>
-              <c>1</c>
-              <c>Another</c>
-              <c><![CDATA[ ]]></c>
-            </r>
-            <r>
-              <c>Hello</c>
+              <c>0</c>
               <c>2</c>
-              <c />
-              <c><![CDATA[ ]]></c>
-            </r>
-            <r>
-              <c>Hello World</c>
               <c>2</c>
-              <c>World</c>
-              <c><![CDATA[ ]]></c>
             </r>
             <r>
-              <c>Alpha,Beta</c>
               <c>1</c>
-              <c>Alpha</c>
-              <c>,</c>
-            </r>
-            <r>
-              <c>Two,Different|Delimeters</c>
-              <c>1</c>
-              <c>Two</c>
-              <c>,|</c>
-            </r>
-            <r>
-              <c>Two,Different|Delimeters</c>
-              <c>2</c>
-              <c>Different</c>
-              <c>,|</c>
-            </r>
-            <r>
-              <c>Two,Different|Delimeters</c>
-              <c>3</c>
-              <c>Delimeters</c>
-              <c>,|</c>
-            </r>
-            <r>
-              <c>Hello World</c>
-              <c>1</c>
-              <c>Hello World</c>
-              <c />
+              <c>4</c>
+              <c>5</c>
             </r>
           </Data>
         </Configuration>
@@ -91,51 +34,52 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
     </Node>
-    <Node ToolID="3">
+    <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
         <Position x="174" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="Split([Field1],[Char], [Word])" field="Split" size="64" type="V_WString" />
+            <FormulaField expression="A + B" field="Actual" size="2" type="Int16" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Split = Split([Field1],[Char], [Word])
+          <AnnotationText />
+          <DefaultAnnotationText><![CDATA[Actual = A + B
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
     </Node>
-    <Node ToolID="5">
+    <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="294" y="54" />
+        <Position x="282" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Expression>[Split] != [Expected]</Expression>
+          <Expression>[Actual] != [Expected]</Expression>
           <Mode>Custom</Mode>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>[Split] != [Expected]</DefaultAnnotationText>
+          <DefaultAnnotationText>[Actual] != [Expected]</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
     </Node>
-    <Node ToolID="6">
+    <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="402" y="54" />
+        <Position x="438" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Tests>
             <Test>
-              <Name>Split</Name>
+              <Name>NoRows</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -145,7 +89,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Split</DefaultAnnotationText>
+          <DefaultAnnotationText>NoRows</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -154,16 +98,16 @@
   </Nodes>
   <Connections>
     <Connection>
-      <Origin ToolID="2" Connection="Output" />
-      <Destination ToolID="3" Connection="Input" />
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="3" Connection="Output" />
-      <Destination ToolID="5" Connection="Input" />
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
     </Connection>
     <Connection name="#1">
-      <Origin ToolID="5" Connection="True" />
-      <Destination ToolID="6" Connection="Input" />
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
@@ -184,7 +128,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>SplitTest</Name>
+      <Name>AdditionTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

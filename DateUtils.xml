@@ -8,7 +8,7 @@
     <Category>Date</Category>
     <InsertText>YEAR(Date)</InsertText>
     <Description>Get year of Date</Description>
-    <Formula>ToNumber(DateTimeFormat(P1, "%Y"))</Formula>
+    <Formula>ToNumber(Left(P1, 4))</Formula>
   </Function>
   <Function>
     <Name>MONTH</Name>
@@ -16,7 +16,7 @@
     <Category>Date</Category>
     <InsertText>MONTH(Date)</InsertText>
     <Description>Get month (1-12) of Date</Description>
-    <Formula>ToNumber(DateTimeFormat(P1, "%m"))</Formula>
+    <Formula>ToNumber(Substring(P1, 5, 2))</Formula>
   </Function>
   <Function>
     <Name>DAY</Name>
@@ -24,7 +24,7 @@
     <Category>Date</Category>
     <InsertText>DAY(Date)</InsertText>
     <Description>Get day of month (1-31) of Date</Description>
-    <Formula>ToNumber(DateTimeFormat(P1, "%d"))</Formula>
+    <Formula>ToNumber(Substring(P1, 8, 2))</Formula>
   </Function>
   <Function>
     <Name>WEEKDAY</Name>

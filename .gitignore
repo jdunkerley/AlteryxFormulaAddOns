@@ -7,3 +7,6 @@ x64
 ipch
 *.VC.db
 *.VC.opendb
+*.zip
+*.pdf
+*.docx

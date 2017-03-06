@@ -1,95 +1,24 @@
 <?xml version="1.0"?>
 <AlteryxDocument yxmdVer="10.5">
   <Nodes>
-    <Node ToolID="1">
-      <GuiSettings>
-        <Position x="282" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Value name="Drop Down (18)">FullPath</Value>
-          <Value name="Radio Button (20)">True</Value>
-          <Value name="Radio Button (21)">False</Value>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings Macro="CReW_ListRunner.yxmc" />
-    </Node>
-    <Node ToolID="2">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
-        <Position x="54" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Directory>MathUtils.Test\..</Directory>
-          <FileSpec>*.yxmd</FileSpec>
-          <IncludeSubDirs value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>dir MathUtils.Test\..\*.yxmd</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
-    </Node>
-    <Node ToolID="3">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="174" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Mode>Simple</Mode>
-          <Simple>
-            <Field>Directory</Field>
-            <Operator>Contains</Operator>
-            <Operands>
-              <Operand>.Test\</Operand>
-            </Operands>
-          </Simple>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Contains([Directory],".Test\")</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="366" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression>[Errors]+[Warnings]!=0</Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>[Errors]+[Warnings]!=0</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1122" y="174" />
+        <Position x="1747" y="312" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_16808_eabf6cf1690c471495093769f7422e0e_\Engine_3904_bced295f0d15436bb7f6146aac41afbc_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_18012_b310f8b288e048b9b31ee2ebbbb2eddb_\Engine_6048_b45de219742848858dab6aa23b5231a9_.yxdb</TempFile>
+          <TempFileDataProfiling />
           <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
             <View1>
+              <DefaultTab>Profile</DefaultTab>
               <Hints>
                 <Table />
               </Hints>
             </View1>
+            <View2 />
           </Layout>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -101,103 +30,24 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
     </Node>
-    <Node ToolID="7">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
-        <Position x="486" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Field>Log</Field>
-          <NumFields value="1" />
-          <Delimeters value="\r\n" />
-          <Flags value="0" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
-    </Node>
-    <Node ToolID="8">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="582" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression>StartsWith([Log], "Error")
-or
-StartsWith([Log], "Warning")</Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>StartsWith([Log], "Error")
-or
-StartsWith([Log], "Warning")</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="9">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="690" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression>!REGEX_Match([Log], "Warning - ToolId \d+: The machine is running low on available physical memory")</Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>!REGEX_Match([Log], "Warning - ToolId \d+: The machine is run...</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="10">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="870" y="174" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OrderChanged value="True" />
-          <SelectFields>
-            <SelectField field="ModuleFullPath" selected="True" />
-            <SelectField field="Module" selected="True" />
-            <SelectField field="Result" selected="True" />
-            <SelectField field="Errors" selected="True" />
-            <SelectField field="FieldConversionErrors" selected="True" />
-            <SelectField field="Warnings" selected="True" />
-            <SelectField field="Time" selected="True" />
-            <SelectField field="Log" selected="True" />
-            <SelectField field="*Unknown" selected="True" />
-          </SelectFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
-    </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1122" y="18" />
+        <Position x="1747" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_16808_eabf6cf1690c471495093769f7422e0e_\Engine_3904_77fe120a04cb4a229366e79729e988eb_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_18012_b310f8b288e048b9b31ee2ebbbb2eddb_\Engine_6048_595b628e08824d7f9fecefd1423fc524_.yxdb</TempFile>
+          <TempFileDataProfiling />
           <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
             <View1>
+              <DefaultTab>Profile</DefaultTab>
               <Hints>
                 <Table />
               </Hints>
             </View1>
+            <View2 />
           </Layout>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -209,27 +59,9 @@ StartsWith([Log], "Warning")</DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
     </Node>
-    <Node ToolID="12">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
-        <Position x="870" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <UniqueFields>
-            <Field field="ModuleFullPath" />
-          </UniqueFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Unique: ModuleFullPath</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
-    </Node>
     <Node ToolID="13">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="978" y="54" />
+        <Position x="1615" y="66" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -237,20 +69,13 @@ StartsWith([Log], "Warning")</DefaultAnnotationText>
             <Field field="ModuleFullPath" />
           </JoinInfo>
           <JoinInfo connection="Right">
-            <Field field="ModuleFullPath" />
+            <Field field="FileName" />
           </JoinInfo>
           <SelectConfiguration>
             <Configuration outputConnection="Join">
               <OrderChanged value="False" />
               <SelectFields>
-                <SelectField field="Right_Module" selected="False" rename="Right_Module" />
-                <SelectField field="Right_Result" selected="False" rename="Right_Result" />
-                <SelectField field="Right_Errors" selected="False" rename="Right_Errors" />
-                <SelectField field="Right_FieldConversionErrors" selected="False" rename="Right_FieldConversionErrors" />
-                <SelectField field="Right_Warnings" selected="False" rename="Right_Warnings" />
-                <SelectField field="Right_Time" selected="False" rename="Right_Time" />
-                <SelectField field="Right_Log" selected="False" rename="Right_Log" />
-                <SelectField field="Right_ModuleFullPath" selected="False" rename="Right_ModuleFullPath" />
+                <SelectField field="Right_FileName" selected="False" />
                 <SelectField field="*Unknown" selected="True" />
               </SelectFields>
             </Configuration>
@@ -266,17 +91,22 @@ StartsWith([Log], "Warning")</DefaultAnnotationText>
     </Node>
     <Node ToolID="14">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="1122" y="102" />
+        <Position x="1747" y="132" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_16808_eabf6cf1690c471495093769f7422e0e_\Engine_3904_208246fb807149799f77c79f64845ba8_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_18012_b310f8b288e048b9b31ee2ebbbb2eddb_\Engine_6048_3a69ac6345da4d8fb6840eee2b0608f4_.yxdb</TempFile>
+          <TempFileDataProfiling />
           <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
             <View1>
+              <DefaultTab>Profile</DefaultTab>
               <Hints>
                 <Table />
               </Hints>
             </View1>
+            <View2 />
           </Layout>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -288,19 +118,714 @@ StartsWith([Log], "Warning")</DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
     </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="1747" y="216" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>NoFailedTest</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>NoFailedTest</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="25">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="1111" y="132" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="ToolId" />
+            <Field field="Type" />
+            <Field field="ModuleFullPath" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="ToolID" />
+            <Field field="Type" />
+            <Field field="FileName" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="True" />
+              <SelectFields>
+                <SelectField field="Right_FileName" selected="True" />
+                <SelectField field="Left_ToolId" selected="False" />
+                <SelectField field="Left_Type" selected="False" />
+                <SelectField field="Left_Module" selected="False" />
+                <SelectField field="Left_Result" selected="False" />
+                <SelectField field="Left_Errors" selected="False" />
+                <SelectField field="Left_FieldConversionErrors" selected="False" />
+                <SelectField field="Left_Warnings" selected="False" />
+                <SelectField field="Left_Time" selected="False" />
+                <SelectField field="Left_Log" selected="True" />
+                <SelectField field="Left_ModuleFullPath" selected="False" />
+                <SelectField field="Left_Message" selected="False" />
+                <SelectField field="Right_ToolID" selected="False" rename="Right_ToolID" />
+                <SelectField field="Right_Type" selected="False" rename="Right_Type" />
+                <SelectField field="Right_RegExMessage" selected="True" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Join Expected
+Errors</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1231" y="132" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>!REGEX_Match([Log],[RegExMessage])</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!REGEX_Match([Log],[RegExMessage])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="27">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="1411" y="60" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Ignore</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="28">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="1519" y="60" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="FileName" action="GroupBy" rename="FileName" />
+            <SummarizeField field="Log" action="Concat" rename="ErrorLog">
+              <Concat_Start />
+              <Separator>\r\n</Separator>
+              <Concat_End />
+            </SummarizeField>
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Concatenate Errors</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="36">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="1747" y="408" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Missing Expected Errors</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Missing Expected Errors</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="37">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
+        <Position x="1615" y="312" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <When>Filter</When>
+          <Filter>1</Filter>
+          <Type>Message</Type>
+          <Priority>High</Priority>
+          <Transient>False</Transient>
+          <MessageExpression>FileGetFileName([FileName]) + [Log]</MessageExpression>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
+    </Node>
+    <Node ToolID="47">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="1231" y="240" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;Missing - ToolId &quot; + ToString([ToolID]) + &quot;:  Expected &quot; + [Type] + &quot; &quot; +[RegExMessage]" field="Log" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Log = "Missing - ToolId " + ToString([ToolID]) + ":  Expected " + [Type] + " " +...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="48">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1231" y="60" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <SelectFields>
+            <SelectField field="ModuleFullPath" selected="True" rename="FileName" />
+            <SelectField field="Module" selected="False" />
+            <SelectField field="ToolId" selected="False" />
+            <SelectField field="Type" selected="False" />
+            <SelectField field="Result" selected="False" />
+            <SelectField field="Errors" selected="False" />
+            <SelectField field="FieldConversionErrors" selected="False" />
+            <SelectField field="Warnings" selected="False" />
+            <SelectField field="Time" selected="False" />
+            <SelectField field="Log" selected="True" />
+            <SelectField field="Message" selected="False" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="49">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1303" y="240" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <SelectFields>
+            <SelectField field="FileName" selected="True" />
+            <SelectField field="Log" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="46">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="54" y="76" width="273" height="173" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Find Test Workflows</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Directory.Directory">
+            <Position x="79" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Directory>Sample.Test\..</Directory>
+              <FileSpec>*.yxmd</FileSpec>
+              <IncludeSubDirs value="True" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>dir Sample.Test\..\*.yxmd</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDirectory" />
+        </Node>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="199" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>Contains([Directory],".Test\")</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Contains([Directory],".Test\")</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="38">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="355" y="300" width="684" height="188" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Get Expected Errors</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="16">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DynamicInput.DynamicInput">
+            <Position x="380" y="344" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <InputConfiguration>
+                <Configuration>
+                  <Passwords />
+                  <File OutputFileName="Path" RecordLimit="" SearchSubDirs="False" FileFormat="0">.\RunUnitTests.yxmd</File>
+                  <FormatSpecificOptions>
+                    <CodePage>28591</CodePage>
+                    <Delimeter>\0</Delimeter>
+                    <IgnoreErrors>False</IgnoreErrors>
+                    <FieldLen>8192</FieldLen>
+                    <AllowShareWrite>False</AllowShareWrite>
+                    <HeaderRow>False</HeaderRow>
+                    <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                    <ImportLine>1</ImportLine>
+                  </FormatSpecificOptions>
+                </Configuration>
+              </InputConfiguration>
+              <Mode>ReadList</Mode>
+              <ReadList_Field>FullPath</ReadList_Field>
+              <ReadList_Type>Path</ReadList_Type>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Read Test Workflows In</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDynamicInput" />
+        </Node>
+        <Node ToolID="21">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="955" y="348" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <SelectFields>
+                <SelectField field="FileName" selected="True" />
+                <SelectField field="ToolID" selected="True" type="Int32" size="4" />
+                <SelectField field="Type" selected="True" />
+                <SelectField field="RegExMessage" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="32">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="463.9999" y="344.0003" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="FileName" action="GroupBy" rename="FileName" />
+                <SummarizeField field="Field_1" action="Concat" rename="XmlBody">
+                  <Concat_Start />
+                  <Separator />
+                  <Concat_End />
+                </SummarizeField>
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="40">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+            <Position x="560" y="344.0001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Field>XmlBody</Field>
+              <RegExExpression value="&lt;Node ToolID=&quot;\d+&quot;&gt;.*?&lt;/Node&gt;" />
+              <CaseInsensitve value="True" />
+              <Method>ParseSimple</Method>
+              <Replace expression="">
+                <CopyUnmatched value="True" />
+              </Replace>
+              <ParseSimple>
+                <SplitToRows value="True" />
+              </ParseSimple>
+              <ParseComplex>
+                <Field field="No Marked Groups Found" type="No Marked Groups Found" size="No Marked Groups Found" />
+              </ParseComplex>
+              <Match>
+                <Field>XmlBody_Matched</Field>
+                <ErrorUnmatched value="False" />
+              </Match>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Tokenize:
+&lt;Node ToolID="\d+"&gt;.*?&lt;/Node&gt;</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+        </Node>
+        <Node ToolID="41">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+            <Position x="668" y="344" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Field>XmlBody</Field>
+              <RegExExpression value="&lt;Node ToolID=&quot;(\d+)&quot;&gt;.*?&lt;AnnotationText&gt;(Warning|Error|FieldConversionError): (.*)&lt;/AnnotationText&gt;.*?&lt;/Node&gt;" />
+              <CaseInsensitve value="True" />
+              <Method>ParseComplex</Method>
+              <Replace expression="">
+                <CopyUnmatched value="True" />
+              </Replace>
+              <ParseSimple>
+                <SplitToRows value="False" />
+                <RootName>XmlBody</RootName>
+                <NumFields value="3" />
+                <ErrorHandling>Warn</ErrorHandling>
+              </ParseSimple>
+              <ParseComplex>
+                <Field field="ToolID" type="Int64" size="8" />
+                <Field field="Type" type="V_String" size="32" />
+                <Field field="RegExMessage" type="V_String" size="512" />
+              </ParseComplex>
+              <Match>
+                <Field>XmlBody_Matched</Field>
+                <ErrorUnmatched value="False" />
+              </Match>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Parse:
+&lt;Node ToolID="(\d+)"&gt;.*?&lt;An...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+        </Node>
+        <Node ToolID="43">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="788" y="344" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Field>Type</Field>
+                <Operator>IsNotNull</Operator>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>!IsNull([Type])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="45">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="354" y="75.9999" width="675" height="203.0001" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Run Test Workflows</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="1">
+          <GuiSettings>
+            <Position x="379" y="119.9999" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="Drop Down (18)">FullPath</Value>
+              <Value name="Radio Button (20)">True</Value>
+              <Value name="Radio Button (21)">False</Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="CReW_ListRunner.yxmc" />
+        </Node>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="463" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[Errors]+[FieldConversionErrors]+[Warnings]!=0</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[Errors]+[FieldConversionErrors]+[Warnings]!=0</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+            <Position x="571" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Field>Log</Field>
+              <NumFields value="1" />
+              <Delimeters value="\r\n" />
+              <Flags value="0" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="667" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>REGEX_Match([Log], "(Warning|Error|FieldConversionError) - ToolId \d+: .*")
+&amp;&amp; !REGEX_Match([Log], "Warning - ToolId \d+: The machine is running low on available physical memory")</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>REGEX_Match([Log], "(Warning|Error|FieldConversionError) - To...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="17">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+            <Position x="787" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Field>Log</Field>
+              <RegExExpression value="(Warning|Error|FieldConversionError) - ToolId (\d+): (.*)" />
+              <CaseInsensitve value="True" />
+              <Method>ParseComplex</Method>
+              <Replace expression="">
+                <CopyUnmatched value="True" />
+              </Replace>
+              <ParseSimple>
+                <SplitToRows value="False" />
+                <RootName>Log</RootName>
+                <NumFields value="3" />
+                <ErrorHandling>Warn</ErrorHandling>
+              </ParseSimple>
+              <ParseComplex>
+                <Field field="Type" type="V_WString" size="20" />
+                <Field field="ToolId" type="Int32" size="4" />
+                <Field field="Message" type="V_WString" size="1073741823" />
+              </ParseComplex>
+              <Match>
+                <Field>Log_Matched</Field>
+                <ErrorUnmatched value="False" />
+              </Match>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Parse:
+(Warning|Error|FieldConvers...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+        </Node>
+        <Node ToolID="23">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="907" y="120" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField field="Type" type="V_WString" size="20" expression="Uppercase([Type])" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Type=Uppercase([Type])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+      </ChildNodes>
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
-      <Origin ToolID="1" Connection="Output16" />
-      <Destination ToolID="5" Connection="Input" />
+      <Origin ToolID="13" Connection="Left" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Join" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="13" Connection="Join" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Join" />
+      <Destination ToolID="26" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Right" />
+      <Destination ToolID="47" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Left" />
+      <Destination ToolID="48" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="26" Connection="True" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="48" Connection="Output" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="49" Connection="Output" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="27" Connection="Output" />
+      <Destination ToolID="28" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="27" Connection="Output" />
+      <Destination ToolID="37" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="28" Connection="Output" />
+      <Destination ToolID="13" Connection="Right" />
     </Connection>
     <Connection Wireless="True">
       <Origin ToolID="1" Connection="Output16" />
       <Destination ToolID="13" Connection="Left" />
     </Connection>
+    <Connection name="#1">
+      <Origin ToolID="37" Connection="Output" />
+      <Destination ToolID="36" Connection="Input" />
+    </Connection>
     <Connection>
-      <Origin ToolID="12" Connection="Unique" />
-      <Destination ToolID="13" Connection="Right" />
+      <Origin ToolID="37" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="47" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="2" Connection="Output" />
@@ -308,7 +833,43 @@ StartsWith([Log], "Warning")</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="3" Connection="True" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="True" />
       <Destination ToolID="1" Connection="Input15" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="32" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="21" Connection="Output" />
+      <Destination ToolID="25" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="23" Connection="Output" />
+      <Destination ToolID="25" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="32" Connection="Output" />
+      <Destination ToolID="40" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="40" Connection="Output" />
+      <Destination ToolID="41" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="41" Connection="Output" />
+      <Destination ToolID="43" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="43" Connection="True" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output16" />
+      <Destination ToolID="5" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="5" Connection="True" />
@@ -320,27 +881,11 @@ StartsWith([Log], "Warning")</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="8" Connection="True" />
-      <Destination ToolID="9" Connection="Input" />
+      <Destination ToolID="17" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="9" Connection="True" />
-      <Destination ToolID="10" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="9" Connection="True" />
-      <Destination ToolID="12" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="10" Connection="Output" />
-      <Destination ToolID="6" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="13" Connection="Left" />
-      <Destination ToolID="11" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="13" Connection="Join" />
-      <Destination ToolID="14" Connection="Input" />
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="23" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
