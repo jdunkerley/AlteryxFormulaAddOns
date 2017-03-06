@@ -1,89 +1,56 @@
 ﻿// AlteryxAddIn.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
 #include "JDFormulaAddIn.h"
+#include "AlteryxAddInUtils.h"
 #include <string>
 
-void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString)
-{
-	size_t nLen = wcslen(pString);
-	wchar_t *pStringRet = (wchar_t *)GlobalAlloc(GMEM_FIXED, (nLen + 1) * sizeof(wchar_t));
-	wcscpy_s(pStringRet, nLen + 1, pString);
-	pReturnValue->pVal = pStringRet;
-	pReturnValue->nVarType = 2;
-}
 
-long ReturnAndResetNull(bool success, int nNumArgs, FormulaAddInData *pArgs) {
-	for (int x = 0; x < nNumArgs; x++)
-	{
-		pArgs[x].isNull = 0;
-	}
-
-	return success ? 1 : 0;
-}
-
-//// easy way to error a function
+//// a way to error a function from XML
 extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
-	bool active = nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 0;
-
 	pReturnValue->nVarType = nNumArgs > 2 ? pArgs[2].nVarType : 1;
 
-	if (active) {
-		pReturnValue->isNull = 1;
-		if (nNumArgs < 2 || pArgs[1].nVarType == 1) {
-			const wchar_t* errorMessage = L"Reporting An Error!";
-			SetString(pReturnValue, errorMessage);
-		}
-		else {
-			SetString(pReturnValue, pArgs[1].pVal);
-		}
-	}
-	else {
-		if (nNumArgs < 2 || pArgs[2].isNull == 1) {
-			pReturnValue->isNull = 1;
-		}
-		else {
-			if (pArgs[2].nVarType == 1) {
-				pReturnValue->dVal = pArgs[2].dVal;
-			}
-			else {
-				SetString(pReturnValue, pArgs[2].pVal);
-			}
-		}
+	if (nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 0) {
+		return AlteryxAddInUtils::ReturnError((nNumArgs < 2 || pArgs[1].nVarType == 1) ? L"Reporting An Error!" : pArgs[1].pVal, pReturnValue, nNumArgs, pArgs);
 	}
 
-	return ReturnAndResetNull(!active, nNumArgs, pArgs);
+	if (nNumArgs < 2) {
+		pReturnValue->isNull = 1;
+	}
+	else {
+		AlteryxAddInUtils::CopyValue(&pArgs[2], pReturnValue);
+	}
+
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 //// this sample takes a variable number of inputs and returns the first non-null
 extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
-	pReturnValue->nVarType = pArgs[0].nVarType;
+	if (nNumArgs < 1) {
+		pReturnValue->nVarType = 1;
+		return AlteryxAddInUtils::ReturnError(L"Need an argument!", pReturnValue, nNumArgs, pArgs);
+	}
+
+	int varType = pArgs[0].nVarType;
+	pReturnValue->nVarType = varType;
+
 	pReturnValue->isNull = 1;
 
 	for (int x = 0; x < nNumArgs; x++)
 	{
-		if (pArgs[x].nVarType != pArgs[0].nVarType) {
-
-			const wchar_t* errorMessage = L"Mismatched argument types, all must be same general type as first parameter.";
-			SetString(pReturnValue, errorMessage);
-			return ReturnAndResetNull(false, nNumArgs, pArgs);
+		if (pArgs[x].nVarType != varType) {
+			return AlteryxAddInUtils::ReturnError(L"Mismatched argument types, all must be same general type as first parameter.", pReturnValue, nNumArgs, pArgs);
 		}
 
-		if (pArgs[x].isNull == 0)
+		if (!pArgs[x].isNull)
 		{
-			pReturnValue->isNull = 0;
-			if (pArgs[0].nVarType == 1) {
-				pReturnValue->dVal = pArgs[x].dVal;
-			}
-			else {
-				SetString(pReturnValue, pArgs[x].pVal);
-			}
+			AlteryxAddInUtils::CopyValue(&pArgs[x], pReturnValue);
 			break;
 		}
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -95,14 +62,11 @@ extern "C" long _declspec(dllexport) _stdcall Count(int nNumArgs, FormulaAddInDa
 	int count = 0;
 	for (int x = 0; x < nNumArgs; x++)
 	{
-		if (pArgs[x].isNull == 0)
-		{
-			count++;
-		}
+		count += pArgs[x].isNull == 0;
 	}
 
 	pReturnValue->dVal = count;
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -115,20 +79,17 @@ extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		if (pArgs[x].nVarType != 1) {
-			const wchar_t* errorMessage = L"Non-numeric argument, all must be numbers.";
-			SetString(pReturnValue, errorMessage);
-			pReturnValue->isNull = 1;
-			return 0;
+			return AlteryxAddInUtils::ReturnError(L"Non-numeric argument, all must be numbers.", pReturnValue, nNumArgs, pArgs);
 		}
 
-		if (pArgs[x].isNull == 0)
+		if (!pArgs[x].isNull)
 		{
 			sum += pArgs[x].dVal;
 		}
 	}
 
 	pReturnValue->dVal = sum;
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -144,7 +105,7 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 		if (pArgs[x].nVarType != 1)
 		{
 			const wchar_t* errorMessage = L"Non-numeric argument, all must be numbers.";
-			SetString(pReturnValue, errorMessage);
+			AlteryxAddInUtils::SetString(pReturnValue, errorMessage);
 			pReturnValue->isNull = 1;
 			return 0;
 		}
@@ -163,7 +124,18 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = sum / count;
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+auto matches(const wchar_t letter, const std::wstring separator) {
+	for (auto i : separator)
+	{
+		if (i == letter) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 // Need String, String (char), Integer
@@ -176,46 +148,44 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 		pArgs[0].nVarType != 2 ||
 		pArgs[1].nVarType != 2 ||
 		pArgs[2].nVarType != 1) {
-		const wchar_t* errorMessage = L"Syntax: String, Delimiter, Token Number.";
-		SetString(pReturnValue, errorMessage);
-		pReturnValue->isNull = 1;
-		return 0;
+		return AlteryxAddInUtils::ReturnError(L"Syntax: String, Delimiter, Token Number.", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Check for Nulls
-	if (pArgs[0].isNull || pArgs[2].isNull || pArgs[2].dVal < 0 || pArgs[1].isNull || wcslen(pArgs[1].pVal) == 0) {
-		SetString(pReturnValue, pArgs[0].pVal);
-		pReturnValue->isNull = pArgs[0].isNull;
-		return ReturnAndResetNull(true, nNumArgs, pArgs);
+	if (pArgs[0].isNull || pArgs[2].isNull || pArgs[2].dVal < 1 || pArgs[1].isNull) {
+		AlteryxAddInUtils::CopyValue(&pArgs[0], pReturnValue);
+		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
+
+	// Separator Map
+	const std::wstring separatorString(pArgs[1].pVal);
 
 	// Copy the string
-	size_t nLen = wcslen(pArgs[0].pVal);
-	if (nLen == 0) {
-		pReturnValue->isNull = true;
-		return 1;
+	const std::wstring input(pArgs[0].pVal);
+	const size_t len = input.size();
+	if (!len) {
+		AlteryxAddInUtils::CopyValue(&pArgs[0], pReturnValue);
+		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
-	wchar_t *input = new wchar_t[nLen + 1];
-	wcscpy_s(input, nLen + 1, pArgs[0].pVal);
+	int count = static_cast<int>(pArgs[2].dVal);
+	pReturnValue->isNull = 1;
+	size_t oldPos = 0;
+	size_t charPos;
+	for (charPos = 0; charPos < len; charPos++) {
+		if (matches(input[charPos], separatorString)) {
+			if (!--count) {
+				break;
+			}
 
-	// Split the String
-	wchar_t* buffer = NULL;
-	wchar_t *token = NULL;
-	token = wcstok_s(input, pArgs[1].pVal, &buffer);
-	int count = 1;
-	while (token != NULL && count < pArgs[2].dVal) {
-		token = wcstok_s(NULL, pArgs[1].pVal, &buffer);
-		count++;
+			oldPos = charPos + 1;
+		}
 	}
 
-	if (token == NULL) {
-		pReturnValue->isNull = true;
-	}
-	else {
-		SetString(pReturnValue, token);
+	if (count <= 1) {
+		AlteryxAddInUtils::SetString(pReturnValue, oldPos < charPos ? input.substr(oldPos, charPos - oldPos).c_str() : L"");
+		pReturnValue->isNull = 0;
 	}
 
-	delete input;
-	return 1;
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }

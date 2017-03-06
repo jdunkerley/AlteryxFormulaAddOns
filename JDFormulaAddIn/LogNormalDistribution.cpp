@@ -1,7 +1,8 @@
 #include "stdafx.h"
+#include "AlteryxAddInUtils.h"
 #include "JDFormulaAddIn.h"
-
 #include <boost\math\distributions\lognormal.hpp>
+
 using boost::math::lognormal;
 
 // Syntax: X, Mean, StDev, Cumulative
@@ -18,19 +19,12 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		for (int i = 0; i < nNumArgs; i++)
 		{
 			if (pArgs[i].nVarType != 1) {
-				const wchar_t* errorMessage = L"LogNormDist: Non-numeric argument";
-				SetString(pReturnValue, errorMessage);
-				pReturnValue->isNull = 1;
-				return ReturnAndResetNull(false, nNumArgs, pArgs);
+				return AlteryxAddInUtils::ReturnError(L"LogNormDist: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 			}
 		}
 		break;
 	default:
-		const wchar_t* errorMessage = L"LogNormDist: Syntax x, Mean = 0, StDev = 1, Cumulative = 0 (x required other default)";
-		SetString(pReturnValue, errorMessage);
-		pReturnValue->isNull = 1;
-		return ReturnAndResetNull(false, nNumArgs, pArgs);
-
+		return AlteryxAddInUtils::ReturnError(L"LogNormDist: Syntax x, Mean = 0, StDev = 1, Cumulative = 0 (x required other default)", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -48,7 +42,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // Syntax: P, Mean, StDev
@@ -64,18 +58,12 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		for (int i = 0; i < nNumArgs; i++)
 		{
 			if (pArgs[i].nVarType != 1) {
-				const wchar_t* errorMessage = L"LogNormInv: Non-numeric argument";
-				SetString(pReturnValue, errorMessage);
-				pReturnValue->isNull = 1;
-				return ReturnAndResetNull(false, nNumArgs, pArgs);
+				return AlteryxAddInUtils::ReturnError(L"LogNormInv: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 			}
 		}
 		break;
 	default:
-		const wchar_t* errorMessage = L"LogNormInv: Syntax p, Mean = 0, StDev = 1";
-		SetString(pReturnValue, errorMessage);
-		pReturnValue->isNull = 1;
-		return ReturnAndResetNull(false, nNumArgs, pArgs);
+		return AlteryxAddInUtils::ReturnError(L"LogNormInv: Syntax p, Mean = 0, StDev = 1", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -94,5 +82,5 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		pReturnValue->dVal = x;
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }

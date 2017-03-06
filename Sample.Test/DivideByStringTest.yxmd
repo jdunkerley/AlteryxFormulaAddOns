@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="11.0">
+<AlteryxDocument yxmdVer="10.5">
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
@@ -32,14 +32,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="1 / 0" field="Field1" size="1" type="Byte" />
+            <FormulaField field="Field1" type="Byte" size="1" expression="1 / &quot;A&quot;" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <AnnotationText>ERROR: .*Divide By 0.*</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Field1 = 1 / 0
-]]></DefaultAnnotationText>
+          <AnnotationText>ERROR: .*Formula: tried to apply numeric operator to string value.*</AnnotationText>
+          <DefaultAnnotationText>Field1=1 / "A"</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -51,7 +50,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_1460_d9c33f9dd7bc4906971265addd8f2105_\Engine_17584_346e587cd13d48c9b0bca78c6bc28585_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_5060_8056fa0077434e4c818fa46defef691d_\Engine_6048_345a80363b114ceb9c1bf35b7f31f062_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -113,10 +112,6 @@
       <Company />
       <Copyright />
       <DescriptionLink actual="" displayed="" />
-      <Example>
-        <Description />
-        <File />
-      </Example>
     </MetaInfo>
     <Events>
       <Enabled value="True" />

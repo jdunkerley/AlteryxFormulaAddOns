@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "JDFormulaAddIn.h"
+#include "AlteryxAddInUtils.h"
 
 // Need Double X, Double Y, Double R
 extern "C" long _declspec(dllexport) _stdcall HexBinX(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
@@ -12,7 +13,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinX(int nNumArgs, FormulaAddIn
 		pArgs[1].isNull || pArgs[1].nVarType != 1 ||
 		(nNumArgs == 3 && pArgs[2].nVarType != 1)) {
 		pReturnValue->isNull = 1;
-		return ReturnAndResetNull(true, nNumArgs, pArgs);
+		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	double r = (pArgs[2].isNull ? 1.0 : pArgs[2].dVal);
@@ -20,7 +21,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinX(int nNumArgs, FormulaAddIn
 	double dx = 1.5 * r;
 
 	double px = pArgs[0].dVal / dx;
-	int pi = (int)round(px);
+	int pi = static_cast<int>(round(px));
 	bool mod2 = (pi & 1) == 1;
 	double py = pArgs[1].dVal / dy - (mod2 ? 0.5 : 0);
 	double pj = round(py);
@@ -47,7 +48,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinX(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = pi * dx;
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // Need Double X, Double Y, Double R
@@ -61,7 +62,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinY(int nNumArgs, FormulaAddIn
 		pArgs[1].isNull || pArgs[1].nVarType != 1 ||
 		(nNumArgs == 3 && pArgs[2].nVarType != 1)) {
 		pReturnValue->isNull = 1;
-		return ReturnAndResetNull(true, nNumArgs, pArgs);
+		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	double r = (pArgs[2].isNull ? 1.0 : pArgs[2].dVal);
@@ -69,7 +70,7 @@ extern "C" long _declspec(dllexport) _stdcall HexBinY(int nNumArgs, FormulaAddIn
 	double dx = 1.5 * r;
 
 	double px = pArgs[0].dVal / dx;
-	int pi = (int)round(px);
+	int pi = static_cast<int>(round(px));
 	bool mod2 = (pi & 1) == 1;
 	double py = pArgs[1].dVal / dy - (mod2 ? 0.5 : 0);
 	double pj = round(py);
@@ -98,5 +99,5 @@ extern "C" long _declspec(dllexport) _stdcall HexBinY(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = (pj + (mod2 ? 0.5 : 0)) * dy;
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }

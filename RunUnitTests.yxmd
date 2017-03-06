@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="11.0">
+<AlteryxDocument yxmdVer="10.5">
   <Nodes>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
@@ -7,7 +7,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_17124_bd8ad1a494c24f278c96a4a2b20e529d_\Engine_2860_c043dfa74f9b40558bb86f601fec27e2_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_18012_b310f8b288e048b9b31ee2ebbbb2eddb_\Engine_6048_b45de219742848858dab6aa23b5231a9_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -36,7 +36,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_17124_bd8ad1a494c24f278c96a4a2b20e529d_\Engine_2860_b9702c051a2046b78f38b529e9558737_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_18012_b310f8b288e048b9b31ee2ebbbb2eddb_\Engine_6048_595b628e08824d7f9fecefd1423fc524_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -95,7 +95,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_17124_bd8ad1a494c24f278c96a4a2b20e529d_\Engine_2860_b4b1b934a532448ba1db2331b3ae4655_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_18012_b310f8b288e048b9b31ee2ebbbb2eddb_\Engine_6048_3a69ac6345da4d8fb6840eee2b0608f4_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -285,7 +285,7 @@ Errors</AnnotationText>
           <When>Filter</When>
           <Filter>1</Filter>
           <Type>Message</Type>
-          <Priority>Normal</Priority>
+          <Priority>High</Priority>
           <Transient>False</Transient>
           <MessageExpression>FileGetFileName([FileName]) + [Log]</MessageExpression>
         </Configuration>
@@ -615,7 +615,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="45">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="354" y="75.99992" width="681" height="203.0001" />
+        <Position x="354" y="75.9999" width="675" height="203.0001" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -748,13 +748,12 @@ Errors</AnnotationText>
           <Properties>
             <Configuration>
               <FormulaFields>
-                <FormulaField expression="Uppercase([Type])" field="Type" size="20" type="V_WString" />
+                <FormulaField field="Type" type="V_WString" size="20" expression="Uppercase([Type])" />
               </FormulaFields>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText><![CDATA[Type = Uppercase([Type])
-]]></DefaultAnnotationText>
+              <DefaultAnnotationText>Type=Uppercase([Type])</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
           </Properties>
@@ -918,10 +917,6 @@ Errors</AnnotationText>
       <Company />
       <Copyright />
       <DescriptionLink actual="" displayed="" />
-      <Example>
-        <Description />
-        <File />
-      </Example>
     </MetaInfo>
     <Events>
       <Enabled value="True" />

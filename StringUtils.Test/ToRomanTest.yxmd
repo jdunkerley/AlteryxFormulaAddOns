@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="11.0">
+<AlteryxDocument yxmdVer="10.5">
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
@@ -20091,7 +20091,7 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="ToRoman(-1)" field="Norm" size="8" type="Double" />
+            <FormulaField expression="ToRoman(-1)" field="Norm" size="1073741823" type="V_WString" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -20134,13 +20134,18 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_12624_3277369eefb64f3eb344c05c43555cb1_\Engine_2860_0a6631af3e9f4e1a8d40f0592bccd951_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_26008_26d7ed856fb349f8aded0760b43b6e75_\Engine_22712_adff7eff3b1a4701a1c6eab7e7587a9f_.yxdb</TempFile>
+          <TempFileDataProfiling />
           <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
             <View1>
+              <DefaultTab>Profile</DefaultTab>
               <Hints>
                 <Table />
               </Hints>
             </View1>
+            <View2 />
           </Layout>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -20158,12 +20163,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="ToRoman(&quot;DIE&quot;)" field="Norm" size="8" type="Double" />
+            <FormulaField expression="ToRoman(&quot;DIE&quot;)" field="Norm" size="1073741823" type="V_WString" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <AnnotationText>ERROR: .*ToRoman: Require one numerical argument.*</AnnotationText>
+          <AnnotationText>ERROR: .*ToRoman: Requires one numerical argument.*</AnnotationText>
           <DefaultAnnotationText><![CDATA[Norm = ToRoman("DIE")
 ]]></DefaultAnnotationText>
           <Left value="False" />
@@ -20177,7 +20182,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_12624_3277369eefb64f3eb344c05c43555cb1_\Engine_2860_797e4920c8e147119645a3446c71121f_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_26008_26d7ed856fb349f8aded0760b43b6e75_\Engine_22712_847105060c944601b65e517a5d138cce_.yxdb</TempFile>
           <Layout>
             <View1>
               <Hints>

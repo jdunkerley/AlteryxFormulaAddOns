@@ -2,6 +2,8 @@
 #include "JDFormulaAddIn.h"
 
 #include <boost\math\distributions\normal.hpp>
+#include "AlteryxAddInUtils.h"
+
 using boost::math::normal;
 
 // Syntax: X, Mean, StDev, Cumulative
@@ -10,26 +12,14 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 	pReturnValue->nVarType = 1;
 
 	// Verify Arguments
-	switch (nNumArgs) {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-		for (int i = 0; i < nNumArgs; i++)
-		{
-			if (pArgs[i].nVarType != 1) {
-				const wchar_t* errorMessage = L"NormDist: Non-numeric argument";
-				SetString(pReturnValue, errorMessage);
-				pReturnValue->isNull = 1;
-				return ReturnAndResetNull(false, nNumArgs, pArgs);
-			}
+	if (nNumArgs < 1 || nNumArgs > 4) {
+		return AlteryxAddInUtils::ReturnError(L"NormDist: Syntax x, Mean (= 0), StDev (= 1), Cumulative (= 0) (x required, others optional)", pReturnValue, nNumArgs, pArgs);
+	}
+	for (int i = 0; i < nNumArgs; i++)
+	{
+		if (pArgs[i].nVarType != 1) {
+			return AlteryxAddInUtils::ReturnError(L"NormDist: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 		}
-		break;
-	default:
-		const wchar_t* errorMessage = L"NormDist: Syntax x, Mean (= 0), StDev (= 1), Cumulative (= 0) (x required, others optional)";
-		SetString(pReturnValue, errorMessage);
-		pReturnValue->isNull = 1;
-		return ReturnAndResetNull(false, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -47,7 +37,7 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // Syntax: P, Mean, StDev
@@ -63,18 +53,12 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		for (int i = 0; i < nNumArgs; i++)
 		{
 			if (pArgs[i].nVarType != 1) {
-				const wchar_t* errorMessage = L"NormInv: Non-numeric argument";
-				SetString(pReturnValue, errorMessage);
-				pReturnValue->isNull = 1;
-				return ReturnAndResetNull(false, nNumArgs, pArgs);
+				return AlteryxAddInUtils::ReturnError(L"NormInv: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 			}
 		}
 		break;
 	default:
-		const wchar_t* errorMessage = L"NormInv: Syntax p, Mean = 0, StDev = 1";
-		SetString(pReturnValue, errorMessage);
-		pReturnValue->isNull = 1;
-		return ReturnAndResetNull(false, nNumArgs, pArgs);
+		return AlteryxAddInUtils::ReturnError(L"NormInv: Syntax p, Mean = 0, StDev = 1", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -92,5 +76,5 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = x * stDev + mean;
 	}
 
-	return ReturnAndResetNull(true, nNumArgs, pArgs);
+	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
 }

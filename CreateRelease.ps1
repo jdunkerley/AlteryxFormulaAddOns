@@ -2,30 +2,15 @@
 
 $root = Split-Path -Parent $PSCommandPath
 Push-Location $root
-
-Write-Host "Finding Alteryx Install Location..."
-$reg = Get-ItemProperty HKLM:\SOFTWARE\WOW6432Node\SRC\Alteryx
-$bin = $reg.InstallDir64
-
-Write-Host "Installing current version to $bin ..."
-& .\InstallAlteryxAbacus.exe "$root\*.dll" "$root\*.xml" "$bin\RuntimeData\FormulaAddIn"
+<#
+.\InstallAndRunUnitTests.ps1
 if ($LASTEXITCODE -ne 0) {
-    $message = "Installation failed: " + $LASTEXITCODE
-    Write-Host $message
     Pop-Location
     exit -1
 }
+#>
 
-Write-Host "Running Unit Tests..."
-& "C:\Program Files\Alteryx\bin\AlteryxEngineCmd.exe" "$root\RunUnitTests.yxmd"
-if ($LASTEXITCODE -eq 2) {
-    $message = "Unit Tests failed: " + $LASTEXITCODE
-    Write-Host $message
-    Pop-Location
-    exit -2
-}
-
-$version = Read-Host "Unit Tests Passed. Enter version number (e.g. 1.3.2)"
+$version = Read-Host "Enter version number (e.g. 1.3.2)"
 while ($version -notmatch '^\d+\.\d+\.?\d*$') {
     $version = Read-Host "Invalid Version. Enter version number (e.g. 1.3.2)"
 }
@@ -37,7 +22,7 @@ if ($LASTEXITCODE -ne 0) {
     Write-Host $message
     Pop-Location
     exit -1
-}pandoc 
+}
 
 Write-Host "Running Word to create pdf ..."
 $word = New-Object -ComObject "Word.Application"
@@ -50,8 +35,11 @@ Remove-Item "$root\README.docx"
 Write-Host "Building Manual ..."
 $text = (Get-Content "$root\..\AlteryxFormulaAddOns.wiki\Function-List.md" -Raw) 
 
+Write-Host "Removing bak files ..."
+Remove-Item *.Test\*.bak
+
 $output = "$root\AlteryxAbacus v$version.zip"
-Compress-Archive -Path ("$root\*.dll", "$root\*Utils.xml", "$root\README.pdf", "$root\Install.bat", "$root\InstallAlteryxAbacus.exe") -DestinationPath $output -Verbose -Update
+Compress-Archive -Path ("$root\*.dll", "$root\*Utils.xml", "$root\README.pdf", "$root\Install.bat", "$root\InstallAlteryxAbacus.exe", "$root\Install - Core.bat", "$root\Uninstall.bat") -DestinationPath $output -Verbose -Update
 Remove-Item "$root\README.pdf"
 
 $output = "$root\AlteryxAbacus v$version Tests.zip"

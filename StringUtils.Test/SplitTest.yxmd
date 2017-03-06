@@ -98,12 +98,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Split" type="V_WString" size="64" expression="Split([Field1],[Char], [Word])" />
+            <FormulaField expression="Split([Field1],[Char], [Word])" field="Split" size="64" type="V_WString" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Split=Split([Field1],[Char], [Word])</DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[Split = Split([Field1],[Char], [Word])
+]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -194,6 +195,10 @@
       <Company />
       <Copyright />
       <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
     </MetaInfo>
     <Events>
       <Enabled value="True" />

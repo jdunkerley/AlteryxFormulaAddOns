@@ -1,7 +1,5 @@
 #ifndef FORMULAADDIN_H__
-
 	#define FORMULAADDIN_H__
-
 
 	//  API definition for Formula functions plug ins
 	struct FormulaAddInData
@@ -29,11 +27,4 @@
 	//	If 0, place a string in the pReturnValue that represents the error message
 	//		Again, the string MUST be allocated with GlobalAlloc
 	typedef long(_stdcall * FormulaAddInPlugin)(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue);
-
-	// Function To Set A String On A Return (inc GlobalAlloc)
-	void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString);
-
-	// Correct NULL and return value
-	long ReturnAndResetNull(bool success, int nNumArgs, FormulaAddInData *pArgs);
-
 #endif
