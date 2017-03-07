@@ -3,11 +3,14 @@
 <FormulaAddIn>
   <Function>
     <Name>VERSION</Name>
-    <NumParams variable="false">0</NumParams>
+    <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
     <InsertText>VERSION</InsertText>
     <Description>Gets the Major and Minor Version Number of the Engine</Description>
-    <Formula>ToNumber(REGEX_Replace([Engine.Version],"(\d+\.\d+)\..*","$1"))</Formula>
+    <Dll>
+      <Name>JDFormulaAddIn.dll</Name>
+      <EntryPoint>Version</EntryPoint>
+    </Dll>
   </Function>
   <Function>
     <Name>IFNULL</Name>

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "AlteryxAddInUtils.h"
 
-
 void AlteryxAddInUtils::DoSetString(FormulaAddInData* pReturnValue, const wchar_t* pString)
 {
 	size_t nLen = wcslen(pString);
