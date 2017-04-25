@@ -7,7 +7,15 @@
     <Category>Math</Category>
     <InsertText>MODULO(Dividend, Divisor)</InsertText>
     <Description>Get Remainder of Division</Description>
-    <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),(P1/P2 - FLOOR(P1/P2)) * P2)</Formula>
+    <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),P1 - (FLOOR(P1/P2) * P2))</Formula>
+  </Function>
+  <Function>
+    <Name>DIV</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>DIV(Dividend, Divisor)</InsertText>
+    <Description></Description>
+    <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),FLOOR(P1/P2))</Formula>
   </Function>
   <Function>
     <Name>HEXBINX</Name>
