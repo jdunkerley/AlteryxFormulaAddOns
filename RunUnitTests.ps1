@@ -22,16 +22,7 @@ if ($bins.Count -eq 0) {
 }
 
 foreach ($bin in $bins) {
-    Write-Host "Installing current version to $bin ..."
-    & .\InstallAlteryxAbacus.exe "$root\*.dll" "$root\*.xml" "$bin\RuntimeData\FormulaAddIn"
-    if ($LASTEXITCODE -ne 0) {
-        $message = "Installation failed: " + $LASTEXITCODE
-        Write-Host $message
-        Pop-Location
-        exit -1
-    }
-
-    Write-Host "Running Unit Tests..."
+    Write-Host "Running Unit Tests with $bin..."
     & "$bin\AlteryxEngineCmd.exe" "$root\RunUnitTests.yxmd"
     if ($LASTEXITCODE -eq 2) {
         $message = "Unit Tests failed: " + $LASTEXITCODE

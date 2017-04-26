@@ -20,7 +20,13 @@ if ($LASTEXITCODE -ne 0) {
 
 Copy-Item .\JDFormulaAddIn\x64\Release\JDFormulaAddIn.dll .
 
-.\InstallAndRunUnitTests.ps1
+& .\Install.bat
+if ($LASTEXITCODE -ne 0) {
+    Pop-Location
+    exit -1
+}
+
+.\RunUnitTests.ps1
 if ($LASTEXITCODE -ne 0) {
     Pop-Location
     exit -1
