@@ -4,7 +4,6 @@
 #include "AlteryxAddInUtils.h"
 #include <string>
 
-
 //// a way to error a function from XML
 extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {

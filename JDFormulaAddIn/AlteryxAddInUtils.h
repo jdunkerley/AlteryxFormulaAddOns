@@ -2,6 +2,7 @@
 	#define ALTERYX_ADDIN_UTILS_H__
 
 	#include "JDFormulaAddIn.h"
+
 	class AlteryxAddInUtils
 	{
 		// Function To Actually Set A String On A Return (inc GlobalAlloc)
@@ -10,7 +11,7 @@
 		// Fix a Bug from Pre 10.5, should be retired
 		static void DoResetNull(int nNumArgs, FormulaAddInData* pArgs);
 
-		public:
+	public:
 		// Function To Set A String On A Return (inc GlobalAlloc)
 		static void SetString(FormulaAddInData *pReturnValue, const wchar_t *pString);
 
@@ -23,5 +24,4 @@
 		// Copy From Source To Target
 		static void CopyValue(const FormulaAddInData *source, FormulaAddInData *target);
 	};
-
 #endif
