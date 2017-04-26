@@ -44,3 +44,4 @@ foreach ($bin in $bins) {
 }
 
 Pop-Location
+exit 0

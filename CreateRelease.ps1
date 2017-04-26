@@ -2,13 +2,29 @@
 
 $root = Split-Path -Parent $PSCommandPath
 Push-Location $root
-<#
+
+$vsPath = .\vswhere.exe -latest -requires 'Microsoft.Component.MSBuild' -property installationPath
+if ($vsPath -eq $null) {
+    Write-Host "Failed to find Visual Studio Install"
+    Pop-Location
+    exit -1
+}
+$vsPath = Join-Path $vsPath 'MSBuild\15.0\Bin\MSBuild.exe'
+
+& $vsPath .\JDFormulaAddIn\JDFormulaAddIn.sln /t:Rebuild /p:Configuration=Release
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Build Failed"
+    Pop-Location
+    exit -1
+}
+
+Copy-Item .\JDFormulaAddIn\x64\Release\JDFormulaAddIn.dll .
+
 .\InstallAndRunUnitTests.ps1
 if ($LASTEXITCODE -ne 0) {
     Pop-Location
     exit -1
 }
-#>
 
 $version = Read-Host "Enter version number (e.g. 1.3.2)"
 while ($version -notmatch '^\d+\.\d+\.?\d*$') {

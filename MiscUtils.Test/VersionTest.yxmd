@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="66" y="246" />
+        <Position x="66" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -36,7 +36,7 @@
     </Node>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="162" y="150" />
+        <Position x="162" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -55,7 +55,7 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="162" y="246" />
+        <Position x="162" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -76,7 +76,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="162" y="30" />
+        <Position x="162" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -95,7 +95,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-        <Position x="270" y="30" />
+        <Position x="270" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -134,7 +134,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="54" y="30" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -158,7 +158,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="8">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-        <Position x="306" y="150" />
+        <Position x="306" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -185,7 +185,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="9">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="402" y="150" />
+        <Position x="402" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -203,7 +203,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="10">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
-        <Position x="402" y="30" />
+        <Position x="402" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -229,7 +229,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="306" y="246" />
+        <Position x="306" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -261,7 +261,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="12">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="522" y="150" />
+        <Position x="522" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -278,7 +278,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="13">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="522" y="246" />
+        <Position x="522" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -295,7 +295,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="14">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-        <Position x="162" y="366" />
+        <Position x="162" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -321,7 +321,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="15">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="270" y="366" />
+        <Position x="270" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -340,7 +340,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="16">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="486" y="366" />
+        <Position x="486" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -371,7 +371,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="17">
       <GuiSettings Plugin="AlteryxBasePluginsGui.MultiFieldFormula.MultiFieldFormula">
-        <Position x="378" y="366" />
+        <Position x="378" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -397,7 +397,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="18">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="594" y="366" />
+        <Position x="594" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -428,7 +428,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="19">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="702" y="366" />
+        <Position x="702" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -446,7 +446,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="20">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="822" y="366" />
+        <Position x="822" y="390" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -463,11 +463,11 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="21">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-        <Position x="966" y="150" />
+        <Position x="966" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_ErrorMode>Ignore</ByName_ErrorMode>
           <ByName_OutputMode>All</ByName_OutputMode>
           <Mode>ByName</Mode>
           <SetOutputOrder value="False" />
@@ -482,7 +482,7 @@ PartString = 'Part' + ToString([Part])
     </Node>
     <Node ToolID="22">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="1074" y="150" />
+        <Position x="1074" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
