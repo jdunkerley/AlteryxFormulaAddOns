@@ -51,7 +51,7 @@ $readMeDoc = Join-Path $root "Readme.docx"
 $readMePdf = Join-Path $root "Readme.pdf"
 $word = New-Object -ComObject "Word.Application"
 $doc = $word.Documents.Open($readMeDoc)
-$doc.ExportAsFixedFormat($readMePdf, 17, 0)
+$doc.ExportAsFixedFormat([string]$readMePdf, 17, 0)
 $doc.Close(0)
 $word.Quit([ref]0)
 Remove-Item $readMeDoc
