@@ -1,4 +1,6 @@
 param([string]$mode = "ROOT")
+$ErrorActionPreference = "Stop"
+
 $root = Split-Path -Parent $PSCommandPath
 Push-Location $root
 

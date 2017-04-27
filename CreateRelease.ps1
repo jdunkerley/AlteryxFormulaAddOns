@@ -47,21 +47,23 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "Running Word to create pdf ..."
+$readMeDoc = Join-Path $root "Readme.docx"
+$readMePdf = Join-Path $root "Readme.pdf"
 $word = New-Object -ComObject "Word.Application"
-$doc = $word.Documents.Open("$root/Readme.docx")
-$doc.ExportAsFixedFormat("$root/README.pdf", 17, 0)
+$doc = $word.Documents.Open($readMeDoc)
+$doc.ExportAsFixedFormat($readMePdf, 17, 0)
 $doc.Close(0)
 $word.Quit([ref]0)
-Remove-Item "$root\README.docx"
+Remove-Item $readMeDoc
 
-Write-Host "Building Manual ..."
-$text = (Get-Content "$root\..\AlteryxFormulaAddOns.wiki\Function-List.md" -Raw) 
+# Write-Host "Building Manual ..."
+# $text = (Get-Content "$root\..\AlteryxFormulaAddOns.wiki\Function-List.md" -Raw) 
 
 Write-Host "Removing bak files ..."
-Remove-Item *.Test\*.bak
+Remove-Item *.bak -Recurse
 
 $output = "$root\AlteryxAbacus v$version.zip"
-Compress-Archive -Path ("$root\*.dll", "$root\*Utils.xml", "$root\README.pdf", "$root\Install.bat", "$root\InstallAlteryxAbacus.exe", "$root\Install - Core.bat", "$root\Uninstall.bat") -DestinationPath $output -Verbose -Update
+Compress-Archive -Path ("$root\*.dll", "$root\*Utils.xml", "$root\README.pdf", "$root\Install.bat", "$root\Installer.ps1", "$root\Uninstall.bat", "$root\Uninstaller.ps1") -DestinationPath $output -Verbose -Update
 Remove-Item "$root\README.pdf"
 
 $output = "$root\AlteryxAbacus v$version Tests.zip"
