@@ -1,2 +1,2 @@
 @echo off
-"%~dp0\Install - Core.bat" "%~dp0\*.dll" "%~dp0\*.xml"
+powershell "Start-Process -FilePath powershell.exe -ArgumentList '%~fs0\..\Installer.ps1' -verb RunAs -Wait"

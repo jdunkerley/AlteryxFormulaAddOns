@@ -1,7 +1,4 @@
-﻿$root = Split-Path -Parent $PSCommandPath
-Push-Location $root
-
-$bins = @()
+﻿$bins = @()
 
 Write-Host "Finding Alteryx Admin Install Location..."
 $reg = Get-ItemProperty HKLM:\SOFTWARE\WOW6432Node\SRC\Alteryx -ErrorAction SilentlyContinue
@@ -17,31 +14,24 @@ if ($reg -ne $null) {
 
 if ($bins.Count -eq 0) {
     Write-Host "Failed to find Alteryx Install"
-    Pop-Location
     exit -1
 }
 
-foreach ($bin in $bins) {
-    Write-Host "Installing current version to $bin ..."
-    & .\InstallAlteryxAbacus.exe "$root\*.dll" "$root\*.xml" "$bin\RuntimeData\FormulaAddIn"
-    if ($LASTEXITCODE -ne 0) {
-        $message = "Installation failed: " + $LASTEXITCODE
-        Write-Host $message
-        Pop-Location
-        exit -1
-    }
+$root = Split-Path -Parent $PSCommandPath
 
-    Write-Host "Running Unit Tests..."
-    & "$bin\AlteryxEngineCmd.exe" "$root\RunUnitTests.yxmd"
+foreach ($bin in $bins) {
+    Write-Host "Running Unit Tests with $bin..."
+    $exe = Join-Path $bin "AlteryxEngineCmd.exe"
+    $tests = Join-Path $root "RunUnitTests.yxmd"
+
+    & $exe $tests
     if ($LASTEXITCODE -eq 2) {
         $message = "Unit Tests failed: " + $LASTEXITCODE
         Write-Host $message
-        Pop-Location
         exit -2
     }
 
     Write-Host "Unit Tests Passed."
 }
 
-Pop-Location
 exit 0
