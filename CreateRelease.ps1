@@ -1,4 +1,4 @@
-﻿$version = "1.3"
+﻿$version = "1.2.1"
 
 $root = Split-Path -Parent $PSCommandPath
 
