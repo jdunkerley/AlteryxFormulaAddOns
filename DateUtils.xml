@@ -32,7 +32,7 @@
     <Category>Date</Category>
     <InsertText>WEEKDAY(Date)</InsertText>
     <Description>Convert a date to day of week (0 Sunday - 6 Saturday)</Description>
-    <Formula>Switch(DateTimeFormat(P1,"%a"),NULL(),"Sun",0,"Mon",1,"Tue",2,"Wed",3,"Thu",4,"Fri",5,"Sat",6)</Formula>
+    <Formula>IIF(VERSION()>=11,ToNumber(DateTimeFormat(P1, "%w")),Switch(DateTimeFormat(P1,"%a"),NULL(),"Sun",0,"Mon",1,"Tue",2,"Wed",3,"Thu",4,"Fri",5,"Sat",6))</Formula>
   </Function>
   <Function>
     <Name>QUARTER</Name>
@@ -58,14 +58,13 @@
     <Description>The position within the year</Description>
     <Formula>ToNumber(DateTimeFormat(P1, "%j"))</Formula>
   </Function>
-  
   <Function>
     <Name>MAKEDATE</Name>
     <NumParams variable="false">3</NumParams>
     <Category>Date</Category>
     <InsertText>MAKEDATE(Year, Month, Day)</InsertText>
     <Description>Create a Date</Description>
-    <Formula>TOSTRING(P1, 0) + "-" + RIGHT("00" + TOSTRING(P2, 0), 2) + "-" + RIGHT("00" + TOSTRING(P3, 0), 2)</Formula>
+    <Formula>TOSTRING(P1, 0) + "-" + RIGHT("0" + TOSTRING(P2, 0), 2) + "-" + RIGHT("0" + TOSTRING(P3, 0), 2)</Formula>
   </Function>
   <Function>
     <Name>MAKETIME</Name>
@@ -73,7 +72,7 @@
     <Category>Time</Category>
     <InsertText>MAKETIME(Hour, Min, Second)</InsertText>
     <Description>Create a Date</Description>
-    <Formula>RIGHT("00" + TOSTRING(P1, 0), 2) + ":" + RIGHT("00" + TOSTRING(P2, 0), 2) + ":" + RIGHT("00" + TOSTRING(P3, 0), 2)</Formula>
+    <Formula>RIGHT("0" + TOSTRING(P1, 0), 2) + ":" + RIGHT("0" + TOSTRING(P2, 0), 2) + ":" + RIGHT("0" + TOSTRING(P3, 0), 2)</Formula>
   </Function>
   <Function>
     <Name>MAKEDATETIME</Name>
@@ -83,7 +82,6 @@
     <Description>Create a DateTime</Description>
     <Formula>MAKEDATE(P1,P2,P3) + ' ' + MAKETIME(P4,P5,P6)</Formula>
   </Function>
-
   <Function>
     <Name>TODATE</Name>
     <NumParams variable="false">1</NumParams>
