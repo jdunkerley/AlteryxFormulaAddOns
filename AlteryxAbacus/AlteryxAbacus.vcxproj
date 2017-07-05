@@ -152,6 +152,7 @@
     <ClInclude Include="AlteryxAbacusUtils.h" />
     <ClInclude Include="EngineVersion.h" />
     <ClInclude Include="AlteryxAbacus.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +166,9 @@
     <ClCompile Include="NormalDistribution.cpp" />
     <ClCompile Include="RomanNumerals.cpp" />
     <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AlteryxAbacus.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
