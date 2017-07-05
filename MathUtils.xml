@@ -16,7 +16,7 @@
     <InsertText>HEXBINX(X, Y, R)</InsertText>
     <Description>Get HexBin X Co-Ordindate of Point</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>HexBinX</EntryPoint>
     </Dll>
   </Function>
@@ -27,7 +27,7 @@
     <InsertText>HEXBINY(X, Y, R)</InsertText>
     <Description>Get HexBin Y Co-Ordindate of Point</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>HexBinY</EntryPoint>
     </Dll>
   </Function>
@@ -51,7 +51,7 @@
     <InsertText>AVG(Val1, Val, ... )</InsertText>
     <Description>Average Ignoring Nulls</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Average</EntryPoint>
     </Dll>
   </Function>
@@ -62,7 +62,7 @@
     <InsertText>SUM(Val1, Val, ... )</InsertText>
     <Description>Sum Ignoring Nulls</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Sum</EntryPoint>
     </Dll>
   </Function>
@@ -73,7 +73,7 @@
     <InsertText>COUNT(Val1, Val, ... )</InsertText>
     <Description>Count not null values</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Count</EntryPoint>
     </Dll>
   </Function>
@@ -100,7 +100,7 @@
     <InsertText>NORMDIST(X, Mean, StDev, Cuml)</InsertText>
     <Description>Normal Distribution PDF or CDF Value</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>NormDist</EntryPoint>
     </Dll>
   </Function>
@@ -111,7 +111,7 @@
     <InsertText>NORMINV(X, Mean, StDev)</InsertText>
     <Description>Normal Distribution Inverse CDF Function</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>NormInv</EntryPoint>
     </Dll>
   </Function>
@@ -122,7 +122,7 @@
     <InsertText>LOGNORMDIST(X, Location, Scale, Cuml)</InsertText>
     <Description>Log Normal Distribution PDF or CDF Value</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>LogNormDist</EntryPoint>
     </Dll>
   </Function>
@@ -133,7 +133,7 @@
     <InsertText>LOGNORMINV(X, Location, Scale)</InsertText>
     <Description>Log Normal Distribution Inverse CDF Function</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>LogNormInv</EntryPoint>
     </Dll>
   </Function>
