@@ -11,14 +11,14 @@ if ($vsPath -eq $null) {
 }
 $vsPath = Join-Path $vsPath 'MSBuild\15.0\Bin\MSBuild.exe'
 
-& $vsPath .\JDFormulaAddIn\JDFormulaAddIn.sln /t:Rebuild /p:Configuration=Release
+& $vsPath .\AlteryxAbacus\AlteryxAbacus.sln /t:Rebuild /p:Configuration=Release
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Build Failed"
     Pop-Location
     exit -1
 }
 
-Copy-Item .\JDFormulaAddIn\x64\Release\JDFormulaAddIn.dll .
+Copy-Item .\AlteryxAbacus\x64\Release\AlteryxAbacus.dll .
 
 & .\Install.bat
 if ($LASTEXITCODE -ne 0) {

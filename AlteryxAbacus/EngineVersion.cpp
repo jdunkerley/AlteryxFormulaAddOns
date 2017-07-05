@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "EngineVersion.h"
-#include "JDFormulaAddIn.h"
-#include "AlteryxAddInUtils.h"
+#include "AlteryxAbacus.h"
+#include "AlteryxAbacusUtils.h"
 
 std::array<int, 4> EngineVersion::versionParts{ -1, 0, 0, 0 };
 
@@ -56,7 +56,7 @@ extern "C" long _declspec(dllexport) _stdcall Version(int nNumArgs, FormulaAddIn
 
 	if (nNumArgs > 2 || (nNumArgs > 0 && pArgs[0].nVarType != 1) || (nNumArgs > 1 && pArgs[1].nVarType != 1))
 	{
-		return AlteryxAddInUtils::ReturnError(L"Arguments: [MajorIndex (1-4)] [MinorIndex (1-4)]", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"Arguments: [MajorIndex (1-4)] [MinorIndex (1-4)]", pReturnValue, nNumArgs, pArgs);
 	}
 
 	auto version = EngineVersion::GetEngineVersion();
@@ -68,7 +68,7 @@ extern "C" long _declspec(dllexport) _stdcall Version(int nNumArgs, FormulaAddIn
 		auto idx = pArgs[0].isNull ? -1 : (static_cast<int>(pArgs[0].dVal) - 1);
 		if (idx < -1 || idx > 3)
 		{
-			return AlteryxAddInUtils::ReturnError(L"Argument 1 Outside of version parts range (1 - 4)", pReturnValue, nNumArgs, pArgs);
+			return AlteryxAbacusUtils::ReturnError(L"Argument 1 Outside of version parts range (1 - 4)", pReturnValue, nNumArgs, pArgs);
 		}
 
 		major = version[idx];
@@ -79,7 +79,7 @@ extern "C" long _declspec(dllexport) _stdcall Version(int nNumArgs, FormulaAddIn
 		auto idx = pArgs[1].isNull ? -1 : (static_cast<int>(pArgs[1].dVal) - 1);
 		if (idx < -1 || idx > 3)
 		{
-			return AlteryxAddInUtils::ReturnError(L"Argument 2 Outside of version parts range (1 - 4)", pReturnValue, nNumArgs, pArgs);
+			return AlteryxAbacusUtils::ReturnError(L"Argument 2 Outside of version parts range (1 - 4)", pReturnValue, nNumArgs, pArgs);
 		}
 
 		minor = version[idx];
@@ -87,7 +87,7 @@ extern "C" long _declspec(dllexport) _stdcall Version(int nNumArgs, FormulaAddIn
 
 	pReturnValue->isNull = 0;
 	pReturnValue->dVal = major + (minor ? minor / std::pow(10, ceil(std::log10(minor))) : 0.0);
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 //// a way to error a function from XML
@@ -100,6 +100,6 @@ extern "C" long _declspec(dllexport) _stdcall EnginePath(int nNumArgs, FormulaAd
 		auto idx = static_cast<int>(pArgs[0].dVal) - 1;
 
 	}
-	AlteryxAddInUtils::SetString(pReturnValue, EngineVersion::GetEnginePath().c_str());
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	AlteryxAbacusUtils::SetString(pReturnValue, EngineVersion::GetEnginePath().c_str());
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }

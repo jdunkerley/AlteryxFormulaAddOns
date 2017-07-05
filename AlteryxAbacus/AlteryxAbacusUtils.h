@@ -1,9 +1,9 @@
 #ifndef ALTERYX_ADDIN_UTILS_H__
 	#define ALTERYX_ADDIN_UTILS_H__
 
-	#include "JDFormulaAddIn.h"
+	#include "AlteryxAbacus.h"
 
-	class AlteryxAddInUtils
+	class AlteryxAbacusUtils
 	{
 		// Function To Actually Set A String On A Return (inc GlobalAlloc)
 		static void DoSetString(FormulaAddInData* pReturnValue, const wchar_t* pString);
