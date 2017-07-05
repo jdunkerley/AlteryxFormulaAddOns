@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "JDFormulaAddIn.h"
+#include "AlteryxAbacus.h"
 #include <string>
 #include <sstream>
-#include "AlteryxAddInUtils.h"
+#include "AlteryxAbacusUtils.h"
 
 const int numericalValues[] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
 const std::wstring characterValues[] = { L"M", L"CM", L"D", L"CD", L"C", L"XC", L"L", L"XL", L"X", L"IX", L"V", L"IV", L"I" };
@@ -13,17 +13,17 @@ extern "C" long _declspec(dllexport) _stdcall ToRoman(int nNumArgs, FormulaAddIn
 	pReturnValue->nVarType = 2;
 
 	if (nNumArgs != 1 || pArgs[0].nVarType != 1) {
-		return AlteryxAddInUtils::ReturnError(L"ToRoman: Requires one numerical argument.", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"ToRoman: Requires one numerical argument.", pReturnValue, nNumArgs, pArgs);
 	}
 
 	if (pArgs[0].isNull) {
 		pReturnValue->isNull = true;
-		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	double value = pArgs[0].dVal;
 	if (value > 5000 || value < 0) {
-		return AlteryxAddInUtils::ReturnError(L"ToRoman: Outside Range of 0 to 5000.", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"ToRoman: Outside Range of 0 to 5000.", pReturnValue, nNumArgs, pArgs);
 	}
 
 	int integerValue = static_cast<int>(value);
@@ -36,8 +36,8 @@ extern "C" long _declspec(dllexport) _stdcall ToRoman(int nNumArgs, FormulaAddIn
 		}
 	}
 
-	AlteryxAddInUtils::SetString(pReturnValue, output.str().c_str());
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	AlteryxAbacusUtils::SetString(pReturnValue, output.str().c_str());
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // Syntax: Roman
@@ -46,12 +46,12 @@ extern "C" long _declspec(dllexport) _stdcall FromRoman(int nNumArgs, FormulaAdd
 	pReturnValue->nVarType = 1;
 
 	if (nNumArgs != 1 || pArgs[0].nVarType != 2) {
-		return AlteryxAddInUtils::ReturnError(L"FromRoman: Requires one text argument.", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"FromRoman: Requires one text argument.", pReturnValue, nNumArgs, pArgs);
 	}
 
 	if (pArgs[0].isNull) {
 		pReturnValue->isNull = true;
-		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	std::wstring roman(pArgs[0].pVal);
@@ -65,7 +65,7 @@ extern "C" long _declspec(dllexport) _stdcall FromRoman(int nNumArgs, FormulaAdd
 		}
 
 		if (r == 13) {
-			return AlteryxAddInUtils::ReturnError(L"FromRoman: Invalid Roman Numeral.", pReturnValue, nNumArgs, pArgs);
+			return AlteryxAbacusUtils::ReturnError(L"FromRoman: Invalid Roman Numeral.", pReturnValue, nNumArgs, pArgs);
 		}
 
 		value += numericalValues[r];
@@ -73,5 +73,5 @@ extern "C" long _declspec(dllexport) _stdcall FromRoman(int nNumArgs, FormulaAdd
 	}
 
 	pReturnValue->dVal = value;
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }

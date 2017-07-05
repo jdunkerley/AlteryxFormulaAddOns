@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "AlteryxAddInUtils.h"
-#include "JDFormulaAddIn.h"
+#include "AlteryxAbacusUtils.h"
+#include "AlteryxAbacus.h"
 #include <boost\math\distributions\lognormal.hpp>
 
 using boost::math::lognormal;
@@ -19,12 +19,12 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		for (int i = 0; i < nNumArgs; i++)
 		{
 			if (pArgs[i].nVarType != 1) {
-				return AlteryxAddInUtils::ReturnError(L"LogNormDist: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
+				return AlteryxAbacusUtils::ReturnError(L"LogNormDist: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 			}
 		}
 		break;
 	default:
-		return AlteryxAddInUtils::ReturnError(L"LogNormDist: Syntax x, Mean = 0, StDev = 1, Cumulative = 0 (x required other default)", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"LogNormDist: Syntax x, Mean = 0, StDev = 1, Cumulative = 0 (x required other default)", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -42,7 +42,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // Syntax: P, Mean, StDev
@@ -58,12 +58,12 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		for (int i = 0; i < nNumArgs; i++)
 		{
 			if (pArgs[i].nVarType != 1) {
-				return AlteryxAddInUtils::ReturnError(L"LogNormInv: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
+				return AlteryxAbacusUtils::ReturnError(L"LogNormInv: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 			}
 		}
 		break;
 	default:
-		return AlteryxAddInUtils::ReturnError(L"LogNormInv: Syntax p, Mean = 0, StDev = 1", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"LogNormInv: Syntax p, Mean = 0, StDev = 1", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -82,5 +82,5 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 		pReturnValue->dVal = x;
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }

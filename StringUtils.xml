@@ -50,7 +50,7 @@
     <InsertText>Split(String, Delimeter, Index)</InsertText>
     <Description>Get a part of a delimeted string</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Split</EntryPoint>
     </Dll>
   </Function>
@@ -61,7 +61,7 @@
     <InsertText>ToRoman(Value)</InsertText>
     <Description>Get a Roman Numeral Version of a Number</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>ToRoman</EntryPoint>
     </Dll>
   </Function>
@@ -72,7 +72,7 @@
     <InsertText>FromRoman(Value)</InsertText>
     <Description>Given a Roman Numeral Get Number</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>FromRoman</EntryPoint>
     </Dll>
   </Function>

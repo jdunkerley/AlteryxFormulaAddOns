@@ -16,7 +16,7 @@ If the installer script fails, you can manually install it to `%AlteryxBinDirect
 
 ## Current functions ##
 
-Those functions which require the *JDFormulaAddIn.dll* are labelled with *C++*
+Those functions which require the *AlteryxAbacus.dll* are labelled with *C++*
 
 ### [MiscUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-%28MiscUtils.xml%29) ###
 

@@ -1,7 +1,7 @@
 ﻿// AlteryxAddIn.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
-#include "JDFormulaAddIn.h"
-#include "AlteryxAddInUtils.h"
+#include "AlteryxAbacus.h"
+#include "AlteryxAbacusUtils.h"
 #include <string>
 
 //// a way to error a function from XML
@@ -10,17 +10,17 @@ extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaA
 	pReturnValue->nVarType = nNumArgs > 2 ? pArgs[2].nVarType : 1;
 
 	if (nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 0) {
-		return AlteryxAddInUtils::ReturnError((nNumArgs < 2 || pArgs[1].nVarType == 1) ? L"Reporting An Error!" : pArgs[1].pVal, pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError((nNumArgs < 2 || pArgs[1].nVarType == 1) ? L"Reporting An Error!" : pArgs[1].pVal, pReturnValue, nNumArgs, pArgs);
 	}
 
 	if (nNumArgs < 2) {
 		pReturnValue->isNull = 1;
 	}
 	else {
-		AlteryxAddInUtils::CopyValue(&pArgs[2], pReturnValue);
+		AlteryxAbacusUtils::CopyValue(&pArgs[2], pReturnValue);
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 //// this sample takes a variable number of inputs and returns the first non-null
@@ -28,7 +28,7 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 {
 	if (nNumArgs < 1) {
 		pReturnValue->nVarType = 1;
-		return AlteryxAddInUtils::ReturnError(L"Need an argument!", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"Need an argument!", pReturnValue, nNumArgs, pArgs);
 	}
 
 	int varType = pArgs[0].nVarType;
@@ -39,17 +39,17 @@ extern "C" long _declspec(dllexport) _stdcall Coalesce(int nNumArgs, FormulaAddI
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		if (pArgs[x].nVarType != varType) {
-			return AlteryxAddInUtils::ReturnError(L"Mismatched argument types, all must be same general type as first parameter.", pReturnValue, nNumArgs, pArgs);
+			return AlteryxAbacusUtils::ReturnError(L"Mismatched argument types, all must be same general type as first parameter.", pReturnValue, nNumArgs, pArgs);
 		}
 
 		if (!pArgs[x].isNull)
 		{
-			AlteryxAddInUtils::CopyValue(&pArgs[x], pReturnValue);
+			AlteryxAbacusUtils::CopyValue(&pArgs[x], pReturnValue);
 			break;
 		}
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -65,7 +65,7 @@ extern "C" long _declspec(dllexport) _stdcall Count(int nNumArgs, FormulaAddInDa
 	}
 
 	pReturnValue->dVal = count;
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -78,7 +78,7 @@ extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData
 	for (int x = 0; x < nNumArgs; x++)
 	{
 		if (pArgs[x].nVarType != 1) {
-			return AlteryxAddInUtils::ReturnError(L"Non-numeric argument, all must be numbers.", pReturnValue, nNumArgs, pArgs);
+			return AlteryxAbacusUtils::ReturnError(L"Non-numeric argument, all must be numbers.", pReturnValue, nNumArgs, pArgs);
 		}
 
 		if (!pArgs[x].isNull)
@@ -88,7 +88,7 @@ extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData
 	}
 
 	pReturnValue->dVal = sum;
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
@@ -104,7 +104,7 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 		if (pArgs[x].nVarType != 1)
 		{
 			const wchar_t* errorMessage = L"Non-numeric argument, all must be numbers.";
-			AlteryxAddInUtils::SetString(pReturnValue, errorMessage);
+			AlteryxAbacusUtils::SetString(pReturnValue, errorMessage);
 			pReturnValue->isNull = 1;
 			return 0;
 		}
@@ -123,7 +123,7 @@ extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = sum / count;
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 auto matches(const wchar_t letter, const std::wstring separator) {
@@ -147,13 +147,13 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 		pArgs[0].nVarType != 2 ||
 		pArgs[1].nVarType != 2 ||
 		pArgs[2].nVarType != 1) {
-		return AlteryxAddInUtils::ReturnError(L"Syntax: String, Delimiter, Token Number.", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"Syntax: String, Delimiter, Token Number.", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Check for Nulls
 	if (pArgs[0].isNull || pArgs[2].isNull || pArgs[2].dVal < 1 || pArgs[1].isNull) {
-		AlteryxAddInUtils::CopyValue(&pArgs[0], pReturnValue);
-		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+		AlteryxAbacusUtils::CopyValue(&pArgs[0], pReturnValue);
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	// Separator Map
@@ -163,8 +163,8 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	const std::wstring input(pArgs[0].pVal);
 	const size_t len = input.size();
 	if (!len) {
-		AlteryxAddInUtils::CopyValue(&pArgs[0], pReturnValue);
-		return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+		AlteryxAbacusUtils::CopyValue(&pArgs[0], pReturnValue);
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	int count = static_cast<int>(pArgs[2].dVal);
@@ -182,9 +182,9 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 	}
 
 	if (count <= 1) {
-		AlteryxAddInUtils::SetString(pReturnValue, oldPos < charPos ? input.substr(oldPos, charPos - oldPos).c_str() : L"");
+		AlteryxAbacusUtils::SetString(pReturnValue, oldPos < charPos ? input.substr(oldPos, charPos - oldPos).c_str() : L"");
 		pReturnValue->isNull = 0;
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }

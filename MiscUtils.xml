@@ -8,7 +8,7 @@
     <InsertText>VERSION</InsertText>
     <Description>Gets the Major and Minor Version Number of the Engine</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Version</EntryPoint>
     </Dll>
   </Function>
@@ -27,7 +27,7 @@
     <InsertText>COALESCE(Val1, Val, ... )</InsertText>
     <Description>First not null value</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Coalesce</EntryPoint>
     </Dll>
   </Function>
@@ -38,7 +38,7 @@
     <InsertText>ERROR(Condition, Message, ReturnValue)</InsertText>
     <Description>Raise an error with a specified message if Condition is true, otherwise return ReturnValue</Description>
     <Dll>
-      <Name>JDFormulaAddIn.dll</Name>
+      <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>ReportError</EntryPoint>
     </Dll>
   </Function>

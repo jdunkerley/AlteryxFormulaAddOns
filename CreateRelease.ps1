@@ -11,14 +11,14 @@ if ($vsPath -eq $null) {
 }
 $vsPath = Join-Path $vsPath 'MSBuild\15.0\Bin\MSBuild.exe'
 
-& $vsPath .\JDFormulaAddIn\JDFormulaAddIn.sln /t:Rebuild /p:Configuration=Release
+& $vsPath .\AlteryxAbacus\AlteryxAbacus.sln /t:Rebuild /p:Configuration=Release
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Build Failed"
     Pop-Location
     exit -1
 }
 
-Copy-Item .\JDFormulaAddIn\x64\Release\JDFormulaAddIn.dll .
+Copy-Item .\AlteryxAbacus\x64\Release\AlteryxAbacus.dll .
 
 & .\Install.bat
 if ($LASTEXITCODE -ne 0) {
@@ -32,10 +32,7 @@ if ($LASTEXITCODE -ne 0) {
     exit -1
 }
 
-$version = Read-Host "Enter version number (e.g. 1.3.2)"
-while ($version -notmatch '^\d+\.\d+\.?\d*$') {
-    $version = Read-Host "Invalid Version. Enter version number (e.g. 1.3.2)"
-}
+$version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("AlteryxAbacus.dll").FileVersion
 
 Write-Host "Building ReadMe.docx ..."
 & pandoc -f markdown_github -t docx README.md -o README.docx

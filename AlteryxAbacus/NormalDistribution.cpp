@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "JDFormulaAddIn.h"
+#include "AlteryxAbacus.h"
 
 #include <boost\math\distributions\normal.hpp>
-#include "AlteryxAddInUtils.h"
+#include "AlteryxAbacusUtils.h"
 
 using boost::math::normal;
 
@@ -13,12 +13,12 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 
 	// Verify Arguments
 	if (nNumArgs < 1 || nNumArgs > 4) {
-		return AlteryxAddInUtils::ReturnError(L"NormDist: Syntax x, Mean (= 0), StDev (= 1), Cumulative (= 0) (x required, others optional)", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"NormDist: Syntax x, Mean (= 0), StDev (= 1), Cumulative (= 0) (x required, others optional)", pReturnValue, nNumArgs, pArgs);
 	}
 	for (int i = 0; i < nNumArgs; i++)
 	{
 		if (pArgs[i].nVarType != 1) {
-			return AlteryxAddInUtils::ReturnError(L"NormDist: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
+			return AlteryxAbacusUtils::ReturnError(L"NormDist: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 		}
 	}
 
@@ -37,7 +37,7 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 // Syntax: P, Mean, StDev
@@ -53,12 +53,12 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		for (int i = 0; i < nNumArgs; i++)
 		{
 			if (pArgs[i].nVarType != 1) {
-				return AlteryxAddInUtils::ReturnError(L"NormInv: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
+				return AlteryxAbacusUtils::ReturnError(L"NormInv: Non-numeric argument", pReturnValue, nNumArgs, pArgs);
 			}
 		}
 		break;
 	default:
-		return AlteryxAddInUtils::ReturnError(L"NormInv: Syntax p, Mean = 0, StDev = 1", pReturnValue, nNumArgs, pArgs);
+		return AlteryxAbacusUtils::ReturnError(L"NormInv: Syntax p, Mean = 0, StDev = 1", pReturnValue, nNumArgs, pArgs);
 	}
 
 	// Do Calculation
@@ -76,5 +76,5 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		pReturnValue->dVal = x * stDev + mean;
 	}
 
-	return AlteryxAddInUtils::ReturnSuccess(nNumArgs, pArgs);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }

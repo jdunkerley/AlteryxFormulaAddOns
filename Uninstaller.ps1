@@ -25,6 +25,7 @@ $files += "RuntimeData\FormulaAddIn\MiscUtils.xml"
 $files += "RuntimeData\FormulaAddIn\StringUtils.xml" 
 $files += "RuntimeData\FormulaAddIn\DateUtils.xml" 
 $files += "RuntimeData\FormulaAddIn\JDFormulaAddIn.dll" 
+$files += "RuntimeData\FormulaAddIn\AlteryxAbacus.dll" 
 
 foreach ($bin in $bins) {
     Write-Host "Uninstalling from $bin ..."
