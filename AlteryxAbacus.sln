@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlteryxAbacus", "AlteryxAbacus.vcxproj", "{C144FC68-EC16-485A-8B4D-788D2109AB74}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlteryxAbacus", "AlteryxAbacus\AlteryxAbacus.vcxproj", "{C144FC68-EC16-485A-8B4D-788D2109AB74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -38,6 +38,12 @@ Math based functions that I havent got a better home for!
 - [Avg](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#avg): Average of a list of values ignoring `NULL` *(C++)*
 - [Count](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#count): Count of a list of values ignoring `NULL` *(C++)*
 - [Sum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sum): Sum of a list of values ignoring `NULL` *(C++)*
+- [Deg](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#deg): Convert radians to degrees
+- [Rad](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#rad): Convert degrees to radians
+- [NormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#normdist): Compute PDF or CDF on Normal distribution
+- [NormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#norminv): Compute inverse CDF on Normal distribution
+- [LogNormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognormdist): Compute PDF or CDF on Log Normal distribution
+- [LogNormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognorminv): Compute inverse CDF on Log Normal distribution
 
 ### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 
@@ -45,9 +51,9 @@ Some additional functions for working with Dates and to a certain extent Times.
 
 #### Date Time Creation Functions (Currently Just Concatenation) ####
 
-- [MakeDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#makedate): Create a new date from Year, Month, Day
-- [MakeTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#maketime): Create a new time from Hour, Minute, Second
-- [MakeDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#makedatetime): Create a new `DateTime` from Year, Month, Day, Hour, Minute, Second
+- [MakeDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#makedate): Create a new date from Year, Month, Day *(C++)*
+- [MakeTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#maketime): Create a new time from Hour, Minute, Second *(C++)*
+- [MakeDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#makedatetime): Create a new `DateTime` from Year, Month, Day, Hour, Minute, Second *(C++)*
 - [ToDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todate): Truncate a `DateTime` to a `Date`
 - [ToDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todatetime): Appends midnight to a `Date` to create a `DateTime`
 
