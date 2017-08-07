@@ -8,12 +8,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="TDIST(X, [NumOfDegree])" field="Actual" size="8" type="Double" />
+            <FormulaField expression="TINV(P, [NumOfDegree])" field="Actual" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Actual = TDIST(X, [NumOfDegree])
+          <DefaultAnnotationText><![CDATA[Actual = TINV(P, [NumOfDegree])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -28,9 +28,9 @@
         <Configuration>
           <NumRows value="24" />
           <Fields>
-            <Field name="X" />
-            <Field name="NumOfDegree" />
             <Field name="Expected" />
+            <Field name="NumOfDegree" />
+            <Field name="P" />
           </Fields>
           <Data>
             <r>
@@ -240,7 +240,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>TDistTest</Name>
+      <Name>TInvTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

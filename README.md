@@ -44,6 +44,10 @@ Math based functions that I havent got a better home for!
 - [NormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#norminv): Compute inverse CDF on Normal distribution
 - [LogNormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognormdist): Compute PDF or CDF on Log Normal distribution
 - [LogNormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognorminv): Compute inverse CDF on Log Normal distribution
+- [TDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#tdist): Compute two tailed Student T distribution
+- [TInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#tinv): Compute inverse two tailed Student T distribution
+- [ChiDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chidist): Compute CDF on Chi Squared distribution
+- [ChiInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chiinv): Compute inverse CDF on Chi Squared distribution
 
 ### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 

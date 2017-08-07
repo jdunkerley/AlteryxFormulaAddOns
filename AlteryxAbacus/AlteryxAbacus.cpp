@@ -9,7 +9,7 @@ extern "C" long _declspec(dllexport) _stdcall ReportError(int nNumArgs, FormulaA
 {
 	pReturnValue->nVarType = nNumArgs > 2 ? pArgs[2].nVarType : 1;
 
-	if (nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull == 0 || pArgs[0].dVal != 0) {
+	if (nNumArgs < 1 || pArgs[0].nVarType != 1 || pArgs[0].isNull != 0 || pArgs[0].dVal != 0) {
 		return AlteryxAbacusUtils::ReturnError((nNumArgs < 2 || pArgs[1].nVarType == 1) ? L"Reporting An Error!" : pArgs[1].pVal, pReturnValue, nNumArgs, pArgs);
 	}
 
