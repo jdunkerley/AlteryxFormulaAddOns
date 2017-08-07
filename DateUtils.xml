@@ -60,19 +60,25 @@
   </Function>
   <Function>
     <Name>MAKEDATE</Name>
-    <NumParams variable="false">3</NumParams>
+    <NumParams variable="true">1</NumParams>
     <Category>Date</Category>
     <InsertText>MAKEDATE(Year, Month, Day)</InsertText>
     <Description>Create a Date</Description>
-    <Formula>TOSTRING(P1, 0) + "-" + RIGHT("0" + TOSTRING(P2, 0), 2) + "-" + RIGHT("0" + TOSTRING(P3, 0), 2)</Formula>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>MakeDate</EntryPoint>
+    </Dll>
   </Function>
   <Function>
     <Name>MAKETIME</Name>
-    <NumParams variable="false">3</NumParams>
+    <NumParams variable="true">0</NumParams>
     <Category>Time</Category>
     <InsertText>MAKETIME(Hour, Min, Second)</InsertText>
     <Description>Create a Date</Description>
-    <Formula>RIGHT("0" + TOSTRING(P1, 0), 2) + ":" + RIGHT("0" + TOSTRING(P2, 0), 2) + ":" + RIGHT("0" + TOSTRING(P3, 0), 2)</Formula>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>MakeTime</EntryPoint>
+    </Dll>
   </Function>
   <Function>
     <Name>MAKEDATETIME</Name>

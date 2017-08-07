@@ -25,14 +25,14 @@ if ($bins.Count -eq 0) {
 }
 
 $files = Get-ChildItem "$root\*.xml" 
-if ($mode.ToUpper() -eq "DEBUG") { $files += Get-ChildItem "$root\AlteryxAbacus\x64\Debug\*.dll" }
-if ($mode.ToUpper() -eq "RELEASE") { $files += Get-ChildItem "$root\AlteryxAbacus\x64\Release\*.dll" }
+if ($mode.ToUpper() -eq "DEBUG") { $files += Get-ChildItem "$root\x64\Debug\*.dll" }
+if ($mode.ToUpper() -eq "RELEASE") { $files += Get-ChildItem "$root\x64\Release\*.dll" }
 if ($mode.ToUpper() -eq "ROOT") { $files += Get-ChildItem "$root\*.dll" }
 $files | Unblock-File
 
 foreach ($bin in $bins) {
     Write-Host "Installing current version to $bin ..."
-    $files | Copy-Item -Destination "$bin\RuntimeData\FormulaAddIn"
+    $files | Copy-Item -Destination "$bin\RuntimeData\FormulaAddIn" -Verbose
 }
 
 Pop-Location

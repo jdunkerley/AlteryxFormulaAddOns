@@ -137,4 +137,48 @@
       <EntryPoint>LogNormInv</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>TDIST</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>TDIST(X, DegreesOfFreedom)</InsertText>
+    <Description>Returns the two-tailed Student's t-distribution</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>TDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>TINV</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>TINV(X, DegreesOfFreedom)</InsertText>
+    <Description>Returns the two-tailed inverse of the Student's t-distribution</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>TInv</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>CHIDIST</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>CHIDIST(X, DegreesOfFreedom)</InsertText>
+    <Description>Returns the right-tailed probability of the chi-squared distribution</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>ChiDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>CHIINV</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>CHIINV(X, DegreesOfFreedom)</InsertText>
+    <Description>Returns the inverse of the right-tailed probability of the chi-squared distribution</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>ChiInv</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>
