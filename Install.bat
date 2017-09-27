@@ -1,2 +1,3 @@
 @echo off
-powershell "Start-Process -FilePath powershell.exe -ArgumentList "%~dp0\Installer.ps1" -verb RunAs -Wait"
+powershell "gci . -Recurse | Unblock-File"
+powershell "Start-Process -FilePath powershell.exe -ArgumentList '%~fs0\..\Installer.ps1' -verb RunAs -Wait"
