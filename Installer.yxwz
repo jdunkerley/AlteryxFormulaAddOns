@@ -14,359 +14,6 @@
         </Annotation>
       </Properties>
     </Node>
-    <Node ToolID="2">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="54" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <NumRows value="1" />
-          <Fields>
-            <Field name="RootURL" />
-          </Fields>
-          <Data>
-            <r>
-              <c>https://api.github.com/repos/jdunkerley/AlteryxFormulaAddOns/releases</c>
-            </r>
-          </Data>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="RootURL" size="69" source="TextInput:" type="String" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
-    </Node>
-    <Node ToolID="3">
-      <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
-        <Position x="186" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <URLField>RootURL</URLField>
-          <OutputMode>String</OutputMode>
-          <CodePage>65001</CodePage>
-          <EncodeURLs value="True" />
-          <Headers>
-            <NameValues>
-              <Item name="Accept" value="application/vnd.github.v3+json" />
-              <Item name="User-Agent" value="alteryx" />
-            </NameValues>
-            <Fields orderChanged="False">
-              <Field name="RootURL" selected="False" />
-              <Field name="*Unknown" selected="False" />
-            </Fields>
-          </Headers>
-          <Payload>
-            <HTTPAction>GET</HTTPAction>
-            <QueryStringBodyMode>Compose</QueryStringBodyMode>
-            <ComposeNameValues />
-            <ComposeFields orderChanged="False">
-              <Field name="RootURL" selected="False" />
-              <Field name="*Unknown" selected="False" />
-            </ComposeFields>
-          </Payload>
-          <UserName />
-          <Password />
-          <numConnections>2</numConnections>
-          <Timeout>600</Timeout>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="RootURL" size="69" source="TextInput:" type="String" />
-            <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
-            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
-    </Node>
-    <Node ToolID="4">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
-        <Position x="294" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <JSON_Field>DownloadData</JSON_Field>
-          <IncludeInOutput value="False" />
-          <SingleField value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="RootURL" size="69" source="TextInput:" type="String" />
-            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
-            <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
-    </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-        <Position x="414" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Field>JSON_Name</Field>
-          <RegExExpression value="(\d+).([^\.]+)" />
-          <CaseInsensitve value="True" />
-          <Method>ParseComplex</Method>
-          <Replace expression="">
-            <CopyUnmatched value="True" />
-          </Replace>
-          <ParseSimple>
-            <SplitToRows value="False" />
-            <RootName />
-            <NumFields value="3" />
-            <ErrorHandling>Warn</ErrorHandling>
-          </ParseSimple>
-          <ParseComplex>
-            <Field field="Release" type="Int16" size="2" />
-            <Field field="Field" type="V_WString" size="254" />
-          </ParseComplex>
-          <Match>
-            <Field>RootURL_Matched</Field>
-            <ErrorUnmatched value="False" />
-          </Match>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Parse:
-(\d+).([^\.]+)</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="RootURL" size="69" source="TextInput:" type="String" />
-            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
-            <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field description="RegEx: Parsed from JSON_Name" name="Release" source="RegEx: Parsed from JSON_Name" type="Int16" />
-            <Field description="RegEx: Parsed from JSON_Name" name="Field" size="254" source="RegEx: Parsed from JSON_Name" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
-    </Node>
-    <Node ToolID="6">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="510" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression>[Field] in ('tag_name', 'name', 'assets_url')</Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>[Field] in ('tag_name', 'name', 'assets_url')</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="True">
-          <RecordInfo>
-            <Field name="RootURL" size="69" source="TextInput:" type="String" />
-            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
-            <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field description="RegEx: Parsed from JSON_Name" name="Release" source="RegEx: Parsed from JSON_Name" type="Int16" />
-            <Field description="RegEx: Parsed from JSON_Name" name="Field" size="254" source="RegEx: Parsed from JSON_Name" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-        <MetaInfo connection="False">
-          <RecordInfo>
-            <Field name="RootURL" size="69" source="TextInput:" type="String" />
-            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
-            <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
-            <Field description="RegEx: Parsed from JSON_Name" name="Release" source="RegEx: Parsed from JSON_Name" type="Int16" />
-            <Field description="RegEx: Parsed from JSON_Name" name="Field" size="254" source="RegEx: Parsed from JSON_Name" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="8">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
-        <Position x="594" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <GroupFields>
-            <Field field="Release" />
-          </GroupFields>
-          <HeaderField field="Field" />
-          <DataField field="JSON_ValueString" />
-          <Methods>
-            <Method method="Concat" />
-            <Separator>,</Separator>
-            <FieldSize value="2048" />
-          </Methods>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
-            <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
-            <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
-            <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
-          </RecordInfo>
-          <SortInfo>
-            <Field field="Release" order="Asc" />
-          </SortInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
-    </Node>
-    <Node ToolID="9">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
-        <Position x="702" y="30" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <GroupFields />
-          <HeaderField field="Release" />
-          <DataField field="name" />
-          <Methods>
-            <Method method="Concat" />
-            <Separator>,</Separator>
-            <FieldSize value="2048" />
-          </Methods>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="0" size="2048" source="CrossTab:Header:Release:0:Concat:" type="V_WString" />
-            <Field name="1" size="2048" source="CrossTab:Header:Release:1:Concat:" type="V_WString" />
-            <Field name="2" size="2048" source="CrossTab:Header:Release:2:Concat:" type="V_WString" />
-            <Field name="3" size="2048" source="CrossTab:Header:Release:3:Concat:" type="V_WString" />
-            <Field name="4" size="2048" source="CrossTab:Header:Release:4:Concat:" type="V_WString" />
-            <Field name="5" size="2048" source="CrossTab:Header:Release:5:Concat:" type="V_WString" />
-          </RecordInfo>
-          <SortInfo>
-          </SortInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
-    </Node>
-    <Node ToolID="10">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DynamicRename.DynamicRename">
-        <Position x="786" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <RenameMode>RightInputRows</RenameMode>
-          <Fields orderChanged="False">
-            <Field name="0" />
-            <Field name="1" />
-            <Field name="2" />
-            <Field name="3" />
-            <Field name="4" />
-            <Field name="5" />
-            <Field name="*Unknown" />
-          </Fields>
-          <Expression />
-          <NamesFromRows>
-            <OnError>Warn</OnError>
-            <InputMode>Mapped</InputMode>
-            <OldName>Release</OldName>
-            <NewName>tag_name</NewName>
-          </NamesFromRows>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="v1.3" size="2048" source="CrossTab:Header:Release:0:Concat:" type="V_WString" />
-            <Field name="v1.2.1" size="2048" source="CrossTab:Header:Release:1:Concat:" type="V_WString" />
-            <Field name="v1.2" size="2048" source="CrossTab:Header:Release:2:Concat:" type="V_WString" />
-            <Field name="v1.1.1" size="2048" source="CrossTab:Header:Release:3:Concat:" type="V_WString" />
-            <Field name="v1.1" size="2048" source="CrossTab:Header:Release:4:Concat:" type="V_WString" />
-            <Field name="v1.0" size="2048" source="CrossTab:Header:Release:5:Concat:" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDynamicRename" />
-    </Node>
-    <Node ToolID="11">
-      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.DropDownListBox.DropDown">
-        <Position x="966" y="90" width="59" height="59" />
-      </GuiSettings>
-      <Properties>
-        <Configuration />
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-    </Node>
-    <Node ToolID="12">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="978" y="210" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Expression>[tag_name] = [#1]</Expression>
-          <Mode>Custom</Mode>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>[tag_name] = [#1]</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="True">
-          <RecordInfo>
-            <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
-            <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
-            <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
-            <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
-          </RecordInfo>
-          <SortInfo>
-            <Field field="Release" order="Asc" />
-          </SortInfo>
-        </MetaInfo>
-        <MetaInfo connection="False">
-          <RecordInfo>
-            <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
-            <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
-            <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
-            <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
-          </RecordInfo>
-          <SortInfo>
-            <Field field="Release" order="Asc" />
-          </SortInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
     <Node ToolID="24">
       <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Label.Label">
         <Position x="0" y="0" width="59" height="59" />
@@ -380,52 +27,9 @@
         </Annotation>
       </Properties>
     </Node>
-    <Node ToolID="25">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="882" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField expression="''" field="Uninstall" size="1073741823" type="V_WString" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText><![CDATA[Uninstall = ''
-]]></DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="v1.3" size="2048" source="CrossTab:Header:Release:0:Concat:" type="V_WString" />
-            <Field name="v1.2.1" size="2048" source="CrossTab:Header:Release:1:Concat:" type="V_WString" />
-            <Field name="v1.2" size="2048" source="CrossTab:Header:Release:2:Concat:" type="V_WString" />
-            <Field name="v1.1.1" size="2048" source="CrossTab:Header:Release:3:Concat:" type="V_WString" />
-            <Field name="v1.1" size="2048" source="CrossTab:Header:Release:4:Concat:" type="V_WString" />
-            <Field name="v1.0" size="2048" source="CrossTab:Header:Release:5:Concat:" type="V_WString" />
-            <Field name="Uninstall" size="1073741823" source="Formula: ''" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
-    <Node ToolID="27">
-      <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-        <Position x="18" y="354" width="59" height="59" />
-      </GuiSettings>
-      <Properties>
-        <Configuration />
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-    </Node>
     <Node ToolID="28">
       <GuiSettings Plugin="AlteryxGuiToolkit.Condition.Condition">
-        <Position x="18" y="246" width="59" height="59" />
+        <Position x="12" y="714" width="59" height="59" />
       </GuiSettings>
       <Properties>
         <Configuration />
@@ -436,46 +40,9 @@
         </Annotation>
       </Properties>
     </Node>
-    <Node ToolID="54">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="618" y="546" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Mode>Simple</Mode>
-          <Simple>
-            <Field>Mode</Field>
-            <Operator>=</Operator>
-            <Operands>
-              <Operand>Admin</Operand>
-            </Operands>
-          </Simple>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>[Mode] = "Admin"</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="True">
-          <RecordInfo>
-            <Field name="Mode" size="5" source="TextInput:" type="String" />
-            <Field name="Path" size="51" source="TextInput:" type="V_String" />
-            <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-        <MetaInfo connection="False">
-          <RecordInfo>
-            <Field name="Mode" size="5" source="TextInput:" type="String" />
-            <Field name="Path" size="51" source="TextInput:" type="V_String" />
-            <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="55">
-      <GuiSettings>
-        <Position x="702" y="546" />
+    <Node ToolID="76">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+        <Position x="12" y="834" width="59" height="59" />
       </GuiSettings>
       <Properties>
         <Configuration />
@@ -484,80 +51,11 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
-        <MetaInfo connection="Output9">
-          <RecordInfo>
-            <Field name="Count" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
       </Properties>
-      <EngineSettings Macro="CountRecords.yxmc" />
     </Node>
-    <Node ToolID="58">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-        <Position x="1650" y="318" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <ByName_ErrorMode>Warning</ByName_ErrorMode>
-          <ByName_OutputMode>All</ByName_OutputMode>
-          <Mode>ByName</Mode>
-          <SetOutputOrder value="True" />
-          <OutputOrder>
-            <Connection>#1</Connection>
-            <Connection>#2</Connection>
-          </OutputOrder>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
-    </Node>
-    <Node ToolID="60">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-        <Position x="1746" y="318" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <CartesianMode>Error</CartesianMode>
-          <SelectConfiguration>
-            <Configuration outputConnection="Output">
-              <OrderChanged value="False" />
-              <CommaDecimal value="False" />
-              <SelectFields>
-                <SelectField field="Source_Count" selected="True" rename="Admin" />
-                <SelectField field="*Unknown" selected="True" />
-              </SelectFields>
-            </Configuration>
-          </SelectConfiguration>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-            <Field name="Admin" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
-    </Node>
-    <Node ToolID="61">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BlockUntilDone.BlockUntilDone">
-        <Position x="1842" y="318" />
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.CheckBoxGroup.CheckBoxGroup">
+        <Position x="78" y="882" width="59" height="59" />
       </GuiSettings>
       <Properties>
         <Configuration />
@@ -566,206 +64,15 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-            <Field name="Admin" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
-        <MetaInfo connection="Output2">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-            <Field name="Admin" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
-        <MetaInfo connection="Output3">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-            <Field name="Admin" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
       </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBlockUntilDone" />
     </Node>
-    <Node ToolID="62">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="1938" y="306" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OrderChanged value="False" />
-          <CommaDecimal value="False" />
-          <SelectFields>
-            <SelectField field="Command" selected="True" />
-            <SelectField field="*Unknown" selected="False" />
-          </SelectFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
-    </Node>
-    <Node ToolID="63">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="2034" y="306" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File MaxRecords="" FileFormat="0">%temp%\install.ps1</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <LineEndStyle>CRLF</LineEndStyle>
-            <Delimeter>\0</Delimeter>
-            <ForceQuotes>Never</ForceQuotes>
-            <HeaderRow>False</HeaderRow>
-            <CodePage>28591</CodePage>
-            <WriteBOM>True</WriteBOM>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>install.ps1</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
-    </Node>
-    <Node ToolID="64">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="2034" y="402" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField expression="IIF([Admin],&#xA;'@echo off&#xA;powershell &quot;Start-Process -FilePath powershell.exe -ArgumentList ' + &#xA;&quot;'&quot; + FileAddPaths([Engine.TempFilePath], &quot;Install.ps1&quot;) + &quot;'&quot; &#xA; + ' -verb RunAs -Wait&quot;', &#xA;'@echo off&#xA;powershell &quot;' + FileAddPaths([Engine.TempFilePath], &quot;Install.ps1&quot;) + '&quot;')" field="Command" size="1073741823" type="V_WString" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Command = IIF([Admin],
-'@echo off
-powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: IIF([Admin],&#xA;'@echo off&#xA;powershell &quot;Start-Process -FilePath powershell.exe -ArgumentList ' + &#xA;&quot;'&quot; + FileAddPaths([Engine.TempFilePath], &quot;Install.ps1&quot;) + &quot;'&quot; &#xA; + ' -verb RunAs -Wait&quot;', &#xA;'@echo off&#xA;powershell &quot;' + FileAddPaths([Engine.TempFilePath], &quot;Install.ps1&quot;) + '&quot;')" type="V_WString" />
-            <Field name="Admin" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
-    <Node ToolID="65">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
-        <Position x="1938" y="402" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <GroupFields orderChanged="False" />
-          <Mode>First</Mode>
-          <N>1</N>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>First 1</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: (Multiple Sources)" type="V_WString" />
-            <Field name="Admin" source="(Multiple Sources)" type="Int64" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
-    </Node>
-    <Node ToolID="66">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="2142" y="402" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OrderChanged value="False" />
-          <CommaDecimal value="False" />
-          <SelectFields>
-            <SelectField field="Command" selected="True" />
-            <SelectField field="*Unknown" selected="False" />
-          </SelectFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-        <MetaInfo connection="Output">
-          <RecordInfo>
-            <Field name="Command" size="1073741823" source="Formula: IIF([Admin],&#xA;'@echo off&#xA;powershell &quot;Start-Process -FilePath powershell.exe -ArgumentList ' + &#xA;&quot;'&quot; + FileAddPaths([Engine.TempFilePath], &quot;Install.ps1&quot;) + &quot;'&quot; &#xA; + ' -verb RunAs -Wait&quot;', &#xA;'@echo off&#xA;powershell &quot;' + FileAddPaths([Engine.TempFilePath], &quot;Install.ps1&quot;) + '&quot;')" type="V_WString" />
-          </RecordInfo>
-        </MetaInfo>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
-    </Node>
-    <Node ToolID="67">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.RunCommand.RunCommand">
-        <Position x="2250" y="402" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <OutputConfiguration>
-            <Configuration>
-              <File MaxRecords="" FileFormat="0">%temp%/Install.bat</File>
-              <Passwords />
-              <FormatSpecificOptions>
-                <LineEndStyle>CRLF</LineEndStyle>
-                <Delimeter>,</Delimeter>
-                <ForceQuotes>Never</ForceQuotes>
-                <HeaderRow>False</HeaderRow>
-                <CodePage>28591</CodePage>
-                <WriteBOM>True</WriteBOM>
-              </FormatSpecificOptions>
-              <MultiFile value="False" />
-            </Configuration>
-          </OutputConfiguration>
-          <InputConfiguration>
-            <Configuration />
-          </InputConfiguration>
-          <ProgramName>%temp%\Install.bat</ProgramName>
-          <Arguments />
-          <WorkingDir />
-          <RunMinimized value="True" />
-          <RunSilent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Run Install.bat</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRunCommand" />
-    </Node>
-    <Node ToolID="71">
+    <Node ToolID="75">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="678" y="906" width="753" height="293" />
+        <Position x="906" y="234.0001" width="847" height="387.9999" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Caption>PDF Viewer</Caption>
+          <Caption>Run Installer Script</Caption>
           <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
           <Disabled value="False" />
           <Folded value="False" />
@@ -777,72 +84,21 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Annotation>
       </Properties>
       <ChildNodes>
-        <Node ToolID="30">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="823" y="1066" />
+        <Node ToolID="58">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+            <Position x="1042" y="349.9999" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <FormulaFields>
-                <FormulaField expression="[Engine.TempFilePath] + [name]" field="FullPath" size="1073741823" type="V_WString" />
-              </FormulaFields>
-            </Configuration>
-            <Annotation DisplayMode="0">
-              <Name />
-              <DefaultAnnotationText><![CDATA[FullPath = [Engine.TempFilePath] + [name]
-]]></DefaultAnnotationText>
-              <Left value="False" />
-            </Annotation>
-            <MetaInfo connection="Output">
-              <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
-                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="FullPath" size="1073741823" source="Formula: [Engine.TempFilePath] + [name]" type="V_WString" />
-              </RecordInfo>
-              <SortInfo>
-                <Field field="Asset" order="Asc" />
-              </SortInfo>
-            </MetaInfo>
-          </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-        </Node>
-        <Node ToolID="31">
-          <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
-            <Position x="931" y="1066" />
-          </GuiSettings>
-          <Properties>
-            <Configuration>
-              <URLField>browser_download_url</URLField>
-              <OutputMode>SpecificFile</OutputMode>
-              <OutputFileNameField>FullPath</OutputFileNameField>
-              <EncodeURLs value="True" />
-              <Headers>
-                <NameValues />
-                <Fields orderChanged="False">
-                  <Field name="Asset" selected="False" />
-                  <Field name="browser_download_url" selected="False" />
-                  <Field name="name" selected="False" />
-                  <Field name="FullPath" selected="False" />
-                  <Field name="*Unknown" selected="False" />
-                </Fields>
-              </Headers>
-              <Payload>
-                <HTTPAction>GET</HTTPAction>
-                <QueryStringBodyMode>Compose</QueryStringBodyMode>
-                <ComposeNameValues />
-                <ComposeFields orderChanged="False">
-                  <Field name="Asset" selected="False" />
-                  <Field name="browser_download_url" selected="False" />
-                  <Field name="name" selected="False" />
-                  <Field name="FullPath" selected="False" />
-                  <Field name="*Unknown" selected="False" />
-                </ComposeFields>
-              </Payload>
-              <UserName />
-              <Password />
-              <numConnections>2</numConnections>
-              <Timeout>600</Timeout>
+              <ByName_ErrorMode>Warning</ByName_ErrorMode>
+              <ByName_OutputMode>All</ByName_OutputMode>
+              <Mode>ByName</Mode>
+              <SetOutputOrder value="True" />
+              <OutputOrder>
+                <Connection>#3</Connection>
+                <Connection>#1</Connection>
+                <Connection>#2</Connection>
+              </OutputOrder>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
@@ -851,48 +107,79 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
-                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="FullPath" size="1073741823" source="Formula: [Engine.TempFilePath] + [name]" type="V_WString" />
-                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
-          <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
         </Node>
-        <Node ToolID="68">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="1039" y="1070" />
+        <Node ToolID="60">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
+            <Position x="1138" y="350" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <FormulaFields>
-                <FormulaField expression="'Start-Process &quot;' + [FullPath] + '&quot;'" field="Command" size="1073741823" type="V_WString" />
-              </FormulaFields>
+              <CartesianMode>Error</CartesianMode>
+              <SelectConfiguration>
+                <Configuration outputConnection="Output">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Source_Count" selected="True" rename="Admin" />
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText><![CDATA[Command = 'Start-Process "' + [FullPath] + '"'
-]]></DefaultAnnotationText>
+              <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
-                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="FullPath" size="1073741823" source="Formula: [Engine.TempFilePath] + [name]" type="V_WString" />
-                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
-                <Field name="Command" size="1073741823" source="Formula: 'Start-Process &quot;' + [FullPath] + '&quot;'" type="V_WString" />
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                <Field name="Admin" source="(Multiple Sources)" type="Int64" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
         </Node>
-        <Node ToolID="69">
+        <Node ToolID="61">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BlockUntilDone.BlockUntilDone">
+            <Position x="1234" y="350" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                <Field name="Admin" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo connection="Output2">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                <Field name="Admin" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo connection="Output3">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                <Field name="Admin" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBlockUntilDone" />
+        </Node>
+        <Node ToolID="62">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="1147" y="1070" />
+            <Position x="1329" y="342" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -910,21 +197,124 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="Command" size="1073741823" source="Formula: 'Start-Process &quot;' + [FullPath] + '&quot;'" type="V_WString" />
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
         </Node>
-        <Node ToolID="70">
+        <Node ToolID="63">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1435" y="350" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">%temp%\install.bat</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>\0</Delimeter>
+                <ForceQuotes>Never</ForceQuotes>
+                <HeaderRow>False</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>install.bat</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="64">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="1426" y="434" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="IIF([Admin],&#xA;'@echo off&#xA;powershell &quot;Start-Process -FilePath ' + &#xA;&quot;'&quot; + FileAddPaths([Engine.TempFilePath], &quot;Install.bat&quot;) + &quot;'&quot; &#xA; + ' -verb RunAs -Wait&quot;', &#xA;'@echo off&#xA;&quot;' + FileAddPaths([Engine.TempFilePath], &quot;Install.bat&quot;) + '&quot;')" field="Command" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Command = IIF([Admin],
+'@echo off
+powershell "Start-Process -FilePath ' + 
+"'" +...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="Formula: IIF([Admin],&#xA;'@echo off&#xA;powershell &quot;Start-Process -FilePath ' + &#xA;&quot;'&quot; + FileAddPaths([Engine.TempFilePath], &quot;Install.bat&quot;) + &quot;'&quot; &#xA; + ' -verb RunAs -Wait&quot;', &#xA;'@echo off&#xA;&quot;' + FileAddPaths([Engine.TempFilePath], &quot;Install.bat&quot;) + '&quot;')" type="V_WString" />
+                <Field name="Admin" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="65">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
+            <Position x="1330" y="434" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <GroupFields orderChanged="False" />
+              <Mode>First</Mode>
+              <N>1</N>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>First 1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                <Field name="Admin" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
+        </Node>
+        <Node ToolID="66">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1534" y="434" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Command" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="Formula: IIF([Admin],&#xA;'@echo off&#xA;powershell &quot;Start-Process -FilePath ' + &#xA;&quot;'&quot; + FileAddPaths([Engine.TempFilePath], &quot;Install.bat&quot;) + &quot;'&quot; &#xA; + ' -verb RunAs -Wait&quot;', &#xA;'@echo off&#xA;&quot;' + FileAddPaths([Engine.TempFilePath], &quot;Install.bat&quot;) + '&quot;')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="67">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RunCommand.RunCommand">
-            <Position x="1315" y="1010" />
+            <Position x="1642" y="434" />
           </GuiSettings>
           <Properties>
             <Configuration>
               <OutputConfiguration>
                 <Configuration>
-                  <File MaxRecords="" FileFormat="0">%temp%\manual.ps1</File>
+                  <File MaxRecords="" FileFormat="0">%temp%/Install_Run.bat</File>
                   <Passwords />
                   <FormatSpecificOptions>
                     <LineEndStyle>CRLF</LineEndStyle>
@@ -940,63 +330,104 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
               <InputConfiguration>
                 <Configuration />
               </InputConfiguration>
-              <ProgramName>PowerShell</ProgramName>
-              <Arguments>%temp%\manual.ps1</Arguments>
+              <ProgramName>%temp%\Install_Run.bat</ProgramName>
+              <Arguments />
               <WorkingDir />
-              <RunMinimized value="False" />
-              <RunSilent value="False" />
+              <RunMinimized value="True" />
+              <RunSilent value="True" />
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText>Run PowerShell</DefaultAnnotationText>
+              <DefaultAnnotationText>Run Install_Run.bat</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRunCommand" />
         </Node>
-        <Node ToolID="20">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="703" y="1070" />
+        <Node ToolID="88">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="933" y="346" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <Expression>EndsWith([name], ".pdf") AND [#1]="True"</Expression>
-              <Mode>Custom</Mode>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText>EndsWith([name], ".pdf") AND [#1]="True"</DefaultAnnotationText>
+              <AnnotationText>Uninstall
+Commands</AnnotationText>
+              <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
-            <MetaInfo connection="True">
+            <MetaInfo connection="Output">
               <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
-                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'DEL &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" type="V_WString" />
               </RecordInfo>
-              <SortInfo>
-                <Field field="Asset" order="Asc" />
-              </SortInfo>
-            </MetaInfo>
-            <MetaInfo connection="False">
-              <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
-                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
-                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
-              </RecordInfo>
-              <SortInfo>
-                <Field field="Asset" order="Asc" />
-              </SortInfo>
             </MetaInfo>
           </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
         </Node>
-        <Node ToolID="73">
+        <Node ToolID="89">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1039" y="434" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Elevate
+Install</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Count" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="90">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="932" y="446" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Install
+Commands</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="Formula: 'XCOPY &quot;' + [FullPath] + '&quot; &quot;' &#xA;+ FileAddPaths([InstallDir],&quot;RuntimeData\FormulaAddIn&quot;) + '&quot;'" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="103">
           <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-            <Position x="1099" y="1010" />
+            <Position x="931" y="278.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1006,7 +437,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
               </Fields>
               <Data>
                 <r>
-                  <c>Write-Host Opening</c>
+                  <c>ECHO "Installing..."</c>
                 </r>
               </Data>
             </Configuration>
@@ -1017,59 +448,22 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="Command" size="18" source="TextInput:" type="String" />
+                <Field name="Command" size="20" source="TextInput:" type="String" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
         </Node>
-        <Node ToolID="74">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
-            <Position x="1231" y="1010" />
-          </GuiSettings>
-          <Properties>
-            <Configuration>
-              <ByName_ErrorMode>Warning</ByName_ErrorMode>
-              <ByName_OutputMode>All</ByName_OutputMode>
-              <Mode>ByName</Mode>
-              <SetOutputOrder value="False" />
-            </Configuration>
-            <Annotation DisplayMode="0">
-              <Name />
-              <DefaultAnnotationText />
-              <Left value="False" />
-            </Annotation>
-            <MetaInfo connection="Output">
-              <RecordInfo>
-                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
-              </RecordInfo>
-            </MetaInfo>
-          </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
-        </Node>
-        <Node ToolID="21">
-          <GuiSettings Plugin="AlteryxGuiToolkit.Questions.CheckBoxGroup.CheckBoxGroup">
-            <Position x="703" y="950" width="59" height="59" />
-          </GuiSettings>
-          <Properties>
-            <Configuration />
-            <Annotation DisplayMode="0">
-              <Name />
-              <DefaultAnnotationText />
-              <Left value="False" />
-            </Annotation>
-          </Properties>
-        </Node>
       </ChildNodes>
     </Node>
-    <Node ToolID="26">
+    <Node ToolID="91">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="162" y="653.9995" width="1464" height="236.0005" />
+        <Position x="189" y="693" width="569.9999" height="258" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Caption>Installer</Caption>
-          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Caption>Download Files</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
           <Disabled value="False" />
           <Folded value="False" />
         </Configuration>
@@ -1082,7 +476,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
       <ChildNodes>
         <Node ToolID="13">
           <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
-            <Position x="187" y="697.9998" />
+            <Position x="296.9999" y="732" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1140,7 +534,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="14">
           <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
-            <Position x="283.0001" y="698.0001" />
+            <Position x="369" y="732" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1169,7 +563,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="16">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-            <Position x="379" y="697.9995" />
+            <Position x="440.9998" y="732" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1219,7 +613,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="17">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="475.0001" y="698.0001" />
+            <Position x="536.9999" y="732" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1262,7 +656,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="18">
           <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
-            <Position x="571" y="698.0001" />
+            <Position x="605.9999" y="726" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1295,9 +689,866 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
         </Node>
+        <Node ToolID="98">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Detour.Detour">
+            <Position x="210.9995" y="806" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <DetourRight value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Left">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
+                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
+                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
+                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Release" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+            <MetaInfo connection="Right">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
+                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
+                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
+                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Release" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetour" />
+        </Node>
+        <Node ToolID="92">
+          <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+            <Position x="199" y="722" width="59" height="59" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="99">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="317.9999" y="822" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="0" field="Asset" size="2" type="Int16" />
+                <FormulaField expression="''" field="browser_download_url" size="1073741823" type="V_WString" />
+                <FormulaField expression="''" field="name" size="2048" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Asset = 0
+browser_download_url = ''
+name = ''
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
+                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
+                <Field name="name" size="2048" source="Formula: ''" type="V_WString" />
+                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
+                <Field name="Asset" source="Formula: 0" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="Formula: ''" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Release" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="100">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="437.9999" y="822" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="True" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Release" selected="False" />
+                <SelectField field="assets_url" selected="False" />
+                <SelectField field="tag_name" selected="False" />
+                <SelectField field="Asset" selected="True" />
+                <SelectField field="browser_download_url" selected="True" />
+                <SelectField field="name" selected="True" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Asset" source="Formula: 0" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="Formula: ''" type="V_WString" />
+                <Field name="name" size="2048" source="Formula: ''" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="101">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DetourEnd.DetourEnd">
+            <Position x="689.9999" y="810" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Asset" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetourEnd" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="84">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="11.99999" y="12" width="1066" height="214" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Get Versions From Git Hub</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+            <Position x="21.99999" y="76.9998" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="RootURL" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>https://api.github.com/repos/jdunkerley/AlteryxFormulaAddOns/releases</c>
+                </r>
+              </Data>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="RootURL" size="69" source="TextInput:" type="String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+        </Node>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
+            <Position x="118.0007" y="76.9998" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <URLField>RootURL</URLField>
+              <OutputMode>String</OutputMode>
+              <CodePage>65001</CodePage>
+              <EncodeURLs value="True" />
+              <Headers>
+                <NameValues>
+                  <Item name="Accept" value="application/vnd.github.v3+json" />
+                  <Item name="User-Agent" value="alteryx" />
+                </NameValues>
+                <Fields orderChanged="False">
+                  <Field name="RootURL" selected="False" />
+                  <Field name="*Unknown" selected="False" />
+                </Fields>
+              </Headers>
+              <Payload>
+                <HTTPAction>GET</HTTPAction>
+                <QueryStringBodyMode>Compose</QueryStringBodyMode>
+                <ComposeNameValues />
+                <ComposeFields orderChanged="False">
+                  <Field name="RootURL" selected="False" />
+                  <Field name="*Unknown" selected="False" />
+                </ComposeFields>
+              </Payload>
+              <UserName />
+              <Password />
+              <numConnections>2</numConnections>
+              <Timeout>600</Timeout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="RootURL" size="69" source="TextInput:" type="String" />
+                <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+        </Node>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
+            <Position x="225.9998" y="76.99995" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <JSON_Field>DownloadData</JSON_Field>
+              <IncludeInOutput value="False" />
+              <SingleField value="True" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="RootURL" size="69" source="TextInput:" type="String" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
+        </Node>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+            <Position x="345.9999" y="77.00002" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Field>JSON_Name</Field>
+              <RegExExpression value="(\d+).([^\.]+)" />
+              <CaseInsensitve value="True" />
+              <Method>ParseComplex</Method>
+              <Replace expression="">
+                <CopyUnmatched value="True" />
+              </Replace>
+              <ParseSimple>
+                <SplitToRows value="False" />
+                <RootName />
+                <NumFields value="3" />
+                <ErrorHandling>Warn</ErrorHandling>
+              </ParseSimple>
+              <ParseComplex>
+                <Field field="Release" type="Int16" size="2" />
+                <Field field="Field" type="V_WString" size="254" />
+              </ParseComplex>
+              <Match>
+                <Field>RootURL_Matched</Field>
+                <ErrorUnmatched value="False" />
+              </Match>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Parse:
+(\d+).([^\.]+)</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="RootURL" size="69" source="TextInput:" type="String" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="RegEx: Parsed from JSON_Name" type="Int16" />
+                <Field description="RegEx: Parsed from JSON_Name" name="Field" size="254" source="RegEx: Parsed from JSON_Name" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+        </Node>
+        <Node ToolID="6">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="441.9999" y="76.99994" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[Field] in ('tag_name', 'name', 'assets_url')</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[Field] in ('tag_name', 'name', 'assets_url')</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="True">
+              <RecordInfo>
+                <Field name="RootURL" size="69" source="TextInput:" type="String" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="RegEx: Parsed from JSON_Name" type="Int16" />
+                <Field description="RegEx: Parsed from JSON_Name" name="Field" size="254" source="RegEx: Parsed from JSON_Name" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo connection="False">
+              <RecordInfo>
+                <Field name="RootURL" size="69" source="TextInput:" type="String" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="RegEx: Parsed from JSON_Name" type="Int16" />
+                <Field description="RegEx: Parsed from JSON_Name" name="Field" size="254" source="RegEx: Parsed from JSON_Name" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+            <Position x="525.9999" y="76.99998" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <GroupFields>
+                <Field field="Release" />
+              </GroupFields>
+              <HeaderField field="Field" />
+              <DataField field="JSON_ValueString" />
+              <Methods>
+                <Method method="Concat" />
+                <Separator>,</Separator>
+                <FieldSize value="2048" />
+              </Methods>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
+                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
+                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
+                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Release" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+        </Node>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+            <Position x="633.9999" y="41" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <GroupFields />
+              <HeaderField field="Release" />
+              <DataField field="name" />
+              <Methods>
+                <Method method="Concat" />
+                <Separator>,</Separator>
+                <FieldSize value="2048" />
+              </Methods>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="0" size="2048" source="CrossTab:Header:Release:0:Concat:" type="V_WString" />
+                <Field name="1" size="2048" source="CrossTab:Header:Release:1:Concat:" type="V_WString" />
+                <Field name="2" size="2048" source="CrossTab:Header:Release:2:Concat:" type="V_WString" />
+                <Field name="3" size="2048" source="CrossTab:Header:Release:3:Concat:" type="V_WString" />
+                <Field name="4" size="2048" source="CrossTab:Header:Release:4:Concat:" type="V_WString" />
+                <Field name="5" size="2048" source="CrossTab:Header:Release:5:Concat:" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+        </Node>
+        <Node ToolID="10">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DynamicRename.DynamicRename">
+            <Position x="717.9999" y="65" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <RenameMode>RightInputRows</RenameMode>
+              <Fields orderChanged="False">
+                <Field name="0" />
+                <Field name="1" />
+                <Field name="2" />
+                <Field name="3" />
+                <Field name="4" />
+                <Field name="5" />
+                <Field name="*Unknown" />
+              </Fields>
+              <Expression />
+              <NamesFromRows>
+                <OnError>Warn</OnError>
+                <InputMode>Mapped</InputMode>
+                <OldName>Release</OldName>
+                <NewName>tag_name</NewName>
+              </NamesFromRows>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="v1.3" size="2048" source="CrossTab:Header:Release:0:Concat:" type="V_WString" />
+                <Field name="v1.2.1" size="2048" source="CrossTab:Header:Release:1:Concat:" type="V_WString" />
+                <Field name="v1.2" size="2048" source="CrossTab:Header:Release:2:Concat:" type="V_WString" />
+                <Field name="v1.1.1" size="2048" source="CrossTab:Header:Release:3:Concat:" type="V_WString" />
+                <Field name="v1.1" size="2048" source="CrossTab:Header:Release:4:Concat:" type="V_WString" />
+                <Field name="v1.0" size="2048" source="CrossTab:Header:Release:5:Concat:" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDynamicRename" />
+        </Node>
+        <Node ToolID="11">
+          <GuiSettings Plugin="AlteryxGuiToolkit.Questions.DropDownListBox.DropDown">
+            <Position x="933.9999" y="53" width="59" height="59" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="813.9999" y="65" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="''" field="Uninstall" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Uninstall = ''
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="v1.3" size="2048" source="CrossTab:Header:Release:0:Concat:" type="V_WString" />
+                <Field name="v1.2.1" size="2048" source="CrossTab:Header:Release:1:Concat:" type="V_WString" />
+                <Field name="v1.2" size="2048" source="CrossTab:Header:Release:2:Concat:" type="V_WString" />
+                <Field name="v1.1.1" size="2048" source="CrossTab:Header:Release:3:Concat:" type="V_WString" />
+                <Field name="v1.1" size="2048" source="CrossTab:Header:Release:4:Concat:" type="V_WString" />
+                <Field name="v1.0" size="2048" source="CrossTab:Header:Release:5:Concat:" type="V_WString" />
+                <Field name="Uninstall" size="1073741823" source="Formula: ''" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="963.9999" y="141" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[tag_name] = [#1]</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[tag_name] = [#1]</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="True">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
+                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
+                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
+                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Release" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+            <MetaInfo connection="False">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
+                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
+                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
+                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Release" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="71">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="33" y="957" width="724" height="170" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>PDF Viewer</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="30">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="163.0001" y="994" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="[Engine.TempFilePath] + [name]" field="FullPath" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[FullPath = [Engine.TempFilePath] + [name]
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="FullPath" size="1073741823" source="Formula: [Engine.TempFilePath] + [name]" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Asset" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="31">
+          <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
+            <Position x="259.0001" y="994" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <URLField>browser_download_url</URLField>
+              <OutputMode>SpecificFile</OutputMode>
+              <OutputFileNameField>FullPath</OutputFileNameField>
+              <EncodeURLs value="True" />
+              <Headers>
+                <NameValues />
+                <Fields orderChanged="False">
+                  <Field name="Asset" selected="False" />
+                  <Field name="browser_download_url" selected="False" />
+                  <Field name="name" selected="False" />
+                  <Field name="FullPath" selected="False" />
+                  <Field name="*Unknown" selected="False" />
+                </Fields>
+              </Headers>
+              <Payload>
+                <HTTPAction>GET</HTTPAction>
+                <QueryStringBodyMode>Compose</QueryStringBodyMode>
+                <ComposeNameValues />
+                <ComposeFields orderChanged="False">
+                  <Field name="Asset" selected="False" />
+                  <Field name="browser_download_url" selected="False" />
+                  <Field name="name" selected="False" />
+                  <Field name="FullPath" selected="False" />
+                  <Field name="*Unknown" selected="False" />
+                </ComposeFields>
+              </Payload>
+              <UserName />
+              <Password />
+              <numConnections>2</numConnections>
+              <Timeout>600</Timeout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="FullPath" size="1073741823" source="Formula: [Engine.TempFilePath] + [name]" type="V_WString" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+        </Node>
+        <Node ToolID="68">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="355.0001" y="998" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="'Start &quot;' + ToString([Asset]) + '&quot; &quot;' + [FullPath] + '&quot;'" field="Command" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Command = 'Start "' + ToString([Asset]) + '" "' + [FullPath] + '"'
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="FullPath" size="1073741823" source="Formula: [Engine.TempFilePath] + [name]" type="V_WString" />
+                <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                <Field name="Command" size="1073741823" source="Formula: 'Start &quot;' + ToString([Asset]) + '&quot; &quot;' + [FullPath] + '&quot;'" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="69">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="487.0001" y="1046" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Command" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="Formula: 'Start &quot;' + ToString([Asset]) + '&quot; &quot;' + [FullPath] + '&quot;'" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="70">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.RunCommand.RunCommand">
+            <Position x="655.0001" y="986" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OutputConfiguration>
+                <Configuration>
+                  <File MaxRecords="" FileFormat="0">%temp%\manual.bat</File>
+                  <Passwords />
+                  <FormatSpecificOptions>
+                    <LineEndStyle>CRLF</LineEndStyle>
+                    <Delimeter>,</Delimeter>
+                    <ForceQuotes>Never</ForceQuotes>
+                    <HeaderRow>False</HeaderRow>
+                    <CodePage>28591</CodePage>
+                    <WriteBOM>True</WriteBOM>
+                  </FormatSpecificOptions>
+                  <MultiFile value="False" />
+                </Configuration>
+              </OutputConfiguration>
+              <InputConfiguration>
+                <Configuration />
+              </InputConfiguration>
+              <ProgramName>%temp%\manual.bat</ProgramName>
+              <Arguments />
+              <WorkingDir />
+              <RunMinimized value="True" />
+              <RunSilent value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Run manual.bat</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRunCommand" />
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="43" y="998" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>EndsWith([name], ".pdf") AND [#1]="True"</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>EndsWith([name], ".pdf") AND [#1]="True"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="True">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Asset" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+            <MetaInfo connection="False">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Asset" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="73">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+            <Position x="475.0001" y="986" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="Command" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>ECHO "Opening PDFs..."</c>
+                </r>
+              </Data>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="22" source="TextInput:" type="String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+        </Node>
+        <Node ToolID="74">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+            <Position x="571.0001" y="986" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <ByName_ErrorMode>Warning</ByName_ErrorMode>
+              <ByName_OutputMode>All</ByName_OutputMode>
+              <Mode>ByName</Mode>
+              <SetOutputOrder value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Command" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="774.0002" y="702" width="1044" height="365" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Installer</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
         <Node ToolID="19">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="667" y="698" />
+            <Position x="932" y="753.9997" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1334,7 +1585,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="44">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="786" y="698" />
+            <Position x="1051" y="754.0002" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1364,7 +1615,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="45">
           <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
-            <Position x="894" y="698" />
+            <Position x="1135" y="754" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1418,7 +1669,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="46">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RunCommand.RunCommand">
-            <Position x="990" y="698" />
+            <Position x="1207" y="754" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1464,12 +1715,9 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
               <DefaultAnnotationText>Run PowerShell</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_14544_706d68dd4f2646b7babcee924fdad8c0_\files.txt" type="V_String" />
+                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -1477,7 +1725,7 @@ powershell "Start-Process -FilePath powershell...</DefaultAnnotationText>
         </Node>
         <Node ToolID="47">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="1098" y="698" />
+            <Position x="1303" y="754" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1495,12 +1743,12 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="True">
               <RecordInfo>
-                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_14544_706d68dd4f2646b7babcee924fdad8c0_\files.txt" type="V_String" />
+                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
               </RecordInfo>
             </MetaInfo>
             <MetaInfo connection="False">
               <RecordInfo>
-                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_14544_706d68dd4f2646b7babcee924fdad8c0_\files.txt" type="V_String" />
+                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -1508,7 +1756,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="50">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="1206" y="702" />
+            <Position x="1411" y="758" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1523,7 +1771,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_14544_706d68dd4f2646b7babcee924fdad8c0_\files.txt" type="V_String" />
+                <Field name="Field_1" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
                 <Field name="FullPath" size="1073741823" source="Formula: FileAddPaths([Engine.TempFilePath], FileAddPaths('Install', [Field_1]))" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
@@ -1532,7 +1780,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="51">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-            <Position x="1326" y="702" />
+            <Position x="1530" y="762" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1556,9 +1804,9 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_14544_706d68dd4f2646b7babcee924fdad8c0_\files.txt" type="V_String" />
+                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
                 <Field name="FullPath" size="1073741823" source="Formula: FileAddPaths([Engine.TempFilePath], FileAddPaths('Install', [Field_1]))" type="V_WString" />
-                <Field name="Mode" size="5" source="TextInput:" type="String" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
                 <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
@@ -1567,26 +1815,27 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="52">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="1422" y="702" />
+            <Position x="1686" y="762" />
           </GuiSettings>
           <Properties>
             <Configuration>
               <FormulaFields>
-                <FormulaField expression="'Copy-Item -Path &quot;' + [FullPath] + '&quot; -Destination &quot;' + FileAddPaths([InstallDir],[FileName])  + '&quot;'" field="Command" size="1073741823" type="V_WString" />
+                <FormulaField expression="'XCOPY &quot;' + [FullPath] + '&quot; &quot;' &#xA;+ FileAddPaths([InstallDir],&quot;RuntimeData\FormulaAddIn&quot;) + '&quot;'" field="Command" size="1073741823" type="V_WString" />
               </FormulaFields>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText>Command = 'Copy-Item -Path "' + [FullPath] + '" -Destination "' + FileAddPaths([...</DefaultAnnotationText>
+              <DefaultAnnotationText>Command = 'XCOPY "' + [FullPath] + '" "' 
++ FileAddPaths([InstallDir],"RuntimeDa...</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_14544_706d68dd4f2646b7babcee924fdad8c0_\files.txt" type="V_String" />
+                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
                 <Field name="FullPath" size="1073741823" source="Formula: FileAddPaths([Engine.TempFilePath], FileAddPaths('Install', [Field_1]))" type="V_WString" />
-                <Field name="Mode" size="5" source="TextInput:" type="String" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
                 <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
-                <Field name="Command" size="1073741823" source="Formula: 'Copy-Item -Path &quot;' + [FullPath] + '&quot; -Destination &quot;' + FileAddPaths([InstallDir],[FileName])  + '&quot;'" type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'XCOPY &quot;' + [FullPath] + '&quot; &quot;' &#xA;+ FileAddPaths([InstallDir],&quot;RuntimeData\FormulaAddIn&quot;) + '&quot;'" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -1594,7 +1843,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="57">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="1542" y="702" />
+            <Position x="1734" y="918" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1612,21 +1861,212 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="Command" size="1073741823" source="Formula: 'Copy-Item -Path &quot;' + [FullPath] + '&quot; -Destination &quot;' + FileAddPaths([InstallDir],[FileName])  + '&quot;'" type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'XCOPY &quot;' + [FullPath] + '&quot; &quot;' &#xA;+ FileAddPaths([InstallDir],&quot;RuntimeData\FormulaAddIn&quot;) + '&quot;'" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
         </Node>
+        <Node ToolID="93">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1219" y="830" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Versions</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="94">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Detour.Detour">
+            <Position x="810.0002" y="882" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <DetourRight value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Left">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Asset" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+            <MetaInfo connection="Right">
+              <RecordInfo>
+                <Field description="RegEx: Parsed from JSON_Name" name="Asset" source="CrossTab:Group:First:" type="Int16" />
+                <Field name="browser_download_url" size="1073741823" source="JSONParse: " type="V_WString" />
+                <Field name="name" size="1073741823" source="JSONParse: " type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+                <Field field="Asset" order="Asc" />
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetour" />
+        </Node>
+        <Node ToolID="95">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DetourEnd.DetourEnd">
+            <Position x="1650" y="918" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
+                <Field name="FullPath" size="1073741823" source="Formula: FileAddPaths([Engine.TempFilePath], FileAddPaths('Install', [Field_1]))" type="V_WString" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'XCOPY &quot;' + [FullPath] + '&quot; &quot;' &#xA;+ FileAddPaths([InstallDir],&quot;RuntimeData\FormulaAddIn&quot;) + '&quot;'" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetourEnd" />
+        </Node>
+        <Node ToolID="96">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="1050" y="894.0001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="''" field="FileName" size="2147483647" type="V_String" />
+                <FormulaField expression="''" field="FullPath" size="1073741823" type="V_WString" />
+                <FormulaField expression="'None'" field="Mode" size="5" type="String" />
+                <FormulaField expression="''" field="InstallDir" size="1073741823" type="V_WString" />
+                <FormulaField expression="'ECHO &quot;&quot;'" field="Command" size="1073741823" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[FileName = ''
+FullPath = ''
+Mode = 'None'
+InstallDir = ''
+Command = 'ECHO ""'
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="27">
+          <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+            <Position x="799.0002" y="746.0001" width="59" height="59" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="97">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1170" y="894" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Asset" selected="False" />
+                <SelectField field="browser_download_url" selected="False" />
+                <SelectField field="name" selected="False" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="FileName" size="2147483647" source="Formula: ''" type="V_String" />
+                <Field name="FullPath" size="1073741823" source="Formula: ''" type="V_WString" />
+                <Field name="Mode" size="5" source="Formula: 'None'" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ''" type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'Write-Host &quot;&quot;'" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="105">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1602" y="762" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>!IsNull(Mode)</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>!IsNull(Mode)</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="True">
+              <RecordInfo>
+                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
+                <Field name="FullPath" size="1073741823" source="Formula: FileAddPaths([Engine.TempFilePath], FileAddPaths('Install', [Field_1]))" type="V_WString" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo connection="False">
+              <RecordInfo>
+                <Field name="FileName" size="254" source="File: C:\ProgramData\Alteryx\Engine\Engine_17176_17ab2a010feb4bb1a4fc63eabffb3d90_\files.txt" type="V_String" />
+                <Field name="FullPath" size="1073741823" source="Formula: FileAddPaths([Engine.TempFilePath], FileAddPaths('Install', [Field_1]))" type="V_WString" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
       </ChildNodes>
     </Node>
     <Node ToolID="48">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="165" y="273" width="786" height="199" />
+        <Position x="11.99999" y="474" width="769" height="205" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Caption>MakeUninstallList</Caption>
+          <Caption>Make Uninstall List</Caption>
           <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
           <Disabled value="False" />
           <Folded value="False" />
@@ -1640,7 +2080,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
       <ChildNodes>
         <Node ToolID="36">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-            <Position x="522" y="318" />
+            <Position x="349" y="519.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1671,7 +2111,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             <MetaInfo connection="Output">
               <RecordInfo>
                 <Field name="FileName" size="1073741823" source="Download" type="V_WString" />
-                <Field name="Mode" size="5" source="TextInput:" type="String" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
                 <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
@@ -1680,7 +2120,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="38">
           <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
-            <Position x="283" y="302" />
+            <Position x="109.9999" y="503" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1724,11 +2164,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
-                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
-                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
-                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
-                <Field name="URL" size="1073741823" source="Formula: 'https://raw.githubusercontent.com/wiki/jdunkerley/AlteryxFormulaAddOns/FileList.md'" type="V_WString" />
+                <Field name="URL" size="82" source="TextInput:" type="String" />
                 <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
                 <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
               </RecordInfo>
@@ -1736,44 +2172,14 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
           </Properties>
           <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
         </Node>
-        <Node ToolID="39">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="175" y="302.0001" />
-          </GuiSettings>
-          <Properties>
-            <Configuration>
-              <FormulaFields>
-                <FormulaField expression="'https://raw.githubusercontent.com/wiki/jdunkerley/AlteryxFormulaAddOns/FileList.md'" field="URL" size="1073741823" type="V_WString" />
-              </FormulaFields>
-            </Configuration>
-            <Annotation DisplayMode="0">
-              <Name />
-              <DefaultAnnotationText>URL = 'https://raw.githubusercontent.com/wiki/jdunkerley/AlteryxFormulaAddOns/Fi...</DefaultAnnotationText>
-              <Left value="False" />
-            </Annotation>
-            <MetaInfo connection="Output">
-              <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
-                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
-                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
-                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
-                <Field name="URL" size="1073741823" source="Formula: 'https://raw.githubusercontent.com/wiki/jdunkerley/AlteryxFormulaAddOns/FileList.md'" type="V_WString" />
-              </RecordInfo>
-              <SortInfo>
-                <Field field="Release" order="Asc" />
-              </SortInfo>
-            </MetaInfo>
-          </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-        </Node>
         <Node ToolID="40">
           <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-            <Position x="391" y="302" />
+            <Position x="218" y="503.0002" />
           </GuiSettings>
           <Properties>
             <Configuration>
               <Field>DownloadData</Field>
-              <RegExExpression value="- (.*?)\r?\n" />
+              <RegExExpression value="- ([^\n]+)" />
               <CaseInsensitve value="True" />
               <Method>ParseSimple</Method>
               <Replace expression="">
@@ -1793,16 +2199,12 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             <Annotation DisplayMode="0">
               <Name />
               <DefaultAnnotationText>Tokenize:
-- (.*?)\r?\n</DefaultAnnotationText>
+- ([^\n]+)</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field description="RegEx: Parsed from JSON_Name" name="Release" source="CrossTab:Group:Concat:" type="Int16" />
-                <Field name="assets_url" size="2048" source="CrossTab:Header:Field:assets_url:Concat:" type="V_WString" />
-                <Field name="name" size="2048" source="CrossTab:Header:Field:name:Concat:" type="V_WString" />
-                <Field name="tag_name" size="2048" source="CrossTab:Header:Field:tag_name:Concat:" type="V_WString" />
-                <Field name="URL" size="1073741823" source="Formula: 'https://raw.githubusercontent.com/wiki/jdunkerley/AlteryxFormulaAddOns/FileList.md'" type="V_WString" />
+                <Field name="URL" size="82" source="TextInput:" type="String" />
                 <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
                 <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
               </RecordInfo>
@@ -1812,29 +2214,33 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="41">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="631" y="314" />
+            <Position x="458" y="515.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <Expression>FileExists(FileAddPaths([InstallDir], [FileName]))</Expression>
+              <Expression>FileExists(FileAddPaths([InstallDir], [FileName]))
+AND
+!IsNull(Mode)</Expression>
               <Mode>Custom</Mode>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText>FileExists(FileAddPaths([InstallDir], [FileName]))</DefaultAnnotationText>
+              <DefaultAnnotationText>FileExists(FileAddPaths([InstallDir], [FileName]))
+AND
+!IsNul...</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
             <MetaInfo connection="True">
               <RecordInfo>
                 <Field name="FileName" size="1073741823" source="Download" type="V_WString" />
-                <Field name="Mode" size="5" source="TextInput:" type="String" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
                 <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
             <MetaInfo connection="False">
               <RecordInfo>
                 <Field name="FileName" size="1073741823" source="Download" type="V_WString" />
-                <Field name="Mode" size="5" source="TextInput:" type="String" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
                 <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
@@ -1843,26 +2249,26 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="43">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="763" y="314" />
+            <Position x="590" y="515.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
               <FormulaFields>
-                <FormulaField expression="'Remove-Item -Path &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" field="Command" size="1073741823" type="V_WString" />
+                <FormulaField expression="'DEL &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" field="Command" size="1073741823" type="V_WString" />
               </FormulaFields>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText><![CDATA[Command = 'Remove-Item -Path "' + FileAddPaths([InstallDir],[FileName]) + '"'
+              <DefaultAnnotationText><![CDATA[Command = 'DEL "' + FileAddPaths([InstallDir],[FileName]) + '"'
 ]]></DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
                 <Field name="FileName" size="1073741823" source="Download" type="V_WString" />
-                <Field name="Mode" size="5" source="TextInput:" type="String" />
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
                 <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
-                <Field name="Command" size="1073741823" source="Formula: 'Remove-Item -Path &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'DEL &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -1870,7 +2276,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="56">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="882" y="318" />
+            <Position x="712" y="522.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1888,17 +2294,73 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
             </Annotation>
             <MetaInfo connection="Output">
               <RecordInfo>
-                <Field name="Command" size="1073741823" source="Formula: 'Remove-Item -Path &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" type="V_WString" />
+                <Field name="Command" size="1073741823" source="Formula: 'DEL &quot;' + FileAddPaths([InstallDir],[FileName]) + '&quot;'" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
         </Node>
+        <Node ToolID="87">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="220" y="594.0001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Versions</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="102">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+            <Position x="21.99999" y="504.0001" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="URL" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>https://raw.githubusercontent.com/wiki/jdunkerley/AlteryxFormulaAddOns/FileList.md</c>
+                </r>
+              </Data>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="URL" size="82" source="TextInput:" type="String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+        </Node>
       </ChildNodes>
     </Node>
     <Node ToolID="37">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="164" y="481" width="309" height="158" />
+        <Position x="11.99998" y="234" width="879" height="236" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1916,7 +2378,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
       <ChildNodes>
         <Node ToolID="33">
           <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-            <Position x="174" y="510" />
+            <Position x="21.99998" y="341.0003" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1952,7 +2414,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="34">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="270" y="510" />
+            <Position x="118.0001" y="341.0003" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -1978,7 +2440,7 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         </Node>
         <Node ToolID="35">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="390" y="510" />
+            <Position x="238.0001" y="341.0003" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -2010,10 +2472,356 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
         </Node>
+        <Node ToolID="79">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+            <Position x="330" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <GroupFields />
+              <HeaderField field="Mode" />
+              <DataField field="InstallDir" />
+              <Methods>
+                <Method method="First" />
+                <Separator>,</Separator>
+                <FieldSize value="2048" />
+              </Methods>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Admin" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+                <Field name="User" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+              <SortInfo>
+              </SortInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+        </Node>
+        <Node ToolID="81">
+          <GuiSettings Plugin="AlteryxGuiToolkit.Questions.DropDownListBox.ListBox">
+            <Position x="382.0001" y="401" width="59" height="59" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="82">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="478.0001" y="341" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Admin" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+                <Field name="User" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+                <Field name="Temp" source="Formula: 0" type="Int16" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="83">
+          <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+            <Position x="436.0001" y="263" width="59" height="59" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="85">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
+            <Position x="552" y="348" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <ErrorWarn>Ignore</ErrorWarn>
+              <KeyFields />
+              <DataFields>
+                <Field field="Admin" selected="True" />
+                <Field field="User" selected="True" />
+                <Field field="Temp" selected="False" />
+                <Field field="*Unknown" selected="True" />
+              </DataFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Name" size="5" source="Transpose:" type="String" />
+                <Field name="Value" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTranspose" />
+        </Node>
+        <Node ToolID="86">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="654" y="348" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Name" selected="True" rename="Mode" />
+                <SelectField field="Value" selected="True" rename="InstallDir" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="54">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="732" y="348" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Field>Mode</Field>
+                <Operator>=</Operator>
+                <Operands>
+                  <Operand>Admin</Operand>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[Mode] = "Admin"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="True">
+              <RecordInfo>
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo connection="False">
+              <RecordInfo>
+                <Field name="Mode" size="5" source="Transpose:" type="String" />
+                <Field name="InstallDir" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="55">
+          <GuiSettings>
+            <Position x="822" y="348" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output9">
+              <RecordInfo>
+                <Field name="Count" source="(Multiple Sources)" type="Int64" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings Macro="CountRecords.yxmc" />
+        </Node>
+        <Node ToolID="104">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="414" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="0" field="Temp" size="2" type="Int16" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Temp = 0
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Admin" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+                <Field name="User" size="1073741823" source="Formula: ReadRegistryString([Path], 'InstallDir64')" type="V_WString" />
+                <Field name="Temp" source="Formula: 0" type="Int16" />
+              </RecordInfo>
+              <SortInfo />
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
       </ChildNodes>
     </Node>
   </Nodes>
   <Connections>
+    <Connection Wireless="True">
+      <Origin ToolID="28" Connection="True Condition" />
+      <Destination ToolID="27" Connection="Condition" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="28" Connection="True Condition" />
+      <Destination ToolID="76" Connection="Condition" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="28" Connection="True Condition" />
+      <Destination ToolID="92" Connection="Condition" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="76" Connection="Action" />
+      <Destination ToolID="71" Connection="Action" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="21" Connection="Question" />
+      <Destination ToolID="20" Connection="Question" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="101" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="58" Connection="Output" />
+      <Destination ToolID="60" Connection="Targets" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="89" Connection="Output" />
+      <Destination ToolID="60" Connection="Source" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="60" Connection="Output" />
+      <Destination ToolID="61" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="61" Connection="Output" />
+      <Destination ToolID="62" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="61" Connection="Output2" />
+      <Destination ToolID="65" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="62" Connection="Output" />
+      <Destination ToolID="63" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="64" Connection="Output" />
+      <Destination ToolID="66" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="65" Connection="Output" />
+      <Destination ToolID="64" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="66" Connection="Output" />
+      <Destination ToolID="67" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="88" Connection="Output" />
+      <Destination ToolID="58" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="90" Connection="Output" />
+      <Destination ToolID="58" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="103" Connection="Output" />
+      <Destination ToolID="58" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="True" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="101" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="100" Connection="Output" />
+      <Destination ToolID="101" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="98" Connection="Left" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="98" Connection="Right" />
+      <Destination ToolID="99" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="92" Connection="Action" />
+      <Destination ToolID="98" Connection="Action" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="12" Connection="True" />
+      <Destination ToolID="98" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="99" Connection="Output" />
+      <Destination ToolID="100" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="101" Connection="Output" />
+      <Destination ToolID="94" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="27" Connection="Action" />
+      <Destination ToolID="94" Connection="Action" />
+    </Connection>
     <Connection>
       <Origin ToolID="2" Connection="Output" />
       <Destination ToolID="3" Connection="Input" />
@@ -2058,69 +2866,13 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
       <Origin ToolID="10" Connection="Output" />
       <Destination ToolID="25" Connection="Input" />
     </Connection>
-    <Connection name="#1">
+    <Connection name="#1" Wireless="True">
       <Origin ToolID="11" Connection="Question" />
       <Destination ToolID="28" Connection="Question" />
-    </Connection>
-    <Connection Wireless="True">
-      <Origin ToolID="12" Connection="True" />
-      <Destination ToolID="39" Connection="Input" />
-    </Connection>
-    <Connection Wireless="True">
-      <Origin ToolID="12" Connection="True" />
-      <Destination ToolID="13" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="25" Connection="Output" />
       <Destination ToolID="11" Connection="Question Input" />
-    </Connection>
-    <Connection name="#1">
-      <Origin ToolID="27" Connection="Action" />
-      <Destination ToolID="26" Connection="Action" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="28" Connection="True Condition" />
-      <Destination ToolID="27" Connection="Condition" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="54" Connection="True" />
-      <Destination ToolID="55" Connection="Input8" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="55" Connection="Output9" />
-      <Destination ToolID="60" Connection="Source" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="58" Connection="Output" />
-      <Destination ToolID="60" Connection="Targets" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="60" Connection="Output" />
-      <Destination ToolID="61" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="61" Connection="Output" />
-      <Destination ToolID="62" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="61" Connection="Output2" />
-      <Destination ToolID="65" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="62" Connection="Output" />
-      <Destination ToolID="63" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="64" Connection="Output" />
-      <Destination ToolID="66" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="65" Connection="Output" />
-      <Destination ToolID="64" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="66" Connection="Output" />
-      <Destination ToolID="67" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="30" Connection="Output" />
@@ -2150,34 +2902,6 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
       <Origin ToolID="74" Connection="Output" />
       <Destination ToolID="70" Connection="Input" />
     </Connection>
-    <Connection name="#1">
-      <Origin ToolID="21" Connection="Question" />
-      <Destination ToolID="20" Connection="Question" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="18" Connection="Output" />
-      <Destination ToolID="20" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="13" Connection="Output" />
-      <Destination ToolID="14" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="14" Connection="Output" />
-      <Destination ToolID="16" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="16" Connection="Output" />
-      <Destination ToolID="17" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="17" Connection="True" />
-      <Destination ToolID="18" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="18" Connection="Output" />
-      <Destination ToolID="19" Connection="Input" />
-    </Connection>
     <Connection>
       <Origin ToolID="19" Connection="True" />
       <Destination ToolID="44" Connection="Input" />
@@ -2203,24 +2927,44 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
       <Destination ToolID="51" Connection="Targets" />
     </Connection>
     <Connection>
-      <Origin ToolID="35" Connection="True" />
+      <Origin ToolID="93" Connection="Output" />
       <Destination ToolID="51" Connection="Source" />
     </Connection>
     <Connection>
       <Origin ToolID="51" Connection="Output" />
-      <Destination ToolID="52" Connection="Input" />
+      <Destination ToolID="105" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="52" Connection="Output" />
+      <Destination ToolID="95" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="97" Connection="Output" />
+      <Destination ToolID="95" Connection="Right" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="57" Connection="Output" />
+      <Destination ToolID="90" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="94" Connection="Left" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="94" Connection="Right" />
+      <Destination ToolID="96" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="95" Connection="Output" />
       <Destination ToolID="57" Connection="Input" />
     </Connection>
-    <Connection name="#2">
-      <Origin ToolID="57" Connection="Output" />
-      <Destination ToolID="58" Connection="Input" />
+    <Connection>
+      <Origin ToolID="96" Connection="Output" />
+      <Destination ToolID="97" Connection="Input" />
     </Connection>
-    <Connection name="#1">
-      <Origin ToolID="56" Connection="Output" />
-      <Destination ToolID="58" Connection="Input" />
+    <Connection>
+      <Origin ToolID="105" Connection="True" />
+      <Destination ToolID="52" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="36" Connection="Output" />
@@ -2231,15 +2975,11 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
       <Destination ToolID="40" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="39" Connection="Output" />
-      <Destination ToolID="38" Connection="Input" />
-    </Connection>
-    <Connection>
       <Origin ToolID="40" Connection="Output" />
       <Destination ToolID="36" Connection="Targets" />
     </Connection>
     <Connection>
-      <Origin ToolID="35" Connection="True" />
+      <Origin ToolID="87" Connection="Output" />
       <Destination ToolID="36" Connection="Source" />
     </Connection>
     <Connection>
@@ -2249,6 +2989,14 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
     <Connection>
       <Origin ToolID="43" Connection="Output" />
       <Destination ToolID="56" Connection="Input" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="56" Connection="Output" />
+      <Destination ToolID="88" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="102" Connection="Output" />
+      <Destination ToolID="38" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="33" Connection="Output" />
@@ -2260,7 +3008,55 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="35" Connection="True" />
+      <Destination ToolID="79" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="79" Connection="Output" />
+      <Destination ToolID="81" Connection="Question Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="79" Connection="Output" />
+      <Destination ToolID="104" Connection="Input" />
+    </Connection>
+    <Connection name="#1" Wireless="True">
+      <Origin ToolID="81" Connection="Question" />
+      <Destination ToolID="83" Connection="Question" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="82" Connection="Output" />
+      <Destination ToolID="85" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="83" Connection="Action" />
+      <Destination ToolID="82" Connection="Action" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="104" Connection="Output" />
+      <Destination ToolID="82" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="85" Connection="Output" />
+      <Destination ToolID="86" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="86" Connection="Output" />
       <Destination ToolID="54" Connection="Input" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="86" Connection="Output" />
+      <Destination ToolID="87" Connection="Input" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="86" Connection="Output" />
+      <Destination ToolID="93" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="54" Connection="True" />
+      <Destination ToolID="55" Connection="Input8" />
+    </Connection>
+    <Connection Wireless="True">
+      <Origin ToolID="55" Connection="Output9" />
+      <Destination ToolID="89" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
@@ -2284,6 +3080,12 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
         <Namespace>Question</Namespace>
         <Name>Drop Down (11)</Name>
         <Value>v1.3</Value>
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>List Box (81)</Name>
+        <Value />
         <IsNumeric value="False" />
       </Constant>
       <Constant>
@@ -2316,6 +3118,19 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
     </Events>
     <RuntimeProperties>
       <Actions>
+        <NoCondition>
+          <Type>NoCondition</Type>
+          <Description>(Always Run)</Description>
+          <True>
+            <Action>
+              <Type>UpdateSelect</Type>
+              <Description />
+              <ToolId value="83" />
+              <Variable />
+              <SelectTool value="-1" />
+            </Action>
+          </True>
+        </NoCondition>
         <Condition>
           <Type>Condition</Type>
           <Description />
@@ -2327,10 +3142,32 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
               <Description />
               <ToolId value="27" />
               <Expression>"True"</Expression>
-              <Destination>26/Disabled/@value</Destination>
+              <Destination>94/DetourRight/@value</Destination>
+              <Mapping>Update Detour Direction</Mapping>
+              <Mode>Expression</Mode>
+              <DynamicConfiguration>Left|Right	2</DynamicConfiguration>
+              <DefaultConfiguration value="False" />
+            </Action>
+            <Action>
+              <Type>Dynamic</Type>
+              <Description />
+              <ToolId value="76" />
+              <Expression>"True"</Expression>
+              <Destination>71/Disabled/@value</Destination>
               <Mapping>Enable/Disable Container</Mapping>
               <Mode>Expression</Mode>
               <DynamicConfiguration>Enabled|Disabled	2</DynamicConfiguration>
+              <DefaultConfiguration value="False" />
+            </Action>
+            <Action>
+              <Type>Dynamic</Type>
+              <Description />
+              <ToolId value="92" />
+              <Expression>"True"</Expression>
+              <Destination>98/DetourRight/@value</Destination>
+              <Mapping>Update Detour Direction</Mapping>
+              <Mode>Expression</Mode>
+              <DynamicConfiguration>Left|Right	2</DynamicConfiguration>
               <DefaultConfiguration value="False" />
             </Action>
           </True>
@@ -2359,6 +3196,22 @@ EndsWith([Field_1], ".dll")</DefaultAnnotationText>
               <Default />
               <Mode>Field</Mode>
               <Field_ToolId value="25" />
+              <Field_ConnectionName />
+              <Field_Connection>Output</Field_Connection>
+              <Field_IsOutput value="True" />
+              <Field_IncludeNone value="False" />
+              <Field_FilterTypes>Bool,Byte,Int16,Int32,Int64,FixedDecimal,Float,Double,String,WString,V_String,V_WString,Date,Time,DateTime,Blob,SpatialObj</Field_FilterTypes>
+            </Question>
+            <Question>
+              <Type>ListBox</Type>
+              <Description>Alteryx Install To Install Into</Description>
+              <Name>List Box (81)</Name>
+              <ToolId value="81" />
+              <Multiple value="True" />
+              <Multiple_Custom value="False" />
+              <Multiple_Default value="True" />
+              <Mode>Field</Mode>
+              <Field_ToolId value="79" />
               <Field_ConnectionName />
               <Field_Connection>Output</Field_Connection>
               <Field_IsOutput value="True" />
