@@ -11,8 +11,13 @@ const std::wstring upper = L"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::wstring lower = L"abcdefghijklmnopqrstuvwxyz";
 const std::wstring number = L"0123456789";
 
-std::random_device rd;
-std::mt19937 mt19937(rd());
+static std::random_device rd;
+static std::mt19937 mt19937(rd());
+
+static int getUniformInt(int max)
+{
+	return std::uniform_int_distribution<int>(0, max)(mt19937);
+}
 
 static auto getCharacter(std::wstring input)
 {
@@ -20,9 +25,7 @@ static auto getCharacter(std::wstring input)
 	{
 		return L'?';
 	}
-
-	const auto uni = std::uniform_int_distribution<unsigned long long>(0, input.length() - 1);
-	return input[uni(mt19937)];
+	return input[getUniformInt(input.length()-1)];
 }
 
 static std::vector<std::wstring> &splitStrW(const std::wstring &InputString, wchar_t delimiterChar, std::vector<std::wstring> &ResultVec) {
@@ -153,12 +156,17 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 
 	const std::wstring CIDR = nNumArgs == 1 ? std::wstring(pArgs[0].pVal) : L"0.0.0.0/0";
 	std::vector<std::wstring> cidr_parts;
-	splitStrW(CIDR, L',', cidr_parts);
+	splitStrW(CIDR, L'/', cidr_parts);
 
-	int range;
-	if (cidr_parts.size() != 2 || (range = parseInt(cidr_parts[1])) < 0 || range > 32)
+	if (cidr_parts.size() != 2)
 	{
 		return AlteryxAbacusUtils::ReturnError(L"Invalid CIDR passed", pReturnValue, nNumArgs, pArgs);
+	}
+
+	int range;
+	if ((range = parseInt(cidr_parts[1])) < 0 || range > 32)
+	{
+		return AlteryxAbacusUtils::ReturnError(L"Invalid CIDR mask value passed", pReturnValue, nNumArgs, pArgs);
 	}
 
 	std::vector<std::wstring> ip_parts;
@@ -174,12 +182,11 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 		return AlteryxAbacusUtils::ReturnError(L"Invalid IP Address passed", pReturnValue, nNumArgs, pArgs);
 	}
 
-
 	std::wstringstream output;
 	for (auto i = 0; i < 4; i++)
 	{
-		const int mask = (1 << range % 8) - 1;
-		range = range / 8;
+		const int mask = getUniformInt((1 << std::max<int>(8 - range, 0)) - 1);
+		range = max(0, range - 8);
 
 		output << ip_numbers[i] + mask;
 
