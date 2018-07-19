@@ -1,6 +1,9 @@
 #ifndef FORMULAADDIN_H__
 	#define FORMULAADDIN_H__
 
+	const int nVarType_DOUBLE = 1;
+	const int nVarType_WCHAR = 2;
+
 	//  API definition for Formula functions plug ins
 	struct FormulaAddInData
 	{

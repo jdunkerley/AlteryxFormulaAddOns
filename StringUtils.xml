@@ -55,6 +55,28 @@
     </Dll>
   </Function>
   <Function>
+    <Name>TemplateString</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>String</Category>
+    <InsertText>TemplateString(Pattern, CharSet1, ...)</InsertText>
+    <Description>Get a random string</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>RandomStringFromTemplate</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>RandomIPAddress</Name>
+    <NumParams variable="true">0</NumParams>
+    <Category>String</Category>
+    <InsertText>RandomIPAddress(CIDR)</InsertText>
+    <Description>Get a random IP address within a CIDR block</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>RandomIPAddress</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
     <Name>TOROMAN</Name>
     <NumParams variable="false">1</NumParams>
     <Category>String</Category>
