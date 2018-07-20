@@ -55,10 +55,10 @@
     </Dll>
   </Function>
   <Function>
-    <Name>TemplateString</Name>
+    <Name>RandomString</Name>
     <NumParams variable="true">1</NumParams>
-    <Category>String</Category>
-    <InsertText>TemplateString(Pattern, CharSet1, ...)</InsertText>
+    <Category>Generator</Category>
+    <InsertText>RandomString(Pattern, CharSet1, ...)</InsertText>
     <Description>Get a random string</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -68,12 +68,23 @@
   <Function>
     <Name>RandomIPAddress</Name>
     <NumParams variable="true">0</NumParams>
-    <Category>String</Category>
+    <Category>Generator</Category>
     <InsertText>RandomIPAddress(CIDR)</InsertText>
     <Description>Get a random IP address within a CIDR block</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>RandomIPAddress</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>RandomItem</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Generator</Category>
+    <InsertText>RandomItem(Item1, Item2, Item3)</InsertText>
+    <Description>Get a random item from a list</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>RandomValueFromList</EntryPoint>
     </Dll>
   </Function>
   <Function>

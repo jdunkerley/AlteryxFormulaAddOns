@@ -7,25 +7,21 @@
 #include "AlteryxAbacusUtils.h"
 #include <array>
 
-const std::wstring upper = L"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const std::wstring lower = L"abcdefghijklmnopqrstuvwxyz";
-const std::wstring number = L"0123456789";
-
-static std::random_device rd;
-static std::mt19937 mt19937(rd());
-
 static int getUniformInt(int max)
 {
+	static std::random_device rd;
+	static std::mt19937 mt19937(rd());
+
 	return std::uniform_int_distribution<int>(0, max)(mt19937);
 }
 
-static auto getCharacter(std::wstring input)
+static auto getCharacter(wchar_t const* input, const size_t length)
 {
-	if (input.length() == 0)
+	if (length == 0)
 	{
-		return L'?';
+		return L'\0';
 	}
-	return input[getUniformInt(input.length()-1)];
+	return input[getUniformInt(length - 1)];
 }
 
 static std::vector<std::wstring> &splitStrW(const std::wstring &InputString, wchar_t delimiterChar, std::vector<std::wstring> &ResultVec) {
@@ -54,22 +50,28 @@ static int parseInt(const std::wstring &InputString)
 	return -1;
 }
 
-static std::wstring createFromStandard(std::wstring const& pattern)
+static std::wstring createFromStandard(wchar_t const* pattern, const size_t length)
 {
-	const auto length = pattern.length();
+	static const wchar_t* upper = L"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	static const size_t upper_length = wcslen(upper);
+	static const wchar_t* lower = L"abcdefghijklmnopqrstuvwxyz";
+	static const size_t lower_length = wcslen(lower);
+	static const wchar_t* number = L"0123456789";
+	static const size_t number_length = wcslen(number);
+
 	std::wstringstream output;
 
 	for (auto i = 0LLU; i < length; i++) {
 		switch (pattern[i])
 		{
 		case L'A':
-			output << getCharacter(upper);
+			output << getCharacter(upper, upper_length);
 			break;
 		case L'a':
-			output << getCharacter(lower);
+			output << getCharacter(lower, lower_length);
 			break;
 		case L'#':
-			output << getCharacter(number);
+			output << getCharacter(number, number_length);
 			break;
 		default:
 			output << pattern[i];
@@ -80,9 +82,8 @@ static std::wstring createFromStandard(std::wstring const& pattern)
 	return output.str();
 }
 
-static std::wstring createFromCharset(std::wstring const& pattern, std::vector<std::wstring> const& charsets)
+static std::wstring createFromCharset(wchar_t const* pattern, const size_t length, std::vector<const wchar_t*> const& charsets, std::vector<size_t> const& lengths)
 {
-	const auto length = pattern.length();
 	const int setscount = charsets.size();
 	std::wstringstream output;
 
@@ -98,7 +99,12 @@ static std::wstring createFromCharset(std::wstring const& pattern, std::vector<s
 
 		if (index >= 0 && setscount > index)
 		{
-			output << getCharacter(charsets[index]);
+			const auto new_char = getCharacter(charsets[index], lengths[index]);
+			if (new_char == L'\0')
+			{
+				return L"";
+			}
+			output << new_char;
 		} else
 		{
 			output << pattern[i];
@@ -117,16 +123,28 @@ extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumA
 		return AlteryxAbacusUtils::ReturnError(L"Arguments: [Pattern]", pReturnValue, nNumArgs, pArgs);
 	}
 
-	const std::wstring pattern(pArgs[0].pVal);
+	if (pArgs[0].isNull)
+	{
+		pReturnValue->isNull = true;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+	}
+
+	const size_t pattern_size = std::wcslen(pArgs[0].pVal);
+	if (0 == pattern_size)
+	{
+		AlteryxAbacusUtils::SetString(pReturnValue, pArgs[0].pVal);
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+	}
 	
 	if (1 == nNumArgs) 
 	{
-		std::wstring output = createFromStandard(pattern);
+		std::wstring output = createFromStandard(pArgs[0].pVal, pattern_size);
 		AlteryxAbacusUtils::SetString(pReturnValue, output.c_str());
 	}
 	else
 	{
-		std::vector<std::wstring> charsets(nNumArgs - 1);
+		std::vector<const wchar_t*> charsets(nNumArgs - 1);
+		std::vector<size_t> lengths(nNumArgs - 1);
 		for (auto i = 1; i < nNumArgs; i++)
 		{
 			if (nVarType_DOUBLE == pArgs[i].nVarType)
@@ -134,12 +152,24 @@ extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumA
 				return AlteryxAbacusUtils::ReturnError(L"Arguments: [Pattern] [CharSet1] ... [CharSetN]", pReturnValue, nNumArgs, pArgs);
 			}
 
-			const std::wstring tmp(pArgs[i].pVal);
-			charsets.push_back(tmp);
+			if (pArgs[i].isNull)
+			{
+				charsets.emplace_back(L"");
+				lengths.emplace_back(0);
+			}
+			else {
+				charsets.emplace_back(pArgs[i].pVal);
+				lengths.emplace_back(wcslen(pArgs[i].pVal));
+			}
 		}
 
-		std::wstring output = createFromCharset(pattern, charsets);
-		AlteryxAbacusUtils::SetString(pReturnValue, output.c_str());
+		std::wstring output = createFromCharset(pArgs[0].pVal, pattern_size, charsets, lengths);
+		if (output.length() == 0) {
+			pReturnValue->isNull = true;
+		}
+		else {
+			AlteryxAbacusUtils::SetString(pReturnValue, output.c_str());
+		}
 	}
 
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
@@ -152,6 +182,12 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 	if (nNumArgs > 1 || (nNumArgs == 1 && nVarType_WCHAR != pArgs[0].nVarType))
 	{
 		return AlteryxAbacusUtils::ReturnError(L"Arguments: [CIDR]", pReturnValue, nNumArgs, pArgs);
+	}
+
+	if (pArgs[0].isNull)
+	{
+		pReturnValue->isNull = true;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	const std::wstring CIDR = nNumArgs == 1 ? std::wstring(pArgs[0].pVal) : L"0.0.0.0/0";
@@ -197,5 +233,29 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 	}
 
 	AlteryxAbacusUtils::SetString(pReturnValue, output.str().c_str());
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall RandomValueFromList(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	if (nNumArgs == 0)
+	{
+		pReturnValue->nVarType = nVarType_WCHAR;
+		return AlteryxAbacusUtils::ReturnError(L"Arguments: [Value1] ... [ValueN]", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->nVarType = pArgs[0].nVarType;
+	const int randomItem = getUniformInt(nNumArgs - 1);
+
+	if (pArgs[randomItem].isNull)
+	{
+		pReturnValue->isNull = true;
+	} else if (pReturnValue->nVarType == nVarType_DOUBLE)
+	{
+		pReturnValue->dVal = pArgs[randomItem].dVal;
+	} else
+	{
+		AlteryxAbacusUtils::CopyValue(&pArgs[randomItem], pReturnValue);
+	}
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
