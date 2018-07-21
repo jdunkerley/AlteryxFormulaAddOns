@@ -50,7 +50,7 @@ static int parseInt(const std::wstring &InputString)
 	return -1;
 }
 
-static std::wstring createFromStandard(wchar_t const* pattern, const size_t length)
+static void createFromStandard(wchar_t const* pattern, const size_t length, wchar_t * output)
 {
 	static const wchar_t* upper = L"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	static const size_t upper_length = wcslen(upper);
@@ -59,33 +59,30 @@ static std::wstring createFromStandard(wchar_t const* pattern, const size_t leng
 	static const wchar_t* number = L"0123456789";
 	static const size_t number_length = wcslen(number);
 
-	std::wstringstream output;
-
 	for (auto i = 0LLU; i < length; i++) {
 		switch (pattern[i])
 		{
 		case L'A':
-			output << getCharacter(upper, upper_length);
+			output[i] = getCharacter(upper, upper_length);
 			break;
 		case L'a':
-			output << getCharacter(lower, lower_length);
+			output[i] = getCharacter(lower, lower_length);
 			break;
 		case L'#':
-			output << getCharacter(number, number_length);
+			output[i] = getCharacter(number, number_length);
 			break;
 		default:
-			output << pattern[i];
+			output[i] = pattern[i];
 			break;
 		}
 	}
 
-	return output.str();
+	output[length] = '\0';
 }
 
-static std::wstring createFromCharset(wchar_t const* pattern, const size_t length, std::vector<const wchar_t*> const& charsets, std::vector<size_t> const& lengths)
+static void createFromCharset(wchar_t const* pattern, const size_t length, std::vector<const wchar_t*> const& charsets, std::vector<size_t> const& lengths, wchar_t * output)
 {
 	const int setscount = charsets.size();
-	std::wstringstream output;
 
 	for (auto i = 0LLU; i < length; i++) {
 		int index = -1;
@@ -102,16 +99,17 @@ static std::wstring createFromCharset(wchar_t const* pattern, const size_t lengt
 			const auto new_char = getCharacter(charsets[index], lengths[index]);
 			if (new_char == L'\0')
 			{
-				return L"";
+				output[0] = new_char;
+				return;
 			}
-			output << new_char;
+			output[i] = new_char;
 		} else
 		{
-			output << pattern[i];
+			output[i] = pattern[i];
 		}
 	}
 
-	return output.str();
+	output[length] = '\0';
 }
 
 extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
@@ -135,11 +133,12 @@ extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumA
 		AlteryxAbacusUtils::SetString(pReturnValue, pArgs[0].pVal);
 		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
-	
+
+	auto *pStringRet = static_cast<wchar_t *>(GlobalAlloc(GMEM_FIXED, (pattern_size + 1) * sizeof(wchar_t)));
+
 	if (1 == nNumArgs) 
 	{
-		std::wstring output = createFromStandard(pArgs[0].pVal, pattern_size);
-		AlteryxAbacusUtils::SetString(pReturnValue, output.c_str());
+		createFromStandard(pArgs[0].pVal, pattern_size, pStringRet);
 	}
 	else
 	{
@@ -163,15 +162,13 @@ extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumA
 			}
 		}
 
-		std::wstring output = createFromCharset(pArgs[0].pVal, pattern_size, charsets, lengths);
-		if (output.length() == 0) {
+		createFromCharset(pArgs[0].pVal, pattern_size, charsets, lengths, pStringRet);
+		if (pStringRet[0] == 0) {
 			pReturnValue->isNull = true;
-		}
-		else {
-			AlteryxAbacusUtils::SetString(pReturnValue, output.c_str());
 		}
 	}
 
+	pReturnValue->pVal = pStringRet;
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
