@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "AlteryxAbacus.h"
 #include <string>
-#include <sstream>
 #include <random>
 #include <vector>
 #include "AlteryxAbacusUtils.h"
@@ -191,7 +190,7 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 	{
 		const int ip = cidr_parts[i] + getUniformInt((1 << std::max<int>(8 - range, 0)) - 1);
 		range = max(0, range - 8);
-		_itow(ip, end, 10);
+		_itow_s(ip, end, 16 * sizeof(wchar_t), 10);
 		end += (ip < 10 ? 2 : (ip < 100 ? 3 : 4));
 		*(end - 1) = L'.';
 	}

@@ -35,7 +35,7 @@ if ($LASTEXITCODE -ne 0) {
 $version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("AlteryxAbacus.dll").FileVersion
 
 Write-Host "Building ReadMe.docx ..."
-& pandoc -f markdown_github -t docx README.md -o README.docx
+& pandoc -f gfm -t docx README.md -o README.docx
 if ($LASTEXITCODE -ne 0) {
     $message = "Documentation failed (you need pandoc): " + $LASTEXITCODE
     Write-Host $message
