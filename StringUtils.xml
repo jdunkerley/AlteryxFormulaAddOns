@@ -55,7 +55,7 @@
     </Dll>
   </Function>
   <Function>
-    <Name>RandomString</Name>
+    <Name>RANDOMSTRING</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Generator</Category>
     <InsertText>RandomString(Pattern, CharSet1, ...)</InsertText>
@@ -66,7 +66,7 @@
     </Dll>
   </Function>
   <Function>
-    <Name>RandomIPAddress</Name>
+    <Name>RANDOMIPADDRESS</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Generator</Category>
     <InsertText>RandomIPAddress(CIDR)</InsertText>
@@ -77,7 +77,7 @@
     </Dll>
   </Function>
   <Function>
-    <Name>RandomItem</Name>
+    <Name>RANDOMITEM</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Generator</Category>
     <InsertText>RandomItem(Item1, Item2, Item3)</InsertText>
