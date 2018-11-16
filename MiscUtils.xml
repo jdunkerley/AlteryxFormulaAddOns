@@ -32,6 +32,28 @@
     </Dll>
   </Function>
   <Function>
+    <Name>VARNUM</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VARNUM(Key[, Value])</InsertText>
+    <Description>Gets or stores a numeric value</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>VarNum</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>VARTEXT</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VARTEXT(Key[, Value])</InsertText>
+    <Description>Gets or stores a text value</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>VarText</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
     <Name>REPORTERROR</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
