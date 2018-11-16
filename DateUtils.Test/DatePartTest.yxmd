@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="11.0">
+<AlteryxDocument yxmdVer="2018.4">
   <Nodes>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="102" y="90" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -20,27 +20,24 @@
 Table=`Sheet1$`</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="DateText" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="Year" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
-            <Field name="Month" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
-            <Field name="Day" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
-            <Field name="Weekday" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
-            <Field name="Quarter" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
-            <Field name="IsLeapYear" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Bool" />
-            <Field name="OrdinalDay" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
-            <Field name="WeekStart" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="WeekEnd" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="MonthStart" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="MonthEnd" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="QuarterStart" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="QuarterEnd" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="YearStart" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
-            <Field name="YearEnd" size="255" source="File: D:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="DateText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Year" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Month" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Day" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Weekday" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Quarter" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="IsLeapYear" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Bool" />
+            <Field name="OrdinalDay" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="WeekStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="WeekEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="MonthStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="MonthEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="QuarterStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="QuarterEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="YearStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="YearEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx|||`Sheet1$`" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -48,7 +45,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="102" y="210" />
+        <Position x="54" y="174" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -154,7 +151,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
-        <Position x="210" y="90" />
+        <Position x="162" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -192,7 +189,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="330" y="222" />
+        <Position x="282" y="186" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -225,22 +222,22 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="462" y="222" />
+        <Position x="414" y="186" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
             <FormulaField expression="[DateText]" field="P1" size="10" type="Date" />
             <FormulaField expression="[Part]" field="P2" size="1073741823" type="V_WString" />
-            <FormulaField expression="Switch(P2,NULL()&#xA;,&quot;year&quot;,Year(P1),&quot;yyyy&quot;,Year(P1),&quot;yy&quot;,Year(P1),&quot;%Y&quot;,Year(P1)&#xA;,&quot;quarter&quot;,Quarter(P1),&quot;qq&quot;,Quarter(P1),&quot;q&quot;,Quarter(P1)&#xA;,&quot;month&quot;,Month(P1),&quot;mm&quot;,Month(P1),&quot;m&quot;,Month(P1)&#xA;,&quot;dayofyear&quot;,OrdinalDay(P1),&quot;dy&quot;,OrdinalDay(P1),&quot;y&quot;,OrdinalDay(P1)&#xA;,&quot;%m&quot;,IIF(CharToInt(Right(P2,1))=109,Month(P1),Minute(P1))&#xA;)" field="Actual" size="8" type="Int64" />
+            <FormulaField expression="Switch(P2,NULL(),&#xA;          &quot;year&quot;,Year(P1),&#xA;          &quot;yyyy&quot;,Year(P1),&#xA;          &quot;yy&quot;,Year(P1),&#xA;          &quot;%Y&quot;,Year(P1),&#xA;          &quot;quarter&quot;,Quarter(P1),&#xA;          &quot;qq&quot;,Quarter(P1),&#xA;          &quot;q&quot;,Quarter(P1),&#xA;          &quot;month&quot;,Month(P1),&#xA;          &quot;mm&quot;,Month(P1),&#xA;          &quot;m&quot;,Month(P1),&#xA;          &quot;dayofyear&quot;,OrdinalDay(P1),&#xA;          &quot;dy&quot;,OrdinalDay(P1),&#xA;          &quot;y&quot;,OrdinalDay(P1),&#xA;           &quot;%m&quot;,&#xA;          IIF(CharToInt(Right(P2,1))=109,Month(P1),Minute(P1))&#xA;)" field="Actual" size="8" type="Int64" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
           <DefaultAnnotationText>P1 = [DateText]
 P2 = [Part]
-Actual = Switch(P2,NULL()
-,"year",Year(P1),"yyyy",Ye...</DefaultAnnotationText>
+Actual = Switch(P2,NULL(),
+          "year",Year(P1)...</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -248,11 +245,11 @@ Actual = Switch(P2,NULL()
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="654" y="222" />
+        <Position x="606" y="186" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_13092_d8b05475354f42c9983215961ffb4460_\Engine_22312_6d3025dbc82a48f5aecbd70430b15966_.yxdb</TempFile>
+          <TempFile>C:\Users\JDUNKE~1.SCO\AppData\Local\Temp\Engine_13088_33602b0892314677a6dc9d06faa0ab17_\Engine_16040_234036ada30b41e9bc449f944203d229_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>

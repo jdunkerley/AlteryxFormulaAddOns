@@ -24,18 +24,16 @@ if ($bins.Count -eq 0) {
     exit -1
 }
 
-$files = Get-ChildItem "$root\*.xml" 
-if ($files -is [System.IO.FileSystemInfo]) {
-    $files = @($files)
-}
-if ($mode.ToUpper() -eq "DEBUG") { $files += Get-ChildItem "$root\x64\Debug\*.dll" }
-if ($mode.ToUpper() -eq "RELEASE") { $files += Get-ChildItem "$root\x64\Release\*.dll" }
-if ($mode.ToUpper() -eq "ROOT") { $files += Get-ChildItem "$root\*.dll" }
-$files | Unblock-File
+$files = Get-ChildItem "$root\*.xml" | Select -ExpandProperty FullName
+if ($files -is [string]) { $files = @($files) }
+if ($mode.ToUpper() -eq "DEBUG") { $files += Get-ChildItem "$root\x64\Debug\*.dll" | Select -ExpandProperty FullName }
+if ($mode.ToUpper() -eq "RELEASE") { $files += Get-ChildItem "$root\x64\Release\*.dll" | Select -ExpandProperty FullName }
+if ($mode.ToUpper() -eq "ROOT") { $files += Get-ChildItem "$root\*.dll" | Select -ExpandProperty FullName }
+Unblock-File $files
 
 foreach ($bin in $bins) {
     Write-Host "Installing current version to $bin ..."
-    $files | Copy-Item -Destination "$bin\RuntimeData\FormulaAddIn" -Verbose
+    Copy-Item $files -Destination "$bin\RuntimeData\FormulaAddIn" -Verbose
 }
 
 Pop-Location
