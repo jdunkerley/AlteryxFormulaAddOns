@@ -73,7 +73,7 @@ extern "C" long _declspec(dllexport) _stdcall VarText(int nNumArgs, FormulaAddIn
 	{
 		const std::wstring key(pArgs[0].pVal);
 
-		if (nNumArgs > 1 && (nNumArgs < 3 || pArgs[3].isNull || pArgs[3].dVal != 0))
+		if (nNumArgs > 1 && (nNumArgs < 3 || pArgs[2].isNull || pArgs[2].dVal != 0))
 		{
 			if (pArgs[1].isNull)
 			{
@@ -116,7 +116,7 @@ extern "C" long _declspec(dllexport) _stdcall VarNum(int nNumArgs, FormulaAddInD
 	{
 		const std::wstring key(pArgs[0].pVal);
 
-		if (nNumArgs > 1 && (nNumArgs < 3 || pArgs[3].isNull || pArgs[3].dVal != 0))
+		if (nNumArgs > 1 && (nNumArgs < 3 || pArgs[2].isNull || pArgs[2].dVal != 0))
 		{
 			if (pArgs[1].isNull)
 			{

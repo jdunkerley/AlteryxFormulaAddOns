@@ -1,0 +1,1146 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="11.0">
+  <Nodes>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+        <Position x="0" y="0" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+        <Position x="54" y="132" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UseFileInput value="False" />
+          <Name>Expected</Name>
+          <Abbrev>E</Abbrev>
+          <ShowFieldMap value="False" />
+          <Optional value="False" />
+          <TextInput>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="Value" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>Hello World</c>
+                </r>
+              </Data>
+            </Configuration>
+          </TextInput>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Text Input (1)</Name>
+          <DefaultAnnotationText />
+          <Left value="True" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+        <Position x="54" y="408" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UseFileInput value="False" />
+          <Name>Actual</Name>
+          <Abbrev>A</Abbrev>
+          <ShowFieldMap value="False" />
+          <Optional value="False" />
+          <TextInput>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="Value" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>Hello World</c>
+                </r>
+              </Data>
+            </Configuration>
+          </TextInput>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Text Input (2)</Name>
+          <DefaultAnnotationText />
+          <Left value="True" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="462" y="144" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="True">
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <SelectFields>
+                <SelectField field="Right_Value" selected="True" rename="Right_Value" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Left">
+          <RecordInfo>
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Join">
+          <RecordInfo>
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+            <Field name="Right_Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Right">
+          <RecordInfo>
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.FieldInfo.FieldInfo">
+        <Position x="234" y="408" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFieldInfo" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.FieldInfo.FieldInfo">
+        <Position x="234" y="312" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFieldInfo" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="462" y="396" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="Name" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="Name" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <SelectFields>
+                <SelectField field="Right_Name" selected="False" rename="Right_Name" />
+                <SelectField field="Right_Type" selected="True" rename="Right_Type" />
+                <SelectField field="Right_Size" selected="True" rename="Right_Size" />
+                <SelectField field="Right_Scale" selected="True" rename="Right_Scale" />
+                <SelectField field="Right_Source" selected="True" rename="Right_Source" />
+                <SelectField field="Right_Description" selected="True" rename="Right_Description" />
+                <SelectField field="Right_FieldNumber" selected="True" rename="Right_FieldNumber" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Left">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="Name" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Join">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Right_Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Right_Size" source="FieldInfo" type="Int32" />
+            <Field name="Right_Scale" source="FieldInfo" type="Int32" />
+            <Field name="Right_Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Right_Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="Right_FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Right">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="Name" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+        <Position x="342" y="312" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <StartValue>1</StartValue>
+          <FieldName>FieldNumber</FieldName>
+          <FieldType>Int32</FieldType>
+          <Position>1</Position>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="FieldNumber" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+        <Position x="342" y="408" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <StartValue>1</StartValue>
+          <FieldName>FieldNumber</FieldName>
+          <FieldType>Int32</FieldType>
+          <Position>1</Position>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="FieldNumber" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="618" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Actual has less rows than Expected</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual has less rows than Expected</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="618" y="180" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Actual has more rows than Expected</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual has more rows than Expected</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Transpose.Transpose">
+        <Position x="846" y="144" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ErrorWarn>Warn</ErrorWarn>
+          <KeyFields>
+            <Field field="__RecordID" />
+          </KeyFields>
+          <DataFields>
+            <Field field="__RecordID" selected="False" />
+            <Field field="Value" selected="True" />
+            <Field field="Right_Value" selected="True" />
+            <Field field="*Unknown" selected="True" />
+          </DataFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="__RecordID" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTranspose" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RecordID.RecordID">
+        <Position x="738" y="144" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <StartValue>1</StartValue>
+          <FieldName>__RecordID</FieldName>
+          <FieldType>Int32</FieldType>
+          <Position>0</Position>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+            <Field name="Right_Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="__RecordID" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRecordID" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="954" y="144" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>!StartsWith([Name],"Right_")</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!StartsWith([Name],"Right_")</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="True">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="__RecordID" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="False">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="__RecordID" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="1086" y="180" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField field="Name" type="String" size="11" expression="Substring(Name, 6)" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Name=Substring(Name, 6)</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Formula: Substring(Name, 6)" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="__RecordID" order="Asc" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="1206" y="144" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="__RecordID" />
+            <Field field="Name" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="__RecordID" />
+            <Field field="Name" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <SelectFields>
+                <SelectField field="Right___RecordID" selected="False" rename="Right___RecordID" />
+                <SelectField field="Right_Name" selected="False" rename="Right_Name" />
+                <SelectField field="Right_Value" selected="True" rename="Right_Value" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Left">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="__RecordID" />
+            <Field field="Name" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Join">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+            <Field name="Right_Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="__RecordID" order="" />
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Right">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Formula: Substring(Name, 6)" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="__RecordID" />
+            <Field field="Name" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1458" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>IF ISNULL([Value]) THEN
+	NOT(ISNULL([Right_Value]))
+ELSEIF Type = "Float" then
+	ABS(ToNumber([Right_Value]) - ToNumber(Value)) &gt; 1e-5
+ELSEIF Type = "Double" then
+	ABS(ToNumber([Right_Value]) - ToNumber(Value)) &gt; 1e-10
+ELSE
+	Value != [Right_Value]
+ENDIF</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>IF ISNULL([Value]) THEN
+	NOT(ISNULL([Right_Value]))
+ELSEIF Ty...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="True">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="256" source="TextInput:" type="V_WString" />
+            <Field name="Right_Value" size="256" source="TextInput:" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="False">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="256" source="TextInput:" type="V_WString" />
+            <Field name="Right_Value" size="256" source="TextInput:" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="1794" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Actual has data differences</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual has data differences</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="618" y="300" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Actual has missing fields from Expected</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual has missing fields from Expected</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="22">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="618" y="432" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Actual has missing extra from Expected</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual has missing extra from Expected</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="786" y="390" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Type] != [Right_Type] or
+[Size] != [Right_Size] or
+[Scale] != [Right_Scale]</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Type] != [Right_Type] or
+[Size] != [Right_Size] or
+[Scale] !...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="True">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Right_Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Right_Size" source="FieldInfo" type="Int32" />
+            <Field name="Right_Scale" source="FieldInfo" type="Int32" />
+            <Field name="Right_Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Right_Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="Right_FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="False">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Right_Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Right_Size" source="FieldInfo" type="Int32" />
+            <Field name="Right_Scale" source="FieldInfo" type="Int32" />
+            <Field name="Right_Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Right_Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="Right_FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="24">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="1014" y="390" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Actual has different field types from Expected</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Actual has different field types from Expected</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="25">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
+        <Position x="1698" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <When>Filter</When>
+          <Filter>1</Filter>
+          <Type>Warning</Type>
+          <Priority>Medium</Priority>
+          <Transient>False</Transient>
+          <MessageExpression>"Value Difference: " + 
+tostring([__RecordID],0) + ": " + [Name] + " Expected=" +
+IIF(ISNULL([Value]),"[NULL]",[Value]) + " Actual=" + 
+IIF(ISNULL([Right_Value]),"[NULL]",[Right_Value])</MessageExpression>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="256" source="TextInput:" type="V_WString" />
+            <Field name="Right_Value" size="256" source="TextInput:" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
+    </Node>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
+        <Position x="906" y="390" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <When>Filter</When>
+          <Filter>1</Filter>
+          <Type>Warning</Type>
+          <Priority>Medium</Priority>
+          <Transient>False</Transient>
+          <MessageExpression>"Field Type Difference: " + [Name] + " Expected=" 
++ [Type] + "(" + ToString([Size],0) + ", " + ToString([Scale],0) + ") " 
++ " Actual=" 
++ [Right_Type] + "(" + ToString([Right_Size],0) + ", " + ToString([Right_Scale],0) + ") "</MessageExpression>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Size" source="FieldInfo" type="Int32" />
+            <Field name="Scale" source="FieldInfo" type="Int32" />
+            <Field name="Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Right_Type" size="6" source="FieldInfo" type="String" />
+            <Field name="Right_Size" source="FieldInfo" type="Int32" />
+            <Field name="Right_Scale" source="FieldInfo" type="Int32" />
+            <Field name="Right_Source" size="10" source="FieldInfo" type="V_WString" />
+            <Field name="Right_Description" size="1" source="FieldInfo" type="V_WString" />
+            <Field name="Right_FieldNumber" source="RecordID: Starting Value=1" type="Int32" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
+    </Node>
+    <Node ToolID="27">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="1350" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="Name" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="Name" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <SelectFields>
+                <SelectField field="Left___RecordID" selected="True" />
+                <SelectField field="Left_Name" selected="True" />
+                <SelectField field="Left_Value" selected="True" type="V_WString" size="256" />
+                <SelectField field="Left_Right_Value" selected="True" type="V_String" size="256" />
+                <SelectField field="Right_Name" selected="False" rename="Right_Name" />
+                <SelectField field="Right_Type" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Left">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="11" source="TextInput:" type="String" />
+            <Field name="Right_Value" size="11" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="Name" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Join">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="256" source="TextInput:" type="V_WString" />
+            <Field name="Right_Value" size="256" source="TextInput:" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+          </RecordInfo>
+          <SortInfo>
+            <Field field="Name" order="" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Right">
+          <RecordInfo>
+            <Field name="Name" size="5" source="FieldInfo" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="Name" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="29">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="1602" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="__RecordID" source="RecordID: Starting Value=1" type="Int32" />
+            <Field name="Name" size="11" source="Transpose:" type="String" />
+            <Field name="Value" size="256" source="TextInput:" type="V_WString" />
+            <Field name="Right_Value" size="256" source="TextInput:" type="V_String" />
+            <Field name="Type" size="6" source="FieldInfo" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="6" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="6" Connection="Left" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="6" Connection="Right" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Join" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="27" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Join" />
+      <Destination ToolID="27" Connection="Left" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="9" Connection="Left" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="9" Connection="Right" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Join" />
+      <Destination ToolID="23" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="9" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="9" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="False" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="True" />
+      <Destination ToolID="18" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="18" Connection="Right" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="19" Connection="True" />
+      <Destination ToolID="29" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="23" Connection="True" />
+      <Destination ToolID="26" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="25" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="24" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="27" Connection="Join" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="False" />
+      <Name>Compare Tables</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName>Developer</CategoryName>
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+    <RuntimeProperties>
+      <Actions />
+      <Questions>
+        <Question>
+          <Type>Tab</Type>
+          <Description>Questions</Description>
+          <Name>Tab (3)</Name>
+          <ToolId value="3" />
+          <Questions>
+            <Question>
+              <Type>MacroInput</Type>
+              <Description>Macro Input (4)</Description>
+              <Name>Macro Input (4)</Name>
+              <ToolId value="4" />
+            </Question>
+            <Question>
+              <Type>MacroInput</Type>
+              <Description>Macro Input (5)</Description>
+              <Name>Macro Input (5)</Name>
+              <ToolId value="5" />
+            </Question>
+          </Questions>
+        </Question>
+      </Questions>
+      <ModuleType>Macro</ModuleType>
+      <MacroCustomHelp value="False" />
+      <MacroDynamicOutputFields value="False" />
+      <MacroImage>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</MacroImage>
+      <MacroInputs />
+      <MacroOutputs />
+      <Wiz_CustomHelp value="False" />
+      <Wiz_CustomGraphic value="False" />
+      <Wiz_ShowOutput value="True" />
+      <Wiz_OpenOutputTools>
+        <Tool ToolId="4" Selected="True" />
+        <Tool ToolId="5" Selected="True" />
+      </Wiz_OpenOutputTools>
+      <Wiz_OutputMessage />
+      <Wiz_NoOutputFilesMessage />
+      <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+  </Properties>
+</AlteryxDocument>
