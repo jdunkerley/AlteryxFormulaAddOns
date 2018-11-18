@@ -11,6 +11,14 @@
     <Formula>ToNumber(Left(P1, 4))</Formula>
   </Function>
   <Function>
+    <Name>CENTURY</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>CENTURY(Date)</InsertText>
+    <Description>Get century of Date</Description>
+    <Formula>FLOOR(YEAR(P1)/100)+1</Formula>
+  </Function>
+  <Function>
     <Name>MONTH</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>

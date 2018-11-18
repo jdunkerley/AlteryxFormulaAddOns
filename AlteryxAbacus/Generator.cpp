@@ -20,6 +20,7 @@ static auto getCharacter(wchar_t const* input, const size_t length)
 	{
 		return L'\0';
 	}
+
 	return input[getUniformInt(length - 1)];
 }
 

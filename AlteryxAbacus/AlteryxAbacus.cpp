@@ -4,57 +4,14 @@
 #include "AlteryxAbacusUtils.h"
 #include <string>
 #include <map>
+#include <sstream>
+#include <ostream>
+#include <fstream>
 
 static std::map<std::wstring, std::wstring> stringLookup;
 static std::map<std::wstring, double> doubleLookup;
 
-extern "C" long _declspec(dllexport) _stdcall VarText(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
-{
-	if (nNumArgs < 1 || nNumArgs > 2 || pArgs[0].nVarType == 1)
-	{
-		return AlteryxAbacusUtils::ReturnError(L"Variable: Requires a string key argument.", pReturnValue, nNumArgs, pArgs);
-	}
-
-	pReturnValue->nVarType = 2;
-	if (pArgs[0].isNull)
-	{
-		pReturnValue->isNull = true;
-	}
-	else
-	{
-		const std::wstring key(pArgs[0].pVal);
-		if (nNumArgs == 2)
-		{
-			if (pArgs[1].isNull)
-			{
-				stringLookup.erase(key);
-				pReturnValue->isNull = true;
-			}
-			else
-			{
-				std::wstring value(pArgs[1].pVal);
-				stringLookup[key] = value;
-				AlteryxAbacusUtils::SetString(pReturnValue, value.c_str());
-			}
-		}
-		else
-		{
-			const auto stringFind = stringLookup.find(key);
-			if (stringFind != stringLookup.end())
-			{
-				AlteryxAbacusUtils::SetString(pReturnValue, stringFind->second.c_str());
-			}
-			else
-			{
-				pReturnValue->isNull = true;
-			}
-		}
-	}
-
-	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
-}
-
-extern "C" long _declspec(dllexport) _stdcall VarNum(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+extern "C" long _declspec(dllexport) _stdcall VarTextExists(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	if (nNumArgs < 1 || nNumArgs > 2 || pArgs[0].nVarType == 1)
 	{
@@ -69,33 +26,190 @@ extern "C" long _declspec(dllexport) _stdcall VarNum(int nNumArgs, FormulaAddInD
 	else
 	{
 		const std::wstring key(pArgs[0].pVal);
-		if (nNumArgs == 2)
+		pReturnValue->isNull = false;
+		const auto stringFind = stringLookup.find(key);
+		pReturnValue->dVal = stringFind != stringLookup.end();
+	}
+
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall VarNumExists(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	if (nNumArgs < 1 || nNumArgs > 2 || pArgs[0].nVarType == 1)
+	{
+		return AlteryxAbacusUtils::ReturnError(L"Variable: Requires a string key argument.", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->nVarType = 1;
+	if (pArgs[0].isNull)
+	{
+		pReturnValue->isNull = true;
+	}
+	else
+	{
+		const std::wstring key(pArgs[0].pVal);
+		pReturnValue->isNull = false;
+		const auto doubleFind = doubleLookup.find(key);
+		pReturnValue->dVal = doubleFind != doubleLookup.end();
+	}
+
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall VarText(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	if (nNumArgs < 1 || pArgs[0].nVarType == 1 || (nNumArgs > 1 && pArgs[1].nVarType != 2) || (nNumArgs > 2 && pArgs[2].nVarType != 1) || nNumArgs > 3)
+	{
+		return AlteryxAbacusUtils::ReturnError(L"Variable: [key:string] <value:string> <setIfTrue:boolean = true> arguments.", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->nVarType = 2;
+	if (pArgs[0].isNull)
+	{
+		pReturnValue->isNull = true;
+	}
+	else
+	{
+		const std::wstring key(pArgs[0].pVal);
+
+		if (nNumArgs > 1 && (nNumArgs < 3 || pArgs[3].isNull || pArgs[3].dVal != 0))
+		{
+			if (pArgs[1].isNull)
+			{
+				stringLookup.erase(key);
+			}
+			else
+			{
+				const std::wstring value(pArgs[1].pVal);
+				stringLookup[key] = value;
+			}
+		}
+
+		const auto stringFind = stringLookup.find(key);
+		if (stringFind != stringLookup.end())
+		{
+			AlteryxAbacusUtils::SetString(pReturnValue, stringFind->second.c_str());
+		}
+		else
+		{
+			pReturnValue->isNull = true;
+		}
+	}
+
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall VarNum(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	if (nNumArgs < 1 || pArgs[0].nVarType == 1 || (nNumArgs > 1 && pArgs[1].nVarType != 1) || (nNumArgs > 2 && pArgs[2].nVarType != 1) || nNumArgs > 3)
+	{
+		return AlteryxAbacusUtils::ReturnError(L"Variable: [key:string] <value:number> <setIfTrue:boolean = true> arguments.", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->nVarType = 1;
+	if (pArgs[0].isNull)
+	{
+		pReturnValue->isNull = true;
+	}
+	else
+	{
+		const std::wstring key(pArgs[0].pVal);
+
+		if (nNumArgs > 1 && (nNumArgs < 3 || pArgs[3].isNull || pArgs[3].dVal != 0))
 		{
 			if (pArgs[1].isNull)
 			{
 				doubleLookup.erase(key);
-				pReturnValue->isNull = true;
 			}
 			else
 			{
 				doubleLookup[key] = pArgs[1].dVal;
-				pReturnValue->dVal = pArgs[1].dVal;
 			}
+		}
+
+		const auto doubleFind = doubleLookup.find(key);
+		if (doubleFind != doubleLookup.end())
+		{
+			pReturnValue->dVal = doubleFind->second;
 		}
 		else
 		{
-			const auto doubleFind = doubleLookup.find(key);
-			if (doubleFind != doubleLookup.end())
-			{
-				pReturnValue->dVal = doubleFind->second;
-			}
-			else
-			{
-				pReturnValue->isNull = true;
-			}
+			pReturnValue->isNull = true;
 		}
 	}
 
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall VarReset(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	if (nNumArgs > 1 || (nNumArgs == 1 && pArgs[0].nVarType == 1))
+	{
+		return AlteryxAbacusUtils::ReturnError(L"VarReset: Takes an optional string key argument.", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->nVarType = 1;
+	pReturnValue->isNull = true;
+
+	if (nNumArgs == 1)
+	{
+		if (!pArgs[0].isNull) {
+			const std::wstring key(pArgs[0].pVal);
+			doubleLookup.erase(key);
+			stringLookup.erase(key);
+		}
+	}
+	else {
+		stringLookup.clear();
+		doubleLookup.clear();
+	}
+	
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall VarList(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 2;
+	pReturnValue->isNull = false;
+
+	std::wstringstream buffer;
+
+	for (const auto pair : stringLookup )
+	{
+		buffer << "text\t";
+		buffer << pair.first;
+		buffer << "\t";
+		buffer << pair.second;
+		buffer << "\n";
+	}
+
+	for (const auto pair : doubleLookup)
+	{
+		buffer << "text\t";
+		buffer << pair.first;
+		buffer << "\t";
+		buffer << pair.second;
+		buffer << "\n";
+	}
+
+	AlteryxAbacusUtils::SetString(pReturnValue, buffer.str().c_str());
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall Log(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	if (!pArgs[1].isNull && !pArgs[2].isNull)
+	{
+		std::wofstream fout(pArgs[1].pVal, std::fstream::in | std::fstream::out | std::fstream::app);
+		fout << pArgs[2].pVal;
+		fout << "\n";
+		fout.flush();
+		fout.close();
+	}
+
+	pReturnValue->nVarType = pArgs[0].nVarType;
+	AlteryxAbacusUtils::CopyValue(&pArgs[0], pReturnValue);
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
