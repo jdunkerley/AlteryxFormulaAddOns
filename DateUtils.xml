@@ -235,4 +235,12 @@
     <Description>Parse a D/M/Y date string into Alteryx format. Copes with or without leading 0 and with various separators.</Description>
     <Formula>DATETIMEPARSE(REGEX_Replace(Trim(REGEX_Replace(" " + P1,"(\D)(\d)(?=\D)","${1}0$2")), "\D", "/"), "%d/%m/" + IIF(REGEX_Match(P1,".*\D\d{1,2}$"), "%y", "%Y"))</Formula>
   </Function>
+  <Function>
+    <Name>DATEPART</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>DateTime</Category>
+    <InsertText>DATEPART(DateTime, Part)</InsertText>
+    <Description>Reproduces SQL Server's DatePart function. Support SQL servers standard parts as well as the numeric Alteryx date formatters.</Description>
+    <Formula>Switch(LOWERCASE(P2),NULL(),"year",Year(P1),"yyyy",Year(P1),"yy",Year(P1),"%y",Year(P1),"cc",Century(P1),"c",Century(P1),"%c",Century(P1),"quarter",Quarter(P1),"qq",Quarter(P1),"q",Quarter(P1),"month",Month(P1),"mm",Month(P1),"m",Month(P1),"dayofyear",OrdinalDay(P1),"dy",OrdinalDay(P1),"y",OrdinalDay(P1),"%j",OrdinalDay(P1),"day",DAY(P1),"dd",DAY(P1),"d",DAY(P1),"%d",DAY(P1),"%e",DAY(P1),"hour",HOUR(P1),"hh",HOUR(P1),"h",HOUR(P1),"%h",HOUR(P1),"%k",HOUR(P1),"mi",MINUTE(P1),"n",MINUTE(P1),"ss",SECOND(P1),"s",SECOND(P1),"%s",SECOND(P1),"%m",IIF(CharToInt(Right(P2,1))=77, MINUTE(P1),MONTH(P1)),"weekday",WEEKDAY(P1),"dw",WEEKDAY(P1))</Formula>
+  </Function>
 </FormulaAddIn>

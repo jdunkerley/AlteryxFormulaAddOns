@@ -397,3 +397,41 @@ extern "C" long _declspec(dllexport) _stdcall Split(int nNumArgs, FormulaAddInDa
 
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
+
+// Need String, String (char), Integer
+extern "C" long _declspec(dllexport) _stdcall RangeJoin(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+{
+	pReturnValue->nVarType = 1;
+
+	// Check Input Parameters
+	if (nNumArgs != 2 ||
+		pArgs[0].nVarType != 1 ||
+		pArgs[1].nVarType != 2) {
+		return AlteryxAbacusUtils::ReturnError(L"Syntax: Number, RangeList", pReturnValue, nNumArgs, pArgs);
+	}
+
+	// Check for Nulls
+	if (pArgs[0].isNull || pArgs[2].isNull) {
+		pReturnValue->isNull = 1;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+	}
+
+	// Read Target Value to Long Long
+	const auto target = static_cast<long long>(pArgs[0].dVal);
+
+	// Read String
+	const wchar_t* start = pArgs[1].pVal - 1;
+	while (*start != L'\0') {
+		wchar_t* end;
+		const auto value = _wcstoi64(start + 1, &end, 10);
+		start = end;
+		if (value > target)
+		{
+			pReturnValue->dVal = value;
+			return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+		}
+	}
+
+	pReturnValue->isNull = 1;
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}

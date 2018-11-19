@@ -101,11 +101,22 @@
     <Name>LOG</Name>
     <NumParams variable="false">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>LOG(ReturnValue, Message, FileName)</InsertText>
+    <InsertText>LOG(ReturnValue, FileName, Message)</InsertText>
     <Description>Write to a log file</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Log</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>RangeJoin</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>RangeJoin(Value, RangeCSV)</InsertText>
+    <Description>Find value in list above value</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>RangeJoin</EntryPoint>
     </Dll>
   </Function>
   <Function>
