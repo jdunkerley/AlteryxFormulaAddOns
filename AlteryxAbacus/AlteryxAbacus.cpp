@@ -411,7 +411,7 @@ extern "C" long _declspec(dllexport) _stdcall RangeJoin(int nNumArgs, FormulaAdd
 	}
 
 	// Check for Nulls
-	if (pArgs[0].isNull || pArgs[2].isNull) {
+	if (pArgs[0].isNull || pArgs[1].isNull) {
 		pReturnValue->isNull = 1;
 		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
@@ -424,6 +424,7 @@ extern "C" long _declspec(dllexport) _stdcall RangeJoin(int nNumArgs, FormulaAdd
 	while (*start != L'\0') {
 		wchar_t* end;
 		const auto value = _wcstoi64(start + 1, &end, 10);
+
 		start = end;
 		if (value > target)
 		{

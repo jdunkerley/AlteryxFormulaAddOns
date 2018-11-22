@@ -18,6 +18,14 @@
     <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),(P1/P2 - FLOOR(P1/P2)) * P2)</Formula>
   </Function>
   <Function>
+    <Name>SIGN</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>SIGN(VALUE)</InsertText>
+    <Description>Get sign of a value</Description>
+    <Formula>IIF(ISNULL(P2),NULL(),IIF(P2=0,0,IIF(P2&lt;0,-1,1)))</Formula>
+  </Function>
+  <Function>
     <Name>HEXBINX</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Spatial</Category>

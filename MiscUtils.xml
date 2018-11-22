@@ -5,7 +5,7 @@
     <Name>VERSION</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VERSION</InsertText>
+    <InsertText>VERSION()</InsertText>
     <Description>Gets the Major and Minor Version Number of the Engine</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
