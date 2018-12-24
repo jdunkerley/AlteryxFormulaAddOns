@@ -136,6 +136,14 @@
     <Description>Appends midnight to a date and returns a datetime</Description>
     <Formula>IIF(LENGTH(P1) = 19, P1, IIF(LENGTH(P1) = 10, P1 + ' 00:00:00', NULL()))</Formula>
   </Function>
+  <Function>
+    <Name>TODATETIME</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>TODATETIME(Date)</InsertText>
+    <Description>Appends midnight to a date and returns a datetime</Description>
+    <Formula>IIF(LENGTH(P1) = 19, RIGHT(P1,8), IIF(LENGTH(P1) = 10, '00:00:00', NULL()))</Formula>
+  </Function>
   
   <Function>
     <Name>DATEADD</Name>

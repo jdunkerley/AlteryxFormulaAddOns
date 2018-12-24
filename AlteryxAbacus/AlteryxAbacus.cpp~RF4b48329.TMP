@@ -3,7 +3,7 @@
 #include "AlteryxAbacus.h"
 #include "AlteryxAbacusUtils.h"
 #include <string>
-#include <deque>
+#include <list>
 #include <map>
 #include <sstream>
 #include <ostream>
@@ -11,7 +11,7 @@
 
 static std::map<std::wstring, std::wstring> stringLookup;
 static std::map<std::wstring, double> doubleLookup;
-static std::map<std::wstring, std::deque<double>> listLookup;
+static std::map<std::wstring, std::list<double>> listLookup;
 
 extern "C" long _declspec(dllexport) _stdcall VarTextExists(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
@@ -209,8 +209,10 @@ extern "C" long _declspec(dllexport) _stdcall VarListGet(int nNumArgs, FormulaAd
 			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
 			if (index >= 0 && index < size) 
 			{
+				auto it = listFind->second.begin();
+				std::advance(it, index);
 				pReturnValue->isNull = false;
-				pReturnValue->dVal = listFind->second[index];
+				pReturnValue->dVal = *it;
 			}
 		}
 	}
@@ -239,57 +241,16 @@ extern "C" long _declspec(dllexport) _stdcall VarListAdd(int nNumArgs, FormulaAd
 		const auto listFind = listLookup.find(key);
 		if (listFind != listLookup.end())
 		{
-			listFind->second.push_back(pArgs[1].dVal);
+			listFind->second.emplace_back(pArgs[1].dVal);
 		}
 		else
 		{
-			const std::deque<double> vector({ pArgs[1].dVal });
-			listLookup[key] = vector;
+			const std::list<double> new_list({ pArgs[1].dVal });
+			listLookup[key] = new_list;
 		}
 
 		pReturnValue->isNull = false;
 		pReturnValue->dVal = pArgs[1].dVal;
-	}
-
-	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
-}
-
-extern "C" long _declspec(dllexport) _stdcall VarListSet(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
-{
-	if (nNumArgs < 3 || nNumArgs > 4 || pArgs[0].nVarType != 2 || pArgs[1].nVarType != 1 || pArgs[2].nVarType != 1 || (nNumArgs == 4 && pArgs[3].nVarType != 1))
-	{
-		return AlteryxAbacusUtils::ReturnError(L"VarListSet: Syntax error - key:string index:integer value:number [setIfTrue:boolean = true] arguments.", pReturnValue, nNumArgs, pArgs);
-	}
-
-	pReturnValue->nVarType = 1;
-	pReturnValue->isNull = true;
-
-	if (nNumArgs == 4 && !pArgs[3].isNull && pArgs[3].dVal == 0)
-	{
-		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
-	}
-
-	if (!pArgs[0].isNull && !pArgs[1].isNull && !pArgs[2].isNull)
-	{
-		const std::wstring key(pArgs[0].pVal);
-		const auto listFind = listLookup.find(key);
-		if (listFind != listLookup.end())
-		{
-			const auto size = listFind->second.size();
-			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
-			if (index < 0 || index >= size)
-			{
-				return AlteryxAbacusUtils::ReturnError(L"Cannot set as index out of range", pReturnValue, nNumArgs, pArgs);
-			}
-			listFind->second[index] = pArgs[2].dVal;
-		}
-		else
-		{
-			return AlteryxAbacusUtils::ReturnError(L"Cannot set as index out of range", pReturnValue, nNumArgs, pArgs);
-		}
-
-		pReturnValue->isNull = false;
-		pReturnValue->dVal = pArgs[2].dVal;
 	}
 
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
@@ -322,7 +283,9 @@ extern "C" long _declspec(dllexport) _stdcall VarListInsert(int nNumArgs, Formul
 			{
 				return AlteryxAbacusUtils::ReturnError(L"Cannot insert as index out of range", pReturnValue, nNumArgs, pArgs);
 			}
-			listFind->second.insert(listFind->second.begin() + index, pArgs[2].dVal);
+			auto it = listFind->second.begin();
+			std::advance(it, index);
+			listFind->second.insert(it, pArgs[2].dVal);
 		}
 		else
 		{
@@ -330,8 +293,8 @@ extern "C" long _declspec(dllexport) _stdcall VarListInsert(int nNumArgs, Formul
 			{
 				return AlteryxAbacusUtils::ReturnError(L"Cannot insert as index out of range", pReturnValue, nNumArgs, pArgs);
 			}
-			const std::deque<double> vector({ pArgs[2].dVal });
-			listLookup[key] = vector;
+			const std::list<double> new_list({ pArgs[2].dVal });
+			listLookup[key] = new_list;
 		}
 
 		pReturnValue->isNull = false;
@@ -366,7 +329,8 @@ extern "C" long _declspec(dllexport) _stdcall VarListRemove(int nNumArgs, Formul
 			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
 			if (index >= 0 && index < size)
 			{
-				const auto it = listFind->second.begin() + index;
+				auto it = listFind->second.begin();
+				std::advance(it, index);
 				pReturnValue->isNull = false;
 				pReturnValue->dVal = *it;
 				listFind->second.erase(it);

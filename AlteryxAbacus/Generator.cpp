@@ -127,12 +127,12 @@ extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumA
 
 			if (pArgs[i].isNull)
 			{
-				charsets.emplace_back(L"");
-				lengths.emplace_back(0);
+				charsets[i-1] = L"";
+				lengths[i-1] = 0;
 			}
 			else {
-				charsets.emplace_back(pArgs[i].pVal);
-				lengths.emplace_back(wcslen(pArgs[i].pVal));
+				charsets[i-1] = pArgs[i].pVal;
+				lengths[i-1] = wcslen(pArgs[i].pVal);
 			}
 		}
 
