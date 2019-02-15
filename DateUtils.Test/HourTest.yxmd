@@ -8,38 +8,26 @@
       <Properties>
         <Configuration>
           <Passwords />
-          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\DateReference.xlsx</File>
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\TimeReference.xlsx</File>
           <FormatSpecificOptions>
             <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
           </FormatSpecificOptions>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>DateReference.xlsx</DefaultAnnotationText>
+          <DefaultAnnotationText>TimeReference.xlsx</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="DateText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="Year" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Month" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Day" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Weekday" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Quarter" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="IsLeapYear" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Bool" />
-            <Field name="OrdinalDay" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Hour" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Minute" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="Second" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
-            <Field name="WeekStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="WeekEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="MonthStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="MonthEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="QuarterStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="QuarterEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="YearStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="YearEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="V_String" />
-            <Field name="Century" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateReference.xlsx" type="Double" />
+            <Field name="Time" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\TimeReference.xlsx" type="Time" />
+            <Field name="Hour" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\TimeReference.xlsx" type="Double" />
+            <Field name="Minute" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\TimeReference.xlsx" type="Double" />
+            <Field name="Second" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\TimeReference.xlsx" type="Double" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -54,9 +42,8 @@
           <OrderChanged value="False" />
           <CommaDecimal value="False" />
           <SelectFields>
-            <SelectField field="DateText" selected="True" rename="Date" type="Date" size="10" />
-            <SelectField field="Month" selected="False" rename="Expected" type="Int64" size="8" />
-            <SelectField field="Century" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="Time" selected="True" />
+            <SelectField field="Hour" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -75,12 +62,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="century([Date])" field="Actual" size="4" type="Int32" />
+            <FormulaField expression="hour([Time])" field="Actual" size="4" type="Int32" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Actual = century([Date])
+          <DefaultAnnotationText><![CDATA[Actual = hour([Time])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -95,21 +82,6 @@
         <Configuration>
           <Expression>[Actual] != [Expected]</Expression>
           <Mode>Custom</Mode>
-          <Simple>
-            <Operator>=</Operator>
-            <Operands>
-              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
-              <DateType>fixed</DateType>
-              <PeriodDate>2019-02-15 20:56:08</PeriodDate>
-              <PeriodType>
-              </PeriodType>
-              <PeriodCount>0</PeriodCount>
-              <StartDate>2019-02-15 20:56:08</StartDate>
-              <EndDate>2019-02-15 20:56:08</EndDate>
-              <Operand>
-              </Operand>
-            </Operands>
-          </Simple>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
@@ -118,30 +90,6 @@
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="5">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="510" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Tests>
-            <Test>
-              <Name>Century</Name>
-              <Connection>#1</Connection>
-              <Type>RecCountValue</Type>
-              <Value>0</Value>
-            </Test>
-          </Tests>
-          <DontReportSubsequent value="True" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>Century</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
@@ -153,6 +101,7 @@
           <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\DateTimeReference.xlsx</File>
           <FormatSpecificOptions>
             <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
           </FormatSpecificOptions>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -160,6 +109,9 @@
           <DefaultAnnotationText>DateTimeReference.xlsx</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="DateTimeText" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx" type="V_String" />
@@ -197,8 +149,8 @@
           <CommaDecimal value="False" />
           <SelectFields>
             <SelectField field="DateTimeText" selected="True" rename="Date" type="DateTime" size="19" />
-            <SelectField field="Month" selected="False" type="Int64" size="8" />
-            <SelectField field="Century" selected="True" rename="Expected" type="Int64" size="8" />
+            <SelectField field="Day" selected="False" type="Int64" size="8" />
+            <SelectField field="Hour" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -217,12 +169,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="Century([Date])" field="Actual" size="4" type="Int32" />
+            <FormulaField expression="hour([Date])" field="Actual" size="4" type="Int32" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Actual = Century([Date])
+          <DefaultAnnotationText><![CDATA[Actual = hour([Date])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -254,7 +206,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Century DateTime</Name>
+              <Name>Hour DateTime</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -264,7 +216,31 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Century DateTime</DefaultAnnotationText>
+          <DefaultAnnotationText>Hour DateTime</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="510" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>Hour</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Hour</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -286,7 +262,7 @@
     </Connection>
     <Connection name="#1">
       <Origin ToolID="4" Connection="True" />
-      <Destination ToolID="5" Connection="Input" />
+      <Destination ToolID="11" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="6" Connection="Output" />
@@ -323,7 +299,7 @@
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>CenturyTest</Name>
+      <Name>HourTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

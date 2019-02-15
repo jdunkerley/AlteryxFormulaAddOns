@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="10.5">
+<AlteryxDocument yxmdVer="2018.4">
   <Nodes>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="126" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -33,21 +33,32 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="330" y="126" />
+        <Position x="330" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Expression><![CDATA[Abs([HexX]-[HexBinX])>1e-3 
-or
-Abs([HexY]-[HexBinY])>1e-3 ]]></Expression>
+          <Expression><![CDATA[Abs([HexX]-[HexBinX])>1e-3 ]]></Expression>
           <Mode>Custom</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-02-15 21:27:16</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <StartDate>2019-02-15 21:27:16</StartDate>
+              <EndDate>2019-02-15 21:27:16</EndDate>
+              <Operand>
+              </Operand>
+            </Operands>
+          </Simple>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
           <AnnotationText>Verify versus Tableau test set</AnnotationText>
-          <DefaultAnnotationText><![CDATA[Abs([HexX]-[HexBinX])>1e-3 
-or
-Abs([HexY]-[HexBinY])>1e-3 ]]></DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[Abs([HexX]-[HexBinX])>1e-3 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -55,7 +66,7 @@ Abs([HexY]-[HexBinY])>1e-3 ]]></DefaultAnnotationText>
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="474" y="126" />
+        <Position x="474" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -79,19 +90,18 @@ Abs([HexY]-[HexBinY])>1e-3 ]]></DefaultAnnotationText>
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="198" y="126" />
+        <Position x="198" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="HexBinX" type="Double" size="8" expression="HEXBINX([Point X], [Point Y], 1)" />
-            <FormulaField field="HexBinY" type="Double" size="8" expression="HEXBINY([Point X], [Point Y], 1)" />
+            <FormulaField expression="HEXBINX([Point X], [Point Y], 1)" field="HexBinX" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>HexBinX=HEXBINX([Point X], [Point Y], 1)
-HexBinY=HEXBINY([Point X], [Point Y], 1)</DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[HexBinX = HEXBINX([Point X], [Point Y], 1)
+]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -130,7 +140,7 @@ HexBinY=HEXBINY([Point X], [Point Y], 1)</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>HexBinTest</Name>
+      <Name>HexBinXTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
@@ -141,6 +151,10 @@ HexBinY=HEXBINY([Point X], [Point Y], 1)</DefaultAnnotationText>
       <Company />
       <Copyright />
       <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
     </MetaInfo>
     <Events>
       <Enabled value="True" />
