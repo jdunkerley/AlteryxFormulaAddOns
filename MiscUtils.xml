@@ -134,7 +134,7 @@
     <Name>VARLISTSET</Name>
     <NumParams variable="true">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTADD(Key, Index, Value)</InsertText>
+    <InsertText>VARLISTSET(Key, Index, Value)</InsertText>
     <Description>Sets an item in a list at specified index</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -145,7 +145,7 @@
     <Name>VARLISTINSERT</Name>
     <NumParams variable="true">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTADD(Key, Index, Value)</InsertText>
+    <InsertText>VARLISTINSERT(Key, Index, Value)</InsertText>
     <Description>Inserts an item into a list at specified index</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -186,10 +186,10 @@
     </Dll>
   </Function>
   <Function>
-    <Name>RangeJoin</Name>
+    <Name>RANGEJOIN</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>RangeJoin(Value, RangeCSV)</InsertText>
+    <InsertText>RANGEJOIN(Value, RangeCSV)</InsertText>
     <Description>Find value in list above value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -200,7 +200,7 @@
     <Name>REPORTERROR</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>ERROR(Condition, Message, ReturnValue)</InsertText>
+    <InsertText>REPORTERROR(Condition, Message, ReturnValue)</InsertText>
     <Description>Raise an error with a specified message if Condition is true, otherwise return ReturnValue</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>

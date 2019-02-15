@@ -23,7 +23,7 @@
     <Category>Math</Category>
     <InsertText>SIGN(VALUE)</InsertText>
     <Description>Get sign of a value</Description>
-    <Formula>IIF(ISNULL(P2),NULL(),IIF(P2=0,0,IIF(P2&lt;0,-1,1)))</Formula>
+    <Formula>IIF(ISNULL(P1),NULL(),IIF(P1=0,0,IIF(P1&lt;0,-1,1)))</Formula>
   </Function>
   <Function>
     <Name>HEXBINX</Name>
