@@ -64,7 +64,7 @@
     <Name>AVG</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
-    <InsertText>AVG(Val1, Val, ... )</InsertText>
+    <InsertText>AVG(Value1, Value2, ...)</InsertText>
     <Description>Average Ignoring Nulls</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -86,7 +86,7 @@
     <Name>COUNT</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
-    <InsertText>COUNT(Val1, Val, ... )</InsertText>
+    <InsertText>COUNT(Value1, Value2, ...)</InsertText>
     <Description>Count not null values</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -146,7 +146,7 @@
     <Name>LOGNORMINV</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
-    <InsertText>LOGNORMINV(X, Location, Scale)</InsertText>
+    <InsertText>LOGNORMINV(P, Location, Scale)</InsertText>
     <Description>Log Normal Distribution Inverse CDF Function</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -190,7 +190,7 @@
     <Name>CHIINV</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>CHIINV(X, DegreesOfFreedom)</InsertText>
+    <InsertText>CHIINV(P, DegreesOfFreedom)</InsertText>
     <Description>Returns the inverse of the right-tailed probability of the chi-squared distribution</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>

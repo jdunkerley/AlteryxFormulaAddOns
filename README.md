@@ -62,6 +62,7 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [MakeDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#makedatetime): Create a new `DateTime` from Year, Month, Day, Hour, Minute, Second *(C++)*
 - [ToDate](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todate): Truncate a `DateTime` to a `Date`
 - [ToDateTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#todatetime): Appends midnight to a `Date` to create a `DateTime`
+- [ToTime](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#totime): Get the time from a `DateTime`, `Date` (defaults to `00:00:00`) or a `Time`.
 
 #### Date Time Parse Functions ####
 

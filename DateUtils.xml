@@ -38,7 +38,7 @@
     <Name>HOUR</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Time</Category>
-    <InsertText>Hour(tm)</InsertText>
+    <InsertText>Hour(dt)</InsertText>
     <Description>Get time of a datetime or a time</Description>
     <Formula>ToNumber(Substring(P1, IIF(LENGTH(P1)=8, 0, 11), 2))</Formula>
   </Function>
@@ -46,7 +46,7 @@
     <Name>MINUTE</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Time</Category>
-    <InsertText>Minute(tm)</InsertText>
+    <InsertText>Minute(dt)</InsertText>
     <Description>Get time of a datetime or a time</Description>
     <Formula>ToNumber(Substring(P1, IIF(LENGTH(P1)=8, 3, 14), 2))</Formula>
   </Function>
@@ -54,7 +54,7 @@
     <Name>SECOND</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Time</Category>
-    <InsertText>Second(tm)</InsertText>
+    <InsertText>Second(dt)</InsertText>
     <Description>Get time of a datetime or a time</Description>
     <Formula>ToNumber(Substring(P1, IIF(LENGTH(P1)=8, 6, 17), 2))</Formula>
   </Function>
@@ -124,7 +124,7 @@
     <Name>TODATE</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
-    <InsertText>ToDate(DateTime)</InsertText>
+    <InsertText>ToDate(dt)</InsertText>
     <Description>Truncates a datetime and returns as a Date</Description>
     <Formula>IIF(LENGTH(P1) = 10, P1, IIF(LENGTH(P1) = 19, LEFT(P1, 10), NULL()))</Formula>
   </Function>
