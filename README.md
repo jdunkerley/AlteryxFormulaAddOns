@@ -78,6 +78,7 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [WeekDay](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weekday): Gets the day of the week [Sunday (0) through to Saturday (6)]
 - [Quarter](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#quarter): Gets the quarter of the date [1-4]
 - [OrdinalDay](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#ordinalday): Gets the day of the year [1-366]
+- [DatePart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datepart): Replicates the SQL DatePart function, getting a specified part of the datetime input
 
 #### Time Part Functions (returns numbers) ####
 

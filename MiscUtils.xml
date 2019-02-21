@@ -50,7 +50,7 @@
     <Description>Returns if a numeric value exists</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
-      <EntryPoint>VarTextExists</EntryPoint>
+      <EntryPoint>VarNumExists</EntryPoint>
     </Dll>
   </Function>
   <Function>

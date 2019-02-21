@@ -109,4 +109,12 @@
       <EntryPoint>FromRoman</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>FINDSTRINGLAST</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>String</Category>
+    <InsertText>FINDSTRINGLAST(String, Target)</InsertText>
+    <Description>Searches for the occurrence of Target within String from end and returns the numeric position of it.</Description>
+    <Formula>FINDSTRING(REVERSE(P1),REVERSE(P2))</Formula>
+  </Function>
 </FormulaAddIn>

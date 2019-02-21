@@ -288,12 +288,12 @@ Table=`Sheet1$`</DefaultAnnotationText>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="DATEPART([DateText], [Part])" field="Actual" size="8" type="Int64" />
+            <FormulaField expression="DATEPART([Part], [DateText])" field="Actual" size="8" type="Int64" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Actual = DATEPART([DateText], [Part])
+          <DefaultAnnotationText><![CDATA[Actual = DATEPART([Part], [DateText])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
