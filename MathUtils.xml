@@ -18,12 +18,28 @@
     <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),(P1/P2 - FLOOR(P1/P2)) * P2)</Formula>
   </Function>
   <Function>
+    <Name>QUOTIENT</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>QUOTIENT(Dividend, Divisor)</InsertText>
+    <Description>Get integer portion of a division</Description>
+    <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),INT(P1/P2))</Formula>
+  </Function>
+  <Function>
     <Name>SIGN</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
     <InsertText>SIGN(VALUE)</InsertText>
     <Description>Get sign of a value</Description>
     <Formula>IIF(ISNULL(P1),NULL(),IIF(P1=0,0,IIF(P1&lt;0,-1,1)))</Formula>
+  </Function>
+  <Function>
+    <Name>INT</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Math</Category>
+    <InsertText>INT(VALUE)</InsertText>
+    <Description>Gets the integer closer to 0</Description>
+    <Formula>IIF(ISNULL(P1),NULL(),IIF(P1&lt;0,-FLOOR(-P1),FLOOR(P1)))</Formula>
   </Function>
   <Function>
     <Name>HEXBINX</Name>

@@ -144,7 +144,6 @@
     <Description>Extracts Time from a DateTime or Date</Description>
     <Formula>IIF(LENGTH(P1) = 19, RIGHT(P1,8), IIF(LENGTH(P1) = 10, '00:00:00', IIF(LENGTH(P1) = 8, P1, NULL())))</Formula>
   </Function>
-  
   <Function>
     <Name>DATEADD</Name>
     <NumParams variable="false">3</NumParams>
@@ -153,7 +152,6 @@
     <Description>Add a specific interval to a date/time and returns as a Date.  DateAdd([Date], -3, "days")</Description>
     <Formula>Left(DateTimeAdd(P1, P2, P3), 10)</Formula>
   </Function>
-
   <Function>
     <Name>BUSINESSDAYS</Name>
     <NumParams variable="false">2</NumParams>
@@ -162,7 +160,14 @@
     <Description>Number of business days (M-F) between two dates.</Description>
     <Formula>IIF(P1>P2,NULL(), 1 + ((DateTimeDiff(P2,P1,"days")*5 - (WEEKDAY(P1)-WEEKDAY(P2))*2) / 7) +  IIF(WEEKDAY(P2)==6,-1,0) +  IIF(WEEKDAY(P1)==0,-1,0))</Formula>
   </Function>
-  
+  <Function>
+    <Name>WEEKNUM</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Date</Category>
+    <InsertText>WeekNum(dt)</InsertText>
+    <Description>Move to First day of the week (Sunday)</Description>
+    <Formula>CEIL((DateTimeDiff(P1, WEEKSTART(LEFT(P1,4) + "-01-01"), "days") + 1) / 7)</Formula>
+  </Function>
   <Function>
     <Name>WEEKSTART</Name>
     <NumParams variable="false">1</NumParams>
@@ -249,6 +254,25 @@
     <Category>DateTime</Category>
     <InsertText>DATEPART(interval, dt)</InsertText>
     <Description>Reproduces SQL Server's DatePart function. Support SQL servers standard parts as well as the numeric Alteryx date formatters.</Description>
-    <Formula>Switch(LOWERCASE(P1),NULL(),"year",Year(P2),"yyyy",Year(P2),"yy",Year(P2),"%y",Year(P2),"century",Century(P2),"cc",Century(P2),"c",Century(P2),"%c",Century(P2),"quarter",Quarter(P2),"qq",Quarter(P2),"q",Quarter(P2),"month",Month(P2),"mm",Month(P2),"m",Month(P2),"dayofyear",OrdinalDay(P2),"dy",OrdinalDay(P2),"y",OrdinalDay(P2),"%j",OrdinalDay(P2),"day",DAY(P2),"dd",DAY(P2),"d",DAY(P2),"%d",DAY(P2),"%e",DAY(P2),"hour",HOUR(P2),"hh",HOUR(P2),"h",HOUR(P2),"%h",HOUR(P2),"%k",HOUR(P2),"mi",MINUTE(P2),"n",MINUTE(P2),"ss",SECOND(P2),"s",SECOND(P2),"%s",SECOND(P2),"%m",IIF(CharToInt(Right(P1,1))=77, MINUTE(P2),MONTH(P2)),"weekday",WEEKDAY(P2),"dw",WEEKDAY(P2))</Formula>
+    <Formula>IF LOWERCASE(P1) IN ("century", "cc", "c") THEN Century(P2)
+ELSEIF P1 = "%C" THEN Century(P2)-1
+ELSEIF P1 = "%y" AND CHARTOINT(RIGHT(P1,1))=121 THEN MOD(YEAR(P2),100)
+ELSEIF LOWERCASE(P1) IN ("year", "yyyy", "yy", "%y") THEN Year(P2)
+ELSEIF LOWERCASE(P1) IN ("quarter","qq","q") THEN Quarter(P2)
+ELSEIF LOWERCASE(P1) IN ("month","mm","m") THEN Month(P2)
+ELSEIF P1 = "%m" AND CHARTOINT(RIGHT(P1,1))=109 THEN MONTH(P2)
+ELSEIF LOWERCASE(P1) IN ("dayofyear","dy","y","%j") THEN OrdinalDay(P2)
+ELSEIF LOWERCASE(P1) IN ("day","dd","d","%d","%e") THEN Day(P2)
+ELSEIF LOWERCASE(P1) IN ("weekday","dw","w") THEN Weekday(P2)
+ELSEIF P1 = "%w" AND CHARTOINT(RIGHT(P1,1))=119 THEN Weekday(P2)
+ELSEIF P1 = "%u" AND CHARTOINT(RIGHT(P1,1))=117 THEN IIF(Weekday(P2)=0,7,Weekday(P2))
+ELSEIF LOWERCASE(P1) IN ("week","ww","wk") THEN Weeknum(P2)
+ELSEIF LOWERCASE(P1) IN ("%u") THEN Weeknum(P2)-IIF(Weekday(YearStart(P2))=0,0,1)
+ELSEIF LOWERCASE(P1) IN ("%w") THEN TONUMBER(DATETIMEFORMAT(P2,"%W"))
+ELSEIF LOWERCASE(P1) IN ("hour","hh","h","%h","%k") THEN Hour(P2)
+ELSEIF LOWERCASE(P1) IN ("%i","%l") THEN IIF(MOD(Hour(P2),12)=0, 12, MOD(Hour(P2),12))
+ELSEIF LOWERCASE(P1) IN ("minute","mi","n","%m") THEN Minute(P2)
+ELSEIF LOWERCASE(P1) IN ("second","ss","s","%s") THEN Second(P2)
+ELSE NULL() ENDIF</Formula>
   </Function>
 </FormulaAddIn>

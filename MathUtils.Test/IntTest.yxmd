@@ -8,12 +8,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="MODULO([Numerator],[Denominator])" field="Actual" size="8" type="Double" />
+            <FormulaField expression="INT([Number])" field="Actual" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Actual = MODULO([Numerator],[Denominator])
+          <DefaultAnnotationText><![CDATA[Actual = INT([Number])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -28,21 +28,6 @@
         <Configuration>
           <Expression>ABS([Actual] - [Expected]) &gt; 1e-6</Expression>
           <Mode>Custom</Mode>
-          <Simple>
-            <Operator>=</Operator>
-            <Operands>
-              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
-              <DateType>fixed</DateType>
-              <PeriodDate>2019-02-22 15:02:25</PeriodDate>
-              <PeriodType>
-              </PeriodType>
-              <PeriodCount>0</PeriodCount>
-              <StartDate>2019-02-22 15:02:25</StartDate>
-              <EndDate>2019-02-22 15:02:25</EndDate>
-              <Operand>
-              </Operand>
-            </Operands>
-          </Simple>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
@@ -60,7 +45,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Modulo</Name>
+              <Name>Int</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -70,7 +55,7 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Modulo</DefaultAnnotationText>
+          <DefaultAnnotationText>Int</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -120,9 +105,8 @@ Table=`Sheet1$`</DefaultAnnotationText>
           <OrderChanged value="False" />
           <CommaDecimal value="False" />
           <SelectFields>
-            <SelectField field="Numerator" selected="True" />
-            <SelectField field="Denominator" selected="True" />
-            <SelectField field="MODULO" selected="True" rename="Expected" />
+            <SelectField field="Numerator" selected="True" rename="Number" />
+            <SelectField field="INT" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -171,7 +155,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>ModuloTest</Name>
+      <Name>IntTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

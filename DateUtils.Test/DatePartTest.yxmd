@@ -42,6 +42,12 @@ Table=`Sheet1$`</DefaultAnnotationText>
             <Field name="YearStart" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="V_String" />
             <Field name="YearEnd" size="255" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="V_String" />
             <Field name="Century" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="WeekNum" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Hour12" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Weekday2" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="WeekNum1" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="WeekNum2" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Century2" source="File: C:\Repos\AlteryxFormulaAddOns\DateUtils.Test\DateTimeReference.xlsx|||`Sheet1$`" type="Double" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -53,7 +59,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
       </GuiSettings>
       <Properties>
         <Configuration>
-          <NumRows value="34" />
+          <NumRows value="50" />
           <Fields>
             <Field name="Part" />
             <Field name="Field" />
@@ -77,7 +83,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
             </r>
             <r>
               <c>%y</c>
-              <c>Year</c>
+              <c>Year100</c>
             </r>
             <r>
               <c>quarter</c>
@@ -144,7 +150,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
               <c>Day</c>
             </r>
             <r>
-              <c>%C</c>
+              <c>century</c>
               <c>Century</c>
             </r>
             <r>
@@ -154,6 +160,14 @@ Table=`Sheet1$`</DefaultAnnotationText>
             <r>
               <c>c</c>
               <c>Century</c>
+            </r>
+            <r>
+              <c>%C</c>
+              <c>Century2</c>
+            </r>
+            <r>
+              <c>hour</c>
+              <c>Hour</c>
             </r>
             <r>
               <c>hh</c>
@@ -172,6 +186,10 @@ Table=`Sheet1$`</DefaultAnnotationText>
               <c>Hour</c>
             </r>
             <r>
+              <c>minute</c>
+              <c>Minute</c>
+            </r>
+            <r>
               <c>mi</c>
               <c>Minute</c>
             </r>
@@ -184,6 +202,10 @@ Table=`Sheet1$`</DefaultAnnotationText>
               <c>Minute</c>
             </r>
             <r>
+              <c>second</c>
+              <c>Second</c>
+            </r>
+            <r>
               <c>ss</c>
               <c>Second</c>
             </r>
@@ -194,6 +216,54 @@ Table=`Sheet1$`</DefaultAnnotationText>
             <r>
               <c>%S</c>
               <c>Second</c>
+            </r>
+            <r>
+              <c>%I</c>
+              <c>Hour12</c>
+            </r>
+            <r>
+              <c>%l</c>
+              <c>Hour12</c>
+            </r>
+            <r>
+              <c>%u</c>
+              <c>Weekday2</c>
+            </r>
+            <r>
+              <c>weekday</c>
+              <c>Weekday</c>
+            </r>
+            <r>
+              <c>dw</c>
+              <c>Weekday</c>
+            </r>
+            <r>
+              <c>w</c>
+              <c>Weekday</c>
+            </r>
+            <r>
+              <c>%w</c>
+              <c>Weekday</c>
+            </r>
+            <r>
+              <c>week</c>
+              <c>WeekNum</c>
+            </r>
+            <r>
+              <c>ww</c>
+              <c>WeekNum</c>
+            </r>
+            <r>
+              <c>wk</c>
+              <c>WeekNum</c>
+            </r>
+            <r>
+              <c>%U</c>
+              <c>WeekNum1</c>
+            </r>
+            <r>
+              <c>%W</c>
+              <c>WeekNum2</c>
             </r>
           </Data>
         </Configuration>
@@ -236,6 +306,9 @@ Table=`Sheet1$`</DefaultAnnotationText>
             <Field field="YearStart" selected="True" />
             <Field field="YearEnd" selected="True" />
             <Field field="Century" selected="True" />
+            <Field field="WeekNum" selected="True" />
+            <Field field="Hour12" selected="True" />
+            <Field field="Weekday2" selected="True" />
             <Field field="*Unknown" selected="True" />
           </DataFields>
         </Configuration>
@@ -261,13 +334,14 @@ Table=`Sheet1$`</DefaultAnnotationText>
           </JoinInfo>
           <SelectConfiguration>
             <Configuration outputConnection="Join">
-              <OrderChanged value="False" />
+              <OrderChanged value="True" />
               <CommaDecimal value="False" />
               <SelectFields>
+                <SelectField field="Left_Part" selected="True" input="Left_" />
                 <SelectField field="Left_Field" selected="False" />
                 <SelectField field="Right_DateTimeText" selected="True" rename="DateText" input="Right_" />
-                <SelectField field="Right_Name" selected="False" />
                 <SelectField field="Right_Value" selected="True" rename="Expected" type="Int64" size="8" />
+                <SelectField field="Right_Name" selected="True" />
                 <SelectField field="*Unknown" selected="True" />
               </SelectFields>
             </Configuration>
@@ -359,7 +433,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="10">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
-        <Position x="558" y="210" />
+        <Position x="558" y="198" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -381,53 +455,25 @@ Table=`Sheet1$`</DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
-    <Node ToolID="11">
-      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-        <Position x="822" y="54" width="444" height="468" />
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="558" y="138" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Text>Switch(P2,NULL(),
-          "year",Year(P1),
-          "yyyy",Year(P1),
-          "yy",Year(P1),
-          "%Y",Year(P1),
-          "%y",Year(P1),
-          "cc",Century(P1),
-          "c",Century(P1),
-          "%c",Century(P1),
-          "quarter",Quarter(P1),
-          "qq",Quarter(P1),
-          "q",Quarter(P1),
-          "month",Month(P1),
-          "mm",Month(P1),
-          "m",Month(P1),
-          "dayofyear",OrdinalDay(P1),
-          "dy",OrdinalDay(P1),
-          "y",OrdinalDay(P1),
-          "%j",OrdinalDay(P1),
-          "day",DAY(P1),
-          "dd",DAY(P1),
-          "d",DAY(P1),
-          "%d",DAY(P1),
-          "%e",DAY(P1),
-          "hour",HOUR(P1),
-          "hh",HOUR(P1),
-          "h",HOUR(P1),
-          "%H",HOUR(P1),
-          "%k",HOUR(P1),
-          "mi",MINUTE(P1),
-          "n",MINUTE(P1),
-          "ss",SECOND(P1),
-          "s",SECOND(P1),
-          "%s",SECOND(P1),
-          "%m",IIF(CharToInt(Right(P2,1))=77, MINUTE(P1),MONTH(P1))
-)</Text>
-          <Font name="Consolas" size="8.25" style="0" />
-          <TextColor name="Black" />
-          <FillColor name="White" />
-          <Shape shape="0" />
-          <Justification Justification="3" />
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_5972_7aa2cafa1f954bd4a4829da7368cac0f_\Engine_32816_dcc7a47cc5bb4f74b320ce42e76cb518_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
@@ -435,31 +481,116 @@ Table=`Sheet1$`</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
     </Node>
-    <Node ToolID="12">
-      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-        <Position x="498" y="54" width="312" height="72" />
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="450" y="318" />
       </GuiSettings>
       <Properties>
         <Configuration>
-          <Text><![CDATA[Not yet implements:
-week,wk,ww ==> WEEK (need new function)
-weekday, dw ==> WEEKDAY
-%w ==> lowercase WEEKDAY, uppercase WEEK
-%i, %l ==> 12 HOUR CLOCK
-]]></Text>
-          <Font name="Consolas" size="8.25" style="0" />
-          <TextColor name="Black" />
-          <FillColor name="White" />
-          <Shape shape="0" />
-          <Justification Justification="3" />
+          <FormulaFields>
+            <FormulaField expression="ToNumber(DateTimeFormat([DateText],[Part]))" field="Expected" size="8" type="Int64" />
+            <FormulaField expression="DATEPART([Part], [DateText])" field="Actual" size="8" type="Int64" />
+          </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText />
+          <DefaultAnnotationText>Expected = ToNumber(DateTimeFormat([DateText],[Part]))
+Actual = DATEPART([Part],...</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="558" y="318" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Expected] != [Actual]</Expression>
+          <Mode>Custom</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Field>Expected</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2018-11-17 09:49:25</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2018-11-17 09:49:25</StartDate>
+              <EndDate>2018-11-17 09:49:25</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Expected] != [Actual]</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Test.Test">
+        <Position x="642" y="318" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Tests>
+            <Test>
+              <Name>DatePartTest DateTime Alteryx</Name>
+              <Connection>#1</Connection>
+              <Type>RecCountValue</Type>
+              <Value>0</Value>
+            </Test>
+          </Tests>
+          <DontReportSubsequent value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DatePartTest DateTime Alteryx</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="342" y="318" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>StartsWith([Part], "%")</Expression>
+          <Mode>Custom</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2019-02-26 08:48:19</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <StartDate>2019-02-26 08:48:19</StartDate>
+              <EndDate>2019-02-26 08:48:19</EndDate>
+              <Operand>
+              </Operand>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>StartsWith([Part], "%")</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
     </Node>
   </Nodes>
   <Connections>
@@ -484,12 +615,32 @@ weekday, dw ==> WEEKDAY
       <Destination ToolID="9" Connection="Input" />
     </Connection>
     <Connection>
+      <Origin ToolID="5" Connection="Join" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
       <Origin ToolID="6" Connection="Output" />
       <Destination ToolID="8" Connection="Input" />
     </Connection>
     <Connection name="#1">
       <Origin ToolID="8" Connection="True" />
       <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="True" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="15" Connection="True" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="True" />
+      <Destination ToolID="14" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>

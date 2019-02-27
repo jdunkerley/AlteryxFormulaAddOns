@@ -8,12 +8,12 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="MODULO([Numerator],[Denominator])" field="Actual" size="8" type="Double" />
+            <FormulaField expression="QUOTIENT([Numerator],[Denominator])" field="Actual" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Actual = MODULO([Numerator],[Denominator])
+          <DefaultAnnotationText><![CDATA[Actual = QUOTIENT([Numerator],[Denominator])
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -122,7 +122,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
           <SelectFields>
             <SelectField field="Numerator" selected="True" />
             <SelectField field="Denominator" selected="True" />
-            <SelectField field="MODULO" selected="True" rename="Expected" />
+            <SelectField field="QUOTIENT" selected="True" rename="Expected" />
             <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
@@ -171,7 +171,7 @@ Table=`Sheet1$`</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>ModuloTest</Name>
+      <Name>QuotientTest</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

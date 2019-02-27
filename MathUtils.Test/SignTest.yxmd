@@ -1,428 +1,6 @@
 <?xml version="1.0"?>
 <AlteryxDocument yxmdVer="2018.4">
   <Nodes>
-    <Node ToolID="1">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-        <Position x="54" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <NumRows value="100" />
-          <Fields>
-            <Field name="Number" />
-            <Field name="Expected" />
-          </Fields>
-          <Data>
-            <r>
-              <c />
-              <c />
-            </r>
-            <r>
-              <c>1</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-1</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>0</c>
-              <c>0</c>
-            </r>
-            <r>
-              <c>260.4598117</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1813.068436</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>4434.22794</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>4967.083128</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-2011.18468</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-1148.270269</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>4930.659529</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1153.868887</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1383.750512</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-2288.147768</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>4883.46825</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-1310.294615</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>544.917508</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-1256.40668</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>4463.392814</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1550.169708</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-591.3213881</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>201.3866462</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-3552.126518</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>2813.656642</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>3923.719273</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-4102.117474</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-2576.846462</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-1476.250827</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>3044.128794</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-3024.712357</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-3968.00142</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>2770.139653</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-2674.501519</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-4497.782247</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-3704.951843</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-1783.896673</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-2381.123626</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>1838.317268</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2884.093231</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2721.89847</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-3585.000415</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-203.6062184</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>428.4623258</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2026.269541</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>365.0049153</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1064.019266</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>3273.503623</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-966.6110294</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>4064.435523</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1339.888036</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>980.5711468</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>16.43530938</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-2433.715513</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-3203.052015</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>1514.751069</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-1018.180978</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>896.8510062</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>3949.509756</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1537.718091</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>551.0743198</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>4393.53015</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1228.48281</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1919.15436</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2424.277959</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>3371.083287</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>162.7020879</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1965.239339</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>219.9434585</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-3014.558922</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-431.4510493</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-876.8356219</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>167.3593244</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>890.1565854</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2950.246151</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1290.18465</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>795.1676284</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2720.697455</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>299.6086409</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-2320.837771</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>4391.921004</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>2462.44981</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-1563.100318</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-3602.551935</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-1355.367146</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>2584.177001</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-552.1193182</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-2032.703528</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-2462.515154</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-1080.611481</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>-4703.032682</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>3339.627436</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-831.9738243</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>2511.14521</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-2498.078557</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>1307.800982</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1052.527838</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>-1575.043808</c>
-              <c>-1</c>
-            </r>
-            <r>
-              <c>1569.251717</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>3045.984672</c>
-              <c>1</c>
-            </r>
-            <r>
-              <c>1671.461496</c>
-              <c>1</c>
-            </r>
-          </Data>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
-    </Node>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
         <Position x="162" y="54" />
@@ -467,7 +45,7 @@
         <Configuration>
           <Tests>
             <Test>
-              <Name>Modulo</Name>
+              <Name>Sign</Name>
               <Connection>#1</Connection>
               <Type>RecCountValue</Type>
               <Value>0</Value>
@@ -477,18 +55,71 @@
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Modulo</DefaultAnnotationText>
+          <DefaultAnnotationText>Sign</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTest" />
     </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="18" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\DivisionTests.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DivisionTests.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Numerator" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\DivisionTests.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Denominator" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\DivisionTests.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="SIGN" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\DivisionTests.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="MODULO" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\DivisionTests.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="QUOTIENT" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\DivisionTests.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="INT" source="File: C:\Repos\AlteryxFormulaAddOns\MathUtils.Test\DivisionTests.xlsx|||`Sheet1$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="90" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Numerator" selected="True" rename="Number" />
+            <SelectField field="SIGN" selected="True" rename="Expected" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
   </Nodes>
   <Connections>
-    <Connection>
-      <Origin ToolID="1" Connection="Output" />
-      <Destination ToolID="2" Connection="Input" />
-    </Connection>
     <Connection>
       <Origin ToolID="2" Connection="Output" />
       <Destination ToolID="3" Connection="Input" />
@@ -496,6 +127,14 @@
     <Connection name="#1">
       <Origin ToolID="3" Connection="True" />
       <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
