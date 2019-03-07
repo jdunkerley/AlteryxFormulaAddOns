@@ -67,6 +67,14 @@
     <Formula>IIF(VERSION()>=11,ToNumber(DateTimeFormat(P1, "%w")),Switch(DateTimeFormat(P1,"%a"),NULL(),"Sun",0,"Mon",1,"Tue",2,"Wed",3,"Thu",4,"Fri",5,"Sat",6))</Formula>
   </Function>
   <Function>
+    <Name>WORKDAY</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Date</Category>
+    <InsertText>Workday(dt,days)</InsertText>
+    <Description>Returns the date after a specified number of week days</Description>
+    <Formula>IIF(P2=0,P1,DATETIMEADD(P1,FLOOR(ABS(P2)/5)*SIGN(P2)*7+IIF(WEEKDAY(P1)=0,IIF(P2&gt;0,-2,1),0)+IIF(WEEKDAY(P1)=6,IIF(P2&gt;0,-1,2),0)+IIF(MOD(P2,5)=0,0,MOD(P2,5)+IIF(P2&gt;0,IIF(IIF(WEEKDAY(P1)=0,7,WEEKDAY(P1))+MOD(P2,5)&gt;5,2,0),IIF(WEEKDAY(P1) IN (0,6) OR (WEEKDAY(P1)+MOD(P2,5))&lt;1,-2,0))),"days"))</Formula>
+  </Function>
+  <Function>
     <Name>QUARTER</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>

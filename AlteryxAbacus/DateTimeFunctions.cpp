@@ -33,29 +33,24 @@ extern "C" long __declspec(dllexport) _stdcall MakeDate(int nNumArgs, FormulaAdd
 	const auto month = nNumArgs > 1 && !pArgs[1].isNull ? static_cast<int>(pArgs[1].dVal) : 1;
 	const auto day = nNumArgs > 2 && !pArgs[2].isNull ? static_cast<int>(pArgs[2].dVal) : 1;
 
-	if (year == 0  && month == 0 && day == 0)
+	if (year < 1400 || year > 9999)
 	{
-		// Parse mode passes 3 0s
 		pReturnValue->isNull = 1;
 		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
-	if (year < 1400 || year > 9999)
-	{
-		return AlteryxAbacusUtils::ReturnError(L"MakeDate: Alteryx Dates only valid between 1400 and 9999", pReturnValue, nNumArgs, pArgs);
-	}
-
 	if (month < 1 || month > 12)
 	{
-		return AlteryxAbacusUtils::ReturnError(L"MakeDate: Month must be between 1 and 12", pReturnValue, nNumArgs, pArgs);
+		pReturnValue->isNull = 1;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	if (day > 28 || day < 1) {
 		const int max_day = days_in_month(year, month);
 		if (day < 1 || day > max_day)
 		{
-			const std::wstring msg(L"MakeDate: Day must be between 1 and ");
-			return AlteryxAbacusUtils::ReturnError((msg + std::to_wstring(max_day)).c_str(), pReturnValue, nNumArgs, pArgs);
+			pReturnValue->isNull = 1;
+			return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 		}
 	}
 
@@ -87,17 +82,20 @@ extern "C" long __declspec(dllexport) _stdcall MakeTime(int nNumArgs, FormulaAdd
 
 	if (hour < 0 || hour > 23)
 	{
-		return AlteryxAbacusUtils::ReturnError(L"MakeTime: Hour must be between 0 and 23", pReturnValue, nNumArgs, pArgs);
+		pReturnValue->isNull = 1;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	if (minute < 0 || minute > 59)
 	{
-		return AlteryxAbacusUtils::ReturnError(L"MakeTime: Minute must be between 0 and 59", pReturnValue, nNumArgs, pArgs);
+		pReturnValue->isNull = 1;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	if (second < 0 || second > 59)
 	{
-		return AlteryxAbacusUtils::ReturnError(L"MakeTime: Second must be between 0 and 59", pReturnValue, nNumArgs, pArgs);
+		pReturnValue->isNull = 1;
+		return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 	}
 
 	auto *p_string_ret = static_cast<wchar_t *>(GlobalAlloc(GMEM_FIXED, 9 * sizeof(wchar_t)));

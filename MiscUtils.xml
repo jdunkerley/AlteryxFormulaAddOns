@@ -175,11 +175,11 @@
     </Dll>
   </Function>
   <Function>
-    <Name>LOG</Name>
+    <Name>LOGTOFILE</Name>
     <NumParams variable="false">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>LOG(ReturnValue, FileName, Message)</InsertText>
-    <Description>Write to a log file</Description>
+    <InsertText>LOGTOFILE(ReturnValue, FileName, Message)</InsertText>
+    <Description>Write a message to a log file</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>Log</EntryPoint>

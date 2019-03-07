@@ -453,7 +453,7 @@ extern "C" long _declspec(dllexport) _stdcall VarPrint(int nNumArgs, FormulaAddI
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
-extern "C" long _declspec(dllexport) _stdcall Log(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+extern "C" long _declspec(dllexport) _stdcall LogToFile(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	if (!pArgs[1].isNull && !pArgs[2].isNull)
 	{
