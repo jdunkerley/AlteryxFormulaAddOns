@@ -84,7 +84,7 @@
     <Description>Average Ignoring Nulls</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
-      <EntryPoint>Average</EntryPoint>
+      <EntryPoint>Avg</EntryPoint>
     </Dll>
   </Function>
   <Function>

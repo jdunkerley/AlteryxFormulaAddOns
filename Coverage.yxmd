@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="2018.4">
+<AlteryxDocument yxmdVer="2019.1">
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
@@ -329,7 +329,7 @@ Name - Ascending</DefaultAnnotationText>
             <Field name="Name" size="17" type="V_String" />
             <Field name="Category" size="11" type="V_String" />
             <Field name="InsertText" size="52" type="V_String" />
-            <Field name="Formula" size="637" type="V_String" />
+            <Field name="Formula" size="1278" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -393,7 +393,7 @@ Name - Ascending</DefaultAnnotationText>
             <Field name="Name" size="17" type="V_String" />
             <Field name="Category" size="11" type="V_String" />
             <Field name="InsertText" size="52" type="V_String" />
-            <Field name="Formula" size="637" type="V_String" />
+            <Field name="Formula" size="1278" type="V_String" />
             <Field name="NumParams" size="1" type="V_String" />
             <Field name="variable" size="5" type="V_String" />
           </RecordInfo>
@@ -1180,10 +1180,10 @@ AND
             <Field name="Name" size="17" type="V_String" />
             <Field name="Category" size="11" type="V_String" />
             <Field name="InsertText" size="52" type="V_String" />
-            <Field name="Formula" size="637" type="V_String" />
+            <Field name="Formula" size="1278" type="V_String" />
             <Field name="NumParams" size="1" type="V_String" />
             <Field name="variable" size="5" type="V_String" />
-            <Field name="EntryPoint" size="24" type="V_String" />
+            <Field name="EntryPoint" size="15" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>

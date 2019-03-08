@@ -86,7 +86,7 @@ static void createFromCharset(wchar_t const* pattern, const size_t length, std::
 	output[length] = '\0';
 }
 
-extern "C" long _declspec(dllexport) _stdcall RandomStringFromTemplate(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+extern "C" long _declspec(dllexport) _stdcall RandomString(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	pReturnValue->nVarType = nVarType_WCHAR;
 
@@ -201,7 +201,7 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
-extern "C" long _declspec(dllexport) _stdcall RandomValueFromList(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+extern "C" long _declspec(dllexport) _stdcall RandomItem(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	if (nNumArgs == 0)
 	{

@@ -182,7 +182,7 @@
     <Description>Write a message to a log file</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
-      <EntryPoint>Log</EntryPoint>
+      <EntryPoint>LogToFile</EntryPoint>
     </Dll>
   </Function>
   <Function>

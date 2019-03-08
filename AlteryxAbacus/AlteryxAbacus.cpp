@@ -1,4 +1,3 @@
-﻿// AlteryxAddIn.cpp : Defines the exported functions for the DLL application.
 #include "stdafx.h"
 #include "AlteryxAbacus.h"
 #include "AlteryxAbacusUtils.h"
@@ -557,7 +556,7 @@ extern "C" long _declspec(dllexport) _stdcall Sum(int nNumArgs, FormulaAddInData
 }
 
 // this sample takes a variable number of inputs and returns the first non-null
-extern "C" long _declspec(dllexport) _stdcall Average(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
+extern "C" long _declspec(dllexport) _stdcall Avg(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	pReturnValue->nVarType = 1;
 	pReturnValue->isNull = 0;

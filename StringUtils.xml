@@ -62,7 +62,7 @@
     <Description>Get a random string</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
-      <EntryPoint>RandomStringFromTemplate</EntryPoint>
+      <EntryPoint>RandomString</EntryPoint>
     </Dll>
   </Function>
   <Function>
@@ -84,7 +84,7 @@
     <Description>Get a random item from a list</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
-      <EntryPoint>RandomValueFromList</EntryPoint>
+      <EntryPoint>RandomItem</EntryPoint>
     </Dll>
   </Function>
   <Function>
