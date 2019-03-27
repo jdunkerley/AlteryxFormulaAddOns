@@ -33,6 +33,7 @@ Math based functions that I havent got a better home for!
 
 - [Int](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int): Rounds a number to nearest integer either equal to the number or closer to 0.
 - [Modulo](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#modulo): General Double Based Modulo function
+- [Quotient](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#quotient): Returns the integer part of a division
 - [Sign](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sign): Deteremines the sign of a number (-1 if less than 0, 1 if greater than, 0 otherwise)
 - [HexBinX](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbinx): Given an X,Y point and optional radius, get X co-ordinate of hexagonal bin's centre
 - [HexBinY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbiny): Given an X,Y point and optional radius get Y co-ordinate of hexagonal bin's centre 
@@ -51,6 +52,7 @@ Math based functions that I havent got a better home for!
 - [ChiDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chidist): Compute CDF on Chi Squared distribution
 - [ChiInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chiinv): Compute inverse CDF on Chi Squared distribution
 - [Phi](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#phi): Returns the golden ratio constant.
+- [RandTriangular](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#randtriangular): Produces a random number from a triangular distribution
 
 ### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 
@@ -77,10 +79,10 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [Year](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#year): Gets the four digit year
 - [Century](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#century): Gets the century for a date
 - [WeekDay](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weekday): Gets the day of the week [Sunday (0) through to Saturday (6)]
+- [WeekNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weeknum): Gets the week number of a Datetime, with Sunday as start of week and January 1st in Week 1 [1-53]
 - [Quarter](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#quarter): Gets the quarter of the date [1-4]
 - [OrdinalDay](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#ordinalday): Gets the day of the year [1-366]
 - [DatePart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datepart): Replicates the SQL DatePart function, getting a specified part of the datetime input
-- [WeekNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weeknum): Gets the week number of a Datetime, with Sunday as start of week and January 1st in Week 1 [1-53]
 
 #### Time Part Functions (returns numbers) ####
 
@@ -101,9 +103,9 @@ Some additional functions for working with Dates and to a certain extent Times.
 
 #### Other Date Functions ####
 
-- [DateAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#dateadd): Equivalent to [DateTimeAdd](https://help.alteryx.com/current/Reference/Functions.htm?Highlight=datetimeadd) but returning a Date
+- [DateAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#dateadd): Equivalent to [DateTimeAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/https://help.alteryx.com/current/Reference/Functions.htm?Highlight=datetimeadd) but returning a Date
 - [BusinessDays](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#businessdays): Number of weekdays between two dates
-- [Workday](Date-and-Time-Functions-(DateUtils.xml)#workday): Add or remove a specificed number of weekdays to a date (similar to Excel's Workday function but no support for holidays)
+- [Workday](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#workday): Add or remove a specified number of weekdays to a date (similar to Excel's Workday function but no support for holidays)
 - [IsLeapYear](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#isleapyear): Is a year a leap year *(takes a year not a date as an input use `IsLearYear(Year([Date])`)*
 
 ### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)) ###
