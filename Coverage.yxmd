@@ -34,7 +34,7 @@
     </Node>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
-        <Position x="246" y="54" />
+        <Position x="222" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -62,7 +62,7 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
-        <Position x="438" y="54" />
+        <Position x="390" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -91,7 +91,7 @@
     </Node>
     <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
-        <Position x="534" y="54" />
+        <Position x="486" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -121,7 +121,7 @@
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="342" y="54" />
+        <Position x="294" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -177,7 +177,7 @@
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1002" y="54" />
+        <Position x="1050" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -210,7 +210,7 @@
     </Node>
     <Node ToolID="8">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
-        <Position x="906" y="54" />
+        <Position x="954" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -230,7 +230,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="9">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1002" y="162" />
+        <Position x="1050" y="162" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -264,7 +264,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="10">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1098" y="54" />
+        <Position x="1146" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -285,7 +285,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1098" y="162" />
+        <Position x="1146" y="162" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -306,7 +306,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="12">
       <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
-        <Position x="630" y="54" />
+        <Position x="582" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -337,7 +337,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="13">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1002" y="270" />
+        <Position x="1050" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -370,7 +370,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="14">
       <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
-        <Position x="714" y="54" />
+        <Position x="666" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -403,7 +403,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="15">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1098" y="270" />
+        <Position x="1146" y="270" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -435,7 +435,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="16">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1194" y="222" />
+        <Position x="1242" y="222" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -456,7 +456,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="17">
       <GuiSettings Plugin="AlteryxBasePluginsGui.GenerateRows.GenerateRows">
-        <Position x="1194" y="294" />
+        <Position x="1242" y="294" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -479,7 +479,7 @@ Name - Ascending</DefaultAnnotationText>
     </Node>
     <Node ToolID="18">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1290" y="294" />
+        <Position x="1338" y="294" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -518,7 +518,7 @@ Padleft(ToString([P]), Length([NumParams]), ...</DefaultAnnotationText>
     </Node>
     <Node ToolID="19">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1386" y="282" />
+        <Position x="1434" y="282" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -539,7 +539,7 @@ Padleft(ToString([P]), Length([NumParams]), ...</DefaultAnnotationText>
     </Node>
     <Node ToolID="20">
       <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
-        <Position x="1194" y="378" />
+        <Position x="1242" y="378" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -572,7 +572,7 @@ Padleft(ToString([P]), Length([NumParams]), ...</DefaultAnnotationText>
     </Node>
     <Node ToolID="21">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1290" y="450" />
+        <Position x="1338" y="450" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -614,7 +614,7 @@ ToNumber([F...</DefaultAnnotationText>
     </Node>
     <Node ToolID="22">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1482" y="438" />
+        <Position x="1530" y="438" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -635,7 +635,7 @@ ToNumber([F...</DefaultAnnotationText>
     </Node>
     <Node ToolID="23">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
-        <Position x="1386" y="438" />
+        <Position x="1434" y="438" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -741,7 +741,7 @@ Description =...</DefaultAnnotationText>
     </Node>
     <Node ToolID="27">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="1002" y="690" />
+        <Position x="1050" y="690" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -758,6 +758,7 @@ Description =...</DefaultAnnotationText>
               <SelectFields>
                 <SelectField field="Left_Field_1" selected="False" input="Left_" />
                 <SelectField field="Left_Name" selected="False" input="Left_" />
+                <SelectField field="Right_Description" selected="True" rename="XMLDescription" input="Right_" />
                 <SelectField field="*Unknown" selected="True" />
               </SelectFields>
             </Configuration>
@@ -773,7 +774,7 @@ Description =...</DefaultAnnotationText>
     </Node>
     <Node ToolID="28">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1110" y="738" />
+        <Position x="1146" y="738" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -794,7 +795,7 @@ Description =...</DefaultAnnotationText>
     </Node>
     <Node ToolID="29">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1002" y="522" />
+        <Position x="1050" y="522" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -828,7 +829,7 @@ Description =...</DefaultAnnotationText>
     </Node>
     <Node ToolID="30">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1098" y="522" />
+        <Position x="1146" y="522" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1069,7 +1070,7 @@ AND
     </Node>
     <Node ToolID="38">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="1002" y="822" />
+        <Position x="1050" y="822" />
       </GuiSettings>
       <Properties>
         <Configuration joinByRecordPos="False">
@@ -1136,7 +1137,7 @@ AND
     </Node>
     <Node ToolID="40">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1098" y="882" />
+        <Position x="1146" y="882" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1157,7 +1158,7 @@ AND
     </Node>
     <Node ToolID="41">
       <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
-        <Position x="810" y="54" />
+        <Position x="762" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1191,7 +1192,7 @@ AND
     </Node>
     <Node ToolID="42">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="1002" y="1014" />
+        <Position x="1050" y="1014" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1225,7 +1226,7 @@ AND
     </Node>
     <Node ToolID="43">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1122" y="1014" />
+        <Position x="1146" y="1014" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1282,6 +1283,7 @@ AND
             <SelectField field="NumParams" selected="False" />
             <SelectField field="variable" selected="False" />
             <SelectField field="EntryPoint" selected="False" />
+            <SelectField field="XMLDescription" selected="True" />
             <SelectField field="*Unknown" selected="True" />
           </SelectFields>
         </Configuration>
@@ -1292,6 +1294,41 @@ AND
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="46">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.XMLParse.XMLParse">
+        <Position x="858" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <XMLField>Function_OuterXML</XMLField>
+          <XMLElement>Description</XMLElement>
+          <ChildValues value="True" />
+          <OuterXML value="False" />
+          <ParseRoot value="False" />
+          <IgnoreErrors value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="FileName" size="254" source="File: FileName" type="V_WString" />
+            <Field name="Function_OuterXML" size="1073741823" source="File: C:\Repos\AlteryxFormulaAddOns\*.xml" type="V_WString" />
+            <Field name="Name" size="17" type="V_String" />
+            <Field name="Category" size="11" type="V_String" />
+            <Field name="InsertText" size="52" type="V_String" />
+            <Field name="Formula" size="1318" type="V_String" />
+            <Field name="NumParams" size="1" type="V_String" />
+            <Field name="variable" size="5" type="V_String" />
+            <Field name="EntryPoint" size="15" type="V_String" />
+            <Field name="Description" size="125" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxXMLParse" />
     </Node>
   </Nodes>
   <Connections>
@@ -1465,7 +1502,7 @@ AND
     </Connection>
     <Connection>
       <Origin ToolID="41" Connection="Output" />
-      <Destination ToolID="8" Connection="Input" />
+      <Destination ToolID="46" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="42" Connection="True" />
@@ -1474,6 +1511,10 @@ AND
     <Connection>
       <Origin ToolID="44" Connection="Output" />
       <Destination ToolID="45" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="46" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
@@ -1490,7 +1531,7 @@ AND
     <ShowAllMacroMessages value="False" />
     <ShowConnectionStatusIsOn value="True" />
     <ShowConnectionStatusOnlyWhenRunning value="False" />
-    <ZoomLevel value="-4" />
+    <ZoomLevel value="0" />
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />

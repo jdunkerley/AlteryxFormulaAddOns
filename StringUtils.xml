@@ -31,7 +31,7 @@
     <Name>LEFTPART</Name>
     <NumParams variable="false">2</NumParams>
     <Category>String</Category>
-    <InsertText>LEFTPART(String, Separator)</InsertText>
+    <InsertText>LeftPart(String, Separator)</InsertText>
     <Description>Get The Left Part Upto A Separator</Description>
     <Formula>IIF(FINDSTRING(P1,P2) == -1, P1, LEFT(P1, FINDSTRING(P1,P2)))</Formula>
   </Function>
@@ -39,7 +39,7 @@
     <Name>RIGHTPART</Name>
     <NumParams variable="false">2</NumParams>
     <Category>String</Category>
-    <InsertText>RIGHTPART(String, Separator)</InsertText>
+    <InsertText>RightPart(String, Separator)</InsertText>
     <Description>Get The Rest Of The String After First Separator</Description>
     <Formula>IIF(FINDSTRING(P1,P2) == -1, P1, SUBSTRING(P1, FINDSTRING(P1,P2) + LENGTH(P2)))</Formula>
   </Function>
@@ -113,7 +113,7 @@
     <Name>FINDSTRINGLAST</Name>
     <NumParams variable="false">2</NumParams>
     <Category>String</Category>
-    <InsertText>FINDSTRINGLAST(String, Target)</InsertText>
+    <InsertText>FindStringLast(String, Target)</InsertText>
     <Description>Searches for the occurrence of Target within String from end and returns the numeric position of it.</Description>
     <Formula>IIF(IsNull(P2),0,IIF(CONTAINS(P1,P2),LENGTH(P1) - LENGTH(P2) - FINDSTRING(REVERSESTRING(P1),REVERSESTRING(P2)),-1))</Formula>
   </Function>

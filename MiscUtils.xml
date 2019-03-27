@@ -5,7 +5,7 @@
     <Name>VERSION</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VERSION()</InsertText>
+    <InsertText>Version()</InsertText>
     <Description>Gets the Major and Minor Version Number of the Engine</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -16,7 +16,7 @@
     <Name>IFNULL</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>IFNULL(Val1, Val2)</InsertText>
+    <InsertText>IfNull(Val1, Val2)</InsertText>
     <Description>Val1 if not null or Val2</Description>
     <Formula>IIF(ISNULL(P1),P2,P1)</Formula>
   </Function>
@@ -24,7 +24,7 @@
     <Name>COALESCE</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>COALESCE(Val1, Val, ... )</InsertText>
+    <InsertText>Coalesce(Val1, Val, ... )</InsertText>
     <Description>First not null value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -35,7 +35,7 @@
     <Name>VARNUM</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARNUM(Key[, Value])</InsertText>
+    <InsertText>VarNum(Key[, Value])</InsertText>
     <Description>Gets or stores a numeric value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -46,7 +46,7 @@
     <Name>VARNUMEXISTS</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARNUMEXISTS(Key)</InsertText>
+    <InsertText>VarNumExists(Key)</InsertText>
     <Description>Returns if a numeric value exists</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -57,7 +57,7 @@
     <Name>VARTEXT</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARTEXT(Key[, Value])</InsertText>
+    <InsertText>VarText(Key[, Value])</InsertText>
     <Description>Gets or stores a text value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -68,7 +68,7 @@
     <Name>VARTEXTEXISTS</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARTEXTEXISTS(Key)</InsertText>
+    <InsertText>VarTextExists(Key)</InsertText>
     <Description>Returns if a text value exists</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -79,7 +79,7 @@
     <Name>VARLISTGET</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTGET(Key, Index)</InsertText>
+    <InsertText>VarListGet(Key, Index)</InsertText>
     <Description>Gets a value from a list</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -90,7 +90,7 @@
     <Name>VARLISTEXISTS</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTEXISTS(Key)</InsertText>
+    <InsertText>VarListExists(Key)</InsertText>
     <Description>Returns if a list value exists</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -101,7 +101,7 @@
     <Name>VARLISTLENGTH</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTLENGTH(Key)</InsertText>
+    <InsertText>VarListLength(Key)</InsertText>
     <Description>Returns length of a list if it exists</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -112,7 +112,7 @@
     <Name>VARLISTADD</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTADD(Key, Value)</InsertText>
+    <InsertText>VarListAdd(Key, Value)</InsertText>
     <Description>Adds an item to a list</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -123,7 +123,7 @@
     <Name>VARLISTREMOVE</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTREMOVE(Key, Index)</InsertText>
+    <InsertText>VarListRemove(Key, Index)</InsertText>
     <Description>Removes an item from a list</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -134,7 +134,7 @@
     <Name>VARLISTSET</Name>
     <NumParams variable="true">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTSET(Key, Index, Value)</InsertText>
+    <InsertText>VarListSet(Key, Index, Value)</InsertText>
     <Description>Sets an item in a list at specified index</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -145,7 +145,7 @@
     <Name>VARLISTINSERT</Name>
     <NumParams variable="true">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARLISTINSERT(Key, Index, Value)</InsertText>
+    <InsertText>VarListInsert(Key, Index, Value)</InsertText>
     <Description>Inserts an item into a list at specified index</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -156,7 +156,7 @@
     <Name>VARRESET</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARRESET()</InsertText>
+    <InsertText>VarReset()</InsertText>
     <Description>Flushes one or all variables</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -167,7 +167,7 @@
     <Name>VARPRINT</Name>
     <NumParams variable="false">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>VARPRINT()</InsertText>
+    <InsertText>VarPrint()</InsertText>
     <Description>Lists all variables</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -178,7 +178,7 @@
     <Name>LOGTOFILE</Name>
     <NumParams variable="false">3</NumParams>
     <Category>Specialized</Category>
-    <InsertText>LOGTOFILE(ReturnValue, FileName, Message)</InsertText>
+    <InsertText>LogToFile(ReturnValue, FileName, Message)</InsertText>
     <Description>Write a message to a log file</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -200,7 +200,7 @@
     <Name>REPORTERROR</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>
-    <InsertText>REPORTERROR(Condition, Message, ReturnValue)</InsertText>
+    <InsertText>ReportError(Condition, Message, ReturnValue)</InsertText>
     <Description>Raise an error with a specified message if Condition is true, otherwise return ReturnValue</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>

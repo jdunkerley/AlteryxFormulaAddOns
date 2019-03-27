@@ -64,10 +64,10 @@
     </Dll>
   </Function>
   <Function>
-    <Name>RAND_TRIANGULAR</Name>
+    <Name>RANDTRIANGULAR</Name>
     <NumParams variable="false">4</NumParams>
     <Category>Math</Category>
-    <InsertText>RAND_TRIANGULAR(Prob, Min, Mode, Max)</InsertText>
+    <InsertText>RandTriangular(Prob, Min, Mode, Max)</InsertText>
     <Description>Get A Triangular Distributed Random Number</Description>
     <Formula>
         IIF(P1 &lt; 0 OR P1 &gt; 1, NULL(),
@@ -80,7 +80,7 @@
     <Name>AVG</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
-    <InsertText>AVG(Value1, Value2, ...)</InsertText>
+    <InsertText>Avg(Value1, Value2, ...)</InsertText>
     <Description>Average Ignoring Nulls</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>

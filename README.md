@@ -117,6 +117,12 @@ A few extension methods for working with strings.
 - [ToRoman](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#toroman): Given a number between 0 and 5000, convert to Roman numerals *(C++)*
 - [FromRoman](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#fromroman): Given Roman numeral convert to a number *(C++)*
 
+#### Data Generation ####
+
+- [RandomIPAddress](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomipaddress): Generates a random IP address, can be restricted to be within a CIDR block
+- [RandomItem](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomitem): Picks a random item from the input list (can be list of numbers or list of strings but must be one type)
+- [RandomString](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomstring): Generates a random string using a template to control format
+
 #### Retired Functions ####
 
 - [StartsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#startswith): Does a string start with another
