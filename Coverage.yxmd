@@ -329,7 +329,7 @@ Name - Ascending</DefaultAnnotationText>
             <Field name="Name" size="17" type="V_String" />
             <Field name="Category" size="11" type="V_String" />
             <Field name="InsertText" size="52" type="V_String" />
-            <Field name="Formula" size="1278" type="V_String" />
+            <Field name="Formula" size="1318" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -393,7 +393,7 @@ Name - Ascending</DefaultAnnotationText>
             <Field name="Name" size="17" type="V_String" />
             <Field name="Category" size="11" type="V_String" />
             <Field name="InsertText" size="52" type="V_String" />
-            <Field name="Formula" size="1278" type="V_String" />
+            <Field name="Formula" size="1318" type="V_String" />
             <Field name="NumParams" size="1" type="V_String" />
             <Field name="variable" size="5" type="V_String" />
           </RecordInfo>
@@ -727,12 +727,13 @@ ToNumber([F...</DefaultAnnotationText>
         <Configuration>
           <FormulaFields>
             <FormulaField expression="UPPERCASE(REGEX_Replace([Field_1], &quot;^- \[(.*?)\].*&quot;, &quot;$1&quot;))" field="Name" size="2147483647" type="V_String" />
+            <FormulaField expression="REGEX_Replace([Field_1], &quot;^- \[(.*?)\]\(.*?\):\s+(.*)&quot;, &quot;$2&quot;)" field="Description" size="1073741823" type="V_WString" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText><![CDATA[Name = UPPERCASE(REGEX_Replace([Field_1], "^- \[(.*?)\].*", "$1"))
-]]></DefaultAnnotationText>
+          <DefaultAnnotationText>Name = UPPERCASE(REGEX_Replace([Field_1], "^- \[(.*?)\].*", "$1"))
+Description =...</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -757,7 +758,6 @@ ToNumber([F...</DefaultAnnotationText>
               <SelectFields>
                 <SelectField field="Left_Field_1" selected="False" input="Left_" />
                 <SelectField field="Left_Name" selected="False" input="Left_" />
-                <SelectField field="Right_Name" selected="True" rename="Right_Name" input="Right_" />
                 <SelectField field="*Unknown" selected="True" />
               </SelectFields>
             </Configuration>
@@ -773,7 +773,7 @@ ToNumber([F...</DefaultAnnotationText>
     </Node>
     <Node ToolID="28">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1098" y="690" />
+        <Position x="1110" y="738" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1145,7 +1145,7 @@ AND
           <Type>Warning</Type>
           <Priority>Normal</Priority>
           <Transient>False</Transient>
-          <MessageExpression>[FileName] +" : " + [Name] + " - Undocumented"</MessageExpression>
+          <MessageExpression>[FileName] +" : " + [Name] + " - No Function Docs"</MessageExpression>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
@@ -1180,7 +1180,7 @@ AND
             <Field name="Name" size="17" type="V_String" />
             <Field name="Category" size="11" type="V_String" />
             <Field name="InsertText" size="52" type="V_String" />
-            <Field name="Formula" size="1278" type="V_String" />
+            <Field name="Formula" size="1318" type="V_String" />
             <Field name="NumParams" size="1" type="V_String" />
             <Field name="variable" size="5" type="V_String" />
             <Field name="EntryPoint" size="15" type="V_String" />
@@ -1243,6 +1243,55 @@ AND
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
+    </Node>
+    <Node ToolID="44">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="1194" y="690" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="45">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1302" y="690" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Name" selected="True" />
+            <SelectField field="Category" selected="True" />
+            <SelectField field="FileName" selected="True" />
+            <SelectField field="InsertText" selected="True" />
+            <SelectField field="Description" selected="True" />
+            <SelectField field="Function_OuterXML" selected="False" />
+            <SelectField field="Formula" selected="False" />
+            <SelectField field="NumParams" selected="False" />
+            <SelectField field="variable" selected="False" />
+            <SelectField field="EntryPoint" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
     </Node>
   </Nodes>
   <Connections>
@@ -1370,6 +1419,14 @@ AND
       <Origin ToolID="27" Connection="Right" />
       <Destination ToolID="28" Connection="Input" />
     </Connection>
+    <Connection name="#1">
+      <Origin ToolID="27" Connection="Join" />
+      <Destination ToolID="44" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="27" Connection="Right" />
+      <Destination ToolID="44" Connection="Input" />
+    </Connection>
     <Connection>
       <Origin ToolID="29" Connection="True" />
       <Destination ToolID="30" Connection="Input" />
@@ -1414,6 +1471,10 @@ AND
       <Origin ToolID="42" Connection="True" />
       <Destination ToolID="43" Connection="Input" />
     </Connection>
+    <Connection>
+      <Origin ToolID="44" Connection="Output" />
+      <Destination ToolID="45" Connection="Input" />
+    </Connection>
   </Connections>
   <Properties>
     <Memory default="True" />
@@ -1429,7 +1490,7 @@ AND
     <ShowAllMacroMessages value="False" />
     <ShowConnectionStatusIsOn value="True" />
     <ShowConnectionStatusOnlyWhenRunning value="False" />
-    <ZoomLevel value="0" />
+    <ZoomLevel value="-4" />
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />

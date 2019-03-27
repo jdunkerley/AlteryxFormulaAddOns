@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="2018.4">
+<AlteryxDocument yxmdVer="2019.1">
   <Nodes>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
@@ -7,7 +7,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\JDUNKE~1.SCO\AppData\Local\Temp\Engine_22276_1701b91236644b0ab06273141559a00d_\Engine_16040_88cc861d7cae44c28ab29ec3f246c2f5_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_23824_bbbeb6edfa4d41adbc1966eb1b8bff1a_\Engine_12700_53d4cca7d5c74c3886a24cd0fd4b4452_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -36,7 +36,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\JDUNKE~1.SCO\AppData\Local\Temp\Engine_22276_1701b91236644b0ab06273141559a00d_\Engine_16040_0130202ee2d14ebf96f7fe4c83158acc_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_23824_bbbeb6edfa4d41adbc1966eb1b8bff1a_\Engine_12700_e4a7a1c950224800b7b8ba33dc4e2002_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -95,7 +95,7 @@
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\JDUNKE~1.SCO\AppData\Local\Temp\Engine_22276_1701b91236644b0ab06273141559a00d_\Engine_16040_901dac5034cc499ea974c2e7d40a8829_.yxdb</TempFile>
+          <TempFile>C:\ProgramData\Alteryx\Engine\Engine_23824_bbbeb6edfa4d41adbc1966eb1b8bff1a_\Engine_12700_4eb8d4e9b4c44f578fb4c4b9f3d99638_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -390,7 +390,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="46">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="54" y="76" width="276" height="175" />
+        <Position x="54" y="71" width="276" height="180" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -445,7 +445,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="38">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="355" y="300" width="684" height="190" />
+        <Position x="355" y="295" width="684" height="195" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -637,7 +637,7 @@ Errors</AnnotationText>
     </Node>
     <Node ToolID="45">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="354" y="75.9999" width="677" height="205.0001" />
+        <Position x="354" y="70.9999" width="677" height="210.0001" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -928,7 +928,7 @@ Errors</AnnotationText>
     <ShowAllMacroMessages value="False" />
     <ShowConnectionStatusIsOn value="True" />
     <ShowConnectionStatusOnlyWhenRunning value="True" />
-    <ZoomLevel value="0" />
+    <ZoomLevel value="-1" />
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />

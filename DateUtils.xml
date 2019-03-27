@@ -173,7 +173,7 @@
     <NumParams variable="false">1</NumParams>
     <Category>Date</Category>
     <InsertText>WeekNum(dt)</InsertText>
-    <Description>Move to First day of the week (Sunday)</Description>
+    <Description>The week number with Sunday as start of week and January 1st in Week 1 (1-53)</Description>
     <Formula>CEIL((DateTimeDiff(P1, WEEKSTART(LEFT(P1,4) + "-01-01"), "days") + 1) / 7)</Formula>
   </Function>
   <Function>
@@ -260,9 +260,10 @@
     <Name>DATEPART</Name>
     <NumParams variable="false">2</NumParams>
     <Category>DateTime</Category>
-    <InsertText>DATEPART(interval, dt)</InsertText>
+    <InsertText>DatePart(interval, dt)</InsertText>
     <Description>Reproduces SQL Server's DatePart function. Support SQL servers standard parts as well as the numeric Alteryx date formatters.</Description>
-    <Formula>IF LOWERCASE(P1) IN ("century", "cc", "c") THEN Century(P2)
+    <Formula>IF ISNULL(P1) OR ISNULL(P2) THEN P1
+ELSEIF LOWERCASE(P1) IN ("century", "cc", "c") THEN Century(P2)
 ELSEIF P1 = "%C" THEN Century(P2)-1
 ELSEIF P1 = "%y" AND CHARTOINT(RIGHT(P1,1))=121 THEN MOD(YEAR(P2),100)
 ELSEIF LOWERCASE(P1) IN ("year", "yyyy", "yy", "%y") THEN Year(P2)

@@ -81,7 +81,7 @@ Write-Host "Removing bak files ..."
 Remove-Item *.bak -Recurse
 
 $output = "$root\AlteryxAbacus v$version.zip"
-Compress-Archive -Path ("$root\*.dll", "$root\*Utils.xml", "$root\README.pdf", "$root\Manual.pdf", "$root\Install.bat", "$root\Installer.ps1", "$root\Uninstall.bat", "$root\Uninstaller.ps1") -DestinationPath $output -Verbose -Update
+Compress-Archive -Path ("$root\*.dll", "$root\*Utils.xml", "$root\README.pdf", "$root\Manual.pdf", "$root\Install.bat", "$root\Install Win7.bat", "$root\Installer.ps1", "$root\Uninstall.bat", "$root\Uninstall Win7.bat", "$root\Uninstaller.ps1") -DestinationPath $output -Verbose -Update
 Remove-Item "$root\README.pdf"
 Remove-Item "$root\Manual.pdf"
 

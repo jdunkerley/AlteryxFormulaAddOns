@@ -115,6 +115,6 @@
     <Category>String</Category>
     <InsertText>FINDSTRINGLAST(String, Target)</InsertText>
     <Description>Searches for the occurrence of Target within String from end and returns the numeric position of it.</Description>
-    <Formula>IIF(CONTAINS(P1,P2),LENGTH(P1) - FINDSTRING(REVERSESTRING(P1),REVERSESTRING(P2)),-1)</Formula>
+    <Formula>IIF(IsNull(P2),0,IIF(CONTAINS(P1,P2),LENGTH(P1) - LENGTH(P2) - FINDSTRING(REVERSESTRING(P1),REVERSESTRING(P2)),-1))</Formula>
   </Function>
 </FormulaAddIn>

@@ -6,14 +6,14 @@
     <NumParams variable="false">0</NumParams>
     <Category>Math</Category>
     <Description>The Golden Ratio</Description>
-    <InsertText>PHI()</InsertText>
+    <InsertText>Phi()</InsertText>
     <Formula>(1 + SQRT(5)) / 2</Formula>
   </Function>
   <Function>
     <Name>MODULO</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>MODULO(Dividend, Divisor)</InsertText>
+    <InsertText>Modulo(Dividend, Divisor)</InsertText>
     <Description>Get Remainder of Division</Description>
     <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),(P1/P2 - FLOOR(P1/P2)) * P2)</Formula>
   </Function>
@@ -21,7 +21,7 @@
     <Name>QUOTIENT</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>QUOTIENT(Dividend, Divisor)</InsertText>
+    <InsertText>Quotient(Dividend, Divisor)</InsertText>
     <Description>Get integer portion of a division</Description>
     <Formula>IIF(ISNULL(P2) OR P2 = 0,NULL(),INT(P1/P2))</Formula>
   </Function>
@@ -29,7 +29,7 @@
     <Name>SIGN</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
-    <InsertText>SIGN(VALUE)</InsertText>
+    <InsertText>Sign(VALUE)</InsertText>
     <Description>Get sign of a value</Description>
     <Formula>IIF(ISNULL(P1),NULL(),IIF(P1=0,0,IIF(P1&lt;0,-1,1)))</Formula>
   </Function>
@@ -37,7 +37,7 @@
     <Name>INT</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
-    <InsertText>INT(VALUE)</InsertText>
+    <InsertText>Int(VALUE)</InsertText>
     <Description>Gets the integer closer to 0</Description>
     <Formula>IIF(ISNULL(P1),NULL(),IIF(P1&lt;0,-FLOOR(-P1),FLOOR(P1)))</Formula>
   </Function>
@@ -45,7 +45,7 @@
     <Name>HEXBINX</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Spatial</Category>
-    <InsertText>HEXBINX(X, Y, R)</InsertText>
+    <InsertText>HexBinX(X, Y, R)</InsertText>
     <Description>Get HexBin X Co-Ordindate of Point</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -56,7 +56,7 @@
     <Name>HEXBINY</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Spatial</Category>
-    <InsertText>HEXBINY(X, Y, R)</InsertText>
+    <InsertText>HexBinY(X, Y, R)</InsertText>
     <Description>Get HexBin Y Co-Ordindate of Point</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -91,7 +91,7 @@
     <Name>SUM</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
-    <InsertText>SUM(Val1, Val, ... )</InsertText>
+    <InsertText>Sum(Val1, Val, ... )</InsertText>
     <Description>Sum Ignoring Nulls</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -102,7 +102,7 @@
     <Name>COUNT</Name>
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
-    <InsertText>COUNT(Value1, Value2, ...)</InsertText>
+    <InsertText>Count(Value1, Value2, ...)</InsertText>
     <Description>Count not null values</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -113,7 +113,7 @@
     <Name>DEG</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
-    <InsertText>DEG(Radians)</InsertText>
+    <InsertText>Deg(Radians)</InsertText>
     <Description>Get Radians in Degrees</Description>
     <Formula>P1*180/PI()</Formula>
   </Function>
@@ -121,7 +121,7 @@
     <Name>RAD</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
-    <InsertText>RAD(Degrees)</InsertText>
+    <InsertText>Rad(Degrees)</InsertText>
     <Description>Get Degrees in Radians</Description>
     <Formula>P1/180*PI()</Formula>
   </Function>
@@ -129,7 +129,7 @@
     <Name>NORMDIST</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
-    <InsertText>NORMDIST(X, Mean, StDev, Cuml)</InsertText>
+    <InsertText>NormDist(X, Mean, StDev, Cuml)</InsertText>
     <Description>Normal Distribution PDF or CDF Value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -140,7 +140,7 @@
     <Name>NORMINV</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
-    <InsertText>NORMINV(X, Mean, StDev)</InsertText>
+    <InsertText>NormInv(X, Mean, StDev)</InsertText>
     <Description>Normal Distribution Inverse CDF Function</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -151,7 +151,7 @@
     <Name>LOGNORMDIST</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
-    <InsertText>LOGNORMDIST(X, Location, Scale, Cuml)</InsertText>
+    <InsertText>LogNormDist(X, Location, Scale, Cuml)</InsertText>
     <Description>Log Normal Distribution PDF or CDF Value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -162,7 +162,7 @@
     <Name>LOGNORMINV</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
-    <InsertText>LOGNORMINV(P, Location, Scale)</InsertText>
+    <InsertText>LogNormInv(P, Location, Scale)</InsertText>
     <Description>Log Normal Distribution Inverse CDF Function</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -173,7 +173,7 @@
     <Name>TDIST</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>TDIST(X, DegreesOfFreedom)</InsertText>
+    <InsertText>TDist(X, DegreesOfFreedom)</InsertText>
     <Description>Returns the two-tailed Student's t-distribution</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -184,7 +184,7 @@
     <Name>TINV</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>TINV(X, DegreesOfFreedom)</InsertText>
+    <InsertText>TInv(X, DegreesOfFreedom)</InsertText>
     <Description>Returns the two-tailed inverse of the Student's t-distribution</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -195,7 +195,7 @@
     <Name>CHIDIST</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>CHIDIST(X, DegreesOfFreedom)</InsertText>
+    <InsertText>ChiDist(X, DegreesOfFreedom)</InsertText>
     <Description>Returns the right-tailed probability of the chi-squared distribution</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -206,7 +206,7 @@
     <Name>CHIINV</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>CHIINV(P, DegreesOfFreedom)</InsertText>
+    <InsertText>ChiInv(P, DegreesOfFreedom)</InsertText>
     <Description>Returns the inverse of the right-tailed probability of the chi-squared distribution</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>

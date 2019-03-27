@@ -31,6 +31,7 @@ A few additional general methods for data preparation.
 
 Math based functions that I havent got a better home for!
 
+- [Int](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int): Rounds a number to nearest integer either equal to the number or closer to 0.
 - [Modulo](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#modulo): General Double Based Modulo function
 - [Sign](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sign): Deteremines the sign of a number (-1 if less than 0, 1 if greater than, 0 otherwise)
 - [HexBinX](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbinx): Given an X,Y point and optional radius, get X co-ordinate of hexagonal bin's centre
@@ -79,6 +80,7 @@ Some additional functions for working with Dates and to a certain extent Times.
 - [Quarter](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#quarter): Gets the quarter of the date [1-4]
 - [OrdinalDay](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#ordinalday): Gets the day of the year [1-366]
 - [DatePart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#datepart): Replicates the SQL DatePart function, getting a specified part of the datetime input
+- [WeekNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#weeknum): Gets the week number of a Datetime, with Sunday as start of week and January 1st in Week 1 [1-53]
 
 #### Time Part Functions (returns numbers) ####
 
@@ -99,14 +101,16 @@ Some additional functions for working with Dates and to a certain extent Times.
 
 #### Other Date Functions ####
 
-- [DateAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#dateadd): Equivalent to [DateTimeAdd](http://downloads.alteryx.com/Alteryx8.6.2/WebHelp/Reference/DateTimeFunctions.htm) but returning a Date
+- [DateAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#dateadd): Equivalent to [DateTimeAdd](https://help.alteryx.com/current/Reference/Functions.htm?Highlight=datetimeadd) but returning a Date
 - [BusinessDays](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#businessdays): Number of weekdays between two dates
+- [Workday](Date-and-Time-Functions-(DateUtils.xml)#workday): Add or remove a specificed number of weekdays to a date (similar to Excel's Workday function but no support for holidays)
 - [IsLeapYear](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)#isleapyear): Is a year a leap year *(takes a year not a date as an input use `IsLearYear(Year([Date])`)*
 
 ### [StringUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)) ###
 
 A few extension methods for working with strings.
 
+- [FindStringLast](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#findstringlast): Gets the position from the left of the last instance of a term in a string
 - [LeftPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#leftpart): Gets the text before the first instance of a separator
 - [RightPart](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#rightpart): Gets the text after the first instance of a separator
 - [Split](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#split): Splits a string into tokens and then returns the specified instance *(C++)*
