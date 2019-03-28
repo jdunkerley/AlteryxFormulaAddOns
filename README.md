@@ -6,9 +6,9 @@ Set of XML and C++ Based Formula Add Ons for Alteryx.
 
 ## Installation ##
 
-There is an [install.bat](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./install.bat) script which should promote via UAC, and install the necessary files into the Formula Add Ins directory.
+There is an [install.bat](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./install.bat) script which should promote via UAC, and install the necessary files into the Formula Add Ins directory.
 
-You can uninstall the functions using [uninstall.bat](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./uninstall.bat) script, which again should promote via UAC, and remove the necessary files from the directory.
+You can uninstall the functions using [uninstall.bat](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./uninstall.bat) script, which again should promote via UAC, and remove the necessary files from the directory.
 
 ### Manual Installation ###
 
@@ -25,9 +25,9 @@ A few additional general methods for data preparation.
 - [Version](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#version): Gets the major and minor version of the Alteryx Engine as a number *(C++)*
 - [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#ifnull): If first value is null return second
 - [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#coalesce): Given list of values return first non null value *(C++)*
-- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#reporterror): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
+- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#reporterror): Raise an error from a formula if a condition is met, otherwise return a specified value *(C++)*
 - [LogToFile](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#logtofile): Write a message to a log file *(C++)*
-- [RangeJoin](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#rangejoin): Finds the first value in the `RangeCSV` parameter which is greater than or equal to the `Value` argument. *(C++)*
+- [RangeJoin](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#rangejoin):	Finds the first value in the `RangeCSV` parameter which is greater than or equal to the `Value` argument. *(C++)*
 
 #### Variables ... ####
 
@@ -54,7 +54,7 @@ Math based functions that I havent got a better home for!
 - [Int](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int): Rounds a number to nearest integer either equal to the number or closer to 0.
 - [Modulo](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#modulo): General Double Based Modulo function
 - [Quotient](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#quotient): Returns the integer part of a division
-- [Sign](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sign): Deteremines the sign of a number (-1 if less than 0, 1 if greater than, 0 otherwise)
+- [Sign](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sign): Determines the sign of a number (-1 if less than 0, 1 if greater than, 0 otherwise)
 - [HexBinX](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbinx): Given an X,Y point and optional radius, get X co-ordinate of hexagonal bin's centre *(C++)*
 - [HexBinY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbiny): Given an X,Y point and optional radius get Y co-ordinate of hexagonal bin's centre *(C++)* 
 - [Rand_Triangular](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#rand_triangular): Given a uniform random number transform into a triangular distributed random
@@ -151,6 +151,7 @@ A few extension methods for working with strings.
 - [EndsWith](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#endswith): Does a string end with another
 - [Contains](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#contains): Is a string in another
 
+
 ## Testing ##
 
-Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./RunUnitTest.yxmd) which will run all the test workflows checking the formula add ins.
+Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./RunUnitTest.yxmd) which will run all the test workflows checking the formula add ins.
