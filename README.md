@@ -22,30 +22,30 @@ Those functions which require the *AlteryxAbacus.dll* are labelled with *C++*
 
 A few additional general methods for data preparation.
 
-- [Version](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#version): Gets the major and minor version of the Alteryx Engine as a number *(C++)*
-- [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#ifnull): If first value is null return second
-- [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#coalesce): Given list of values return first non null value *(C++)*
-- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#reporterror): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
-- [LogToFile](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#logtofile): Write a message to a log file *(C++)*
-- [RangeJoin](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#rangejoin): Finds the first value in the `RangeCSV` parameter which is greater than or equal to the `Value` argument. *(C++)*
+- [Version](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#version): Gets the major and minor version of the Alteryx Engine as a number *(C++)*
+- [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#ifnull): If first value is null return second
+- [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#coalesce): Given list of values return first non null value *(C++)*
+- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#reporterror): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
+- [LogToFile](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#logtofile): Write a message to a log file *(C++)*
+- [RangeJoin](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#rangejoin): Finds the first value in the `RangeCSV` parameter which is greater than or equal to the `Value` argument. *(C++)*
 
 #### Variables ... ####
 
 **These are very experimental so please use with caution**. 
 
-- [VarPrint](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varprint): Lists all current variable names and values to a string table *(C++)*
-- [VarReset](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varreset): Clears the internal caches of all variables. Can take a `Key` parameter to delete just that variable *(C++)*
-- [VarNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varnum): Retrieves (if no `Value` argument passed) or stores a number value in the `Key` variable *(C++)*
-- [VarNumExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varnumexists): Returns true if a number variable exists, false otherwise *(C++)*
-- [VarText](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#vartext): Retrieves (if no `Value` argument passed) or stores a string value in the `Key` variable *(C++)*
-- [VarTextExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#vartextexists): Returns true if a string variable exists, false otherwise *(C++)*
-- [VarListExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistexists): Returns true if a list variable exists, false otherwise *(C++)*
-- [VarListLength](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistlength): Returns the current length of a list if it exists, or NULL if the list does not exist *(C++)*
-- [VarListAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistadd): Adds an item to a list variable (creating a new list if needed) at the end of the list *(C++)*
-- [VarListInsert](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistinsert): Inserts an item into a list (creating a new list if needed) at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
-- [VarListSet](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistset): Sets an item in an existing list at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
-- [VarListRemove](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistremove): Removes an item from a list variable at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
-- [VarListGet](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistget): Gets a value from a list variable at the specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+- [VarPrint](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varprint): Lists all current variable names and values to a string table *(C++)*
+- [VarReset](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varreset): Clears the internal caches of all variables. Can take a `Key` parameter to delete just that variable *(C++)*
+- [VarNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnum): Retrieves (if no `Value` argument passed) or stores a number value in the `Key` variable *(C++)*
+- [VarNumExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnumexists): Returns true if a number variable exists, false otherwise *(C++)*
+- [VarText](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartext): Retrieves (if no `Value` argument passed) or stores a string value in the `Key` variable *(C++)*
+- [VarTextExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartextexists): Returns true if a string variable exists, false otherwise *(C++)*
+- [VarListExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistexists): Returns true if a list variable exists, false otherwise *(C++)*
+- [VarListLength](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistlength): Returns the current length of a list if it exists, or NULL if the list does not exist *(C++)*
+- [VarListAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistadd): Adds an item to a list variable (creating a new list if needed) at the end of the list *(C++)*
+- [VarListInsert](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistinsert): Inserts an item into a list (creating a new list if needed) at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+- [VarListSet](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistset): Sets an item in an existing list at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+- [VarListRemove](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistremove): Removes an item from a list variable at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+- [VarListGet](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistget): Gets a value from a list variable at the specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
 
 ### [MathUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)) ###
 
