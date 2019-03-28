@@ -189,7 +189,7 @@
     <Name>RANGEJOIN</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Specialized</Category>
-    <InsertText>RANGEJOIN(Value, RangeCSV)</InsertText>
+    <InsertText>RangeJoin(Value, RangeCSV)</InsertText>
     <Description>Find value in list above value</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>

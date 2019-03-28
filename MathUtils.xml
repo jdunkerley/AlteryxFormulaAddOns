@@ -29,7 +29,7 @@
     <Name>SIGN</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
-    <InsertText>Sign(VALUE)</InsertText>
+    <InsertText>Sign(Value)</InsertText>
     <Description>Get sign of a value</Description>
     <Formula>IIF(ISNULL(P1),NULL(),IIF(P1=0,0,IIF(P1&lt;0,-1,1)))</Formula>
   </Function>
@@ -37,7 +37,7 @@
     <Name>INT</Name>
     <NumParams variable="false">1</NumParams>
     <Category>Math</Category>
-    <InsertText>Int(VALUE)</InsertText>
+    <InsertText>Int(Value)</InsertText>
     <Description>Gets the integer closer to 0</Description>
     <Formula>IIF(ISNULL(P1),NULL(),IIF(P1&lt;0,-FLOOR(-P1),FLOOR(P1)))</Formula>
   </Function>
