@@ -829,7 +829,7 @@ Description =...</DefaultAnnotationText>
     </Node>
     <Node ToolID="30">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
-        <Position x="1146" y="522" />
+        <Position x="1170" y="522" />
       </GuiSettings>
       <Properties>
         <Configuration>

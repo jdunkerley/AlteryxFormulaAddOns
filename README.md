@@ -6,9 +6,9 @@ Set of XML and C++ Based Formula Add Ons for Alteryx.
 
 ## Installation ##
 
-There is an [install.bat](./install.bat) script which should promote via UAC, and install the necessary files into the Formula Add Ins directory.
+There is an [install.bat](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./install.bat) script which should promote via UAC, and install the necessary files into the Formula Add Ins directory.
 
-You can uninstall the functions using [uninstall.bat](./uninstall.bat) script, which again should promote via UAC, and remove the necessary files from the directory.
+You can uninstall the functions using [uninstall.bat](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./uninstall.bat) script, which again should promote via UAC, and remove the necessary files from the directory.
 
 ### Manual Installation ###
 
@@ -25,7 +25,26 @@ A few additional general methods for data preparation.
 - [Version](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#version): Gets the major and minor version of the Alteryx Engine as a number *(C++)*
 - [IfNull](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#ifnull): If first value is null return second
 - [Coalesce](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#coalesce): Given list of values return first non null value *(C++)*
-- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#ReportError): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
+- [ReportError](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#reporterror): Raise an error from a formula if a confition is met, otherwise return a specified value *(C++)*
+- [LogToFile](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#logtofile): Write a message to a log file *(C++)*
+
+#### Variables ... ####
+
+**These are very experimental so please use with caution**. 
+
+ - [VarPrint](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varprint): Lists all current variable names and values to a string table *(C++)*
+ - [VarReset](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varreset): Clears the internal caches of all variables. Can take a `Key` parameter to delete just that variable *(C++)*
+ - [VarNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varnum): Retrieves (if no `Value` argument passed) or stores a number value in the `Key` variable *(C++)*
+ - [VarNumExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varnumexists): Returns true if a number variable exists, false otherwise *(C++)*
+ - [VarText](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#vartext): Retrieves (if no `Value` argument passed) or stores a string value in the `Key` variable *(C++)*
+ - [VarTextExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#vartextexists): Returns true if a string variable exists, false otherwise *(C++)*
+ - [VarListExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistexists): Returns true if a list variable exists, false otherwise *(C++)*
+ - [VarListLength](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistlength): Returns the current length of a list if it exists, or NULL if the list does not exist *(C++)*
+ - [VarListAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistadd): Adds an item to a list variable (creating a new list if needed) at the end of the list *(C++)*
+ - [VarListInsert](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistinsert): Inserts an item into a list (creating a new list if needed) at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+ - [VarListSet](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistset): Sets an item in an existing list at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+ - [VarListRemove](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistremove): Removes an item from a list variable at specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
+ - [VarListGet](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml#varlistget): Gets a value from a list variable at the specified index. If `Index` is negative accesses from the end of the array backwards *(C++)*
 
 ### [MathUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)) ###
 
@@ -35,22 +54,22 @@ Math based functions that I havent got a better home for!
 - [Modulo](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#modulo): General Double Based Modulo function
 - [Quotient](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#quotient): Returns the integer part of a division
 - [Sign](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sign): Deteremines the sign of a number (-1 if less than 0, 1 if greater than, 0 otherwise)
-- [HexBinX](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbinx): Given an X,Y point and optional radius, get X co-ordinate of hexagonal bin's centre
-- [HexBinY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbiny): Given an X,Y point and optional radius get Y co-ordinate of hexagonal bin's centre 
+- [HexBinX](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbinx): Given an X,Y point and optional radius, get X co-ordinate of hexagonal bin's centre *(C++)*
+- [HexBinY](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#hexbiny): Given an X,Y point and optional radius get Y co-ordinate of hexagonal bin's centre *(C++)* 
 - [Rand_Triangular](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#rand_triangular): Given a uniform random number transform into a triangular distributed random
 - [Avg](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#avg): Average of a list of values ignoring `NULL` *(C++)*
 - [Count](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#count): Count of a list of values ignoring `NULL` *(C++)*
 - [Sum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#sum): Sum of a list of values ignoring `NULL` *(C++)*
 - [Deg](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#deg): Convert radians to degrees
 - [Rad](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#rad): Convert degrees to radians
-- [NormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#normdist): Compute PDF or CDF on Normal distribution
-- [NormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#norminv): Compute inverse CDF on Normal distribution
-- [LogNormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognormdist): Compute PDF or CDF on Log Normal distribution
-- [LogNormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognorminv): Compute inverse CDF on Log Normal distribution
-- [TDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#tdist): Compute two tailed Student T distribution
-- [TInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#tinv): Compute inverse two tailed Student T distribution
-- [ChiDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chidist): Compute CDF on Chi Squared distribution
-- [ChiInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chiinv): Compute inverse CDF on Chi Squared distribution
+- [NormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#normdist): Compute PDF or CDF on Normal distribution *(C++)*
+- [NormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#norminv): Compute inverse CDF on Normal distribution *(C++)*
+- [LogNormDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognormdist): Compute PDF or CDF on Log Normal distribution *(C++)*
+- [LogNormInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#lognorminv): Compute inverse CDF on Log Normal distribution *(C++)*
+- [TDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#tdist): Compute two tailed Student T distribution *(C++)*
+- [TInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#tinv): Compute inverse two tailed Student T distribution *(C++)*
+- [ChiDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chidist): Compute CDF on Chi Squared distribution *(C++)*
+- [ChiInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chiinv): Compute inverse CDF on Chi Squared distribution *(C++)*
 - [Phi](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#phi): Returns the golden ratio constant.
 - [RandTriangular](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#randtriangular): Produces a random number from a triangular distribution
 
@@ -121,9 +140,9 @@ A few extension methods for working with strings.
 
 #### Data Generation ####
 
-- [RandomIPAddress](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomipaddress): Generates a random IP address, can be restricted to be within a CIDR block
-- [RandomItem](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomitem): Picks a random item from the input list (can be list of numbers or list of strings but must be one type)
-- [RandomString](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomstring): Generates a random string using a template to control format
+- [RandomIPAddress](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomipaddress): Generates a random IP address, can be restricted to be within a CIDR block *(C++)*
+- [RandomItem](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomitem): Picks a random item from the input list (can be list of numbers or list of strings but must be one type) *(C++)*
+- [RandomString](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/String-Functions-(StringUtils.xml)#randomstring): Generates a random string using a template to control format *(C++)*
 
 #### Retired Functions ####
 
@@ -133,4 +152,4 @@ A few extension methods for working with strings.
 
 ## Testing ##
 
-Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](./RunUnitTest.yxmd) which will run all the test workflows checking the formula add ins.
+Assuming you have the CReW Runner macro, there is a workflow [RunUnitTest.yxmd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/./RunUnitTest.yxmd) which will run all the test workflows checking the formula add ins.
