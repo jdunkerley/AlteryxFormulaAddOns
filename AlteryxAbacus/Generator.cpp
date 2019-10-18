@@ -6,12 +6,13 @@
 #include "AlteryxAbacusUtils.h"
 #include <array>
 
-static int getUniformInt(int max)
-{
-	static std::random_device rd;
-	static std::mt19937 mt19937(rd());
+static std::random_device rd;
+static std::mt19937_64 rand_generator(rd());
 
-	return std::uniform_int_distribution<int>(0, max)(mt19937);
+template <class T>
+static T getUniformInt(T min, T max)
+{
+	return std::uniform_int_distribution<T>(min, max)(rand_generator);
 }
 
 static auto getCharacter(wchar_t const* input, const size_t length)
@@ -21,7 +22,7 @@ static auto getCharacter(wchar_t const* input, const size_t length)
 		return L'\0';
 	}
 
-	return input[getUniformInt(length - 1)];
+	return input[getUniformInt<size_t>(0, length - 1u)];
 }
 
 static void createFromStandard(wchar_t const* pattern, const size_t length, wchar_t * output)
@@ -56,7 +57,7 @@ static void createFromStandard(wchar_t const* pattern, const size_t length, wcha
 
 static void createFromCharset(wchar_t const* pattern, const size_t length, std::vector<const wchar_t*> const& charsets, std::vector<size_t> const& lengths, wchar_t * output)
 {
-	const auto setscount = charsets.size();
+	const auto sets_count = charsets.size();
 
 	for (auto i = 0LLU; i < length; i++) {
 		auto index = -1;
@@ -68,7 +69,7 @@ static void createFromCharset(wchar_t const* pattern, const size_t length, std::
 			index = static_cast<int>(pattern[i] - L'A') + 10;
 		}
 
-		if (index >= 0 && setscount > index)
+		if (index >= 0 && sets_count > index)
 		{
 			const auto new_char = getCharacter(charsets[index], lengths[index]);
 			if (new_char == L'\0')
@@ -84,6 +85,67 @@ static void createFromCharset(wchar_t const* pattern, const size_t length, std::
 	}
 
 	output[length] = '\0';
+}
+
+extern "C" long _declspec(dllexport) _stdcall RandomSeed(int nNumArgs, FormulaAddInData * pArgs, FormulaAddInData * pReturnValue)
+{
+	pReturnValue->nVarType = nVarType_DOUBLE;
+
+	if (nNumArgs > 1 || pArgs[0].nVarType != nVarType_DOUBLE)
+	{
+		pReturnValue->isNull = true;
+		return AlteryxAbacusUtils::ReturnError(L"RandomSeed Arguments: <Seed:Number>", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->isNull = false;
+	pReturnValue->dVal = -1;
+
+	if (nNumArgs == 0 || pArgs[0].isNull)
+	{
+		rand_generator.seed(rd());
+	}
+	else if (nNumArgs == 1 && pArgs[0].nVarType == nVarType_DOUBLE)
+	{
+		rand_generator.seed(static_cast<unsigned long long>(pArgs[0].dVal));
+	}
+
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall Random(int nNumArgs, FormulaAddInData * pArgs, FormulaAddInData * pReturnValue)
+{
+	pReturnValue->nVarType = nVarType_DOUBLE;
+
+	pReturnValue->isNull = false;
+	pReturnValue->dVal = std::uniform_real_distribution<double>(0, 1)(rand_generator);
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
+}
+
+extern "C" long _declspec(dllexport) _stdcall RandomInt(int nNumArgs, FormulaAddInData * pArgs, FormulaAddInData * pReturnValue)
+{
+	pReturnValue->nVarType = nVarType_DOUBLE;
+
+	if (nNumArgs < 1 || nNumArgs > 2 || pArgs[0].nVarType != nVarType_DOUBLE || (nNumArgs == 2 && pArgs[1].nVarType != nNumArgs))
+	{
+		pReturnValue->isNull = true;
+		return AlteryxAbacusUtils::ReturnError(L"RandomInt Arguments: [Min:Number] <Max:Number>", pReturnValue, nNumArgs, pArgs);
+	}
+
+	pReturnValue->isNull = false;
+	if (pArgs[0].isNull || (nNumArgs == 2 && pArgs[1].isNull))
+	{
+		pReturnValue->isNull = true;
+	}
+	else if (nNumArgs == 1)
+	{
+		pReturnValue->dVal = static_cast<double>(getUniformInt<long long>(0, static_cast<long long>(pArgs[0].dVal)));
+	}
+	else
+	{
+		pReturnValue->dVal = static_cast<double>(getUniformInt<long long>(static_cast<long long>(pArgs[0].dVal), static_cast<long long>(pArgs[1].dVal)));
+	}
+	
+	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 }
 
 extern "C" long _declspec(dllexport) _stdcall RandomString(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
@@ -116,9 +178,10 @@ extern "C" long _declspec(dllexport) _stdcall RandomString(int nNumArgs, Formula
 	}
 	else
 	{
-		std::vector<const wchar_t*> charsets(nNumArgs - 1);
-		std::vector<size_t> lengths(nNumArgs - 1);
-		for (auto i = 1; i < nNumArgs; i++)
+		const auto size = static_cast<unsigned long long>(nNumArgs) - 1ULL;
+		std::vector<const wchar_t*> charsets(size);
+		std::vector<size_t> lengths(size);
+		for (auto i = 1ULL; i <= size; i++)
 		{
 			if (nVarType_DOUBLE == pArgs[i].nVarType)
 			{
@@ -127,12 +190,12 @@ extern "C" long _declspec(dllexport) _stdcall RandomString(int nNumArgs, Formula
 
 			if (pArgs[i].isNull)
 			{
-				charsets[i-1] = L"";
-				lengths[i-1] = 0;
+				charsets[i - 1ULL] = L"";
+				lengths[i - 1ULL] = 0;
 			}
 			else {
-				charsets[i-1] = pArgs[i].pVal;
-				lengths[i-1] = wcslen(pArgs[i].pVal);
+				charsets[i - 1ULL] = pArgs[i].pVal;
+				lengths[i - 1ULL] = wcslen(pArgs[i].pVal);
 			}
 		}
 
@@ -189,7 +252,7 @@ extern "C" long _declspec(dllexport) _stdcall RandomIPAddress(int nNumArgs, Form
 	wchar_t *end = pStringRet;
 	for (auto i = 0; i < 4; i++)
 	{
-		const int ip = cidr_parts[i] + getUniformInt((1 << std::max<int>(8 - range, 0)) - 1);
+		const int ip = cidr_parts[i] + getUniformInt(0, (1 << std::max<int>(8 - range, 0)) - 1);
 		range = max(0, range - 8);
 		_itow_s(ip, end, 16 * sizeof(wchar_t), 10);
 		end += (ip < 10 ? 2 : (ip < 100 ? 3 : 4));
@@ -210,7 +273,7 @@ extern "C" long _declspec(dllexport) _stdcall RandomItem(int nNumArgs, FormulaAd
 	}
 
 	pReturnValue->nVarType = pArgs[0].nVarType;
-	const int randomItem = getUniformInt(nNumArgs - 1);
+	const int randomItem = getUniformInt(0, nNumArgs - 1);
 
 	if (pArgs[randomItem].isNull)
 	{

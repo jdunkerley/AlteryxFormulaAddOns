@@ -12,6 +12,17 @@ static std::map<std::wstring, std::wstring> stringLookup;
 static std::map<std::wstring, double> doubleLookup;
 static std::map<std::wstring, std::deque<double>> listLookup;
 
+static size_t get_index(const size_t size, double dVal)
+{
+	if (dVal < 0)
+	{
+		const auto shift = static_cast<size_t>(-dVal);
+		return shift > size ? size : size - shift;
+	}
+
+	return static_cast<size_t>(dVal);
+}
+
 extern "C" long _declspec(dllexport) _stdcall VarTextExists(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	if (nNumArgs < 1 || nNumArgs > 2 || pArgs[0].nVarType == 1)
@@ -182,7 +193,7 @@ extern "C" long _declspec(dllexport) _stdcall VarListLength(int nNumArgs, Formul
 		if (listFind != listLookup.end())
 		{
 			pReturnValue->isNull = false;
-			pReturnValue->dVal = listFind->second.size();
+			pReturnValue->dVal = static_cast<double>(listFind->second.size());
 		}
 	}
 
@@ -205,7 +216,7 @@ extern "C" long _declspec(dllexport) _stdcall VarListGet(int nNumArgs, FormulaAd
 		if (listFind != listLookup.end())
 		{
 			const auto size = listFind->second.size();
-			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
+			const auto index = get_index(size, pArgs[1].dVal);
 			if (index >= 0 && index < size) 
 			{
 				pReturnValue->isNull = false;
@@ -275,7 +286,7 @@ extern "C" long _declspec(dllexport) _stdcall VarListSet(int nNumArgs, FormulaAd
 		if (listFind != listLookup.end())
 		{
 			const auto size = listFind->second.size();
-			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
+			const auto index = get_index(size, pArgs[1].dVal);
 			if (index < 0 || index >= size)
 			{
 				return AlteryxAbacusUtils::ReturnError(L"Cannot set as index out of range", pReturnValue, nNumArgs, pArgs);
@@ -316,7 +327,7 @@ extern "C" long _declspec(dllexport) _stdcall VarListInsert(int nNumArgs, Formul
 		if (listFind != listLookup.end())
 		{
 			const auto size = listFind->second.size();
-			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
+			const auto index = get_index(size, pArgs[1].dVal);
 			if (index < 0 || index > size)
 			{
 				return AlteryxAbacusUtils::ReturnError(L"Cannot insert as index out of range", pReturnValue, nNumArgs, pArgs);
@@ -362,7 +373,7 @@ extern "C" long _declspec(dllexport) _stdcall VarListRemove(int nNumArgs, Formul
 		if (listFind != listLookup.end())
 		{
 			const auto size = listFind->second.size();
-			const unsigned int index = pArgs[1].dVal < 0 ? size + pArgs[1].dVal : pArgs[1].dVal;
+			const auto index = get_index(size, pArgs[1].dVal);
 			if (index >= 0 && index < size)
 			{
 				const auto it = listFind->second.begin() + index;
@@ -685,7 +696,7 @@ extern "C" long _declspec(dllexport) _stdcall RangeJoin(int nNumArgs, FormulaAdd
 		start = end;
 		if (value > target)
 		{
-			pReturnValue->dVal = value;
+			pReturnValue->dVal = static_cast<double>(value);
 			return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
 		}
 	}

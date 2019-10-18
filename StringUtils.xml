@@ -55,6 +55,39 @@
     </Dll>
   </Function>
   <Function>
+    <Name>RANDOMSEED</Name>
+    <NumParams variable="true">0</NumParams>
+    <Category>Generator</Category>
+    <InsertText>RandomSeed(Seed)</InsertText>
+    <Description>Sets the Random generator seed</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>RandomSeed</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>RANDOM</Name>
+    <NumParams variable="false">0</NumParams>
+    <Category>Generator</Category>
+    <InsertText>Random()</InsertText>
+    <Description>Get a random number between 0 and 1</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>Random</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>RANDOMINT</Name>
+    <NumParams variable="true">1</NumParams>
+    <Category>Generator</Category>
+    <InsertText>RandomInt(Max)</InsertText>
+    <Description>Get a random integer between 0 and Max or Min and Max</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>RandomInt</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
     <Name>RANDOMSTRING</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Generator</Category>
