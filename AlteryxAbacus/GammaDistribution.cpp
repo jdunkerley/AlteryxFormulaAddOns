@@ -21,7 +21,7 @@ extern "C" long _declspec(dllexport) _stdcall GammaDist(int nNumArgs, FormulaAdd
 	}
 
 	// Do Calculation
-	if (pArgs[0].isNull || pArgs[1].isNull) {
+	if (pArgs[0].isNull || pArgs[1].isNull || pArgs[1].dVal == 0) {
 		pReturnValue->isNull = 1;
 	}
 	else {
@@ -55,7 +55,7 @@ extern "C" long _declspec(dllexport) _stdcall GammaInv(int nNumArgs, FormulaAddI
 	}
 
 	// Do Calculation
-	if (pArgs[0].isNull || pArgs[0].dVal <= 0 || pArgs[0].dVal >= 1) {
+	if (pArgs[0].isNull || pArgs[0].dVal <= 0 || pArgs[0].dVal >= 1 || pArgs[1].dVal == 0) {
 		pReturnValue->isNull = 1;
 	}
 	else {

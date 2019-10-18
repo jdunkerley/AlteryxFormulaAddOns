@@ -140,7 +140,7 @@
     <Name>NORMINV</Name>
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
-    <InsertText>NormInv(X, Mean, StDev)</InsertText>
+    <InsertText>NormInv(P, Mean, StDev)</InsertText>
     <Description>Normal Distribution Inverse CDF Function</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -184,7 +184,7 @@
     <Name>TINV</Name>
     <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
-    <InsertText>TInv(X, DegreesOfFreedom)</InsertText>
+    <InsertText>TInv(P, DegreesOfFreedom)</InsertText>
     <Description>Returns the two-tailed inverse of the Student's t-distribution</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
@@ -211,6 +211,28 @@
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>ChiInv</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>GAMMADIST</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>GammaDist(X, Shape, Scale, Cuml)</InsertText>
+    <Description>Gamma Distribution PDF or CDF Value</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>GammaDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>GAMMAINV</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>GammaInv(P, Shape, Scale)</InsertText>
+    <Description>Gamma Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>GammaInv</EntryPoint>
     </Dll>
   </Function>
 </FormulaAddIn>
