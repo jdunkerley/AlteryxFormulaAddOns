@@ -161,6 +161,7 @@
     <ClCompile Include="DateTimeFunctions.cpp" />
     <ClCompile Include="EngineVersion.cpp" />
     <ClCompile Include="GammaDistribution.cpp" />
+    <ClCompile Include="PoissonDistribution.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="HexBins.cpp" />
     <ClCompile Include="AlteryxAbacus.cpp">
