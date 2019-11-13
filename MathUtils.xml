@@ -248,7 +248,7 @@
   </Function>
   <Function>
     <Name>POISSONINV</Name>
-    <NumParams variable="true">2</NumParams>
+    <NumParams variable="false">2</NumParams>
     <Category>Math</Category>
     <InsertText>PoissonInv(P, Mean)</InsertText>
     <Description>Poisson Distribution Inverse CDF Function</Description>
