@@ -67,7 +67,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 	}
 
 	// Do Calculation
-	if (pArgs[0].isNull || pArgs[0].dVal <= 0 || pArgs[0].dVal >= 1) {
+	if (pArgs[0].isNull || pArgs[0].dVal <= 0 || pArgs[0].dVal >= 1 || pArgs[2].dVal == 0) {
 		pReturnValue->isNull = 1;
 	}
 	else {
