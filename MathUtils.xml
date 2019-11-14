@@ -130,7 +130,7 @@
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
     <InsertText>NormDist(X, Mean, StDev, Cuml)</InsertText>
-    <Description>Normal Distribution PDF or CDF Value</Description>
+    <Description>Normal Distribution PDF or CDF Value. If omitted: Mean = 0, StDev = 1, Cuml = 0 (pdf)</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>NormDist</EntryPoint>
@@ -152,7 +152,7 @@
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
     <InsertText>LogNormDist(X, Location, Scale, Cuml)</InsertText>
-    <Description>Log Normal Distribution PDF or CDF Value</Description>
+    <Description>Log Normal Distribution PDF or CDF Value. If omitted: Location = 0, Scale = 1, Cuml = 0 (pdf)</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>LogNormDist</EntryPoint>
@@ -163,7 +163,7 @@
     <NumParams variable="true">1</NumParams>
     <Category>Math</Category>
     <InsertText>LogNormInv(P, Location, Scale)</InsertText>
-    <Description>Log Normal Distribution Inverse CDF Function</Description>
+    <Description>Log Normal Distribution Inverse CDF Function. If omitted: Location = 0, Scale = 1</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>LogNormInv</EntryPoint>
@@ -218,7 +218,7 @@
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
     <InsertText>GammaDist(X, Shape, Scale, Cuml)</InsertText>
-    <Description>Gamma Distribution PDF or CDF Value</Description>
+    <Description>Gamma Distribution PDF or CDF Value. If omitted: Scale = 1, Cuml = 0 (pdf)</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>GammaDist</EntryPoint>
@@ -229,10 +229,32 @@
     <NumParams variable="true">2</NumParams>
     <Category>Math</Category>
     <InsertText>GammaInv(P, Shape, Scale)</InsertText>
-    <Description>Gamma Distribution Inverse CDF Function</Description>
+    <Description>Gamma Distribution Inverse CDF Function. If omitted: Scale = 1</Description>
     <Dll>
       <Name>AlteryxAbacus.dll</Name>
       <EntryPoint>GammaInv</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>POISSONDIST</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>PoissonDist(X, Mean, Cuml)</InsertText>
+    <Description>Poisson Distribution PDF or CDF Value. If omitted: Cuml = 0 (pdf)</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>PoissonDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>POISSONINV</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>PoissonInv(P, Mean)</InsertText>
+    <Description>Poisson Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>PoissonInv</EntryPoint>
     </Dll>
   </Function>
 </FormulaAddIn>
