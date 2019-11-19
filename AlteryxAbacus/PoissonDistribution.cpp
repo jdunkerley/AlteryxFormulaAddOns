@@ -65,8 +65,20 @@ extern "C" long _declspec(dllexport) _stdcall PoissonInv(int nNumArgs, FormulaAd
 		const double p = pArgs[0].dVal;
 
 		pReturnValue->isNull = 0;
+		
+		//change rounding policy so that the selected values match the expected probability
 		// https://www.boost.org/doc/libs/1_35_0/libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/poisson_dist.html
-		pReturnValue->dVal = boost::math::gamma_q_inv(mean, p);
+		using namespace boost::math::policies;
+		using namespace boost::math;
+
+		typedef poisson_distribution<
+			double,
+			policy<discrete_quantile<integer_round_up> > >
+			poisson_round;
+
+		poisson_round s(mean);
+		
+		pReturnValue->dVal = quantile(s,p);
 	}
 
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
