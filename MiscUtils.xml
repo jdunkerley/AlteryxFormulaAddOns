@@ -42,6 +42,22 @@
       <EntryPoint>VarNum</EntryPoint>
     </Dll>
   </Function>
+   <Function>
+    <Name>VARNUMREAD</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarNumRead(Key)</InsertText>
+    <Description>Gets a numeric value</Description>
+    <Formula>VarNum(P1)</Formula>
+  </Function>
+  <Function>
+    <Name>VARNUMWRITE</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarNumWrite(Key,Value)</InsertText>
+    <Description>Stores a numeric value</Description>
+    <Formula>VarNum(P1,P2)</Formula>
+  </Function>  
   <Function>
     <Name>VARNUMEXISTS</Name>
     <NumParams variable="false">1</NumParams>
@@ -64,6 +80,22 @@
       <EntryPoint>VarText</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>VARTEXTREAD</Name>
+    <NumParams variable="false">1</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarTextRead(Key)</InsertText>
+    <Description>Gets a text value</Description>
+    <Formula>VarText(P1)</Formula>
+  </Function>
+  <Function>
+    <Name>VARTEXTWRITE</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarTextWrite(Key,Value)</InsertText>
+    <Description>Stores a text value</Description>
+    <Formula>VarText(P1,P2)</Formula>
+  </Function>  
   <Function>
     <Name>VARTEXTEXISTS</Name>
     <NumParams variable="false">1</NumParams>
