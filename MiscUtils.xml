@@ -42,6 +42,14 @@
       <EntryPoint>VarNum</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>VARNUMADD</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarNumAdd(Key,Value to Add)</InsertText>
+    <Description>Adds a numeric value to the currently stored value </Description>
+    <Formula>VarNumWrite(P1,VarNumRead(P1)+P2)</Formula>
+  </Function>
    <Function>
     <Name>VARNUMREAD</Name>
     <NumParams variable="false">1</NumParams>
