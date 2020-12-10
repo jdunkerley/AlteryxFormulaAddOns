@@ -104,6 +104,14 @@
     <Description>Stores a text value</Description>
     <Formula>VarText(P1,P2)</Formula>
   </Function>  
+   <Function>
+    <Name>VARTEXTADD</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarTextAdd(Key,Before string,After string)</InsertText>
+    <Description>Stores a text value with Before and After strings appended to the stored text value</Description>
+    <Formula>VarTextWrite(P1,P2 + VarTextRead(P1) + P3)</Formula>
+  </Function>
   <Function>
     <Name>VARTEXTEXISTS</Name>
     <NumParams variable="false">1</NumParams>
