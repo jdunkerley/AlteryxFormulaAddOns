@@ -6,7 +6,7 @@
 
 using boost::math::chi_squared_distribution;
 
-// Syntax: X, Degres of Freedom
+// Syntax: X, Degrees of Freedom
 extern "C" long _declspec(dllexport) _stdcall ChiDist(int nNumArgs, FormulaAddInData *pArgs, FormulaAddInData *pReturnValue)
 {
 	pReturnValue->nVarType = 1;

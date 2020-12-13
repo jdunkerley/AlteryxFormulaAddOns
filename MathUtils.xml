@@ -257,4 +257,48 @@
       <EntryPoint>PoissonInv</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>INT64ADD</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>Int64Add(A, B, ...)</InsertText>
+    <Description>Adds integers stored as strings using Int64 Maths</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>Int64Add</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>INT64MULT</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>Int64Mult(A, B, ...)</InsertText>
+    <Description>Products integers stored as strings using Int64 Maths</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>Int64Mult</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>INT64DIV</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>Int64Div(A, B)</InsertText>
+    <Description>Divides integers stored as strings using Int64 Maths</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>Int64Div</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>INT64MOD</Name>
+    <NumParams variable="false">2</NumParams>
+    <Category>Math</Category>
+    <InsertText>Int64Mod(A, B)</InsertText>
+    <Description>Mod integers stored as strings using Int64 Maths</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>Int64Mod</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>

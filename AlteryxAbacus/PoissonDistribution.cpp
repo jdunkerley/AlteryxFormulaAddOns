@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "AlteryxAbacus.h"
 
-#include <boost\math\distributions\gamma.hpp>
 #include <boost\math\distributions\poisson.hpp>
 #include "AlteryxAbacusUtils.h"
 

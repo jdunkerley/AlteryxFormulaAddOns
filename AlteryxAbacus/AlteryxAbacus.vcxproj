@@ -137,7 +137,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;ALTERYXADDIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Repos\boost_1_67_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDKs\boost_1_67_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -161,6 +161,7 @@
     <ClCompile Include="DateTimeFunctions.cpp" />
     <ClCompile Include="EngineVersion.cpp" />
     <ClCompile Include="GammaDistribution.cpp" />
+    <ClCompile Include="Int64.cpp" />
     <ClCompile Include="PoissonDistribution.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="HexBins.cpp" />
