@@ -301,4 +301,26 @@
       <EntryPoint>Int64Mod</EntryPoint>
     </Dll>
   </Function>
+  <Function>
+    <Name>FDIST</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Math</Category>
+    <InsertText>FDist(X, DegreesOfFreedom1, DegreesOfFreedom2)</InsertText>
+    <Description>F Distribution 1 - CDF Value.</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>FDist</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
+    <Name>FINV</Name>
+    <NumParams variable="false">3</NumParams>
+    <Category>Math</Category>
+    <InsertText>FInv(P, DegreesOfFreedom1, DegreesOfFreedom2)</InsertText>
+    <Description>F Distribution Inverse CDF Function</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>FInv</EntryPoint>
+    </Dll>
+  </Function>
 </FormulaAddIn>
