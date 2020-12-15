@@ -262,7 +262,7 @@
     <Category>DateTime</Category>
     <InsertText>DatePart(interval, dt)</InsertText>
     <Description>Reproduces SQL Server's DatePart function. Support SQL servers standard parts as well as the numeric Alteryx date formatters.</Description>
-    <Formula>IF ISNULL(P1) OR ISNULL(P2) THEN P1
+    <Formula>IF ISNULL(P1) OR ISNULL(P2) THEN NULL()
 ELSEIF LOWERCASE(P1) IN ("century", "cc", "c") THEN Century(P2)
 ELSEIF P1 = "%C" THEN Century(P2)-1
 ELSEIF P1 = "%y" AND CHARTOINT(RIGHT(P1,1))=121 THEN MOD(YEAR(P2),100)

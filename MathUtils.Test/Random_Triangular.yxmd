@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="10.5">
+<AlteryxDocument yxmdVer="2020.3">
   <Nodes>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
@@ -1232,12 +1232,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Double" size="8" expression="RAND_TRIANGULAR(P, -1, 0, 1)" />
+            <FormulaField expression="RANDTRIANGULAR(P, -1, 0, 1)" field="Actual" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=RAND_TRIANGULAR(P, -1, 0, 1)</DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[Actual = RANDTRIANGULAR(P, -1, 0, 1)
+]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -1313,12 +1314,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Double" size="8" expression="RAND_TRIANGULAR(P, 0, 3, 3)" />
+            <FormulaField expression="RANDTRIANGULAR(P, 0, 3, 3)" field="Actual" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=RAND_TRIANGULAR(P, 0, 3, 3)</DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[Actual = RANDTRIANGULAR(P, 0, 3, 3)
+]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -1394,12 +1396,13 @@
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField field="Actual" type="Double" size="8" expression="RAND_TRIANGULAR(P, 0, 0, 3)" />
+            <FormulaField expression="RANDTRIANGULAR(P, 0, 0, 3)" field="Actual" size="8" type="Double" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>Actual=RAND_TRIANGULAR(P, 0, 0, 3)</DefaultAnnotationText>
+          <DefaultAnnotationText><![CDATA[Actual = RANDTRIANGULAR(P, 0, 0, 3)
+]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -1548,6 +1551,10 @@
       <Company />
       <Copyright />
       <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
     </MetaInfo>
     <Events>
       <Enabled value="True" />

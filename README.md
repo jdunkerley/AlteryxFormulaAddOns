@@ -73,6 +73,10 @@ Math based functions that I havent got a better home for!
 - [ChiInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#chiinv): Compute inverse CDF on Chi Squared distribution *(C++)*
 - [Phi](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#phi): Returns the golden ratio constant.
 - [RandTriangular](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#randtriangular): Produces a random number from a triangular distribution
+- [Int64Add](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64add): Sums a set of integers (stored as strings) using Int64 types *(C++)*
+- [Int64Mult](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64mult): Products a set of integers (stored as strings) using Int64 types *(C++)*
+- [Int64Div](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64mult): Divides two integers (stored as strings) using Int64 types *(C++)*
+- [Int64Mod](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64mult): Computes the remainder of dividing two integers (stored as strings) using Int64 types *(C++)*
 
 ### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 
