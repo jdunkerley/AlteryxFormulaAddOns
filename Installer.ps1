@@ -32,8 +32,11 @@ if ($mode.ToUpper() -eq "ROOT") { $files += Get-ChildItem "$root\*.dll" | Select
 Unblock-File $files
 
 foreach ($bin in $bins) {
-    Write-Host "Installing current version to $bin ..."
-    Copy-Item $files -Destination "$bin\RuntimeData\FormulaAddIn" -Verbose
+    if (Test-Path "$bin\RuntimeData\FormulaAddIn" -and Test-Path "$bin\AlteryxGui.exe")
+    {
+        Write-Host "Installing current version to $bin ..."
+        Copy-Item $files -Destination "$bin\RuntimeData\FormulaAddIn" -Verbose
+    }
 }
 
 Pop-Location
