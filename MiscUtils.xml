@@ -201,6 +201,17 @@
     </Dll>
   </Function>
   <Function>
+    <Name>VARLISTINDEXOF</Name>
+    <NumParams variable="true">2</NumParams>
+    <Category>Specialized</Category>
+    <InsertText>VarListIndexOf(Key, Value)</InsertText>
+    <Description>Finds the index of an item in a list</Description>
+    <Dll>
+      <Name>AlteryxAbacus.dll</Name>
+      <EntryPoint>VarListIndexOf</EntryPoint>
+    </Dll>
+  </Function>
+  <Function>
     <Name>VARRESET</Name>
     <NumParams variable="true">0</NumParams>
     <Category>Specialized</Category>

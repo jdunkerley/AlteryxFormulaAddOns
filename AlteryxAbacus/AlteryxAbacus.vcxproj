@@ -173,6 +173,7 @@
     <ClCompile Include="RomanNumerals.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="StudentTDistribution.cpp" />
+    <ClCompile Include="Variables.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AlteryxAbacus.rc" />
