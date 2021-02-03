@@ -3,6 +3,7 @@
 #define ENGINE_VERSION_H
 
 #include <array>
+#include <string>
 
 class EngineVersion
 {
