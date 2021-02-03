@@ -31,7 +31,7 @@ extern "C" long _declspec(dllexport) _stdcall GammaDist(int nNumArgs, FormulaAdd
 
 		pReturnValue->isNull = 0;
 		pReturnValue->dVal = nNumArgs == 4 && !pArgs[3].isNull && pArgs[3].dVal
-			? boost::math::gamma_p(shape, x)/scale
+			? boost::math::gamma_p(shape, x) / scale
 			: boost::math::gamma_p_derivative(shape, x);
 	}
 
