@@ -36,9 +36,15 @@ A few additional general methods for data preparation.
 - [VarPrint](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varprint): Lists all current variable names and values to a string table *(C++)*
 - [VarReset](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varreset): Clears the internal caches of all variables. Can take a `Key` parameter to delete just that variable *(C++)*
 - [VarNum](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnum): Retrieves (if no `Value` argument passed) or stores a number value in the `Key` variable *(C++)*
+- [VarNumAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnumadd): Stores a number value in the `Key` variable after adding it to the currently stored number value *(C++)*
 - [VarNumExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnumexists): Returns true if a number variable exists, false otherwise *(C++)*
+- [VarNumRead](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnumread): Retrieves a number value in the  `Key` variable *(C++)*
+- [VarNumWrite](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varnumwrite): Stores a number value in the `Key` variable *(C++)*
 - [VarText](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartext): Retrieves (if no `Value` argument passed) or stores a string value in the `Key` variable *(C++)*
+- [VarTextAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartextadd): Stores a string value in the `Key` variable after appending/prepending it to the currently stored number value *(C++)*
 - [VarTextExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartextexists): Returns true if a string variable exists, false otherwise *(C++)*
+- [VarTextRead](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartextread): Retrieves a string value in the `Key` variable *(C++)*
+- [VarTextWrite](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#vartextwrite): Stores a string value in the `Key` variable *(C++)*
 - [VarListExists](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistexists): Returns true if a list variable exists, false otherwise *(C++)*
 - [VarListLength](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistlength): Returns the current length of a list if it exists, or NULL if the list does not exist *(C++)*
 - [VarListAdd](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Miscellaneous-Functions-(MiscUtils.xml)#varlistadd): Adds an item to a list variable (creating a new list if needed) at the end of the list *(C++)*
