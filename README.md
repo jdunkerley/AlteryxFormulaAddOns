@@ -77,6 +77,12 @@ Math based functions that I havent got a better home for!
 - [Int64Mult](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64mult): Products a set of integers (stored as strings) using Int64 types *(C++)*
 - [Int64Div](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64mult): Divides two integers (stored as strings) using Int64 types *(C++)*
 - [Int64Mod](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#int64mult): Computes the remainder of dividing two integers (stored as strings) using Int64 types *(C++)*
+- [GammaDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#gammadist): Compute PDF or CDF on Gamma distribution *(C++)*
+- [GammaInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#gammainv): Compute inverse CDF on Gamma distribution *(C++)*
+- [PoissonDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#poissondist): Compute PDF or CDF on Poisson distribution *(C++)*
+- [PoissonInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#poissoninv): Compute inverse CDF on Poisson distribution *(C++)*
+- [FDist](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#Fdist): Compute right tailed F distribution *(C++)*
+- [FInv](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Math-Functions-(MathUtils.xml)#Finv): Compute inverse right tailed F distribution *(C++)*
 
 ### [DateUtils](https://github.com/jdunkerley/AlteryxFormulaAddOns/wiki/Date-and-Time-Functions-(DateUtils.xml)) ###
 
