@@ -33,7 +33,7 @@ extern "C" long _declspec(dllexport) _stdcall LogNormDist(int nNumArgs, FormulaA
 	}
 	else {
 		double location = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
-		double scale = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
+		double scale = nNumArgs < 3 || pArgs[2].isNull || pArgs[2].dVal == 0 ? 1 : pArgs[2].dVal;
 		bool cuml = nNumArgs == 4 && !pArgs[3].isNull && pArgs[3].dVal;
 		double x = pArgs[0].dVal;
 
@@ -67,12 +67,12 @@ extern "C" long _declspec(dllexport) _stdcall LogNormInv(int nNumArgs, FormulaAd
 	}
 
 	// Do Calculation
-	if (pArgs[0].isNull || pArgs[0].dVal <= 0 || pArgs[0].dVal >= 1 || pArgs[2].dVal == 0) {
+	if (pArgs[0].isNull || pArgs[0].dVal <= 0 || pArgs[0].dVal >= 1) {
 		pReturnValue->isNull = 1;
 	}
 	else {
 		double location = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
-		double scale = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
+		double scale = nNumArgs < 3 || pArgs[2].isNull || pArgs[2].dVal == 0 ? 1 : pArgs[2].dVal;
 		double p = pArgs[0].dVal;
 
 		lognormal s(location, scale);
