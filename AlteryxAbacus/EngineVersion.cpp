@@ -2,6 +2,7 @@
 #include "EngineVersion.h"
 #include "AlteryxAbacus.h"
 #include "AlteryxAbacusUtils.h"
+#include <cmath>
 
 std::array<int, 4> EngineVersion::versionParts{ -1, 0, 0, 0 };
 

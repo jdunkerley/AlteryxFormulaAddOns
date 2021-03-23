@@ -27,12 +27,13 @@ extern "C" long _declspec(dllexport) _stdcall GammaDist(int nNumArgs, FormulaAdd
 	else {
 		const double shape = pArgs[1].dVal;
 		const double scale = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
-		const double x = pArgs[0].dVal / scale;
-
+		const double x = pArgs[0].dVal;
+		boost::math::gamma_distribution<double> d(shape, scale);
+		
 		pReturnValue->isNull = 0;
 		pReturnValue->dVal = nNumArgs == 4 && !pArgs[3].isNull && pArgs[3].dVal
-			? boost::math::gamma_p(shape, x)
-			: boost::math::gamma_p_derivative(shape, x);
+			? cdf(d, x)
+			: pdf(d, x);
 	}
 
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);

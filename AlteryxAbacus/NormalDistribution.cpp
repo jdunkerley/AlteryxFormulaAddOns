@@ -27,11 +27,11 @@ extern "C" long _declspec(dllexport) _stdcall NormDist(int nNumArgs, FormulaAddI
 		pReturnValue->isNull = 1;
 	}
 	else {
-		normal s;
 		double mean = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
-		double stDev = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
+		double stDev = nNumArgs < 3 || pArgs[2].isNull || pArgs[2].dVal == 0 ? 1 : pArgs[2].dVal;
 		bool cuml = nNumArgs == 4 && !pArgs[3].isNull && pArgs[3].dVal;
-		double x = (pArgs[0].dVal - mean) / stDev;
+		double x = pArgs[0].dVal;
+		normal s(mean, stDev);
 
 		pReturnValue->isNull = 0;
 		pReturnValue->dVal = cuml ? cdf(s, x) : pdf(s, x);
@@ -66,14 +66,14 @@ extern "C" long _declspec(dllexport) _stdcall NormInv(int nNumArgs, FormulaAddIn
 		pReturnValue->isNull = 1;
 	}
 	else {
-		normal s;
 		double mean = nNumArgs < 2 || pArgs[1].isNull ? 0 : pArgs[1].dVal;
-		double stDev = nNumArgs < 3 || pArgs[2].isNull ? 1 : pArgs[2].dVal;
+		double stDev = nNumArgs < 3 || pArgs[2].isNull || pArgs[2].dVal == 0 ? 1 : pArgs[2].dVal;
 		double p = pArgs[0].dVal;
+		normal s(mean,stDev);
 		double x = quantile(s, p);
 
 		pReturnValue->isNull = 0;
-		pReturnValue->dVal = x * stDev + mean;
+		pReturnValue->dVal = x;
 	}
 
 	return AlteryxAbacusUtils::ReturnSuccess(nNumArgs, pArgs);
